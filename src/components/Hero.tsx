@@ -14,7 +14,7 @@ const Hero: React.FC = () => {
       transition: {
         delay: i * 0.05,
         duration: 0.5,
-        ease: [0.6, 0.01, 0.05, 0.95] as any,
+        ease: 'easeOut' as const,
       },
     }),
   };
