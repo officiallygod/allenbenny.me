@@ -9,24 +9,40 @@ const About: React.FC = () => {
   return (
     <motion.section
       className="about"
-      initial={{ opacity: 0, x: -50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: 0.3 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.8 }}
     >
-      {bio.map((paragraph, index) => (
-        <motion.p
-          key={index}
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.5 + index * 0.2 }}
-          dangerouslySetInnerHTML={{
-            __html: paragraph.replace(
-              /(Newfold Digital|Karlsruhe Institute of Technology)/g,
-              '<strong>$1</strong>'
-            ),
-          }}
-        />
-      ))}
+      <motion.h2
+        className="section-title"
+        initial={{ opacity: 0, y: -20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+      >
+        About Me
+      </motion.h2>
+      <div className="about-content">
+        {bio.map((paragraph, index) => (
+          <motion.p
+            key={index}
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6, delay: 0.2 + index * 0.15 }}
+          >
+            {paragraph}
+          </motion.p>
+        ))}
+      </div>
+      <motion.div
+        className="about-decoration"
+        initial={{ width: 0 }}
+        whileInView={{ width: '100px' }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.8, delay: 0.5 }}
+      />
     </motion.section>
   );
 };

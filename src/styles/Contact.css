@@ -1,0 +1,197 @@
+.contact-section {
+  padding: 100px 20px 80px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(10px);
+}
+
+.contact-container {
+  max-width: 700px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.contact-text {
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.9);
+  margin-bottom: 40px;
+  line-height: 1.8;
+  text-shadow: 0 1px 5px rgba(0, 0, 0, 0.2);
+}
+
+.contact-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 60px;
+}
+
+.contact-link {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px 32px;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 50px;
+  text-decoration: none;
+  color: #4a5568;
+  font-weight: 600;
+  font-size: 1.1rem;
+  border: 2px solid rgba(102, 126, 234, 0.2);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.contact-link::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  transition: left 0.4s ease;
+  z-index: -1;
+}
+
+.contact-link:hover {
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 8px 30px rgba(102, 126, 234, 0.4);
+  transform: translateY(-2px);
+}
+
+.contact-link:hover::before {
+  left: 0;
+}
+
+.link-icon {
+  font-size: 1.5rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.link-text {
+  position: relative;
+  z-index: 1;
+}
+
+.github-highlight {
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  border-radius: 25px;
+  padding: 40px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.5);
+}
+
+.github-text {
+  font-size: 1.1rem;
+  color: #4a5568;
+  margin-bottom: 24px;
+  font-weight: 500;
+}
+
+.github-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  padding: 18px 40px;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 700;
+  font-size: 1.1rem;
+  box-shadow: 0 6px 25px rgba(102, 126, 234, 0.4);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.github-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.github-button:hover::before {
+  opacity: 1;
+}
+
+.github-button span {
+  position: relative;
+  z-index: 1;
+}
+
+.github-icon {
+  font-size: 1.8rem;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.2));
+}
+
+@media (max-width: 768px) {
+  .contact-section {
+    padding: 80px 20px 60px;
+  }
+
+  .contact-text {
+    font-size: 1.1rem;
+  }
+
+  .contact-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .contact-link {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+
+  .github-highlight {
+    padding: 30px;
+  }
+
+  .github-button {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 480px) {
+  .contact-section {
+    padding: 60px 15px 40px;
+  }
+
+  .contact-text {
+    font-size: 1rem;
+  }
+
+  .contact-link {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+
+  .github-highlight {
+    padding: 25px 20px;
+  }
+
+  .github-text {
+    font-size: 1rem;
+  }
+
+  .github-button {
+    padding: 16px 32px;
+    font-size: 1rem;
+  }
+}

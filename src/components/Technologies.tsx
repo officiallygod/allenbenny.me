@@ -11,8 +11,7 @@ const Technologies: React.FC = () => {
     visible: {
       opacity: 1,
       transition: {
-        staggerChildren: 0.1,
-        delayChildren: 0.7,
+        staggerChildren: 0.08,
       },
     },
   };
@@ -34,37 +33,50 @@ const Technologies: React.FC = () => {
   return (
     <motion.section
       className="technologies"
-      initial={{ opacity: 0, x: 50 }}
-      animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.8, delay: 0.5 }}
+      initial={{ opacity: 0 }}
+      whileInView={{ opacity: 1 }}
+      viewport={{ once: true, amount: 0.3 }}
+      transition={{ duration: 0.8 }}
     >
       <motion.h2
+        className="section-title"
         initial={{ opacity: 0, y: -20 }}
-        animate={{ opacity: 1, y: 0 }}
-        transition={{ duration: 0.6, delay: 0.6 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
       >
-        Technologies
+        Tech Stack
       </motion.h2>
       <motion.div
         className="tech-tags"
         variants={containerVariants}
         initial="hidden"
-        animate="visible"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
       >
         {technologies.map((tech, index) => (
-          <motion.span
+          <motion.div
             key={index}
-            className="tag"
+            className="tag-wrapper"
             variants={tagVariants}
-            whileHover={{
-              scale: 1.1,
-              rotate: [0, -5, 5, -5, 0],
-              transition: { duration: 0.3 },
-            }}
-            whileTap={{ scale: 0.95 }}
           >
-            {tech.name}
-          </motion.span>
+            <motion.span
+              className="tag"
+              whileHover={{
+                scale: 1.15,
+                y: -5,
+                transition: { duration: 0.2 },
+              }}
+              whileTap={{ scale: 0.95 }}
+            >
+              {tech.name}
+              <motion.div
+                className="tag-glow"
+                initial={{ opacity: 0 }}
+                whileHover={{ opacity: 1 }}
+              />
+            </motion.span>
+          </motion.div>
         ))}
       </motion.div>
     </motion.section>
