@@ -1,0 +1,37 @@
+.about {
+  margin-bottom: 50px;
+  padding: 40px;
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(10px);
+  border-radius: 25px;
+  box-shadow: 0 8px 32px rgba(179, 229, 252, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.8);
+  width: 100%;
+}
+
+.about p {
+  margin-bottom: 20px;
+  font-size: 1.1rem;
+  color: #5a5a5a;
+  line-height: 1.8;
+}
+
+.about p:last-child {
+  margin-bottom: 0;
+}
+
+.about strong {
+  color: #ff9a9e;
+  font-weight: 600;
+}
+
+@media (max-width: 768px) {
+  .about {
+    padding: 30px 20px;
+    margin-bottom: 40px;
+  }
+
+  .about p {
+    font-size: 1rem;
+  }
+}
