@@ -44,10 +44,35 @@ const Experience: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Experience & Education
+          Education & Experience
         </motion.h2>
 
         <div className="experience-grid">
+          <motion.div className="experience-column" variants={itemVariants}>
+            <h3 className="column-title">Education</h3>
+            {education.map((edu, index) => (
+              <motion.div
+                key={index}
+                className="experience-card education-card"
+                whileHover={{ scale: 1.02, y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="card-header">
+                  <h4 className="company">{edu.institution}</h4>
+                  <span className="duration">{edu.duration}</span>
+                </div>
+                <h5 className="role">{edu.degree}</h5>
+                <motion.div
+                  className="card-accent"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '100%' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+
           <motion.div className="experience-column" variants={itemVariants}>
             <h3 className="column-title">Professional Experience</h3>
             {experience.map((exp, index) => (
@@ -63,31 +88,6 @@ const Experience: React.FC = () => {
                 </div>
                 <h5 className="role">{exp.role}</h5>
                 <p className="description">{exp.description}</p>
-                <motion.div
-                  className="card-accent"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: '100%' }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.3 }}
-                />
-              </motion.div>
-            ))}
-          </motion.div>
-
-          <motion.div className="experience-column" variants={itemVariants}>
-            <h3 className="column-title">Education</h3>
-            {education.map((edu, index) => (
-              <motion.div
-                key={index}
-                className="experience-card education-card"
-                whileHover={{ scale: 1.02, y: -5 }}
-                transition={{ duration: 0.3 }}
-              >
-                <div className="card-header">
-                  <h4 className="company">{edu.institution}</h4>
-                  <span className="duration">{edu.duration}</span>
-                </div>
-                <h5 className="role">{edu.degree}</h5>
                 <motion.div
                   className="card-accent"
                   initial={{ width: 0 }}
