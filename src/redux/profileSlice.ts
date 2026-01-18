@@ -82,7 +82,7 @@ const initialState: ProfileState = {
     },
     {
       name: 'LinkedIn',
-      url: 'https://linkedin.com/in/allenbenny',
+      url: 'https://www.linkedin.com/in/allen-benny/',
       icon: 'linkedin',
     },
   ],
