@@ -1,10 +1,12 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, useReducedMotion } from 'framer-motion';
 import { useAppSelector } from '../redux/hooks';
+import SocialIcon from './SocialIcon';
 import '../styles/Hero.css';
 
 const Hero: React.FC = () => {
   const { name, title, tagline, socialLinks } = useAppSelector((state) => state.profile);
+  const shouldReduceMotion = useReducedMotion();
 
   const letterVariants = {
     hidden: { opacity: 0, y: 50 },
@@ -28,7 +30,19 @@ const Hero: React.FC = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
-      <div className="hero-content">
+      <motion.div
+        className="hero-content"
+        animate={
+          shouldReduceMotion
+            ? { y: 0, rotateX: 0, rotateY: 0 }
+            : { y: [0, -6, 0], rotateX: [0, 1.2, 0], rotateY: [0, -1.2, 0] }
+        }
+        transition={
+          shouldReduceMotion
+            ? { duration: 0 }
+            : { duration: 12, repeat: Infinity, ease: 'easeInOut' }
+        }
+      >
         <motion.div
           className="hero-text"
           initial={{ opacity: 0, y: 30 }}
@@ -104,17 +118,17 @@ const Hero: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className={`social-link ${link.icon}`}
-              whileHover={{ scale: 1.2, rotate: 5 }}
+              whileHover={{ scale: 1.08, rotate: 2 }}
               whileTap={{ scale: 0.9 }}
               initial={{ opacity: 0, scale: 0 }}
               animate={{ opacity: 1, scale: 1 }}
               transition={{ delay: 1.5 + index * 0.1, type: 'spring', stiffness: 200 }}
             >
-              <span className="social-icon">{link.icon === 'github' ? '⚡' : '💼'}</span>
+              <SocialIcon type={link.icon} className="social-icon" />
             </motion.a>
           ))}
         </motion.div>
-      </div>
+      </motion.div>
 
       <motion.div
         className="hero-background"
