@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useAppSelector } from '../redux/hooks';
+import SocialIcon from './SocialIcon';
 import '../styles/Contact.css';
 
 const Contact: React.FC = () => {
@@ -50,14 +51,14 @@ const Contact: React.FC = () => {
               target="_blank"
               rel="noopener noreferrer"
               className="contact-link"
-              whileHover={{ scale: 1.05, y: -3 }}
+              whileHover={{ scale: 1.03, y: -2 }}
               whileTap={{ scale: 0.95 }}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.5 + index * 0.1 }}
             >
-              <span className="link-icon">{link.icon === 'github' ? '⚡' : '💼'}</span>
+              <SocialIcon type={link.icon} className="link-icon" />
               <span className="link-text">{link.name}</span>
             </motion.a>
           ))}
@@ -79,7 +80,7 @@ const Contact: React.FC = () => {
             whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(37, 99, 235, 0.35)' }}
             whileTap={{ scale: 0.95 }}
           >
-            <span className="github-icon">⚡</span>
+            <SocialIcon type="github" className="github-icon" />
             <span>Visit GitHub Profile</span>
           </motion.a>
         </motion.div>

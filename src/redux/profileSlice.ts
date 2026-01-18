@@ -1,4 +1,5 @@
 import { createSlice, PayloadAction } from '@reduxjs/toolkit';
+import { SocialIconType } from '../types/social';
 
 interface Technology {
   name: string;
@@ -21,7 +22,7 @@ interface Education {
 interface SocialLink {
   name: string;
   url: string;
-  icon: string;
+  icon: SocialIconType;
 }
 
 interface ProfileState {
