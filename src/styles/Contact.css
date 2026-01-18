@@ -4,7 +4,7 @@
 }
 
 .contact-container {
-  max-width: 700px;
+  max-width: 800px;
   margin: 0 auto;
   text-align: center;
 }
@@ -16,12 +16,43 @@
   line-height: 1.8;
 }
 
+.contact-info {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-bottom: 40px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 1rem;
+  color: #1f2937;
+}
+
+.contact-icon {
+  font-size: 1.4rem;
+}
+
+.contact-link-text {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+}
+
+.contact-link-text:hover {
+  color: #1d4ed8;
+}
+
 .contact-links {
   display: flex;
   gap: 20px;
   justify-content: center;
   flex-wrap: wrap;
-  margin-bottom: 60px;
+  margin-bottom: 40px;
 }
 
 .contact-link {
@@ -75,6 +106,33 @@
 .link-text {
   position: relative;
   z-index: 1;
+}
+
+.portfolio-links {
+  display: flex;
+  gap: 20px;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 50px;
+}
+
+.portfolio-button {
+  display: inline-flex;
+  align-items: center;
+  padding: 16px 36px;
+  background: linear-gradient(135deg, #3b82f6 0%, #2563eb 100%);
+  color: #fff;
+  text-decoration: none;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 1.05rem;
+  box-shadow: 0 6px 20px rgba(59, 130, 246, 0.35);
+  transition: all 0.3s ease;
+}
+
+.portfolio-button.secondary {
+  background: linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.35);
 }
 
 .github-highlight {
@@ -145,12 +203,29 @@
     font-size: 1.1rem;
   }
 
+  .contact-info {
+    flex-direction: column;
+    align-items: center;
+    gap: 15px;
+  }
+
   .contact-links {
     flex-direction: column;
     align-items: center;
   }
 
   .contact-link {
+    width: 100%;
+    max-width: 300px;
+    justify-content: center;
+  }
+
+  .portfolio-links {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .portfolio-button {
     width: 100%;
     max-width: 300px;
     justify-content: center;
@@ -176,7 +251,16 @@
     font-size: 1rem;
   }
 
+  .contact-item {
+    font-size: 0.9rem;
+  }
+
   .contact-link {
+    padding: 14px 28px;
+    font-size: 1rem;
+  }
+
+  .portfolio-button {
     padding: 14px 28px;
     font-size: 1rem;
   }
