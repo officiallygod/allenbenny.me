@@ -5,7 +5,7 @@ import SocialIcon from './SocialIcon';
 import '../styles/Contact.css';
 
 const Contact: React.FC = () => {
-  const { githubUrl, socialLinks } = useAppSelector((state) => state.profile);
+  const { githubUrl, socialLinks, contact, portfolioUrl, personalSiteUrl } = useAppSelector((state) => state.profile);
 
   return (
     <section id="contact" className="contact-section">
@@ -33,9 +33,30 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          I'm always interested in hearing about new opportunities and collaborations.
-          Feel free to reach out!
+          Seeking Werkstudent opportunities (15-20h/week) in Karlsruhe and surrounding areas.
+          Let's discuss how I can contribute to your team!
         </motion.p>
+
+        <motion.div
+          className="contact-info"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.3 }}
+        >
+          <div className="contact-item">
+            <span className="contact-icon">📧</span>
+            <a href={`mailto:${contact.email}`} className="contact-link-text">{contact.email}</a>
+          </div>
+          <div className="contact-item">
+            <span className="contact-icon">📱</span>
+            <a href={`tel:${contact.phone}`} className="contact-link-text">{contact.phone}</a>
+          </div>
+          <div className="contact-item">
+            <span className="contact-icon">📍</span>
+            <span className="contact-link-text">{contact.location}</span>
+          </div>
+        </motion.div>
 
         <motion.div
           className="contact-links"
@@ -65,13 +86,42 @@ const Contact: React.FC = () => {
         </motion.div>
 
         <motion.div
+          className="portfolio-links"
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6, delay: 0.6 }}
+        >
+          <motion.a
+            href={portfolioUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="portfolio-button"
+            whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(59, 130, 246, 0.35)' }}
+            whileTap={{ scale: 0.95 }}
+          >
+            View Portfolio
+          </motion.a>
+          <motion.a
+            href={personalSiteUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="portfolio-button secondary"
+            whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(139, 92, 246, 0.35)' }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Personal Site
+          </motion.a>
+        </motion.div>
+
+        <motion.div
           className="github-highlight"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.7 }}
         >
-          <p className="github-text">Check out my projects on GitHub</p>
+          <p className="github-text">Top contributor at Newfold Digital • Check out my open-source work</p>
           <motion.a
             href={githubUrl}
             target="_blank"
