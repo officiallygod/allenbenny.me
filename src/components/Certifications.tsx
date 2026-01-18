@@ -48,9 +48,9 @@ const Certifications: React.FC = () => {
         </motion.h2>
 
         <div className="certifications-grid">
-          {certifications.map((cert, index) => (
+          {certifications.map((cert) => (
             <motion.div
-              key={index}
+              key={`${cert.title}-${cert.issuer}`}
               className="certification-card"
               variants={itemVariants}
               whileHover={{ scale: 1.02, x: 5 }}

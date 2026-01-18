@@ -115,7 +115,7 @@ const initialState: ProfileState = {
     {
       company: 'Newfold Digital',
       role: 'Software Development Engineer (Full Stack)',
-      duration: 'Jan 2022 – Apr 2025',
+      duration: 'Jan 2022 – Present',
       description: 'Built open-source modern WordPress onboarding (PHP, React) serving 1000+ users daily. Developed AI-powered onboarding experience from prompts. Created task systems & cron jobs for plugin installation automation. Optimized performance and reliability with advanced React features (Memo, caching) for responsive onboarding. Developed WordPress template drawer. Top contributor to team codebase. Represented Bluehost at WordCamp Sylhet 2023. Awarded Edward De Bono Award for innovation.',
     },
     {

@@ -48,9 +48,9 @@ const Projects: React.FC = () => {
         </motion.h2>
 
         <div className="projects-grid">
-          {projects.map((project, index) => (
+          {projects.map((project) => (
             <motion.div
-              key={index}
+              key={`${project.title}-${project.date}`}
               className="project-card"
               variants={itemVariants}
               whileHover={{ scale: 1.03, y: -5 }}
