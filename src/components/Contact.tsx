@@ -76,7 +76,7 @@ const Contact: React.FC = () => {
             target="_blank"
             rel="noopener noreferrer"
             className="github-button"
-            whileHover={{ scale: 1.05, boxShadow: '0 10px 40px rgba(106, 90, 205, 0.4)' }}
+            whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(37, 99, 235, 0.35)' }}
             whileTap={{ scale: 0.95 }}
           >
             <span className="github-icon">⚡</span>
