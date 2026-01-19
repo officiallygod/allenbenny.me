@@ -12,11 +12,15 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@chakra-ui/react": "^3.31.0",
+    "@emotion/react": "^11.14.0",
+    "@emotion/styled": "^11.14.1",
     "@reduxjs/toolkit": "^2.11.2",
     "framer-motion": "^12.26.2",
     "react": "^19.2.3",
     "react-dom": "^19.2.3",
-    "react-redux": "^9.2.0"
+    "react-redux": "^9.2.0",
+    "three": "^0.182.0"
   },
   "devDependencies": {
     "@babel/core": "^7.28.6",
@@ -24,6 +28,7 @@
     "@babel/preset-typescript": "^7.28.5",
     "@types/react": "^19.2.8",
     "@types/react-dom": "^19.2.3",
+    "@types/three": "^0.182.0",
     "babel-loader": "^10.0.0",
     "copy-webpack-plugin": "^13.0.1",
     "css-loader": "^7.1.2",

@@ -3,6 +3,7 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useAppSelector } from '../redux/hooks';
 import SocialIcon from './SocialIcon';
 import '../styles/Hero.css';
+import HeroBackground from './HeroBackground';
 
 const Hero: React.FC = () => {
   const { name, title, tagline, socialLinks } = useAppSelector((state) => state.profile);
@@ -30,6 +31,7 @@ const Hero: React.FC = () => {
       animate={{ opacity: 1 }}
       transition={{ duration: 1 }}
     >
+      <HeroBackground />
       <motion.div
         className="hero-content"
         animate={
@@ -128,17 +130,6 @@ const Hero: React.FC = () => {
             </motion.a>
           ))}
         </motion.div>
-      </motion.div>
-
-      <motion.div
-        className="hero-background"
-        initial={{ opacity: 0, scale: 0.8 }}
-        animate={{ opacity: 1, scale: 1 }}
-        transition={{ duration: 1.5, delay: 0.5 }}
-      >
-        <div className="animated-blob blob-1"></div>
-        <div className="animated-blob blob-2"></div>
-        <div className="animated-blob blob-3"></div>
       </motion.div>
     </motion.section>
   );
