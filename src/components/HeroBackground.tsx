@@ -38,7 +38,8 @@ const HeroBackground: React.FC = () => {
     camera.position.set(0, 0, 18);
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2(blue500 || '#0b1224', 0.045);
+    const fogColor = new THREE.Color(blue500 || '#0b1224').getHex();
+    scene.fog = new THREE.FogExp2(fogColor, 0.045);
 
     const starCount = container.clientWidth < MOBILE_BREAKPOINT ? MOBILE_STAR_COUNT : DESKTOP_STAR_COUNT;
     const geometry = new THREE.BufferGeometry();
@@ -94,20 +95,22 @@ const HeroBackground: React.FC = () => {
     const points = new THREE.Points(geometry, material);
     scene.add(points);
 
-    const ambient = new THREE.AmbientLight(cyan500 || '#6edff6', 0.45);
+    const ambientColor = new THREE.Color(cyan500 || '#6edff6').getHex();
+    const ambient = new THREE.AmbientLight(ambientColor, 0.45);
     scene.add(ambient);
 
     let targetX = 0;
     let targetY = 0;
     let animationFrameId = 0;
+    let bounds = container.getBoundingClientRect();
 
     const handlePointerMove = (event: PointerEvent) => {
-      const rect = container.getBoundingClientRect();
-      targetX = (event.clientX - rect.left) / rect.width - 0.5;
-      targetY = (event.clientY - rect.top) / rect.height - 0.5;
+      targetX = (event.clientX - bounds.left) / bounds.width - 0.5;
+      targetY = (event.clientY - bounds.top) / bounds.height - 0.5;
     };
 
     const handleResize = () => {
+      bounds = container.getBoundingClientRect();
       const width = container.clientWidth || DEFAULT_WIDTH;
       const height = container.clientHeight || DEFAULT_HEIGHT;
       renderer.setSize(width, height);
