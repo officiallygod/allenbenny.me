@@ -9,6 +9,11 @@ const HeroBackground: React.FC = () => {
   const containerRef = useRef<HTMLDivElement | null>(null);
   const shouldReduceMotion = useReducedMotion();
   const [cyan500, blue500, purple500] = useToken('colors', ['cyan.300', 'blue.400', 'purple.400']);
+  const MOBILE_BREAKPOINT = 720;
+  const MOBILE_STAR_COUNT = 360;
+  const DESKTOP_STAR_COUNT = 720;
+  const DEFAULT_WIDTH = 1;
+  const DEFAULT_HEIGHT = 1;
 
   useEffect(() => {
     const container = containerRef.current;
@@ -20,7 +25,7 @@ const HeroBackground: React.FC = () => {
       powerPreference: 'high-performance',
     });
     renderer.setClearColor(0x000000, 0);
-    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 1.8));
+    renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
 
@@ -35,7 +40,7 @@ const HeroBackground: React.FC = () => {
     const scene = new THREE.Scene();
     scene.fog = new THREE.FogExp2('#0b1120', 0.045);
 
-    const starCount = container.clientWidth < 720 ? 360 : 720;
+    const starCount = container.clientWidth < MOBILE_BREAKPOINT ? MOBILE_STAR_COUNT : DESKTOP_STAR_COUNT;
     const geometry = new THREE.BufferGeometry();
     const positions = new Float32Array(starCount * 3);
     const basePositions = new Float32Array(starCount * 3);
@@ -103,8 +108,8 @@ const HeroBackground: React.FC = () => {
     };
 
     const handleResize = () => {
-      const width = container.clientWidth || 1;
-      const height = container.clientHeight || 1;
+      const width = container.clientWidth || DEFAULT_WIDTH;
+      const height = container.clientHeight || DEFAULT_HEIGHT;
       renderer.setSize(width, height);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
@@ -153,7 +158,7 @@ const HeroBackground: React.FC = () => {
       geometry.dispose();
       material.dispose();
       renderer.dispose();
-      if (renderer.domElement.parentNode === container) {
+      if (container && renderer.domElement.parentNode === container) {
         container.removeChild(renderer.domElement);
       }
     };
