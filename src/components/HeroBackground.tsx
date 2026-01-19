@@ -38,7 +38,7 @@ const HeroBackground: React.FC = () => {
     camera.position.set(0, 0, 18);
 
     const scene = new THREE.Scene();
-    scene.fog = new THREE.FogExp2('#0b1120', 0.045);
+    scene.fog = new THREE.FogExp2(blue500 || '#0b1224', 0.045);
 
     const starCount = container.clientWidth < MOBILE_BREAKPOINT ? MOBILE_STAR_COUNT : DESKTOP_STAR_COUNT;
     const geometry = new THREE.BufferGeometry();
@@ -94,7 +94,7 @@ const HeroBackground: React.FC = () => {
     const points = new THREE.Points(geometry, material);
     scene.add(points);
 
-    const ambient = new THREE.AmbientLight('#6edff6', 0.45);
+    const ambient = new THREE.AmbientLight(cyan500 || '#6edff6', 0.45);
     scene.add(ambient);
 
     let targetX = 0;
@@ -157,6 +157,8 @@ const HeroBackground: React.FC = () => {
       window.removeEventListener('resize', handleResize);
       geometry.dispose();
       material.dispose();
+      scene.remove(points);
+      scene.remove(ambient);
       renderer.dispose();
       if (container && renderer.domElement.parentNode === container) {
         container.removeChild(renderer.domElement);
