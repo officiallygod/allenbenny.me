@@ -5,8 +5,21 @@ import '../styles/Contributions.css';
 const Contributions: React.FC = () => {
   const githubUsername = 'officiallygod';
   const githubProfileUrl = `https://github.com/${githubUsername}`;
-  const graphUrl = `https://github-contributions-api.jogruber.de/v4/${githubUsername}?from=2022-01-01`;
+  const graphSources = [
+    `https://github-contributions-api.jogruber.de/v4/${githubUsername}`,
+    `https://ghchart.rshah.org/${githubUsername}`,
+  ];
+  const [graphIndex, setGraphIndex] = React.useState(0);
+  const graphUrl = graphSources[graphIndex];
   const [hasError, setHasError] = React.useState(false);
+  const handleGraphError = () => {
+    if (graphIndex < graphSources.length - 1) {
+      setGraphIndex((currentIndex) => currentIndex + 1);
+      return;
+    }
+
+    setHasError(true);
+  };
 
   return (
     <motion.section
@@ -35,7 +48,7 @@ const Contributions: React.FC = () => {
       >
         <div className="contributions-meta">
           <p className="contributions-subtitle">
-            Showing all contributions since 2022 in a clean, on-brand chart.
+            Showing the complete GitHub contribution history with a reliable data source.
           </p>
           <a
             href={githubProfileUrl}
@@ -49,10 +62,11 @@ const Contributions: React.FC = () => {
         <div className="contributions-graph">
           {!hasError && (
             <img
+              key={graphUrl}
               src={graphUrl}
-              alt={`GitHub contributions graph since 2022 for ${githubUsername}`}
+              alt={`GitHub contributions graph for ${githubUsername}`}
               loading="lazy"
-              onError={() => setHasError(true)}
+              onError={handleGraphError}
             />
           )}
           <div
