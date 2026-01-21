@@ -6,6 +6,7 @@ import Experience from './components/Experience';
 import Projects from './components/Projects';
 import Certifications from './components/Certifications';
 import Contact from './components/Contact';
+import Contributions from './components/Contributions';
 import './styles/App.css';
 
 const App: React.FC = () => {
@@ -16,6 +17,7 @@ const App: React.FC = () => {
       <Technologies />
       <Experience />
       <Projects />
+      <Contributions />
       <Certifications />
       <Contact />
     </div>
