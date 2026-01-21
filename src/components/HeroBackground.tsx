@@ -312,10 +312,7 @@ const HeroBackground: React.FC = () => {
       shootingStars.forEach((star) => {
         star.life -= delta;
         star.mesh.position.addScaledVector(star.velocity, delta);
-        const material = star.mesh.material as THREE.Material & { opacity?: number };
-        if (material.opacity !== undefined) {
-          material.opacity = Math.max(0, Math.min(1, star.life / 1.8));
-        }
+        (star.mesh.material as THREE.MeshBasicMaterial).opacity = Math.max(0, Math.min(1, star.life / 1.8));
         if (star.life <= 0 || star.mesh.position.length() > 40) {
           resetShootingStar(star);
         }
@@ -344,15 +341,15 @@ const HeroBackground: React.FC = () => {
       galaxyMaterial.dispose();
       planetMeshes.forEach((planet) => {
         planet.mesh.geometry.dispose();
-        (planet.mesh.material as THREE.Material).dispose?.();
+        (planet.mesh.material as THREE.Material).dispose();
         if (planet.ring) {
           planet.ring.geometry.dispose();
-          (planet.ring.material as THREE.Material).dispose?.();
+          (planet.ring.material as THREE.Material).dispose();
         }
       });
       shootingStarGeometry.dispose();
       shootingStars.forEach((star) => {
-        (star.mesh.material as THREE.Material).dispose?.();
+        (star.mesh.material as THREE.Material).dispose();
       });
       scene.remove(points);
       scene.remove(galaxy);
