@@ -18,6 +18,22 @@
   text-align: center;
   max-width: 800px;
   will-change: transform;
+  background: rgba(11, 18, 36, 0.4);
+  /* Fallback for browsers that don't support backdrop-filter */
+  background: rgba(11, 18, 36, 0.55);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-radius: 24px;
+  padding: 48px 32px;
+  box-shadow: 
+    0 8px 32px rgba(0, 0, 0, 0.35),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+}
+
+@supports (backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px)) {
+  .hero-content {
+    background: rgba(11, 18, 36, 0.4);
+  }
 }
 
 .hero-text {
@@ -38,23 +54,34 @@
 
 .letter {
   display: inline-block;
-  color: #f8fafc;
-  text-shadow: 0 2px 6px rgba(15, 23, 42, 0.45);
+  color: #ffffff;
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.8),
+    0 4px 16px rgba(0, 0, 0, 0.6),
+    0 0 2px rgba(0, 0, 0, 0.9);
+  font-weight: 800;
 }
 
 .hero-title {
   font-size: 1.8rem;
-  font-weight: 400;
-  color: #e2e8f0;
+  font-weight: 500;
+  color: #f1f5f9;
   margin-bottom: 16px;
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.7),
+    0 4px 12px rgba(0, 0, 0, 0.5);
 }
 
 .hero-tagline {
   font-size: 1.2rem;
-  color: #cbd5e1;
-  font-weight: 300;
+  color: #e2e8f0;
+  font-weight: 400;
   max-width: 600px;
   margin: 0 auto;
+  text-shadow: 
+    0 2px 8px rgba(0, 0, 0, 0.75),
+    0 4px 12px rgba(0, 0, 0, 0.55),
+    0 0 1px rgba(0, 0, 0, 0.9);
 }
 
 .hero-cta {
@@ -68,14 +95,17 @@
 .cta-button {
   padding: 16px 40px;
   font-size: 1.1rem;
-  font-weight: 500;
+  font-weight: 600;
   text-decoration: none;
   border-radius: 50px;
   transition: all 0.3s ease;
   cursor: pointer;
   position: relative;
   overflow: hidden;
-  box-shadow: 0 4px 12px rgba(15, 23, 42, 0.2);
+  box-shadow: 
+    0 4px 16px rgba(15, 23, 42, 0.3),
+    0 2px 8px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
 }
 
 .cta-button.primary {
@@ -101,14 +131,18 @@
 }
 
 .cta-button.secondary {
-  background: transparent;
-  color: #f8fafc;
-  border: 2px solid rgba(248, 250, 252, 0.5);
+  background: rgba(248, 250, 252, 0.08);
+  color: #ffffff;
+  border: 2px solid rgba(248, 250, 252, 0.6);
+  backdrop-filter: blur(4px);
 }
 
 .cta-button.secondary:hover {
-  background: rgba(248, 250, 252, 0.12);
-  border-color: rgba(248, 250, 252, 0.7);
+  background: rgba(248, 250, 252, 0.16);
+  border-color: rgba(248, 250, 252, 0.85);
+  box-shadow: 
+    0 6px 20px rgba(15, 23, 42, 0.4),
+    0 0 20px rgba(248, 250, 252, 0.1);
 }
 
 .social-links {
@@ -201,6 +235,10 @@
     padding: 40px 20px;
   }
 
+  .hero-content {
+    padding: 40px 28px;
+  }
+
   .hero-name {
     font-size: 3rem;
   }
@@ -233,6 +271,13 @@
 
   .hero-content {
     max-width: 100%;
+    padding: 36px 24px;
+  }
+
+  @supports not ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
+    .hero-content {
+      background: rgba(11, 18, 36, 0.6);
+    }
   }
 
   .hero-text {
@@ -269,6 +314,16 @@
 }
 
 @media (max-width: 480px) {
+  .hero-content {
+    padding: 32px 20px;
+  }
+
+  @supports not ((backdrop-filter: blur(8px)) or (-webkit-backdrop-filter: blur(8px))) {
+    .hero-content {
+      background: rgba(11, 18, 36, 0.65);
+    }
+  }
+
   .hero-name {
     font-size: 2.5rem;
   }
