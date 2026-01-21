@@ -12,6 +12,30 @@ const HeroBackground: React.FC = () => {
   const MOBILE_BREAKPOINT = 720;
   const MOBILE_STAR_COUNT = 360;
   const DESKTOP_STAR_COUNT = 720;
+  const GALAXY_MOBILE_COUNT = 1400;
+  const GALAXY_DESKTOP_COUNT = 2400;
+  const GALAXY_ARMS = 4;
+  const GALAXY_SPIN_STRENGTH = 0.5;
+  const GALAXY_RADIUS_MIN = 0.6;
+  const GALAXY_RADIUS_MAX = 12;
+  const GALAXY_RANDOM_XZ_SPREAD = 0.7;
+  const GALAXY_RANDOM_Y_SPREAD = 0.35;
+  const GALAXY_Y_FLATTEN = 0.6;
+  const GALAXY_COLOR_LERP = 14;
+  const SHOOTING_STAR_SPAWN_X = 18;
+  const SHOOTING_STAR_SPAWN_Y = 8;
+  const SHOOTING_STAR_SPAWN_Y_BASE = 4;
+  const SHOOTING_STAR_SPAWN_Z = -10;
+  const SHOOTING_STAR_SPAWN_Z_VARIANCE = 6;
+  const SHOOTING_STAR_VELOCITY_X = 4;
+  const SHOOTING_STAR_VELOCITY_X_VARIANCE = 3;
+  const SHOOTING_STAR_VELOCITY_Y = 2;
+  const SHOOTING_STAR_VELOCITY_Y_VARIANCE = 2.5;
+  const SHOOTING_STAR_VELOCITY_Z = 6;
+  const SHOOTING_STAR_VELOCITY_Z_VARIANCE = 2;
+  const SHOOTING_STAR_MIN_LIFE = 1.5;
+  const SHOOTING_STAR_LIFE_VARIANCE = 1.5;
+  const SHOOTING_STAR_FADE_DURATION = 1.8;
   const DEFAULT_WIDTH = 1;
   const DEFAULT_HEIGHT = 1;
 
@@ -95,27 +119,25 @@ const HeroBackground: React.FC = () => {
     const points = new THREE.Points(geometry, material);
     scene.add(points);
 
-    const galaxyCount = container.clientWidth < MOBILE_BREAKPOINT ? 1800 : 3200;
+    const galaxyCount = container.clientWidth < MOBILE_BREAKPOINT ? GALAXY_MOBILE_COUNT : GALAXY_DESKTOP_COUNT;
     const galaxyGeometry = new THREE.BufferGeometry();
     const galaxyPositions = new Float32Array(galaxyCount * 3);
     const galaxyColors = new Float32Array(galaxyCount * 3);
-    const arms = 4;
-    const spinStrength = 0.5;
     const galaxyInnerColor = new THREE.Color(purple500 || '#7c3aed');
     const galaxyOuterColor = new THREE.Color(cyan500 || '#22d3ee');
 
     for (let i = 0; i < galaxyCount; i++) {
-      const radius = Math.random() * 12 + 0.6;
-      const armIndex = i % arms;
-      const branchAngle = ((armIndex / arms) * Math.PI * 2);
-      const spinAngle = radius * spinStrength;
+      const radius = Math.random() * GALAXY_RADIUS_MAX + GALAXY_RADIUS_MIN;
+      const armIndex = i % GALAXY_ARMS;
+      const branchAngle = ((armIndex / GALAXY_ARMS) * Math.PI * 2);
+      const spinAngle = radius * GALAXY_SPIN_STRENGTH;
 
-      const randomX = (Math.random() - 0.5) * 0.7 * radius;
-      const randomY = (Math.random() - 0.5) * 0.35 * radius;
-      const randomZ = (Math.random() - 0.5) * 0.7 * radius;
+      const randomX = (Math.random() - 0.5) * GALAXY_RANDOM_XZ_SPREAD * radius;
+      const randomY = (Math.random() - 0.5) * GALAXY_RANDOM_Y_SPREAD * radius;
+      const randomZ = (Math.random() - 0.5) * GALAXY_RANDOM_XZ_SPREAD * radius;
 
       const x = Math.cos(branchAngle + spinAngle) * radius + randomX;
-      const y = randomY * 0.6;
+      const y = randomY * GALAXY_Y_FLATTEN;
       const z = Math.sin(branchAngle + spinAngle) * radius + randomZ;
 
       const idx = i * 3;
@@ -123,7 +145,7 @@ const HeroBackground: React.FC = () => {
       galaxyPositions[idx + 1] = y;
       galaxyPositions[idx + 2] = z;
 
-      const mixedColor = galaxyInnerColor.clone().lerp(galaxyOuterColor, radius / 14);
+      const mixedColor = galaxyInnerColor.clone().lerp(galaxyOuterColor, radius / GALAXY_COLOR_LERP);
       galaxyColors[idx] = mixedColor.r;
       galaxyColors[idx + 1] = mixedColor.g;
       galaxyColors[idx + 2] = mixedColor.b;
@@ -213,12 +235,16 @@ const HeroBackground: React.FC = () => {
     });
 
     const resetShootingStar = (star: ShootingStar) => {
-      const startX = (Math.random() - 0.5) * 18;
-      const startY = Math.random() * 8 + 4;
-      const startZ = -10 - Math.random() * 6;
+      const startX = (Math.random() - 0.5) * SHOOTING_STAR_SPAWN_X;
+      const startY = Math.random() * SHOOTING_STAR_SPAWN_Y + SHOOTING_STAR_SPAWN_Y_BASE;
+      const startZ = SHOOTING_STAR_SPAWN_Z - Math.random() * SHOOTING_STAR_SPAWN_Z_VARIANCE;
       star.mesh.position.set(startX, startY, startZ);
-      star.velocity.set(4 + Math.random() * 3, -(2 + Math.random() * 2.5), 6 + Math.random() * 2);
-      star.life = 1.5 + Math.random() * 1.5;
+      star.velocity.set(
+        SHOOTING_STAR_VELOCITY_X + Math.random() * SHOOTING_STAR_VELOCITY_X_VARIANCE,
+        -(SHOOTING_STAR_VELOCITY_Y + Math.random() * SHOOTING_STAR_VELOCITY_Y_VARIANCE),
+        SHOOTING_STAR_VELOCITY_Z + Math.random() * SHOOTING_STAR_VELOCITY_Z_VARIANCE
+      );
+      star.life = SHOOTING_STAR_MIN_LIFE + Math.random() * SHOOTING_STAR_LIFE_VARIANCE;
       star.mesh.material.opacity = 0.95;
     };
 
@@ -312,7 +338,7 @@ const HeroBackground: React.FC = () => {
       shootingStars.forEach((star) => {
         star.life -= delta;
         star.mesh.position.addScaledVector(star.velocity, delta);
-        (star.mesh.material as THREE.MeshBasicMaterial).opacity = Math.max(0, Math.min(1, star.life / 1.8));
+        (star.mesh.material as THREE.MeshBasicMaterial).opacity = Math.max(0, Math.min(1, star.life / SHOOTING_STAR_FADE_DURATION));
         if (star.life <= 0 || star.mesh.position.length() > 40) {
           resetShootingStar(star);
         }
