@@ -36,6 +36,7 @@ const HeroBackground: React.FC = () => {
   const SHOOTING_STAR_MIN_LIFE = 1.5;
   const SHOOTING_STAR_LIFE_VARIANCE = 1.5;
   const SHOOTING_STAR_FADE_DURATION = 1.8;
+  const SHOOTING_STAR_COUNT = 4;
   const DEFAULT_WIDTH = 1;
   const DEFAULT_HEIGHT = 1;
 
@@ -262,7 +263,7 @@ const HeroBackground: React.FC = () => {
       scene.add(mesh);
     };
 
-    for (let i = 0; i < 4; i++) {
+    for (let i = 0; i < SHOOTING_STAR_COUNT; i++) {
       createShootingStar();
     }
 
@@ -373,10 +374,10 @@ const HeroBackground: React.FC = () => {
           (planet.ring.material as THREE.Material).dispose();
         }
       });
-      shootingStarGeometry.dispose();
       shootingStars.forEach((star) => {
         (star.mesh.material as THREE.Material).dispose();
       });
+      shootingStarGeometry.dispose();
       scene.remove(points);
       scene.remove(galaxy);
       scene.remove(ambient);
