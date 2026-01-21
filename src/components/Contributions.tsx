@@ -5,7 +5,7 @@ import '../styles/Contributions.css';
 const Contributions: React.FC = () => {
   const githubUsername = 'officiallygod';
   const githubProfileUrl = `https://github.com/${githubUsername}`;
-  const graphUrl = `https://github-contributions-api.jogruber.de/v4/${githubUsername}?from=2022-01-01`;
+  const graphUrl = `https://github-contributions-api.jogruber.de/v4/${githubUsername}`;
   const [hasError, setHasError] = React.useState(false);
 
   return (
@@ -35,7 +35,7 @@ const Contributions: React.FC = () => {
       >
         <div className="contributions-meta">
           <p className="contributions-subtitle">
-            Showing all contributions since 2022 in a clean, on-brand chart.
+            Showing the complete GitHub contribution history in a clean, on-brand chart.
           </p>
           <a
             href={githubProfileUrl}
@@ -50,7 +50,7 @@ const Contributions: React.FC = () => {
           {!hasError && (
             <img
               src={graphUrl}
-              alt={`GitHub contributions graph since 2022 for ${githubUsername}`}
+              alt={`GitHub contributions graph for ${githubUsername}`}
               loading="lazy"
               onError={() => setHasError(true)}
             />
