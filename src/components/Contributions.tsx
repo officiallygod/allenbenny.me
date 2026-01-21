@@ -38,7 +38,7 @@ const Contributions: React.FC = () => {
           <a
             href="https://github.com/officiallygod"
             target="_blank"
-            rel="noreferrer"
+            rel="noreferrer noopener"
             className="contributions-link"
           >
             View full profile
@@ -51,9 +51,9 @@ const Contributions: React.FC = () => {
             loading="lazy"
             onError={(e) => {
               const target = e.target as HTMLImageElement;
-              target.style.display = 'none';
+              target.classList.add('is-hidden');
               const fallback = target.nextElementSibling as HTMLElement | null;
-              if (fallback) fallback.style.display = 'flex';
+              if (fallback) fallback.classList.add('is-visible');
             }}
           />
           <div className="contributions-fallback" aria-hidden="true">
@@ -61,7 +61,7 @@ const Contributions: React.FC = () => {
             <a
               href="https://github.com/officiallygod"
               target="_blank"
-              rel="noreferrer"
+              rel="noreferrer noopener"
             >
               Visit GitHub profile
             </a>
