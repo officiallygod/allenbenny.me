@@ -38,7 +38,7 @@ const Contributions: React.FC = () => {
           <a
             href="https://github.com/officiallygod"
             target="_blank"
-            rel="noreferrer noopener"
+            rel="noopener noreferrer"
             className="contributions-link"
           >
             View full profile
@@ -61,7 +61,7 @@ const Contributions: React.FC = () => {
             <a
               href="https://github.com/officiallygod"
               target="_blank"
-              rel="noreferrer noopener"
+              rel="noopener noreferrer"
             >
               Visit GitHub profile
             </a>
