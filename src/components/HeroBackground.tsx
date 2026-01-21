@@ -42,6 +42,12 @@ const HeroBackground: React.FC = () => {
   const SHOOTING_STAR_COUNT = 4;
   const DEFAULT_WIDTH = 1;
   const DEFAULT_HEIGHT = 1;
+  const PLANET_TEXTURE_DOTS = 1200;
+  const PLANET_TEXTURE_BANDS = 6;
+  const PLANET_GLOW_SCALE_MULTIPLIER = 4.2;
+  const PLANET_LIGHT_INTENSITY = 1.2;
+  const PLANET_LIGHT_DISTANCE_MULTIPLIER = 12;
+  const PLANET_LIGHT_DECAY = 2;
 
   useEffect(() => {
     const container = containerRef.current;
@@ -77,6 +83,19 @@ const HeroBackground: React.FC = () => {
       disposableTextures.push(texture);
       return texture;
     };
+    const createFallbackTexture = (color: string) => {
+      const fallbackColor = new THREE.Color(color);
+      const data = new Uint8Array([
+        Math.round(fallbackColor.r * 255),
+        Math.round(fallbackColor.g * 255),
+        Math.round(fallbackColor.b * 255),
+        255,
+      ]);
+      const texture = registerTexture(new THREE.DataTexture(data, 1, 1));
+      texture.colorSpace = THREE.SRGBColorSpace;
+      texture.needsUpdate = true;
+      return texture;
+    };
 
     const createRadialTexture = (innerColor: string, outerColor: string) => {
       const size = 128;
@@ -84,7 +103,7 @@ const HeroBackground: React.FC = () => {
       canvas.width = size;
       canvas.height = size;
       const ctx = canvas.getContext('2d');
-      if (!ctx) return registerTexture(new THREE.CanvasTexture(canvas));
+      if (!ctx) return createFallbackTexture(innerColor);
       const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
       gradient.addColorStop(0, innerColor);
       gradient.addColorStop(0.35, innerColor);
@@ -102,14 +121,14 @@ const HeroBackground: React.FC = () => {
       canvas.width = size;
       canvas.height = size;
       const ctx = canvas.getContext('2d');
-      if (!ctx) return registerTexture(new THREE.CanvasTexture(canvas));
+      if (!ctx) return createFallbackTexture(baseColor);
       const gradient = ctx.createRadialGradient(size * 0.3, size * 0.3, size * 0.2, size / 2, size / 2, size * 0.7);
       gradient.addColorStop(0, highlightColor);
       gradient.addColorStop(1, baseColor);
       ctx.fillStyle = gradient;
       ctx.fillRect(0, 0, size, size);
       ctx.globalAlpha = 0.2;
-      for (let i = 0; i < 1200; i++) {
+      for (let i = 0; i < PLANET_TEXTURE_DOTS; i++) {
         const x = Math.random() * size;
         const y = Math.random() * size;
         const radius = Math.random() * 1.5;
@@ -119,7 +138,7 @@ const HeroBackground: React.FC = () => {
         ctx.fill();
       }
       ctx.globalAlpha = 0.35;
-      for (let i = 0; i < 6; i++) {
+      for (let i = 0; i < PLANET_TEXTURE_BANDS; i++) {
         const y = (size / 6) * i + Math.random() * 8;
         ctx.strokeStyle = `rgba(255,255,255,${0.08 + Math.random() * 0.1})`;
         ctx.lineWidth = 2 + Math.random() * 3;
@@ -307,10 +326,15 @@ const HeroBackground: React.FC = () => {
         depthWrite: false,
       });
       const glow = new THREE.Sprite(planetGlowMaterial);
-      glow.scale.setScalar(planet.size * 4.2);
+      glow.scale.setScalar(planet.size * PLANET_GLOW_SCALE_MULTIPLIER);
       mesh.add(glow);
 
-      const planetLight = new THREE.PointLight(planet.emissive, 1.2, planet.size * 12, 2);
+      const planetLight = new THREE.PointLight(
+        planet.emissive,
+        PLANET_LIGHT_INTENSITY,
+        planet.size * PLANET_LIGHT_DISTANCE_MULTIPLIER,
+        PLANET_LIGHT_DECAY
+      );
       planetLight.position.set(0, 0, 0);
       mesh.add(planetLight);
 
