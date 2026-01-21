@@ -246,7 +246,7 @@ const HeroBackground: React.FC = () => {
         SHOOTING_STAR_VELOCITY_Z + Math.random() * SHOOTING_STAR_VELOCITY_Z_VARIANCE
       );
       star.life = SHOOTING_STAR_MIN_LIFE + Math.random() * SHOOTING_STAR_LIFE_VARIANCE;
-      star.mesh.material.opacity = 0.95;
+      (star.mesh.material as THREE.MeshBasicMaterial).opacity = 0.95;
     };
 
     const createShootingStar = () => {
