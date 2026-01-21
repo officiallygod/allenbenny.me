@@ -3,8 +3,10 @@ import { motion } from 'framer-motion';
 import '../styles/Contributions.css';
 
 const Contributions: React.FC = () => {
-  const graphUrl =
-    'https://github-contributions-api.jogruber.de/v4/officiallygod?from=2022-01-01';
+  const githubUsername = 'officiallygod';
+  const githubProfileUrl = `https://github.com/${githubUsername}`;
+  const graphUrl = `https://github-contributions-api.jogruber.de/v4/${githubUsername}?from=2022-01-01`;
+  const [hasError, setHasError] = React.useState(false);
 
   return (
     <motion.section
@@ -36,7 +38,7 @@ const Contributions: React.FC = () => {
             Showing all contributions since 2022 in a clean, on-brand chart.
           </p>
           <a
-            href="https://github.com/officiallygod"
+            href={githubProfileUrl}
             target="_blank"
             rel="noopener noreferrer"
             className="contributions-link"
@@ -45,21 +47,21 @@ const Contributions: React.FC = () => {
           </a>
         </div>
         <div className="contributions-graph">
-          <img
-            src={graphUrl}
-            alt="GitHub contributions graph since 2022 for officiallygod"
-            loading="lazy"
-            onError={(e) => {
-              const target = e.target as HTMLImageElement;
-              target.classList.add('is-hidden');
-              const fallback = target.nextElementSibling as HTMLElement | null;
-              if (fallback) fallback.classList.add('is-visible');
-            }}
-          />
-          <div className="contributions-fallback" aria-hidden="true">
+          {!hasError && (
+            <img
+              src={graphUrl}
+              alt={`GitHub contributions graph since 2022 for ${githubUsername}`}
+              loading="lazy"
+              onError={() => setHasError(true)}
+            />
+          )}
+          <div
+            className={`contributions-fallback ${hasError ? 'is-visible' : ''}`}
+            aria-hidden="true"
+          >
             <span>Unable to load contributions graph.</span>
             <a
-              href="https://github.com/officiallygod"
+              href={githubProfileUrl}
               target="_blank"
               rel="noopener noreferrer"
             >
