@@ -7,7 +7,7 @@
   position: relative;
   overflow: hidden;
   width: 100%;
-  background: radial-gradient(120% 120% at 10% 10%, #111827 0%, #0b1224 55%, #060b16 100%);
+  background: radial-gradient(140% 140% at 15% 20%, #0b1224 0%, #050915 45%, #030711 100%);
   color: #f8fafc;
   perspective: 1200px;
 }
@@ -164,12 +164,14 @@
 .hero-fallback-gradient {
   position: absolute;
   inset: 0;
-  background: radial-gradient(40% 30% at 25% 20%, rgba(96, 165, 250, 0.55), transparent),
-    radial-gradient(35% 25% at 75% 30%, rgba(94, 234, 212, 0.4), transparent),
-    radial-gradient(50% 40% at 50% 70%, rgba(168, 85, 247, 0.3), transparent);
-  filter: blur(50px);
-  opacity: 0.85;
-  transform: scale(1.1);
+  background:
+    radial-gradient(30% 30% at 20% 25%, rgba(59, 130, 246, 0.35), transparent),
+    radial-gradient(26% 24% at 78% 28%, rgba(34, 211, 238, 0.32), transparent),
+    radial-gradient(48% 44% at 48% 72%, rgba(168, 85, 247, 0.28), transparent),
+    radial-gradient(90% 90% at 50% 50%, rgba(12, 19, 36, 0.7), transparent);
+  filter: blur(55px);
+  opacity: 0.92;
+  transform: scale(1.08);
 }
 
 .hero-canvas-layer {
