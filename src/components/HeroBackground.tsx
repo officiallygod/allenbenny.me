@@ -2,6 +2,9 @@ import React, { useEffect, useRef } from 'react';
 import { Box, useToken } from '@chakra-ui/react';
 import { motion, useReducedMotion } from 'framer-motion';
 import * as THREE from 'three';
+import { EffectComposer } from 'three/examples/jsm/postprocessing/EffectComposer';
+import { RenderPass } from 'three/examples/jsm/postprocessing/RenderPass';
+import { UnrealBloomPass } from 'three/examples/jsm/postprocessing/UnrealBloomPass';
 
 const MotionBox = motion(Box);
 
@@ -50,6 +53,9 @@ const HeroBackground: React.FC = () => {
       powerPreference: 'high-performance',
     });
     renderer.setClearColor(0x000000, 0);
+    renderer.outputColorSpace = THREE.SRGBColorSpace;
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.15;
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
     renderer.setSize(container.clientWidth, container.clientHeight);
     container.appendChild(renderer.domElement);
@@ -64,7 +70,73 @@ const HeroBackground: React.FC = () => {
 
     const scene = new THREE.Scene();
     const fogColor = new THREE.Color(blue500 || '#0b1224').getHex();
-    scene.fog = new THREE.FogExp2(fogColor, 0.045);
+    scene.fog = new THREE.FogExp2(fogColor, 0.05);
+
+    const disposableTextures: THREE.Texture[] = [];
+    const registerTexture = (texture: THREE.Texture) => {
+      disposableTextures.push(texture);
+      return texture;
+    };
+
+    const createRadialTexture = (innerColor: string, outerColor: string) => {
+      const size = 128;
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return registerTexture(new THREE.CanvasTexture(canvas));
+      const gradient = ctx.createRadialGradient(size / 2, size / 2, 0, size / 2, size / 2, size / 2);
+      gradient.addColorStop(0, innerColor);
+      gradient.addColorStop(0.35, innerColor);
+      gradient.addColorStop(1, outerColor);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, size, size);
+      const texture = registerTexture(new THREE.CanvasTexture(canvas));
+      texture.colorSpace = THREE.SRGBColorSpace;
+      return texture;
+    };
+
+    const createPlanetTexture = (baseColor: string, highlightColor: string) => {
+      const size = 256;
+      const canvas = document.createElement('canvas');
+      canvas.width = size;
+      canvas.height = size;
+      const ctx = canvas.getContext('2d');
+      if (!ctx) return registerTexture(new THREE.CanvasTexture(canvas));
+      const gradient = ctx.createRadialGradient(size * 0.3, size * 0.3, size * 0.2, size / 2, size / 2, size * 0.7);
+      gradient.addColorStop(0, highlightColor);
+      gradient.addColorStop(1, baseColor);
+      ctx.fillStyle = gradient;
+      ctx.fillRect(0, 0, size, size);
+      ctx.globalAlpha = 0.2;
+      for (let i = 0; i < 1200; i++) {
+        const x = Math.random() * size;
+        const y = Math.random() * size;
+        const radius = Math.random() * 1.5;
+        ctx.fillStyle = `rgba(255,255,255,${Math.random() * 0.25})`;
+        ctx.beginPath();
+        ctx.arc(x, y, radius, 0, Math.PI * 2);
+        ctx.fill();
+      }
+      ctx.globalAlpha = 0.35;
+      for (let i = 0; i < 6; i++) {
+        const y = (size / 6) * i + Math.random() * 8;
+        ctx.strokeStyle = `rgba(255,255,255,${0.08 + Math.random() * 0.1})`;
+        ctx.lineWidth = 2 + Math.random() * 3;
+        ctx.beginPath();
+        ctx.moveTo(-size * 0.2, y);
+        ctx.bezierCurveTo(size * 0.2, y + size * 0.1, size * 0.7, y - size * 0.1, size * 1.2, y);
+        ctx.stroke();
+      }
+      const texture = registerTexture(new THREE.CanvasTexture(canvas));
+      texture.wrapS = THREE.RepeatWrapping;
+      texture.wrapT = THREE.RepeatWrapping;
+      texture.colorSpace = THREE.SRGBColorSpace;
+      return texture;
+    };
+
+    const starTexture = createRadialTexture('rgba(255,255,255,1)', 'rgba(255,255,255,0)');
+    const starGlowTexture = createRadialTexture('rgba(129, 219, 255, 0.9)', 'rgba(129, 219, 255, 0)');
 
     const starCount = container.clientWidth < MOBILE_BREAKPOINT ? MOBILE_STAR_COUNT : DESKTOP_STAR_COUNT;
     const geometry = new THREE.BufferGeometry();
@@ -114,11 +186,27 @@ const HeroBackground: React.FC = () => {
       blending: THREE.AdditiveBlending,
       transparent: true,
       opacity: 0.9,
+      map: starTexture,
+      alphaTest: 0.05,
       vertexColors: true,
     });
 
     const points = new THREE.Points(geometry, material);
     scene.add(points);
+
+    const starGlowMaterial = new THREE.PointsMaterial({
+      size: 0.55,
+      sizeAttenuation: true,
+      depthWrite: false,
+      blending: THREE.AdditiveBlending,
+      transparent: true,
+      opacity: 0.4,
+      map: starGlowTexture,
+      alphaTest: 0.02,
+      vertexColors: true,
+    });
+    const glowPoints = new THREE.Points(geometry, starGlowMaterial);
+    scene.add(glowPoints);
 
     const galaxyCount = container.clientWidth < MOBILE_BREAKPOINT ? GALAXY_MOBILE_COUNT : GALAXY_DESKTOP_COUNT;
     const galaxyGeometry = new THREE.BufferGeometry();
@@ -156,12 +244,14 @@ const HeroBackground: React.FC = () => {
     galaxyGeometry.setAttribute('color', new THREE.BufferAttribute(galaxyColors, 3));
 
     const galaxyMaterial = new THREE.PointsMaterial({
-      size: 0.12,
+      size: 0.14,
       sizeAttenuation: true,
       depthWrite: false,
       blending: THREE.AdditiveBlending,
       transparent: true,
       opacity: 0.95,
+      map: starTexture,
+      alphaTest: 0.03,
       vertexColors: true,
     });
 
@@ -172,22 +262,34 @@ const HeroBackground: React.FC = () => {
 
     const planetGroup = new THREE.Group();
     const planetConfigs = [
-      { size: 0.55, distance: 4.2, speed: 0.5, color: '#8fd2ff', emissive: '#2dd4bf', ring: false },
-      { size: 0.8, distance: 6.5, speed: 0.32, color: '#a855f7', emissive: '#7c3aed', ring: true },
-      { size: 0.38, distance: 3.1, speed: 0.78, color: '#f59e0b', emissive: '#fbbf24', ring: false },
-      { size: 0.96, distance: 8.2, speed: 0.22, color: '#38bdf8', emissive: '#0ea5e9', ring: false },
+      { size: 0.55, distance: 4.2, speed: 0.5, color: '#8fd2ff', emissive: '#2dd4bf', ring: false, highlight: '#dbeafe' },
+      { size: 0.8, distance: 6.5, speed: 0.32, color: '#a855f7', emissive: '#7c3aed', ring: true, highlight: '#ddd6fe' },
+      { size: 0.38, distance: 3.1, speed: 0.78, color: '#f59e0b', emissive: '#fbbf24', ring: false, highlight: '#fde68a' },
+      { size: 0.96, distance: 8.2, speed: 0.22, color: '#38bdf8', emissive: '#0ea5e9', ring: false, highlight: '#bae6fd' },
     ];
 
-    const planetMeshes: { mesh: THREE.Mesh; ring?: THREE.Mesh; speed: number; distance: number; offset: number }[] = [];
+    const planetMeshes: {
+      mesh: THREE.Mesh;
+      ring?: THREE.Mesh;
+      glow: THREE.Sprite;
+      glowMaterial: THREE.SpriteMaterial;
+      speed: number;
+      distance: number;
+      offset: number;
+    }[] = [];
 
     planetConfigs.forEach((planet, index) => {
       const geometry = new THREE.SphereGeometry(planet.size, 32, 32);
+      const planetTexture = createPlanetTexture(planet.color, planet.highlight);
       const material = new THREE.MeshStandardMaterial({
         color: planet.color,
         emissive: planet.emissive,
-        emissiveIntensity: 0.45,
-        roughness: 0.35,
-        metalness: 0.05,
+        emissiveIntensity: 0.6,
+        roughness: 0.3,
+        metalness: 0.08,
+        map: planetTexture,
+        bumpMap: planetTexture,
+        bumpScale: 0.12,
       });
 
       const mesh = new THREE.Mesh(geometry, material);
@@ -196,13 +298,30 @@ const HeroBackground: React.FC = () => {
       mesh.receiveShadow = false;
       planetGroup.add(mesh);
 
+      const planetGlowMaterial = new THREE.SpriteMaterial({
+        map: starGlowTexture,
+        color: planet.emissive,
+        blending: THREE.AdditiveBlending,
+        transparent: true,
+        opacity: 0.6,
+        depthWrite: false,
+      });
+      const glow = new THREE.Sprite(planetGlowMaterial);
+      glow.scale.setScalar(planet.size * 4.2);
+      mesh.add(glow);
+
+      const planetLight = new THREE.PointLight(planet.emissive, 1.2, planet.size * 12, 2);
+      planetLight.position.set(0, 0, 0);
+      mesh.add(planetLight);
+
       let ring: THREE.Mesh | undefined;
       if (planet.ring) {
         const ringGeometry = new THREE.TorusGeometry(planet.size * 1.8, planet.size * 0.18, 16, 64);
         const ringMaterial = new THREE.MeshBasicMaterial({
           color: planet.emissive,
+          map: createRadialTexture('rgba(255,255,255,0.65)', 'rgba(255,255,255,0)'),
           transparent: true,
-          opacity: 0.35,
+          opacity: 0.5,
           side: THREE.DoubleSide,
         });
         ring = new THREE.Mesh(ringGeometry, ringMaterial);
@@ -213,6 +332,8 @@ const HeroBackground: React.FC = () => {
       planetMeshes.push({
         mesh,
         ring,
+        glow,
+        glowMaterial: planetGlowMaterial,
         speed: planet.speed,
         distance: planet.distance,
         offset: index * Math.PI * 0.42,
@@ -271,9 +392,23 @@ const HeroBackground: React.FC = () => {
     const ambient = new THREE.AmbientLight(ambientColor, 0.55);
     scene.add(ambient);
 
-    const directional = new THREE.DirectionalLight(0xffffff, 0.5);
+    const directional = new THREE.DirectionalLight(0xffffff, 0.7);
     directional.position.set(6, 8, 10);
     scene.add(directional);
+
+    const rimLight = new THREE.HemisphereLight(0x7dd3fc, 0x111827, 0.4);
+    scene.add(rimLight);
+
+    const composer = new EffectComposer(renderer);
+    const renderPass = new RenderPass(scene, camera);
+    const bloomPass = new UnrealBloomPass(
+      new THREE.Vector2(container.clientWidth, container.clientHeight),
+      0.75,
+      0.8,
+      0.15
+    );
+    composer.addPass(renderPass);
+    composer.addPass(bloomPass);
 
     let targetX = 0;
     let targetY = 0;
@@ -290,6 +425,8 @@ const HeroBackground: React.FC = () => {
       const width = container.clientWidth || DEFAULT_WIDTH;
       const height = container.clientHeight || DEFAULT_HEIGHT;
       renderer.setSize(width, height);
+      composer.setSize(width, height);
+      bloomPass.setSize(width, height);
       camera.aspect = width / height;
       camera.updateProjectionMatrix();
     };
@@ -317,6 +454,8 @@ const HeroBackground: React.FC = () => {
 
       points.rotation.y += 0.0009;
       points.rotation.x += 0.0006;
+      glowPoints.rotation.y += 0.0012;
+      glowPoints.rotation.x += 0.0008;
 
       galaxy.rotation.z += 0.0004;
       galaxy.rotation.y += 0.00025;
@@ -345,11 +484,14 @@ const HeroBackground: React.FC = () => {
         }
       });
 
+      directional.position.x = 6 + Math.sin(elapsed * 0.2) * 2;
+      directional.position.z = 10 + Math.cos(elapsed * 0.2) * 2;
+
       camera.position.x += (targetX * 4 - camera.position.x) * 0.04;
       camera.position.y += (-targetY * 2 - camera.position.y) * 0.04;
       camera.lookAt(0, 0, 0);
 
-      renderer.render(scene, camera);
+      composer.render();
       animationFrameId = requestAnimationFrame(animate);
     };
 
@@ -366,9 +508,12 @@ const HeroBackground: React.FC = () => {
       material.dispose();
       galaxyGeometry.dispose();
       galaxyMaterial.dispose();
+      starGlowMaterial.dispose();
+      disposableTextures.forEach((texture) => texture.dispose());
       planetMeshes.forEach((planet) => {
         planet.mesh.geometry.dispose();
         (planet.mesh.material as THREE.Material).dispose();
+        planet.glowMaterial.dispose();
         if (planet.ring) {
           planet.ring.geometry.dispose();
           (planet.ring.material as THREE.Material).dispose();
@@ -380,10 +525,14 @@ const HeroBackground: React.FC = () => {
       shootingStarGeometry.dispose();
       scene.remove(points);
       scene.remove(galaxy);
+      scene.remove(glowPoints);
       scene.remove(ambient);
       scene.remove(directional);
+      scene.remove(rimLight);
       scene.remove(planetGroup);
       shootingStars.forEach((star) => scene.remove(star.mesh));
+      composer.dispose();
+      bloomPass.dispose();
       renderer.dispose();
       if (container && renderer.domElement.parentNode === container) {
         container.removeChild(renderer.domElement);
