@@ -93,9 +93,9 @@ const Contributions: React.FC = () => {
         setIsLoading(true);
         setHasError(false);
 
-        // Fetch from GitHub contributions API
+        // Fetch from GitHub contributions API (all years)
         const response = await fetch(
-          `https://github-contributions-api.jogruber.de/v4/${githubUsername}?y=last`
+          `https://github-contributions-api.jogruber.de/v4/${githubUsername}`
         );
 
         if (!response.ok) {
