@@ -10,6 +10,7 @@ const Projects = lazy(() => import('./components/Projects'));
 const Contributions = lazy(() => import('./components/Contributions'));
 const Certifications = lazy(() => import('./components/Certifications'));
 const Contact = lazy(() => import('./components/Contact'));
+const Resume = lazy(() => import('./components/Resume'));
 
 // Simple loading fallback
 const LoadingFallback = () => (
@@ -36,6 +37,7 @@ const App: React.FC = () => {
         <Contributions />
         <Certifications />
         <Contact />
+        <Resume />
       </Suspense>
     </div>
   );
