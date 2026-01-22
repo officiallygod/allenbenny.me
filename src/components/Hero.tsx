@@ -1,12 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useAppSelector } from '../redux/hooks';
+import { useProfile } from '../contexts/ProfileContext';
 import SocialIcon from './SocialIcon';
 import '../styles/Hero.css';
 import OptimizedBackground from './OptimizedBackground';
 
 const Hero: React.FC = () => {
-  const { name, title, tagline, socialLinks } = useAppSelector((state) => state.profile);
+  const { name, title, tagline, socialLinks } = useProfile();
 
   return (
     <motion.section

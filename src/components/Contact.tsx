@@ -1,11 +1,11 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useAppSelector } from '../redux/hooks';
+import { useProfile } from '../contexts/ProfileContext';
 import SocialIcon from './SocialIcon';
 import '../styles/Contact.css';
 
 const Contact: React.FC = () => {
-  const { githubUrl, socialLinks, contact, portfolioUrl, personalSiteUrl } = useAppSelector((state) => state.profile);
+  const { githubUrl, socialLinks, contact, portfolioUrl, personalSiteUrl } = useProfile();
 
   return (
     <section id="contact" className="contact-section">

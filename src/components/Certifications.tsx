@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useAppSelector } from '../redux/hooks';
+import { useProfile } from '../contexts/ProfileContext';
 import '../styles/Certifications.css';
 
 const Certifications: React.FC = () => {
-  const { certifications } = useAppSelector((state) => state.profile);
+  const { certifications } = useProfile();
 
   const containerVariants = {
     hidden: { opacity: 0 },
