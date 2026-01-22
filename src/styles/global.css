@@ -14,7 +14,7 @@ body {
   line-height: 1.6;
   background: #f8fafc;
   min-height: 100vh;
-  color: #1f2937;
+  color: #1e293b;
   letter-spacing: -0.01em;
   overflow-x: hidden;
   position: relative;
@@ -40,7 +40,7 @@ h5 {
 }
 
 ::-webkit-scrollbar-track {
-  background: #e2e8f0;
+  background: #f1f5f9;
 }
 
 ::-webkit-scrollbar-thumb {
@@ -54,6 +54,6 @@ h5 {
 
 /* Selection */
 ::selection {
-  background: #bfdbfe;
-  color: #1f2937;
+  background: #dbeafe;
+  color: #1e293b;
 }

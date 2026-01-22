@@ -83,4 +83,4 @@ const Technologies: React.FC = () => {
   );
 };
 
-export default Technologies;
+export default React.memo(Technologies);
