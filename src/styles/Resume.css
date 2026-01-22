@@ -71,7 +71,7 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 90%;
+  width: 90vw;
   max-width: 1100px;
   height: 90vh;
   max-height: 900px;
@@ -82,6 +82,7 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+  margin: 0;
 }
 
 .resume-viewer-header {
@@ -155,6 +156,9 @@
   overflow: hidden;
   background: #f1f5f9;
   position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .resume-iframe {
@@ -162,9 +166,18 @@
   height: 100%;
   border: none;
   background: #ffffff;
+  display: block;
 }
 
 /* Mobile Responsiveness */
+@media (max-width: 1024px) {
+  .resume-viewer {
+    width: 92vw;
+    height: 85vh;
+    border-radius: 16px;
+  }
+}
+
 @media (max-width: 768px) {
   .resume-section {
     padding: 40px 20px 80px;
@@ -179,13 +192,14 @@
   }
 
   .resume-viewer {
-    width: 95%;
-    height: 95vh;
-    border-radius: 15px;
+    width: 95vw;
+    height: 90vh;
+    border-radius: 12px;
   }
 
   .resume-viewer-header {
     padding: 16px 20px;
+    flex-wrap: nowrap;
   }
 
   .resume-viewer-title {
@@ -213,6 +227,7 @@
     padding: 16px 32px;
     font-size: 1rem;
     gap: 10px;
+    max-width: 100%;
   }
 
   .resume-icon {
@@ -220,33 +235,65 @@
   }
 
   .resume-viewer {
-    width: 100%;
+    width: 100vw;
     height: 100vh;
     max-height: 100vh;
     border-radius: 0;
+    top: 0;
+    left: 0;
+    transform: none;
   }
 
   .resume-viewer-header {
-    padding: 14px 16px;
-    flex-wrap: wrap;
+    padding: 12px 16px;
+    flex-wrap: nowrap;
   }
 
   .resume-viewer-title {
-    font-size: 1.1rem;
+    font-size: 1rem;
+    flex-shrink: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  .resume-viewer-actions {
+    gap: 8px;
+    flex-shrink: 0;
   }
 
   .resume-download-btn {
-    padding: 8px 14px;
-    font-size: 0.8rem;
-  }
-
-  .resume-download-btn span {
-    display: none;
+    padding: 8px 12px;
+    font-size: 0.75rem;
+    gap: 4px;
   }
 
   .resume-close-btn {
     width: 32px;
     height: 32px;
-    font-size: 1.1rem;
+    font-size: 1rem;
+  }
+}
+
+/* Extra small devices */
+@media (max-width: 360px) {
+  .resume-button {
+    padding: 14px 24px;
+    font-size: 0.95rem;
+  }
+
+  .resume-viewer-title {
+    font-size: 0.9rem;
+  }
+
+  .resume-download-btn {
+    padding: 6px 10px;
+    font-size: 0.7rem;
+  }
+
+  .resume-close-btn {
+    width: 28px;
+    height: 28px;
+    font-size: 0.9rem;
   }
 }
