@@ -62,7 +62,7 @@ const Resume: React.FC = () => {
                 <h3 className="resume-viewer-title">Resume</h3>
                 <div className="resume-viewer-actions">
                   <a
-                    href="/resume.pdf"
+                    href="/documents/resume.pdf"
                     download="Allen_Benny_Resume.pdf"
                     className="resume-download-btn"
                     onClick={(e) => e.stopPropagation()}
@@ -81,7 +81,7 @@ const Resume: React.FC = () => {
               </div>
               <div className="resume-viewer-content">
                 <iframe
-                  src="/resume.pdf"
+                  src="/documents/resume.pdf"
                   className="resume-iframe"
                   title="Resume Viewer"
                   sandbox="allow-same-origin"
