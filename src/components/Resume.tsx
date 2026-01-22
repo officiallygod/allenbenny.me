@@ -84,7 +84,6 @@ const Resume: React.FC = () => {
                   src="/documents/resume.pdf"
                   className="resume-iframe"
                   title="Resume Viewer"
-                  sandbox="allow-same-origin"
                 />
               </div>
             </motion.div>
