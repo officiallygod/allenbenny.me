@@ -32,8 +32,9 @@ const Resume: React.FC = () => {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
+            aria-label="View resume"
           >
-            <span className="resume-icon">📄</span>
+            <span className="resume-icon" aria-hidden="true">📄</span>
             <span className="resume-text">View My Resume</span>
           </motion.button>
         </motion.div>
@@ -65,15 +66,16 @@ const Resume: React.FC = () => {
                     download="Allen_Benny_Resume.pdf"
                     className="resume-download-btn"
                     onClick={(e) => e.stopPropagation()}
+                    aria-label="Download resume as PDF"
                   >
-                    <span>⬇</span> Download
+                    <span aria-hidden="true">⬇</span> Download
                   </a>
                   <button
                     className="resume-close-btn"
                     onClick={handleCloseResume}
                     aria-label="Close resume viewer"
                   >
-                    ✕
+                    <span aria-hidden="true">✕</span>
                   </button>
                 </div>
               </div>
@@ -82,6 +84,7 @@ const Resume: React.FC = () => {
                   src="/resume.pdf"
                   className="resume-iframe"
                   title="Resume Viewer"
+                  sandbox="allow-same-origin"
                 />
               </div>
             </motion.div>
