@@ -35,6 +35,7 @@ module.exports = {
     new CopyWebpackPlugin({
       patterns: [
         { from: 'public/favicon.svg', to: 'favicon.svg' },
+        { from: 'public/resume.pdf', to: 'resume.pdf' },
       ],
     }),
   ],
