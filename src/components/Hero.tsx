@@ -3,136 +3,140 @@ import { motion, useReducedMotion } from 'framer-motion';
 import { useAppSelector } from '../redux/hooks';
 import SocialIcon from './SocialIcon';
 import '../styles/Hero.css';
-import HeroBackground from './HeroBackground';
+import OptimizedBackground from './OptimizedBackground';
 
 const Hero: React.FC = () => {
   const { name, title, tagline, socialLinks } = useAppSelector((state) => state.profile);
-  const shouldReduceMotion = useReducedMotion();
-
-  const letterVariants = {
-    hidden: { opacity: 0, y: 50 },
-    visible: (i: number) => ({
-      opacity: 1,
-      y: 0,
-      transition: {
-        delay: i * 0.05,
-        duration: 0.5,
-        ease: 'easeOut' as const,
-      },
-    }),
-  };
-
-  const nameLetters = name.split('');
 
   return (
     <motion.section
       className="hero"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 1 }}
+      transition={{ duration: 0.6 }}
     >
-      <HeroBackground />
-      <motion.div
-        className="hero-content"
-        animate={
-          shouldReduceMotion
-            ? { y: 0, rotateX: 0, rotateY: 0 }
-            : { y: [0, -6, 0], rotateX: [0, 1.2, 0], rotateY: [0, -1.2, 0] }
-        }
-        transition={
-          shouldReduceMotion
-            ? { duration: 0 }
-            : { duration: 12, repeat: Infinity, ease: 'easeInOut' }
-        }
-      >
+      <OptimizedBackground />
+      
+      <div className="hero-content-wrapper">
+        {/* Left side - Main content */}
         <motion.div
-          className="hero-text"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
+          className="hero-main"
+          initial={{ opacity: 0, x: -30 }}
+          animate={{ opacity: 1, x: 0 }}
           transition={{ duration: 0.8, delay: 0.2 }}
         >
-          <motion.h1 className="hero-name">
-            {nameLetters.map((letter, index) => (
-              <motion.span
-                key={index}
-                custom={index}
-                variants={letterVariants}
-                initial="hidden"
-                animate="visible"
-                className="letter"
-              >
-                {letter === ' ' ? '\u00A0' : letter}
-              </motion.span>
-            ))}
+          <motion.h1 
+            className="hero-name"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.3 }}
+          >
+            {name}
           </motion.h1>
           <motion.h2
             className="hero-title"
-            initial={{ opacity: 0, x: -30 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
           >
             {title}
           </motion.h2>
           <motion.p
             className="hero-tagline"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 1 }}
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.5 }}
           >
             {tagline}
           </motion.p>
-        </motion.div>
 
-        <motion.div
-          className="hero-cta"
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.8, delay: 1.2 }}
-        >
-          <motion.a
-            href="#contact"
-            className="cta-button primary"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
+          <motion.div
+            className="hero-cta"
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, delay: 0.6 }}
           >
-            Get In Touch
-          </motion.a>
-          <motion.a
-            href="#experience"
-            className="cta-button secondary"
-            whileHover={{ scale: 1.05, y: -2 }}
-            whileTap={{ scale: 0.95 }}
-          >
-            View Experience
-          </motion.a>
-        </motion.div>
-
-        <motion.div
-          className="social-links"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ duration: 0.8, delay: 1.4 }}
-        >
-          {socialLinks.map((link, index) => (
             <motion.a
-              key={index}
-              href={link.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className={`social-link ${link.icon}`}
-              whileHover={{ scale: 1.08, rotate: 2 }}
-              whileTap={{ scale: 0.9 }}
-              initial={{ opacity: 0, scale: 0 }}
-              animate={{ opacity: 1, scale: 1 }}
-              transition={{ delay: 1.5 + index * 0.1, type: 'spring', stiffness: 200 }}
+              href="#contact"
+              className="cta-button primary"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
             >
-              <SocialIcon type={link.icon} className="social-icon" />
+              Get In Touch
             </motion.a>
-          ))}
+            <motion.a
+              href="#projects"
+              className="cta-button secondary"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              View Projects
+            </motion.a>
+          </motion.div>
+
+          <motion.div
+            className="social-links"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.6, delay: 0.7 }}
+          >
+            {socialLinks.map((link, index) => (
+              <motion.a
+                key={index}
+                href={link.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="social-link"
+                whileHover={{ y: -3 }}
+                whileTap={{ scale: 0.95 }}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.8 + index * 0.1 }}
+              >
+                <SocialIcon type={link.icon} className="social-icon" />
+              </motion.a>
+            ))}
+          </motion.div>
         </motion.div>
-      </motion.div>
+
+        {/* Right side - Stats/Features */}
+        <motion.div
+          className="hero-side"
+          initial={{ opacity: 0, x: 30 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, delay: 0.4 }}
+        >
+          <motion.div 
+            className="stat-card"
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="stat-icon">💼</div>
+            <div className="stat-label">Experience</div>
+            <div className="stat-value">Professional</div>
+          </motion.div>
+          <motion.div 
+            className="stat-card"
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="stat-icon">🚀</div>
+            <div className="stat-label">Projects</div>
+            <div className="stat-value">Multiple</div>
+          </motion.div>
+          <motion.div 
+            className="stat-card"
+            whileHover={{ y: -5 }}
+            transition={{ duration: 0.2 }}
+          >
+            <div className="stat-icon">⚡</div>
+            <div className="stat-label">Focus</div>
+            <div className="stat-value">Innovation</div>
+          </motion.div>
+        </motion.div>
+      </div>
     </motion.section>
   );
 };
 
-export default Hero;
+export default React.memo(Hero);
