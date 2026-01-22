@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useAppSelector } from '../redux/hooks';
+import { useProfile } from '../contexts/ProfileContext';
 import '../styles/Header.css';
 
 const Header: React.FC = () => {
-  const { name, title } = useAppSelector((state) => state.profile);
+  const { name, title } = useProfile();
 
   return (
     <motion.header

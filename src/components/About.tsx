@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useAppSelector } from '../redux/hooks';
+import { useProfile } from '../contexts/ProfileContext';
 import '../styles/About.css';
 
 const About: React.FC = () => {
-  const { bio } = useAppSelector((state) => state.profile);
+  const { bio } = useProfile();
 
   return (
     <motion.section

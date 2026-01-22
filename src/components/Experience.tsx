@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useAppSelector } from '../redux/hooks';
+import { useProfile } from '../contexts/ProfileContext';
 import '../styles/Experience.css';
 
 const Experience: React.FC = () => {
-  const { experience, education } = useAppSelector((state) => state.profile);
+  const { experience, education } = useProfile();
 
   const containerVariants = {
     hidden: { opacity: 0 },

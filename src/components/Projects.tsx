@@ -1,10 +1,10 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useAppSelector } from '../redux/hooks';
+import { useProfile } from '../contexts/ProfileContext';
 import '../styles/Projects.css';
 
 const Projects: React.FC = () => {
-  const { projects } = useAppSelector((state) => state.profile);
+  const { projects } = useProfile();
 
   const containerVariants = {
     hidden: { opacity: 0 },

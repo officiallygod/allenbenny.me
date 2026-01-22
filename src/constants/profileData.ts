@@ -1,55 +1,54 @@
-import { createSlice, PayloadAction } from '@reduxjs/toolkit';
 import { SocialIconType } from '../types/social';
 
-interface Technology {
+export interface Technology {
   name: string;
   category?: string;
 }
 
-interface Experience {
+export interface Experience {
   company: string;
   role: string;
   duration: string;
   description: string;
 }
 
-interface Education {
+export interface Education {
   institution: string;
   degree: string;
   duration: string;
 }
 
-interface SocialLink {
+export interface SocialLink {
   name: string;
   url: string;
   icon: SocialIconType;
 }
 
-interface Project {
+export interface Project {
   title: string;
   description: string;
   link?: string;
   date: string;
 }
 
-interface Certification {
+export interface Certification {
   title: string;
   issuer: string;
   date: string;
 }
 
-interface ContactInfo {
+export interface ContactInfo {
   email: string;
   phone: string;
   location: string;
 }
 
-interface Skill {
+export interface Skill {
   category: string;
   items: string[];
 }
 
-interface ProfileState {
+export interface ProfileData {
   name: string;
   title: string;
   tagline: string;
@@ -59,7 +58,6 @@ interface ProfileState {
   education: Education[];
   socialLinks: SocialLink[];
   githubUrl: string;
-  isLoading: boolean;
   projects: Project[];
   certifications: Certification[];
   contact: ContactInfo;
@@ -68,7 +66,7 @@ interface ProfileState {
   personalSiteUrl: string;
 }
 
-const initialState: ProfileState = {
+export const profileData: ProfileData = {
   name: 'Allen Benny',
   title: 'MSc Computer Science Student | Full Stack Developer | Seeking Werkstudent Role',
   tagline: '3+ years building scalable systems • AI & WordPress onboarding at Newfold Digital • Available 15-20h/week in Karlsruhe',
@@ -162,7 +160,6 @@ const initialState: ProfileState = {
     },
   ],
   githubUrl: 'https://github.com/officiallygod',
-  isLoading: false,
   projects: [
     {
       title: 'Smart Farming IoT System',
@@ -238,25 +235,3 @@ const initialState: ProfileState = {
   portfolioUrl: 'https://officiallygod.github.io/material-projects/',
   personalSiteUrl: 'https://materilio-allen.firebaseapp.com/',
 };
-
-const profileSlice = createSlice({
-  name: 'profile',
-  initialState,
-  reducers: {
-    updateName: (state, action: PayloadAction<string>) => {
-      state.name = action.payload;
-    },
-    updateTitle: (state, action: PayloadAction<string>) => {
-      state.title = action.payload;
-    },
-    addTechnology: (state, action: PayloadAction<Technology>) => {
-      state.technologies.push(action.payload);
-    },
-    setLoading: (state, action: PayloadAction<boolean>) => {
-      state.isLoading = action.payload;
-    },
-  },
-});
-
-export const { updateName, updateTitle, addTechnology, setLoading } = profileSlice.actions;
-export default profileSlice.reducer;
