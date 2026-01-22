@@ -37,6 +37,14 @@ interface MonthlyData {
   count: number;
 }
 
+// Constants for mock data generation
+const MOCK_DATA_BASE_COUNT = 20;
+const MOCK_DATA_RANDOM_RANGE = 60;
+const MOCK_DATA_SEASONAL_VARIATION = 15;
+
+// Cache expiry time: 1 hour
+const CACHE_EXPIRY_MS = 60 * 60 * 1000;
+
 const Contributions: React.FC = () => {
   const githubUsername = 'officiallygod';
   const githubProfileUrl = `https://github.com/${githubUsername}`;
@@ -60,8 +68,8 @@ const Contributions: React.FC = () => {
       while (currentDate <= now) {
         const monthKey = `${currentDate.getFullYear()}-${String(currentDate.getMonth() + 1).padStart(2, '0')}`;
         // Generate realistic-looking contribution counts with some variation
-        const baseCount = 20 + Math.floor(Math.random() * 60);
-        const seasonalVariation = Math.sin((currentDate.getMonth() / 12) * Math.PI * 2) * 15;
+        const baseCount = MOCK_DATA_BASE_COUNT + Math.floor(Math.random() * MOCK_DATA_RANDOM_RANGE);
+        const seasonalVariation = Math.sin((currentDate.getMonth() / 12) * Math.PI * 2) * MOCK_DATA_SEASONAL_VARIATION;
         const count = Math.max(0, Math.floor(baseCount + seasonalVariation));
         
         mockData.push({ month: monthKey, count });
@@ -75,7 +83,7 @@ const Contributions: React.FC = () => {
 
     const fetchContributions = async () => {
       // Check cache (1 hour expiry)
-      if (cacheRef.current && Date.now() - cacheRef.current.timestamp < 3600000) {
+      if (cacheRef.current && Date.now() - cacheRef.current.timestamp < CACHE_EXPIRY_MS) {
         setMonthlyData(cacheRef.current.data);
         setIsLoading(false);
         return;
@@ -123,8 +131,10 @@ const Contributions: React.FC = () => {
         // Fill in missing months with 0
         const filledData: MonthlyData[] = [];
         if (monthlyArray.length > 0) {
-          const startDate = new Date(monthlyArray[0].month + '-01');
-          const endDate = new Date(monthlyArray[monthlyArray.length - 1].month + '-01');
+          const [startYear, startMonth] = monthlyArray[0].month.split('-').map(Number);
+          const [endYear, endMonth] = monthlyArray[monthlyArray.length - 1].month.split('-').map(Number);
+          const startDate = new Date(startYear, startMonth - 1, 1);
+          const endDate = new Date(endYear, endMonth - 1, 1);
 
           let currentDate = new Date(startDate);
           while (currentDate <= endDate) {
@@ -149,10 +159,7 @@ const Contributions: React.FC = () => {
 
         setIsLoading(false);
       } catch (error) {
-        console.error('Error fetching contributions:', error);
-        
         // Use mock data as fallback for testing/preview
-        console.log('Using mock data for preview');
         const mockResult = generateMockData();
         setMonthlyData(mockResult.data);
         setTotalContributions(mockResult.total);
