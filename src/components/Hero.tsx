@@ -72,6 +72,14 @@ const Hero: React.FC = () => {
             >
               View Projects
             </motion.a>
+            <motion.a
+              href="#resume"
+              className="cta-button secondary"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+            >
+              View Resume
+            </motion.a>
           </motion.div>
 
           <motion.div
