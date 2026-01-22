@@ -199,7 +199,6 @@
 
   .resume-viewer-header {
     padding: 16px 20px;
-    flex-direction: row;
     flex-wrap: nowrap;
   }
 
@@ -267,10 +266,6 @@
     padding: 8px 12px;
     font-size: 0.75rem;
     gap: 4px;
-  }
-
-  .resume-download-btn span[aria-hidden="true"] {
-    font-size: 0.9rem;
   }
 
   .resume-close-btn {
