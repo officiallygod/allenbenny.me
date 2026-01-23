@@ -30,7 +30,13 @@ const getInitialTheme = (): Theme => {
 };
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = React.useState<Theme>(getInitialTheme);
+  const [theme, setTheme] = React.useState<Theme>(() => {
+    const initialTheme = getInitialTheme();
+    if (typeof document !== 'undefined') {
+      document.body.dataset.theme = initialTheme;
+    }
+    return initialTheme;
+  });
 
   React.useEffect(() => {
     document.body.dataset.theme = theme;
