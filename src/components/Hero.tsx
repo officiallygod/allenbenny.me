@@ -73,7 +73,9 @@ const Hero: React.FC = () => {
               View Projects
             </motion.a>
             <motion.a
-              href="#resume"
+              href="/documents/resume.pdf"
+              target="_blank"
+              rel="noopener noreferrer"
               className="cta-button secondary"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
