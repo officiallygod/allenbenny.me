@@ -24,13 +24,10 @@ body {
   position: relative;
 }
 
-:root {
+body[data-theme='dark'] {
   --dark-bg: #0f172a;
   --dark-text: #e2e8f0;
   --dark-text-secondary: #cbd5f5;
-}
-
-body[data-theme='dark'] {
   background: var(--dark-bg);
   color: var(--dark-text);
 }
