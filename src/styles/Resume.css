@@ -64,12 +64,14 @@
   background: rgba(0, 0, 0, 0.75);
   backdrop-filter: blur(4px);
   z-index: 9998;
+  -webkit-overflow-scrolling: touch;
 }
 
 .resume-viewer {
   position: fixed;
-  inset: 0;
-  margin: auto;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
   width: 90vw;
   max-width: 1100px;
   height: 90vh;
@@ -237,7 +239,9 @@
     height: 100vh;
     max-height: 100vh;
     border-radius: 0;
-    margin: 0;
+    top: 0;
+    left: 0;
+    transform: none;
   }
 
   .resume-viewer-header {

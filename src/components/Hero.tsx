@@ -1,12 +1,14 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
+import { useResume } from '../contexts/ResumeContext';
 import SocialIcon from './SocialIcon';
 import '../styles/Hero.css';
 import OptimizedBackground from './OptimizedBackground';
 
 const Hero: React.FC = () => {
   const { name, title, tagline, socialLinks } = useProfile();
+  const { openResume } = useResume();
 
   return (
     <motion.section
@@ -72,16 +74,15 @@ const Hero: React.FC = () => {
             >
               View Projects
             </motion.a>
-            <motion.a
-              href="/documents/resume.pdf"
-              target="_blank"
-              rel="noopener noreferrer"
+            <motion.button
+              onClick={openResume}
               className="cta-button secondary"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              aria-label="Open resume in modal window"
             >
               View Resume
-            </motion.a>
+            </motion.button>
           </motion.div>
 
           <motion.div
