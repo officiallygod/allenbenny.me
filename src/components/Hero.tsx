@@ -31,8 +31,7 @@ const Hero: React.FC = () => {
         whileHover={{ scale: 1.03 }}
         whileTap={{ scale: 0.97 }}
         aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
-        role="switch"
-        aria-checked={isDarkMode}
+        aria-pressed={isDarkMode}
       >
         <span className="theme-toggle-icon">{toggleIcon}</span>
         <span>{toggleLabel}</span>
