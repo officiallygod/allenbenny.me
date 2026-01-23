@@ -121,7 +121,7 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.7 }}
         >
-          <p className="github-text">Top contributor at Newfold Digital • Check out my open-source work</p>
+          <p className="github-text">One of the top contributors at Newfold Digital • Check out my open-source work</p>
           <motion.a
             href={githubUrl}
             target="_blank"
