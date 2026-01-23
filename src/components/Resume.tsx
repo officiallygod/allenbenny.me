@@ -1,16 +1,31 @@
-import React, { useState } from 'react';
+import React, { useEffect } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useResume } from '../contexts/ResumeContext';
 import '../styles/Resume.css';
 
 const Resume: React.FC = () => {
-  const [isViewerOpen, setIsViewerOpen] = useState(false);
+  const { isResumeOpen, openResume, closeResume } = useResume();
+
+  // Prevent body scroll when modal is open
+  useEffect(() => {
+    if (isResumeOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    // Cleanup function
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [isResumeOpen]);
 
   const handleOpenResume = () => {
-    setIsViewerOpen(true);
+    openResume();
   };
 
   const handleCloseResume = () => {
-    setIsViewerOpen(false);
+    closeResume();
   };
 
   return (
@@ -41,7 +56,7 @@ const Resume: React.FC = () => {
       </section>
 
       <AnimatePresence>
-        {isViewerOpen && (
+        {isResumeOpen && (
           <>
             <motion.div
               className="resume-overlay"
