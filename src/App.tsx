@@ -1,5 +1,6 @@
 import React, { lazy, Suspense } from 'react';
 import Hero from './components/Hero';
+import { useLanguage } from './contexts/LanguageContext';
 import './styles/App.css';
 
 // Lazy load components that are below the fold
@@ -21,9 +22,14 @@ const LoadingFallback = () => (
     justifyContent: 'center',
     color: '#64748b'
   }}>
-    <div>Loading...</div>
+    <LoadingMessage />
   </div>
 );
+
+const LoadingMessage = () => {
+  const { t } = useLanguage();
+  return <div>{t.loading}</div>;
+};
 
 const App: React.FC = () => {
   return (

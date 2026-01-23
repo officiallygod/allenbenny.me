@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
 import { useResume } from '../contexts/ResumeContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import SocialIcon from './SocialIcon';
 import '../styles/Hero.css';
 import OptimizedBackground from './OptimizedBackground';
@@ -9,6 +10,7 @@ import OptimizedBackground from './OptimizedBackground';
 const Hero: React.FC = () => {
   const { name, title, tagline, socialLinks } = useProfile();
   const { openResume } = useResume();
+  const { language, toggleLanguage, t } = useLanguage();
 
   return (
     <motion.section
@@ -64,7 +66,7 @@ const Hero: React.FC = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              Get In Touch
+              {t.hero.ctaPrimary}
             </motion.a>
             <motion.a
               href="#projects"
@@ -72,16 +74,30 @@ const Hero: React.FC = () => {
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
             >
-              View Projects
+              {t.hero.ctaSecondary}
             </motion.a>
             <motion.button
               onClick={openResume}
               className="cta-button secondary"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
-              aria-label="Open resume in modal window"
+              aria-label={t.hero.ctaResume}
             >
-              View Resume
+              {t.hero.ctaResume}
+            </motion.button>
+            <motion.button
+              onClick={toggleLanguage}
+              className="cta-button secondary language-toggle"
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.98 }}
+              aria-label={`${t.languageToggle.label}: ${language === 'en' ? t.languageToggle.german : t.languageToggle.english}`}
+            >
+              <span className="language-flag" aria-hidden="true">
+                {language === 'en' ? '🇬🇧' : '🇩🇪'}
+              </span>
+              <span className="language-label">
+                {language === 'en' ? t.languageToggle.german : t.languageToggle.english}
+              </span>
             </motion.button>
           </motion.div>
 
@@ -123,8 +139,8 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.2 }}
           >
             <div className="stat-icon">💼</div>
-            <div className="stat-label">Experience</div>
-            <div className="stat-value">Professional</div>
+            <div className="stat-label">{t.hero.statExperience}</div>
+            <div className="stat-value">{t.hero.statExperienceValue}</div>
           </motion.div>
           <motion.div 
             className="stat-card"
@@ -132,8 +148,8 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.2 }}
           >
             <div className="stat-icon">🚀</div>
-            <div className="stat-label">Projects</div>
-            <div className="stat-value">Multiple</div>
+            <div className="stat-label">{t.hero.statProjects}</div>
+            <div className="stat-value">{t.hero.statProjectsValue}</div>
           </motion.div>
           <motion.div 
             className="stat-card"
@@ -141,8 +157,8 @@ const Hero: React.FC = () => {
             transition={{ duration: 0.2 }}
           >
             <div className="stat-icon">⚡</div>
-            <div className="stat-label">Focus</div>
-            <div className="stat-value">Innovation</div>
+            <div className="stat-label">{t.hero.statFocus}</div>
+            <div className="stat-value">{t.hero.statFocusValue}</div>
           </motion.div>
         </motion.div>
       </div>

@@ -1,4 +1,4 @@
-import React, { useEffect, useState, useRef } from 'react';
+import React, { useEffect, useMemo, useState, useRef } from 'react';
 import { motion } from 'framer-motion';
 import {
   Chart as ChartJS,
@@ -14,6 +14,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '../styles/Contributions.css';
+import { useLanguage } from '../contexts/LanguageContext';
 
 // Register Chart.js components
 ChartJS.register(
@@ -98,6 +99,7 @@ const writeCachedContributions = (payload: CachePayload) => {
 const Contributions: React.FC = () => {
   const githubUsername = 'officiallygod';
   const githubProfileUrl = `https://github.com/${githubUsername}`;
+  const { t } = useLanguage();
   const [monthlyData, setMonthlyData] = useState<MonthlyData[]>([]);
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
@@ -238,90 +240,96 @@ const Contributions: React.FC = () => {
   const formatMonthLabel = (monthKey: string) => {
     const [year, month] = monthKey.split('-');
     const date = new Date(parseInt(year), parseInt(month) - 1);
-    return date.toLocaleDateString('en-US', { month: 'short', year: '2-digit' });
+    return date.toLocaleDateString(t.contributions.monthLocale, { month: 'short', year: '2-digit' });
   };
 
   // Chart configuration
-  const chartData = {
-    labels: monthlyData.map(d => formatMonthLabel(d.month)),
-    datasets: [
-      {
-        label: 'Contributions',
-        data: monthlyData.map(d => d.count),
-        borderColor: 'rgb(59, 130, 246)',
-        backgroundColor: 'rgba(59, 130, 246, 0.1)',
-        borderWidth: 2,
-        fill: true,
-        tension: 0.4,
-        pointRadius: 0,
-        pointHoverRadius: 4,
-        pointHoverBackgroundColor: 'rgb(37, 99, 235)',
-      },
-    ],
-  };
-
-  const chartOptions: ChartOptions<'line'> = {
-    responsive: true,
-    maintainAspectRatio: false,
-    plugins: {
-      legend: {
-        display: false,
-      },
-      tooltip: {
-        mode: 'index',
-        intersect: false,
-        backgroundColor: 'rgba(15, 23, 42, 0.9)',
-        titleColor: '#fff',
-        bodyColor: '#fff',
-        borderColor: 'rgba(59, 130, 246, 0.3)',
-        borderWidth: 1,
-        padding: 12,
-        displayColors: false,
-        callbacks: {
-          title: (items) => {
-            return items[0].label;
-          },
-          label: (context) => {
-            return `${context.parsed.y} contributions`;
-          },
+  const chartData = useMemo(
+    () => ({
+      labels: monthlyData.map(d => formatMonthLabel(d.month)),
+      datasets: [
+        {
+          label: t.contributions.chartLabel,
+          data: monthlyData.map(d => d.count),
+          borderColor: 'rgb(59, 130, 246)',
+          backgroundColor: 'rgba(59, 130, 246, 0.1)',
+          borderWidth: 2,
+          fill: true,
+          tension: 0.4,
+          pointRadius: 0,
+          pointHoverRadius: 4,
+          pointHoverBackgroundColor: 'rgb(37, 99, 235)',
         },
-      },
-    },
-    scales: {
-      x: {
-        grid: {
+      ],
+    }),
+    [monthlyData, t.contributions.chartLabel, t.contributions.monthLocale]
+  );
+
+  const chartOptions: ChartOptions<'line'> = useMemo(
+    () => ({
+      responsive: true,
+      maintainAspectRatio: false,
+      plugins: {
+        legend: {
           display: false,
         },
-        ticks: {
-          maxTicksLimit: 12,
-          autoSkip: true,
-          maxRotation: 45,
-          minRotation: 45,
-          color: '#64748b',
-          font: {
-            size: 11,
+        tooltip: {
+          mode: 'index',
+          intersect: false,
+          backgroundColor: 'rgba(15, 23, 42, 0.9)',
+          titleColor: '#fff',
+          bodyColor: '#fff',
+          borderColor: 'rgba(59, 130, 246, 0.3)',
+          borderWidth: 1,
+          padding: 12,
+          displayColors: false,
+          callbacks: {
+            title: (items) => {
+              return items[0].label;
+            },
+            label: (context) => {
+              return `${context.parsed.y} ${t.contributions.tooltipLabel}`;
+            },
           },
         },
       },
-      y: {
-        beginAtZero: true,
-        grid: {
-          color: 'rgba(100, 116, 139, 0.1)',
+      scales: {
+        x: {
+          grid: {
+            display: false,
+          },
+          ticks: {
+            maxTicksLimit: 12,
+            autoSkip: true,
+            maxRotation: 45,
+            minRotation: 45,
+            color: '#64748b',
+            font: {
+              size: 11,
+            },
+          },
         },
-        ticks: {
-          color: '#64748b',
-          font: {
-            size: 11,
+        y: {
+          beginAtZero: true,
+          grid: {
+            color: 'rgba(100, 116, 139, 0.1)',
+          },
+          ticks: {
+            color: '#64748b',
+            font: {
+              size: 11,
+            },
           },
         },
       },
-    },
-    interaction: {
-      mode: 'nearest',
-      axis: 'x',
-      intersect: false,
-    },
-  };
+      interaction: {
+        mode: 'nearest',
+        axis: 'x',
+        intersect: false,
+      },
+    }),
+    [t.contributions.tooltipLabel, t.contributions.monthLocale]
+  );
 
   return (
     <motion.section
@@ -338,7 +346,7 @@ const Contributions: React.FC = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        GitHub Contributions
+        {t.sections.contributions}
       </motion.h2>
 
       <motion.div
@@ -351,11 +359,11 @@ const Contributions: React.FC = () => {
         <div className="contributions-meta">
           <div className="contributions-info">
             <p className="contributions-subtitle">
-              Live contribution activity over the last 3 years
+              {t.contributions.subtitle}
             </p>
             {!isLoading && !hasError && (
               <p className="contributions-total">
-                {totalContributions.toLocaleString()} total contributions
+                {totalContributions.toLocaleString(t.contributions.monthLocale)} {t.contributions.totalLabel}
               </p>
             )}
           </div>
@@ -365,7 +373,7 @@ const Contributions: React.FC = () => {
             rel="noopener noreferrer"
             className="contributions-link"
           >
-            View full profile
+            {t.contributions.viewProfile}
           </a>
         </div>
 
@@ -373,7 +381,7 @@ const Contributions: React.FC = () => {
           {isLoading && (
             <div className="contributions-loading">
               <div className="loading-spinner" />
-              <span>Loading contributions...</span>
+              <span>{t.contributions.loading}</span>
             </div>
           )}
 
@@ -385,13 +393,13 @@ const Contributions: React.FC = () => {
 
           {hasError && (
             <div className="contributions-fallback is-visible">
-              <span>Unable to load contributions data.</span>
+              <span>{t.contributions.unable}</span>
               <a
                 href={githubProfileUrl}
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Visit GitHub profile
+                {t.contributions.visitProfile}
               </a>
             </div>
           )}

@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/About.css';
 
 const About: React.FC = () => {
   const { bio } = useProfile();
+  const { t } = useLanguage();
 
   return (
     <motion.section
@@ -21,7 +23,7 @@ const About: React.FC = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        About Me
+        {t.sections.about}
       </motion.h2>
       <div className="about-content">
         {bio.map((paragraph, index) => (
