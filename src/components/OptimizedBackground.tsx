@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import '../styles/OptimizedBackground.css';
@@ -10,6 +10,17 @@ const MotionBox = motion(Box);
  * Replaces heavy Three.js with performant CSS gradients and minimal particles
  */
 const OptimizedBackground: React.FC = () => {
+  const particleConfig = useMemo(
+    () =>
+      Array.from({ length: 15 }, () => ({
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 10}s`,
+        animationDuration: `${15 + Math.random() * 10}s`,
+      })),
+    []
+  );
+
   return (
     <Box className="optimized-background" aria-hidden="true">
       {/* Animated gradient background */}
@@ -55,16 +66,11 @@ const OptimizedBackground: React.FC = () => {
       
       {/* Minimal decorative particles (CSS-only) */}
       <div className="css-particles">
-        {[...Array(15)].map((_, i) => (
+        {particleConfig.map((style, i) => (
           <div 
             key={i} 
             className="particle" 
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-              animationDelay: `${Math.random() * 10}s`,
-              animationDuration: `${15 + Math.random() * 10}s`,
-            }}
+            style={style}
           />
         ))}
       </div>

@@ -44,6 +44,56 @@ const MOCK_DATA_SEASONAL_VARIATION = 15;
 
 // Cache expiry time: 1 hour
 const CACHE_EXPIRY_MS = 60 * 60 * 1000;
+const CACHE_STORAGE_KEY = 'contributions-cache-v1';
+
+type CachePayload = { data: MonthlyData[]; total: number; timestamp: number };
+
+const isMonthlyDataArray = (value: unknown): value is MonthlyData[] => {
+  if (!Array.isArray(value)) return false;
+  return value.every((item) => {
+    if (!item || typeof item !== 'object') return false;
+    const entry = item as { month?: unknown; count?: unknown };
+    return typeof entry.month === 'string' && typeof entry.count === 'number';
+  });
+};
+
+const isCachePayload = (value: unknown): value is CachePayload => {
+  if (!value || typeof value !== 'object') return false;
+  const payload = value as { data?: unknown; total?: unknown; timestamp?: unknown };
+  return isMonthlyDataArray(payload.data)
+    && typeof payload.total === 'number'
+    && typeof payload.timestamp === 'number';
+};
+
+const readCachedContributions = () => {
+  if (typeof window === 'undefined') return null;
+  try {
+    const raw = window.localStorage.getItem(CACHE_STORAGE_KEY);
+    if (!raw) return null;
+    const parsed: unknown = JSON.parse(raw);
+    if (!isCachePayload(parsed)) {
+      window.localStorage.removeItem(CACHE_STORAGE_KEY);
+      return null;
+    }
+    if (Date.now() - parsed.timestamp >= CACHE_EXPIRY_MS) {
+      window.localStorage.removeItem(CACHE_STORAGE_KEY);
+      return null;
+    }
+    return parsed;
+  } catch (error) {
+    console.warn('Unable to read cached contributions from storage.', error);
+    return null;
+  }
+};
+
+const writeCachedContributions = (payload: CachePayload) => {
+  if (typeof window === 'undefined') return;
+  try {
+    window.localStorage.setItem(CACHE_STORAGE_KEY, JSON.stringify(payload));
+  } catch (error) {
+    console.warn('Unable to write cached contributions to storage.', error);
+  }
+};
 
 const Contributions: React.FC = () => {
   const githubUsername = 'officiallygod';
@@ -52,7 +102,7 @@ const Contributions: React.FC = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [hasError, setHasError] = useState(false);
   const [totalContributions, setTotalContributions] = useState(0);
-  const cacheRef = useRef<{ data: MonthlyData[]; timestamp: number } | null>(null);
+  const cacheRef = useRef<{ data: MonthlyData[]; total: number; timestamp: number } | null>(null);
 
   useEffect(() => {
     const generateMockData = () => {
@@ -85,6 +135,16 @@ const Contributions: React.FC = () => {
       // Check cache (1 hour expiry)
       if (cacheRef.current && Date.now() - cacheRef.current.timestamp < CACHE_EXPIRY_MS) {
         setMonthlyData(cacheRef.current.data);
+        setTotalContributions(cacheRef.current.total);
+        setIsLoading(false);
+        return;
+      }
+
+      const storedCache = readCachedContributions();
+      if (storedCache) {
+        cacheRef.current = storedCache;
+        setMonthlyData(storedCache.data);
+        setTotalContributions(storedCache.total);
         setIsLoading(false);
         return;
       }
@@ -152,10 +212,13 @@ const Contributions: React.FC = () => {
         setTotalContributions(total);
         
         // Cache the data
-        cacheRef.current = {
+        const cachePayload = {
           data: filledData,
+          total,
           timestamp: Date.now(),
         };
+        cacheRef.current = cachePayload;
+        writeCachedContributions(cachePayload);
 
         setIsLoading(false);
       } catch (error) {
