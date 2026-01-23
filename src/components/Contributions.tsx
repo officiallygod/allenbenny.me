@@ -72,9 +72,11 @@ const readCachedContributions = () => {
     if (!raw) return null;
     const parsed: unknown = JSON.parse(raw);
     if (!isCachePayload(parsed)) {
+      window.localStorage.removeItem(CACHE_STORAGE_KEY);
       return null;
     }
     if (Date.now() - parsed.timestamp >= CACHE_EXPIRY_MS) {
+      window.localStorage.removeItem(CACHE_STORAGE_KEY);
       return null;
     }
     return parsed;
