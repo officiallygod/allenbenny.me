@@ -1,21 +1,26 @@
-import React from 'react';
+import React, { useMemo } from 'react';
 import { Box } from '@chakra-ui/react';
 import { motion } from 'framer-motion';
 import '../styles/OptimizedBackground.css';
 
 const MotionBox = motion(Box);
-const particleConfig = Array.from({ length: 15 }, () => ({
-  left: `${Math.random() * 100}%`,
-  top: `${Math.random() * 100}%`,
-  animationDelay: `${Math.random() * 10}s`,
-  animationDuration: `${15 + Math.random() * 10}s`,
-}));
 
 /**
  * Lightweight CSS-based background animation
  * Replaces heavy Three.js with performant CSS gradients and minimal particles
  */
 const OptimizedBackground: React.FC = () => {
+  const particleConfig = useMemo(
+    () =>
+      Array.from({ length: 15 }, () => ({
+        left: `${Math.random() * 100}%`,
+        top: `${Math.random() * 100}%`,
+        animationDelay: `${Math.random() * 10}s`,
+        animationDuration: `${15 + Math.random() * 10}s`,
+      })),
+    []
+  );
+
   return (
     <Box className="optimized-background" aria-hidden="true">
       {/* Animated gradient background */}
