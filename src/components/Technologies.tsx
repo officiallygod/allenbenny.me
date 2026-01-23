@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/Technologies.css';
 
 const Technologies: React.FC = () => {
   const { technologies } = useProfile();
+  const { t } = useLanguage();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -45,7 +47,7 @@ const Technologies: React.FC = () => {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
       >
-        Tech Stack
+        {t.sections.technologies}
       </motion.h2>
       <motion.div
         className="tech-tags"

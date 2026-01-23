@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/Experience.css';
 
 const Experience: React.FC = () => {
   const { experience, education } = useProfile();
+  const { t } = useLanguage();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -44,12 +46,12 @@ const Experience: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Education & Experience
+          {t.sections.experience}
         </motion.h2>
 
         <div className="experience-grid">
           <motion.div className="experience-column" variants={itemVariants}>
-            <h3 className="column-title">Education</h3>
+            <h3 className="column-title">{t.sections.education}</h3>
             {education.map((edu, index) => (
               <motion.div
                 key={index}
@@ -74,7 +76,7 @@ const Experience: React.FC = () => {
           </motion.div>
 
           <motion.div className="experience-column" variants={itemVariants}>
-            <h3 className="column-title">Professional Experience</h3>
+            <h3 className="column-title">{t.sections.professionalExperience}</h3>
             {experience.map((exp, index) => (
               <motion.div
                 key={index}

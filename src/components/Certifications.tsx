@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/Certifications.css';
 
 const Certifications: React.FC = () => {
   const { certifications } = useProfile();
+  const { t } = useLanguage();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -44,7 +46,7 @@ const Certifications: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Certifications
+          {t.sections.certifications}
         </motion.h2>
 
         <div className="certifications-grid">

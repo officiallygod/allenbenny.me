@@ -2,10 +2,12 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
 import SocialIcon from './SocialIcon';
+import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/Contact.css';
 
 const Contact: React.FC = () => {
   const { githubUrl, socialLinks, contact, portfolioUrl, personalSiteUrl } = useProfile();
+  const { t } = useLanguage();
 
   return (
     <section id="contact" className="contact-section">
@@ -23,7 +25,7 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Let's Connect
+          {t.sections.contact}
         </motion.h2>
         
         <motion.p
@@ -33,8 +35,9 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.2 }}
         >
-          Seeking Werkstudent opportunities (15-20h/week) in Karlsruhe and surrounding areas.
-          Let's discuss how I can contribute to your team!
+          {t.contact.intro}
+          {' '}
+          {t.contact.introEmphasis}
         </motion.p>
 
         <motion.div
@@ -100,7 +103,7 @@ const Contact: React.FC = () => {
             whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(59, 130, 246, 0.35)' }}
             whileTap={{ scale: 0.95 }}
           >
-            View Portfolio
+            {t.contact.viewPortfolio}
           </motion.a>
           <motion.a
             href={personalSiteUrl}
@@ -110,7 +113,7 @@ const Contact: React.FC = () => {
             whileHover={{ scale: 1.05, boxShadow: '0 10px 30px rgba(139, 92, 246, 0.35)' }}
             whileTap={{ scale: 0.95 }}
           >
-            Personal Site
+            {t.contact.personalSite}
           </motion.a>
         </motion.div>
 
@@ -121,7 +124,7 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.7 }}
         >
-          <p className="github-text">One of the top contributors at Newfold Digital • Check out my open-source work</p>
+          <p className="github-text">{t.contact.githubHighlight}</p>
           <motion.a
             href={githubUrl}
             target="_blank"
@@ -131,7 +134,7 @@ const Contact: React.FC = () => {
             whileTap={{ scale: 0.95 }}
           >
             <SocialIcon type="github" className="github-icon" />
-            <span>Visit GitHub Profile</span>
+            <span>{t.contact.visitGithub}</span>
           </motion.a>
         </motion.div>
       </motion.div>
