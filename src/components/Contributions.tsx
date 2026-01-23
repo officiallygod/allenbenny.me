@@ -48,10 +48,19 @@ const CACHE_STORAGE_KEY = 'contributions-cache-v1';
 
 type CachePayload = { data: MonthlyData[]; total: number; timestamp: number };
 
+const isMonthlyDataArray = (value: unknown): value is MonthlyData[] => {
+  if (!Array.isArray(value)) return false;
+  return value.every((item) => {
+    if (!item || typeof item !== 'object') return false;
+    const entry = item as { month?: unknown; count?: unknown };
+    return typeof entry.month === 'string' && typeof entry.count === 'number';
+  });
+};
+
 const isCachePayload = (value: unknown): value is CachePayload => {
   if (!value || typeof value !== 'object') return false;
   const payload = value as { data?: unknown; total?: unknown; timestamp?: unknown };
-  return Array.isArray(payload.data)
+  return isMonthlyDataArray(payload.data)
     && typeof payload.total === 'number'
     && typeof payload.timestamp === 'number';
 };
@@ -70,7 +79,7 @@ const readCachedContributions = () => {
     }
     return parsed;
   } catch (error) {
-    console.warn('Unable to read cached contributions.', error);
+    console.warn('Unable to read cached contributions from storage.', error);
     return null;
   }
 };
@@ -80,7 +89,7 @@ const writeCachedContributions = (payload: CachePayload) => {
   try {
     window.localStorage.setItem(CACHE_STORAGE_KEY, JSON.stringify(payload));
   } catch (error) {
-    console.warn('Unable to cache contributions.', error);
+    console.warn('Unable to write cached contributions to storage.', error);
   }
 };
 
