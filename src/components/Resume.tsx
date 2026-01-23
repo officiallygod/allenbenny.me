@@ -9,15 +9,14 @@ const Resume: React.FC = () => {
   // Prevent body scroll when modal is open
   useEffect(() => {
     if (isResumeOpen) {
+      const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
 
-    // Cleanup function
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
+      // Cleanup function - restore original overflow value
+      return () => {
+        document.body.style.overflow = originalOverflow;
+      };
+    }
   }, [isResumeOpen]);
 
   const handleOpenResume = () => {

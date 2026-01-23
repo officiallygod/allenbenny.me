@@ -79,6 +79,7 @@ const Hero: React.FC = () => {
               className="cta-button secondary"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
+              aria-label="Open resume in modal window"
             >
               View Resume
             </motion.button>
