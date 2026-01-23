@@ -46,30 +46,41 @@ const MOCK_DATA_SEASONAL_VARIATION = 15;
 const CACHE_EXPIRY_MS = 60 * 60 * 1000;
 const CACHE_STORAGE_KEY = 'contributions-cache-v1';
 
+type CachePayload = { data: MonthlyData[]; total: number; timestamp: number };
+
+const isCachePayload = (value: unknown): value is CachePayload => {
+  if (!value || typeof value !== 'object') return false;
+  const payload = value as { data?: unknown; total?: unknown; timestamp?: unknown };
+  return Array.isArray(payload.data)
+    && typeof payload.total === 'number'
+    && typeof payload.timestamp === 'number';
+};
+
 const readCachedContributions = () => {
   if (typeof window === 'undefined') return null;
   try {
     const raw = window.localStorage.getItem(CACHE_STORAGE_KEY);
     if (!raw) return null;
-    const parsed = JSON.parse(raw) as { data?: MonthlyData[]; total?: number; timestamp?: number };
-    if (!parsed || !Array.isArray(parsed.data) || typeof parsed.total !== 'number' || typeof parsed.timestamp !== 'number') {
+    const parsed: unknown = JSON.parse(raw);
+    if (!isCachePayload(parsed)) {
       return null;
     }
     if (Date.now() - parsed.timestamp >= CACHE_EXPIRY_MS) {
       return null;
     }
-    return { data: parsed.data, total: parsed.total, timestamp: parsed.timestamp };
-  } catch {
+    return parsed;
+  } catch (error) {
+    console.warn('Unable to read cached contributions.', error);
     return null;
   }
 };
 
-const writeCachedContributions = (payload: { data: MonthlyData[]; total: number; timestamp: number }) => {
+const writeCachedContributions = (payload: CachePayload) => {
   if (typeof window === 'undefined') return;
   try {
     window.localStorage.setItem(CACHE_STORAGE_KEY, JSON.stringify(payload));
-  } catch {
-    // ignore storage errors
+  } catch (error) {
+    console.warn('Unable to cache contributions.', error);
   }
 };
 
