@@ -14,6 +14,11 @@ const getInitialTheme = (): Theme => {
     return 'light';
   }
 
+  const presetTheme = document.body.dataset.theme;
+  if (presetTheme === 'light' || presetTheme === 'dark') {
+    return presetTheme;
+  }
+
   let storedTheme: string | null = null;
 
   try {
@@ -30,13 +35,7 @@ const getInitialTheme = (): Theme => {
 };
 
 export const ThemeProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
-  const [theme, setTheme] = React.useState<Theme>(() => {
-    const initialTheme = getInitialTheme();
-    if (typeof document !== 'undefined') {
-      document.body.dataset.theme = initialTheme;
-    }
-    return initialTheme;
-  });
+  const [theme, setTheme] = React.useState<Theme>(getInitialTheme);
 
   React.useEffect(() => {
     document.body.dataset.theme = theme;
