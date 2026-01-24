@@ -1,10 +1,12 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
+import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/Projects.css';
 
 const Projects: React.FC = () => {
   const { projects } = useProfile();
+  const { t } = useLanguage();
 
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -44,7 +46,7 @@ const Projects: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
         >
-          Professional Projects
+          {t.sections.projects}
         </motion.h2>
 
         <div className="projects-grid">
@@ -69,7 +71,7 @@ const Projects: React.FC = () => {
                   className="project-link"
                   whileHover={{ x: 5 }}
                 >
-                  View Project →
+                  {t.projects.viewProject}
                 </motion.a>
               )}
               <motion.div

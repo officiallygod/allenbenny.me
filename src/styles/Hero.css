@@ -185,6 +185,20 @@
   transform: translateY(-1px);
 }
 
+.cta-button.language-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cta-button.language-toggle .language-flag {
+  font-size: 1.1rem;
+}
+
+.cta-button.language-toggle .language-label {
+  font-size: 0.95rem;
+}
+
 .social-links {
   display: flex;
   gap: 12px;
