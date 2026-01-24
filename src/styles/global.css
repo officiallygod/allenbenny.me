@@ -196,9 +196,17 @@ body[data-theme='dark'] .contributions-card {
   box-shadow: 0 20px 60px rgba(2, 6, 23, 0.55);
 }
 
-body[data-theme='dark'] .contributions-subtitle,
-body[data-theme='dark'] .contributions-fallback {
+body[data-theme='dark'] .contributions-subtitle {
   color: var(--dark-text-secondary);
+}
+
+body[data-theme='dark'] .contributions-fallback {
+  background: rgba(15, 23, 42, 0.9);
+  color: var(--dark-text-secondary);
+}
+
+body[data-theme='dark'] .contributions-fallback a {
+  color: #93c5fd;
 }
 
 body[data-theme='dark'] .contributions-graph {
@@ -261,6 +269,11 @@ body[data-theme='dark'] .theme-toggle {
 body[data-theme='dark'] .theme-toggle:hover {
   background: rgba(15, 23, 42, 0.95);
   border-color: rgba(226, 232, 240, 0.35);
+}
+
+body[data-theme='dark'] .optimized-background {
+  --particle-color: rgba(255, 255, 255, 0.6);
+  --particle-shadow-color: rgba(255, 255, 255, 0.35);
 }
 
 body[data-theme='dark'] .language-toggle {
