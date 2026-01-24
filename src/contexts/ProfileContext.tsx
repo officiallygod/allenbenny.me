@@ -17,19 +17,36 @@ const mergeProjects = (language: Language): ProfileData['projects'] => {
     return fallbackProjects;
   }
 
-  const localizedByTitle = new Map(localizedProjects.map((project) => [project.title, project]));
-  const mergedProjects = fallbackProjects.map(
-    (project) => localizedByTitle.get(project.title) ?? project
+  const localizedByLink = new Map(
+    localizedProjects
+      .filter((project) => project.link)
+      .map((project) => [project.link as string, project])
   );
-  const fallbackTitles = new Set(fallbackProjects.map((project) => project.title));
+  const localizedWithoutLink = localizedProjects.filter((project) => !project.link);
+  const fallbackLinks = new Set(
+    fallbackProjects.filter((project) => project.link).map((project) => project.link as string)
+  );
+  let noLinkIndex = 0;
 
-  for (const project of localizedProjects) {
-    if (!fallbackTitles.has(project.title)) {
-      mergedProjects.push(project);
+  const mergedProjects = fallbackProjects.map((project) => {
+    if (project.link) {
+      return localizedByLink.get(project.link) ?? project;
     }
-  }
 
-  return mergedProjects;
+    const localized = localizedWithoutLink[noLinkIndex];
+    if (localized) {
+      noLinkIndex += 1;
+      return localized;
+    }
+
+    return project;
+  });
+
+  const extraLinkedProjects = localizedProjects.filter(
+    (project) => project.link && !fallbackLinks.has(project.link)
+  );
+
+  return [...mergedProjects, ...extraLinkedProjects, ...localizedWithoutLink.slice(noLinkIndex)];
 };
 
 export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ children }) => {
