@@ -4,18 +4,82 @@
 }
 
 .technologies .section-title {
-  max-width: 1000px;
+  max-width: 1200px;
   margin: 0 auto;
+}
+
+.tech-categories {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  max-width: 1200px;
+  margin: 0 auto;
+  margin-top: 50px;
+}
+
+.category-section {
+  background: var(--bg-surface, #ffffff);
+  border-radius: 20px;
+  padding: 8px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+}
+
+.category-section.selected {
+  box-shadow: 0 8px 35px rgba(15, 23, 42, 0.15);
+}
+
+.category-header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px 30px;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  border: 2px solid;
+  font-weight: 600;
+  font-size: 1.2rem;
+  user-select: none;
+}
+
+.category-emoji {
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 2px 4px rgba(0, 0, 0, 0.1));
+}
+
+.category-name {
+  flex: 1;
+  letter-spacing: 0.3px;
+}
+
+.category-count {
+  background: rgba(255, 255, 255, 0.2);
+  padding: 6px 14px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+  font-weight: 600;
+  min-width: 40px;
+  text-align: center;
+  backdrop-filter: blur(4px);
+}
+
+.category-arrow {
+  font-size: 1rem;
+  transition: transform 0.3s ease;
+  opacity: 0.8;
 }
 
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
-  justify-content: center;
-  max-width: 1000px;
-  margin: 0 auto;
-  margin-top: 50px;
+  gap: 15px;
+  padding: 20px 25px;
+  margin-top: 8px;
 }
 
 .tag-wrapper {
@@ -24,43 +88,18 @@
 
 .tag {
   display: inline-block;
-  padding: 16px 32px;
+  padding: 12px 26px;
   background: var(--bg-surface, #ffffff);
   color: var(--text-primary, #334155);
   border-radius: 50px;
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 500;
   cursor: pointer;
-  border: 2px solid #dbeafe;
-  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.08);
+  border: 2px solid;
+  box-shadow: 0 3px 12px rgba(15, 23, 42, 0.08);
   position: relative;
-  overflow: hidden;
-  transition: color 0.25s ease 0.05s, box-shadow 0.3s ease, transform 0.3s ease, border-color 0.3s ease,
-    background-color 0.3s ease;
-}
-
-.tag::before {
-  content: '';
-  position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
-  transform: scaleX(0);
-  transform-origin: left;
-  transition: transform 0.35s ease;
-  z-index: -1;
-}
-
-.tag:hover {
-  color: #fff;
-  border-color: transparent;
-  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.35);
-}
-
-.tag:hover::before {
-  transform: scaleX(1);
+  overflow: visible;
+  transition: all 0.25s ease;
 }
 
 .tag-glow {
@@ -68,11 +107,12 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 100%;
-  height: 100%;
-  background: radial-gradient(circle, rgba(37, 99, 235, 0.2) 0%, transparent 70%);
+  width: 120%;
+  height: 120%;
   pointer-events: none;
-  z-index: -2;
+  z-index: -1;
+  border-radius: 50px;
+  transition: opacity 0.3s ease;
 }
 
 @media (max-width: 768px) {
@@ -80,13 +120,33 @@
     padding: 80px 20px;
   }
 
+  .tech-categories {
+    gap: 25px;
+  }
+
+  .category-header {
+    padding: 16px 24px;
+    font-size: 1.1rem;
+    gap: 12px;
+  }
+
+  .category-emoji {
+    font-size: 1.6rem;
+  }
+
+  .category-count {
+    padding: 5px 12px;
+    font-size: 0.9rem;
+  }
+
   .tech-tags {
-    gap: 15px;
+    gap: 12px;
+    padding: 16px 20px;
   }
 
   .tag {
-    padding: 12px 24px;
-    font-size: 0.95rem;
+    padding: 10px 22px;
+    font-size: 0.9rem;
   }
 }
 
@@ -95,12 +155,37 @@
     padding: 60px 15px;
   }
 
+  .tech-categories {
+    gap: 20px;
+  }
+
+  .category-header {
+    padding: 14px 20px;
+    font-size: 1rem;
+    gap: 10px;
+  }
+
+  .category-emoji {
+    font-size: 1.4rem;
+  }
+
+  .category-count {
+    padding: 4px 10px;
+    font-size: 0.85rem;
+    min-width: 35px;
+  }
+
+  .category-arrow {
+    font-size: 0.9rem;
+  }
+
   .tech-tags {
-    gap: 12px;
+    gap: 10px;
+    padding: 14px 16px;
   }
 
   .tag {
-    padding: 10px 20px;
-    font-size: 0.9rem;
+    padding: 8px 18px;
+    font-size: 0.85rem;
   }
 }
