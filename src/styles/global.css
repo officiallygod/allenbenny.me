@@ -194,6 +194,28 @@ body[data-theme='dark'] .tag {
   box-shadow: 0 10px 24px rgba(2, 6, 23, 0.45);
 }
 
+body[data-theme='dark'] .tag::before {
+  background: linear-gradient(135deg, #2563eb 0%, #1d4ed8 100%);
+}
+
+body[data-theme='dark'] .tag:hover {
+  color: #fff;
+  border-color: transparent;
+  box-shadow: 0 8px 30px rgba(37, 99, 235, 0.35);
+}
+
+body[data-theme='dark'] .tag:hover::before {
+  transform: scaleX(1);
+}
+
+body[data-theme='dark'] .technologies {
+  background: var(--dark-bg);
+}
+
+body[data-theme='dark'] .app-container {
+  background: var(--dark-bg);
+}
+
 body[data-theme='dark'] .contributions-card {
   background: var(--dark-surface);
   border-color: rgba(59, 130, 246, 0.25);
