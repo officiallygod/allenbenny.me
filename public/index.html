@@ -16,6 +16,22 @@
     <title>Allen Benny | Full Stack Developer | Werkstudent Karlsruhe</title>
 </head>
 <body>
+    <script>
+      (() => {
+        try {
+          const storedTheme = localStorage.getItem('theme');
+          const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+          const theme = storedTheme === 'light' || storedTheme === 'dark'
+            ? storedTheme
+            : prefersDark
+              ? 'dark'
+              : 'light';
+          document.body.dataset.theme = theme;
+        } catch (error) {
+          // Ignore storage or media query errors.
+        }
+      })();
+    </script>
     <div id="root"></div>
 </body>
 </html>

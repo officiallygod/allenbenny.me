@@ -24,6 +24,158 @@ body {
   position: relative;
 }
 
+body[data-theme='dark'] {
+  --dark-bg: #0f172a;
+  --dark-text: #e2e8f0;
+  --dark-text-secondary: #cbd5f5;
+  background: var(--dark-bg);
+  color: var(--dark-text);
+}
+
+body[data-theme='dark'] ::-webkit-scrollbar-track {
+  background: var(--dark-bg);
+}
+
+body[data-theme='dark'] ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+
+body[data-theme='dark'] ::-webkit-scrollbar-thumb:hover {
+  background: #64748b;
+}
+
+body[data-theme='dark'] ::selection {
+  background: rgba(59, 130, 246, 0.35);
+  color: #f8fafc;
+}
+
+body[data-theme='dark'] .header {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(148, 163, 184, 0.25);
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.45);
+}
+
+body[data-theme='dark'] .header .subtitle {
+  color: #94a3b8;
+}
+
+body[data-theme='dark'] .section-title {
+  background: linear-gradient(135deg, #60a5fa 0%, #38bdf8 100%);
+}
+
+body[data-theme='dark'] .section-title::after {
+  background: linear-gradient(90deg, #60a5fa, #38bdf8);
+}
+
+body[data-theme='dark'] .about-content {
+  background: rgba(15, 23, 42, 0.92);
+  border-color: rgba(148, 163, 184, 0.2);
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.35);
+}
+
+body[data-theme='dark'] .about p {
+  color: var(--dark-text-secondary);
+}
+
+body[data-theme='dark'] .experience-section {
+  background: var(--dark-bg);
+}
+
+body[data-theme='dark'] .column-title,
+body[data-theme='dark'] .company {
+  color: #e2e8f0;
+}
+
+body[data-theme='dark'] .experience-card {
+  background: rgba(15, 23, 42, 0.92);
+  border-color: rgba(148, 163, 184, 0.2);
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.4);
+}
+
+body[data-theme='dark'] .role {
+  color: #94a3b8;
+}
+
+body[data-theme='dark'] .description {
+  color: var(--dark-text-secondary);
+}
+
+body[data-theme='dark'] .contact-section {
+  background: var(--dark-bg);
+}
+
+body[data-theme='dark'] .contact-text,
+body[data-theme='dark'] .contact-item {
+  color: var(--dark-text-secondary);
+}
+
+body[data-theme='dark'] .contact-link {
+  background: rgba(15, 23, 42, 0.9);
+  color: #e2e8f0;
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 8px 24px rgba(2, 6, 23, 0.4);
+}
+
+body[data-theme='dark'] .github-highlight {
+  background: rgba(15, 23, 42, 0.92);
+  border-color: rgba(148, 163, 184, 0.2);
+  box-shadow: 0 12px 30px rgba(2, 6, 23, 0.4);
+}
+
+body[data-theme='dark'] .github-text {
+  color: var(--dark-text-secondary);
+}
+
+body[data-theme='dark'] .tag {
+  background: rgba(15, 23, 42, 0.92);
+  color: #e2e8f0;
+  border-color: rgba(59, 130, 246, 0.35);
+  box-shadow: 0 8px 20px rgba(2, 6, 23, 0.4);
+}
+
+body[data-theme='dark'] .contributions-card {
+  background: rgba(15, 23, 42, 0.92);
+  border-color: rgba(59, 130, 246, 0.25);
+  box-shadow: 0 20px 60px rgba(2, 6, 23, 0.45);
+}
+
+body[data-theme='dark'] .contributions-subtitle,
+body[data-theme='dark'] .contributions-fallback {
+  color: var(--dark-text-secondary);
+}
+
+body[data-theme='dark'] .contributions-graph {
+  background: rgba(15, 23, 42, 0.9);
+  border-color: rgba(59, 130, 246, 0.2);
+}
+
+body[data-theme='dark'] .resume-section {
+  background: var(--dark-bg);
+}
+
+body[data-theme='dark'] .resume-viewer {
+  background: var(--dark-bg);
+}
+
+body[data-theme='dark'] .resume-viewer-content {
+  background: var(--dark-bg);
+}
+
+body[data-theme='dark'] .resume-iframe {
+  background: var(--dark-bg);
+}
+
+body[data-theme='dark'] .theme-toggle {
+  background: rgba(15, 23, 42, 0.8);
+  border-color: rgba(148, 163, 184, 0.35);
+  color: #e2e8f0;
+}
+
+body[data-theme='dark'] .theme-toggle:hover {
+  background: rgba(30, 41, 59, 0.85);
+  border-color: rgba(226, 232, 240, 0.5);
+}
+
 h1,
 h2,
 h3,
