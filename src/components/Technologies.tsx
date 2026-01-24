@@ -7,11 +7,11 @@ import '../styles/Technologies.css';
 // Category configuration with colors and icons
 const CATEGORY_CONFIG: Record<string, { color: string; gradient: string; emoji: string }> = {
   Language: { color: '#3b82f6', gradient: 'linear-gradient(135deg, #3b82f6, #2563eb)', emoji: '💻' },
+  Sprache: { color: '#3b82f6', gradient: 'linear-gradient(135deg, #3b82f6, #2563eb)', emoji: '💻' }, // German translation
   Framework: { color: '#8b5cf6', gradient: 'linear-gradient(135deg, #8b5cf6, #7c3aed)', emoji: '🚀' },
   Tool: { color: '#10b981', gradient: 'linear-gradient(135deg, #10b981, #059669)', emoji: '🛠️' },
   Cloud: { color: '#f59e0b', gradient: 'linear-gradient(135deg, #f59e0b, #d97706)', emoji: '☁️' },
   AI: { color: '#ec4899', gradient: 'linear-gradient(135deg, #ec4899, #db2777)', emoji: '🤖' },
-  Sprache: { color: '#3b82f6', gradient: 'linear-gradient(135deg, #3b82f6, #2563eb)', emoji: '💻' },
 };
 
 const Technologies: React.FC = () => {
@@ -158,9 +158,9 @@ const Technologies: React.FC = () => {
                     exit="hidden"
                     variants={containerVariants}
                   >
-                    {categorizedTech[category].map((tech, index) => (
+                    {categorizedTech[category].map((tech) => (
                       <motion.div
-                        key={`${category}-${tech.name}-${index}`}
+                        key={`${category}-${tech.name}`}
                         className="tag-wrapper"
                         variants={tagVariants}
                         layout
