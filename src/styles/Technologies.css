@@ -24,8 +24,8 @@
 .tag {
   display: inline-block;
   padding: 16px 32px;
-  background: #ffffff;
-  color: #334155;
+  background: var(--bg-surface, #ffffff);
+  color: var(--text-primary, #334155);
   border-radius: 50px;
   font-size: 1.05rem;
   font-weight: 500;
