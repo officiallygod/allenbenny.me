@@ -88,6 +88,10 @@ body[data-theme='dark'] .about p {
   color: var(--dark-text-secondary);
 }
 
+body[data-theme='dark'] .about {
+  background: var(--dark-bg);
+}
+
 body[data-theme='dark'] .experience-section {
   background: var(--dark-bg);
 }
@@ -212,6 +216,10 @@ body[data-theme='dark'] .contributions-fallback a {
 body[data-theme='dark'] .contributions-graph {
   background: rgba(11, 17, 32, 0.95);
   border-color: rgba(148, 163, 184, 0.15);
+}
+
+body[data-theme='dark'] .contributions {
+  background: var(--dark-bg);
 }
 
 body[data-theme='dark'] .contributions-link,
