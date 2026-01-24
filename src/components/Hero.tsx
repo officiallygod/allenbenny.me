@@ -16,6 +16,8 @@ const Hero: React.FC = () => {
   const toggleLabel = isDarkMode ? 'Light mode' : 'Dark mode';
   const toggleIcon = isDarkMode ? '☀️' : '🌙';
   const { language, toggleLanguage, t } = useLanguage();
+  const languageFlag = language === 'en' ? '🇬🇧' : '🇩🇪';
+  const currentLanguage = language === 'en' ? t.languageToggle.english : t.languageToggle.german;
 
   return (
     <motion.section
@@ -26,18 +28,33 @@ const Hero: React.FC = () => {
     >
       <OptimizedBackground />
 
-      <motion.button
-        type="button"
-        className="theme-toggle"
-        onClick={toggleTheme}
-        whileHover={{ scale: 1.03 }}
-        whileTap={{ scale: 0.97 }}
-        aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
-        aria-pressed={isDarkMode}
-      >
-        <span className="theme-toggle-icon">{toggleIcon}</span>
-        <span>{toggleLabel}</span>
-      </motion.button>
+      <div className="hero-controls">
+        <motion.button
+          type="button"
+          className="theme-toggle"
+          onClick={toggleTheme}
+          whileHover={{ scale: 1.03 }}
+          whileTap={{ scale: 0.97 }}
+          aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
+          aria-pressed={isDarkMode}
+        >
+          <span className="theme-toggle-icon">{toggleIcon}</span>
+          <span>{toggleLabel}</span>
+        </motion.button>
+        <motion.button
+          type="button"
+          className="language-toggle"
+          onClick={toggleLanguage}
+          whileHover={{ scale: 1.05 }}
+          whileTap={{ scale: 0.95 }}
+          aria-label={`${t.languageToggle.label}: ${currentLanguage}`}
+          title={`${t.languageToggle.label}: ${currentLanguage}`}
+        >
+          <span className="language-flag" aria-hidden="true">
+            {languageFlag}
+          </span>
+        </motion.button>
+      </div>
       
       <div className="hero-content-wrapper">
         {/* Left side - Main content */}
@@ -102,20 +119,6 @@ const Hero: React.FC = () => {
               aria-label={t.hero.ctaResume}
             >
               {t.hero.ctaResume}
-            </motion.button>
-            <motion.button
-              onClick={toggleLanguage}
-              className="cta-button secondary language-toggle"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              aria-label={`${t.languageToggle.label}: ${language === 'en' ? t.languageToggle.german : t.languageToggle.english}`}
-            >
-              <span className="language-flag" aria-hidden="true">
-                {language === 'en' ? '🇬🇧' : '🇩🇪'}
-              </span>
-              <span className="language-label">
-                {language === 'en' ? t.languageToggle.german : t.languageToggle.english}
-              </span>
             </motion.button>
           </motion.div>
 
