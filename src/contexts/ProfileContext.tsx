@@ -1,14 +1,15 @@
 import React, { createContext, useContext } from 'react';
-import { profileData, ProfileData } from '../constants/profileData';
+import { profileData, ProfileData, Project } from '../constants/profileData';
 import { Language } from '../types/language';
 import { useLanguage } from './LanguageContext';
 
 const ProfileContext = createContext<ProfileData>(profileData.en);
 
-const hasLink = (
-  project: ProfileData['projects'][number]
-): project is ProfileData['projects'][number] & { link: string } =>
+const hasLink = (project: Project): project is Project & { link: string } =>
   typeof project.link === 'string' && project.link.length > 0;
+
+const projectKey = (project: Project) =>
+  hasLink(project) ? project.link : `${project.title}-${project.date}`;
 
 /**
  * Keeps the project list consistent across languages by preferring localized data
@@ -31,28 +32,16 @@ const mergeProjects = (language: Language): ProfileData['projects'] => {
     return fallbackProjects;
   }
 
-  const localizedByLink = new Map(
-    localizedProjects.filter(hasLink).map((project) => [project.link, project])
+  const localizedByKey = new Map(
+    localizedProjects.map((project) => [projectKey(project), project])
   );
-  const localizedWithoutLink = localizedProjects.filter((project) => !hasLink(project));
-  const usedLocalized = new Set<ProfileData['projects'][number]>();
-  let noLinkIndex = 0;
+  const usedKeys = new Set<string>();
 
   const mergedProjects = fallbackProjects.map((project) => {
-    if (hasLink(project)) {
-      const localized = localizedByLink.get(project.link);
-      if (localized) {
-        usedLocalized.add(localized);
-        return localized;
-      }
-
-      return project;
-    }
-
-    const localized = localizedWithoutLink[noLinkIndex];
+    const key = projectKey(project);
+    const localized = localizedByKey.get(key);
     if (localized) {
-      noLinkIndex += 1;
-      usedLocalized.add(localized);
+      usedKeys.add(key);
       return localized;
     }
 
@@ -60,7 +49,7 @@ const mergeProjects = (language: Language): ProfileData['projects'] => {
   });
 
   const remainingLocalized = localizedProjects.filter(
-    (project) => !usedLocalized.has(project)
+    (project) => !usedKeys.has(projectKey(project))
   );
 
   return [...mergedProjects, ...remainingLocalized];
