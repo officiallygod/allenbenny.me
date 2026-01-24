@@ -39,7 +39,7 @@ const mergeProjects = (language: Language): ProfileData['projects'] => {
   let noLinkIndex = 0;
 
   const mergedProjects = fallbackProjects.map((project) => {
-    if (project.link) {
+    if (hasLink(project)) {
       const localized = localizedByLink.get(project.link);
       if (localized) {
         usedLocalized.add(localized);
