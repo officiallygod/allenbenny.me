@@ -9,10 +9,11 @@ const MotionBox = motion(Box);
  * Lightweight CSS-based background animation
  * Replaces heavy Three.js with performant CSS gradients and minimal particles
  */
+const PARTICLE_COUNT = 30;
 const OptimizedBackground: React.FC = () => {
   const particleConfig = useMemo(
     () =>
-      Array.from({ length: 15 }, () => ({
+      Array.from({ length: PARTICLE_COUNT }, () => ({
         left: `${Math.random() * 100}%`,
         top: `${Math.random() * 100}%`,
         animationDelay: `${Math.random() * 10}s`,

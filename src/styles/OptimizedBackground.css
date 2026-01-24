@@ -5,6 +5,8 @@
   overflow: hidden;
   z-index: 0;
   background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+  --particle-color: rgba(255, 255, 255, 0.6);
+  --particle-shadow-color: rgba(255, 255, 255, 0.35);
 }
 
 /* Animated gradient orbs */
@@ -52,9 +54,9 @@
   position: absolute;
   width: 2px;
   height: 2px;
-  background: rgba(255, 255, 255, 0.6);
+  background: var(--particle-color);
   border-radius: 50%;
-  box-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+  box-shadow: 0 0 6px var(--particle-shadow-color);
   animation: float linear infinite;
 }
 
