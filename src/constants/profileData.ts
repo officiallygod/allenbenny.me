@@ -171,6 +171,7 @@ export const profileData: Record<Language, ProfileData> = {
       },
     ],
     githubUrl: 'https://github.com/officiallygod',
+    githubUrlProfile: 'https://github.com/newfold-labs/wp-module-onboarding/graphs/contributors',
     projects: [
       {
         title: 'Smart Farming IoT System',
@@ -353,6 +354,7 @@ export const profileData: Record<Language, ProfileData> = {
       },
     ],
     githubUrl: 'https://github.com/officiallygod',
+    githubUrlProfile: 'https://github.com/newfold-labs/wp-module-onboarding/graphs/contributors',
     projects: [
       {
         title: 'Smart Farming IoT System',
