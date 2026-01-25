@@ -6,7 +6,7 @@ import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/Contact.css';
 
 const Contact: React.FC = () => {
-  const { githubUrl, socialLinks, contact, portfolioUrl, personalSiteUrl } = useProfile();
+  const { githubUrl, githubUrlProfile, socialLinks, contact, portfolioUrl, personalSiteUrl } = useProfile();
   const { t } = useLanguage();
 
   return (
@@ -125,10 +125,10 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.7 }}
         >
           <p className="github-text">
-            {t.contact.githubHighlightPrefix} • <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="github-text-link">{t.contact.githubHighlightLink}</a>
+            {t.contact.githubHighlightPrefix} • <a href={githubUrlProfile} target="_blank" rel="noopener noreferrer" className="github-text-link">{t.contact.githubHighlightLink}</a>
           </p>
           <motion.a
-            href={githubUrl}
+            href={githubUrlProfile}
             target="_blank"
             rel="noopener noreferrer"
             className="github-button"
