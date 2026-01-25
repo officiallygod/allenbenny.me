@@ -81,10 +81,9 @@ const Experience: React.FC = () => {
                     href={edu.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="experience-card education-card"
+                    className="experience-card education-card clickable"
                     whileHover={{ scale: 1.02, y: -5 }}
                     transition={{ duration: 0.3 }}
-                    style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
                   >
                     {CardContent}
                   </motion.a>
@@ -134,10 +133,9 @@ const Experience: React.FC = () => {
                     href={exp.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="experience-card"
+                    className="experience-card clickable"
                     whileHover={{ scale: 1.02, y: -5 }}
                     transition={{ duration: 0.3 }}
-                    style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
                   >
                     {CardContent}
                   </motion.a>
