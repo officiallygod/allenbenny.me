@@ -55,6 +55,13 @@
   position: relative;
   overflow: hidden;
   transition: all 0.3s ease;
+  display: block;
+}
+
+.experience-card.clickable {
+  text-decoration: none;
+  color: inherit;
+  cursor: pointer;
 }
 
 .experience-card:hover {
