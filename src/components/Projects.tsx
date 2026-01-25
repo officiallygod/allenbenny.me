@@ -50,7 +50,7 @@ const Projects: React.FC = () => {
         </motion.h2>
 
         <div className="projects-grid">
-          {projects.map((project) => {
+          {projects.map((project, index) => {
             const CardWrapper = project.link ? motion.a : motion.div;
             const cardProps = project.link
               ? {
@@ -63,7 +63,7 @@ const Projects: React.FC = () => {
 
             return (
               <CardWrapper
-                key={`${project.title}-${project.date}`}
+                key={project.link || `project-${index}-${project.date}`}
                 {...cardProps}
                 variants={itemVariants}
                 whileHover={{ scale: 1.03, y: -5 }}
