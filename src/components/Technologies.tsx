@@ -7,7 +7,6 @@ import '../styles/Technologies.css';
 // Category configuration with colors and icons
 const CATEGORY_CONFIG: Record<string, { color: string; gradient: string; emoji: string }> = {
   Language: { color: '#3b82f6', gradient: 'linear-gradient(135deg, #3b82f6, #2563eb)', emoji: '💻' },
-  Sprache: { color: '#3b82f6', gradient: 'linear-gradient(135deg, #3b82f6, #2563eb)', emoji: '💻' }, // German translation
   Framework: { color: '#8b5cf6', gradient: 'linear-gradient(135deg, #8b5cf6, #7c3aed)', emoji: '🚀' },
   Tool: { color: '#10b981', gradient: 'linear-gradient(135deg, #10b981, #059669)', emoji: '🛠️' },
   Cloud: { color: '#f59e0b', gradient: 'linear-gradient(135deg, #f59e0b, #d97706)', emoji: '☁️' },

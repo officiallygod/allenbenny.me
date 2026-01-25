@@ -33,6 +33,12 @@
   transition: all 0.3s ease;
 }
 
+.project-card-link {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+}
+
 .project-card:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(59, 130, 246, 0.4);

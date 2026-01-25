@@ -50,28 +50,40 @@ const Certifications: React.FC = () => {
         </motion.h2>
 
         <div className="certifications-grid">
-          {certifications.map((cert) => (
-            <motion.div
-              key={`${cert.title}-${cert.issuer}`}
-              className="certification-card"
-              variants={itemVariants}
-              whileHover={{ scale: 1.02, x: 5 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="cert-content">
-                <h3 className="cert-title">{cert.title}</h3>
-                <p className="cert-issuer">{cert.issuer}</p>
-                <span className="cert-date">{cert.date}</span>
-              </div>
-              <motion.div
-                className="cert-accent"
-                initial={{ height: 0 }}
-                whileInView={{ height: '100%' }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.6, delay: 0.2 }}
-              />
-            </motion.div>
-          ))}
+          {certifications.map((cert) => {
+            const CardWrapper = cert.link ? motion.a : motion.div;
+            const cardProps = cert.link
+              ? {
+                  href: cert.link,
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                  className: 'certification-card certification-card-link',
+                }
+              : { className: 'certification-card' };
+
+            return (
+              <CardWrapper
+                key={`${cert.title}-${cert.issuer}`}
+                {...cardProps}
+                variants={itemVariants}
+                whileHover={{ scale: 1.02, x: 5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="cert-content">
+                  <h3 className="cert-title">{cert.title}</h3>
+                  <p className="cert-issuer">{cert.issuer}</p>
+                  <span className="cert-date">{cert.date}</span>
+                </div>
+                <motion.div
+                  className="cert-accent"
+                  initial={{ height: 0 }}
+                  whileInView={{ height: '100%' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.6, delay: 0.2 }}
+                />
+              </CardWrapper>
+            );
+          })}
         </div>
       </motion.div>
     </section>

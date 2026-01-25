@@ -35,6 +35,12 @@
   align-items: center;
 }
 
+.certification-card-link {
+  display: flex;
+  text-decoration: none;
+  color: inherit;
+}
+
 .certification-card:hover {
   background: rgba(255, 255, 255, 0.05);
   border-color: rgba(139, 92, 246, 0.4);
