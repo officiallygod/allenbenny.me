@@ -46,6 +46,13 @@
   gap: 25px;
 }
 
+.cards-single-row {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 25px;
+  margin-bottom: 25px;
+}
+
 .experience-card {
   background: #ffffff;
   border-radius: 20px;
