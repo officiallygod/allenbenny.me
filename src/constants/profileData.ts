@@ -62,6 +62,7 @@ export interface ProfileData {
   education: Education[];
   socialLinks: SocialLink[];
   githubUrl: string;
+  githubUrlProfile: string;
   projects: Project[];
   certifications: Certification[];
   contact: ContactInfo;
