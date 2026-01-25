@@ -57,27 +57,48 @@ const Experience: React.FC = () => {
               <h3 className="section-title-text">{t.sections.education}</h3>
             </div>
             <div className="cards-horizontal">
-              {education.map((edu, index) => (
-                <motion.div
-                  key={index}
-                  className="experience-card education-card"
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="card-header">
-                    <h4 className="company">{edu.institution}</h4>
-                    <span className="duration">{edu.duration}</span>
-                  </div>
-                  <h5 className="role">{edu.degree}</h5>
+              {education.map((edu, index) => {
+                const CardContent = (
+                  <>
+                    <div className="card-header">
+                      <h4 className="company">{edu.institution}</h4>
+                      <span className="duration">{edu.duration}</span>
+                    </div>
+                    <h5 className="role">{edu.degree}</h5>
+                    <motion.div
+                      className="card-accent"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: '100%' }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.3 }}
+                    />
+                  </>
+                );
+
+                return edu.link ? (
+                  <motion.a
+                    key={index}
+                    href={edu.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="experience-card education-card"
+                    whileHover={{ scale: 1.02, y: -5 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
+                  >
+                    {CardContent}
+                  </motion.a>
+                ) : (
                   <motion.div
-                    className="card-accent"
-                    initial={{ width: 0 }}
-                    whileInView={{ width: '100%' }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                  />
-                </motion.div>
-              ))}
+                    key={index}
+                    className="experience-card education-card"
+                    whileHover={{ scale: 1.02, y: -5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {CardContent}
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
 
@@ -88,28 +109,49 @@ const Experience: React.FC = () => {
               <h3 className="section-title-text">{t.sections.professionalExperience}</h3>
             </div>
             <div className="cards-horizontal">
-              {experience.map((exp, index) => (
-                <motion.div
-                  key={index}
-                  className="experience-card"
-                  whileHover={{ scale: 1.02, y: -5 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  <div className="card-header">
-                    <h4 className="company">{exp.company}</h4>
-                    <span className="duration">{exp.duration}</span>
-                  </div>
-                  <h5 className="role">{exp.role}</h5>
-                  <p className="description">{exp.description}</p>
+              {experience.map((exp, index) => {
+                const CardContent = (
+                  <>
+                    <div className="card-header">
+                      <h4 className="company">{exp.company}</h4>
+                      <span className="duration">{exp.duration}</span>
+                    </div>
+                    <h5 className="role">{exp.role}</h5>
+                    <p className="description">{exp.description}</p>
+                    <motion.div
+                      className="card-accent"
+                      initial={{ width: 0 }}
+                      whileInView={{ width: '100%' }}
+                      viewport={{ once: true }}
+                      transition={{ duration: 0.8, delay: 0.3 }}
+                    />
+                  </>
+                );
+
+                return exp.link ? (
+                  <motion.a
+                    key={index}
+                    href={exp.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="experience-card"
+                    whileHover={{ scale: 1.02, y: -5 }}
+                    transition={{ duration: 0.3 }}
+                    style={{ textDecoration: 'none', color: 'inherit', cursor: 'pointer' }}
+                  >
+                    {CardContent}
+                  </motion.a>
+                ) : (
                   <motion.div
-                    className="card-accent"
-                    initial={{ width: 0 }}
-                    whileInView={{ width: '100%' }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 0.8, delay: 0.3 }}
-                  />
-                </motion.div>
-              ))}
+                    key={index}
+                    className="experience-card"
+                    whileHover={{ scale: 1.02, y: -5 }}
+                    transition={{ duration: 0.3 }}
+                  >
+                    {CardContent}
+                  </motion.div>
+                );
+              })}
             </div>
           </motion.div>
         </div>
