@@ -199,7 +199,7 @@ const Technologies: React.FC = () => {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
               >
-                <p>Select a category to view technologies</p>
+                <p>{t.sections.technologiesPlaceholder}</p>
               </motion.div>
             )}
           </AnimatePresence>
