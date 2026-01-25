@@ -119,29 +119,29 @@ export const profileData: Record<Language, ProfileData> = {
         company: 'Newfold Digital',
         role: 'Software Development Engineer (Full Stack)',
         duration: 'Jan 2022 – Present',
-        description: 'Built open-source modern WordPress onboarding (PHP, React) serving 1000+ users daily. Developed AI-powered onboarding experience from prompts. Created task systems & cron jobs for plugin installation automation. Optimized performance and reliability with advanced React features (Memo, caching) for responsive onboarding. Developed WordPress template drawer. Top contributor to team codebase. Represented Bluehost at WordCamp Sylhet 2023. Awarded Edward De Bono Award for innovation.',
-        link: 'https://newfold.com/', // Add company website or profile link here
+        description: 'Built open-source modern WordPress onboarding (PHP, React) serving 1000+ users daily. Developed an AI-powered onboarding experience from prompts. Created task systems & cron jobs for plugin installation automation. Optimised performance and reliability with advanced React features (Memo, caching) for responsive onboarding. Developed WordPress template drawer. Top contributor to team codebase. Represented Bluehost at WordCamp Sylhet 2023. Awarded Edward De Bono Award for innovation.',
+        link: 'https://drive.google.com/file/d/1In551-F4hVtxegXlahdfrvepg8qZf-uL/view?usp=sharing',
       },
       {
         company: 'TecideXa Services',
         role: 'Lead Developer Intern',
         duration: 'Dec 2020 – Jan 2021',
         description: 'Designed, developed, and tested Flutter client applications. Led development initiatives and ensured high-quality code delivery.',
-        // link: '', // Add company website or profile link here
+        link: 'https://drive.google.com/file/d/1X_68Jobe1L5WtrS9oHgCZfM3dOPKiNa6/view?usp=sharing',
       },
       {
         company: 'Gliitz (Freelance)',
         role: 'App Developer',
         duration: 'Aug 2020 – Nov 2020',
         description: 'Translated UI/UX designs into production-ready Flutter applications. Conducted rigorous testing and deployment to ensure high quality and reliability.',
-        // link: '', // Add company website or profile link here
+        link: 'https://drive.google.com/file/d/1QvoLWsXpRrS3uF_Ea1D8qE3ek_3UggyP/view?usp=sharing',
       },
       {
         company: 'Itukaa (Freelance)',
         role: 'App Developer',
         duration: 'Apr 2021 – Jun 2021',
         description: 'Built and deployed market-ready application for construction materials company. Improved operational efficiency through custom mobile solutions.',
-        // link: '', // Add company website or profile link here
+        // link: '',
       },
     ],
     education: [
@@ -149,13 +149,13 @@ export const profileData: Record<Language, ProfileData> = {
         institution: 'Karlsruhe Institute of Technology (KIT)',
         degree: 'MSc in Computer Science',
         duration: 'Expected May 2027',
-        link: 'https://www.kit.edu/', // Add university website or profile link here
+        link: 'https://www.kit.edu/',
       },
       {
-        institution: 'BMS Institute of Technology',
+        institution: 'BMS Institute of Technology and Management',
         degree: 'BE in Computer Science (CGPA: 8.94/10)',
         duration: 'Graduated Aug 2022',
-        // link: '', // Add university website or profile link here
+        link: 'https://bmsit.ac.in/', 
       },
     ],
     socialLinks: [
@@ -302,28 +302,28 @@ export const profileData: Record<Language, ProfileData> = {
         role: 'Software Development Engineer (Full Stack)',
         duration: 'Jan 2022 – Heute',
         description: 'Entwickelte ein modernes Open-Source-WordPress-Onboarding (PHP, React) für über 1000 Nutzer täglich. Baute KI-gestützte Onboarding-Erlebnisse aus Prompts. Entwickelte Task-Systeme und Cron-Jobs zur Plugin-Installation. Optimierte Performance und Stabilität mit fortgeschrittenen React-Features (Memo, Caching). Entwickelte einen WordPress-Template-Drawer. Top-Beitragender im Team. Repräsentierte Bluehost auf der WordCamp Sylhet 2023. Ausgezeichnet mit dem Edward De Bono Award für Innovation.',
-        link: 'https://newfold.com/', // Add company website or profile link here
+        link: 'https://drive.google.com/file/d/1In551-F4hVtxegXlahdfrvepg8qZf-uL/view?usp=sharing',
       },
       {
         company: 'TecideXa Services',
         role: 'Lead Developer Intern',
         duration: 'Dez 2020 – Jan 2021',
         description: 'Konzipierte, entwickelte und testete Flutter-Client-Anwendungen. Leitete Entwicklungsinitiativen und stellte hochwertige Codequalität sicher.',
-        // link: '', // Add company website or profile link here
+        link: 'https://drive.google.com/file/d/1X_68Jobe1L5WtrS9oHgCZfM3dOPKiNa6/view?usp=sharing',
       },
       {
         company: 'Gliitz (Freelance)',
         role: 'App-Entwickler',
         duration: 'Aug 2020 – Nov 2020',
         description: 'Setzte UI/UX-Designs in produktionsreife Flutter-Anwendungen um. Führte gründliche Tests und Deployments für hohe Qualität durch.',
-        // link: '', // Add company website or profile link here
+        link: 'https://drive.google.com/file/d/1QvoLWsXpRrS3uF_Ea1D8qE3ek_3UggyP/view?usp=sharing',
       },
       {
         company: 'Itukaa (Freelance)',
         role: 'App-Entwickler',
         duration: 'Apr 2021 – Jun 2021',
         description: 'Baute und veröffentlichte eine marktreife App für ein Baustoffunternehmen. Steigerte die Effizienz durch maßgeschneiderte mobile Lösungen.',
-        // link: '', // Add company website or profile link here
+        // link: '',
       },
     ],
     education: [
@@ -331,13 +331,13 @@ export const profileData: Record<Language, ProfileData> = {
         institution: 'Karlsruher Institut für Technologie (KIT)',
         degree: 'MSc in Informatik',
         duration: 'Voraussichtlich Mai 2027',
-        link: 'https://www.kit.edu/', // Add university website or profile link here
+        link: 'https://www.kit.edu/',
       },
       {
-        institution: 'BMS Institute of Technology',
+        institution: 'BMS Institute of Technology and Management',
         degree: 'BE in Informatik (CGPA: 8,94/10)',
         duration: 'Abschluss Aug 2022',
-        // link: '', // Add university website or profile link here
+        link: 'https://bmsit.ac.in/',
       },
     ],
     socialLinks: [
@@ -425,7 +425,7 @@ export const profileData: Record<Language, ProfileData> = {
     skills: [
       {
         category: 'Soft Skills',
-        items: ['Kommunikation', 'Teamarbeit', 'Analytisches Denken', 'Problemlösung'],
+        items: ['Kommunikation', 'Teamarbeit', 'analytisches Denken', 'Problemlösung'],
       },
       {
         category: 'Sprachen',
