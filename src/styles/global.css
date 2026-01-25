@@ -99,7 +99,8 @@ body[data-theme='dark'] .experience-section {
 }
 
 body[data-theme='dark'] .column-title,
-body[data-theme='dark'] .company {
+body[data-theme='dark'] .company,
+body[data-theme='dark'] .section-title-text {
   color: #e2e8f0;
 }
 
