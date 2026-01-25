@@ -152,7 +152,7 @@ export const profileData: Record<Language, ProfileData> = {
         link: 'https://www.kit.edu/',
       },
       {
-        institution: 'BMS Institute of Technology and Management',
+        institution: 'BMS Institute of Technology',
         degree: 'BE in Computer Science (CGPA: 8.94/10)',
         duration: 'Graduated Aug 2022',
         link: 'https://bmsit.ac.in/', 
@@ -334,7 +334,7 @@ export const profileData: Record<Language, ProfileData> = {
         link: 'https://www.kit.edu/',
       },
       {
-        institution: 'BMS Institute of Technology and Management',
+        institution: 'BMS Institute of Technology',
         degree: 'BE in Informatik (CGPA: 8,94/10)',
         duration: 'Abschluss Aug 2022',
         link: 'https://bmsit.ac.in/',
