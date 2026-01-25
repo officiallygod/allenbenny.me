@@ -50,39 +50,40 @@ const Projects: React.FC = () => {
         </motion.h2>
 
         <div className="projects-grid">
-          {projects.map((project) => (
-            <motion.div
-              key={`${project.title}-${project.date}`}
-              className="project-card"
-              variants={itemVariants}
-              whileHover={{ scale: 1.03, y: -5 }}
-              transition={{ duration: 0.3 }}
-            >
-              <div className="project-header">
-                <h3 className="project-title">{project.title}</h3>
-                <span className="project-date">{project.date}</span>
-              </div>
-              <p className="project-description">{project.description}</p>
-              {project.link && (
-                <motion.a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="project-link"
-                  whileHover={{ x: 5 }}
-                >
-                  {t.projects.viewProject}
-                </motion.a>
-              )}
-              <motion.div
-                className="card-accent"
-                initial={{ width: 0 }}
-                whileInView={{ width: '100%' }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.8, delay: 0.3 }}
-              />
-            </motion.div>
-          ))}
+          {projects.map((project) => {
+            const CardWrapper = project.link ? motion.a : motion.div;
+            const cardProps = project.link
+              ? {
+                  href: project.link,
+                  target: '_blank',
+                  rel: 'noopener noreferrer',
+                  className: 'project-card project-card-link',
+                }
+              : { className: 'project-card' };
+
+            return (
+              <CardWrapper
+                key={`${project.title}-${project.date}`}
+                {...cardProps}
+                variants={itemVariants}
+                whileHover={{ scale: 1.03, y: -5 }}
+                transition={{ duration: 0.3 }}
+              >
+                <div className="project-header">
+                  <h3 className="project-title">{project.title}</h3>
+                  <span className="project-date">{project.date}</span>
+                </div>
+                <p className="project-description">{project.description}</p>
+                <motion.div
+                  className="card-accent"
+                  initial={{ width: 0 }}
+                  whileInView={{ width: '100%' }}
+                  viewport={{ once: true }}
+                  transition={{ duration: 0.8, delay: 0.3 }}
+                />
+              </CardWrapper>
+            );
+          })}
         </div>
       </motion.div>
     </section>
