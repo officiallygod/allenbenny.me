@@ -107,50 +107,101 @@ const Experience: React.FC = () => {
               <span className="section-icon">💼</span>
               <h3 className="section-title-text">{t.sections.professionalExperience}</h3>
             </div>
-            <div className="cards-horizontal">
-              {experience.map((exp, index) => {
-                const CardContent = (
-                  <>
-                    <div className="card-header">
-                      <h4 className="company">{exp.company}</h4>
-                      <span className="duration">{exp.duration}</span>
-                    </div>
-                    <h5 className="role">{exp.role}</h5>
-                    <p className="description">{exp.description}</p>
-                    <motion.div
-                      className="card-accent"
-                      initial={{ width: 0 }}
-                      whileInView={{ width: '100%' }}
-                      viewport={{ once: true }}
-                      transition={{ duration: 0.8, delay: 0.3 }}
-                    />
-                  </>
-                );
+            
+            {/* First job - Newfold Digital - in its own row */}
+            {experience.length > 0 && (
+              <div className="cards-single-row">
+                {(() => {
+                  const exp = experience[0];
+                  const CardContent = (
+                    <>
+                      <div className="card-header">
+                        <h4 className="company">{exp.company}</h4>
+                        <span className="duration">{exp.duration}</span>
+                      </div>
+                      <h5 className="role">{exp.role}</h5>
+                      <p className="description">{exp.description}</p>
+                      <motion.div
+                        className="card-accent"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: '100%' }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                      />
+                    </>
+                  );
 
-                return exp.link ? (
-                  <motion.a
-                    key={index}
-                    href={exp.link}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="experience-card clickable"
-                    whileHover={{ scale: 1.02, y: -5 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {CardContent}
-                  </motion.a>
-                ) : (
-                  <motion.div
-                    key={index}
-                    className="experience-card"
-                    whileHover={{ scale: 1.02, y: -5 }}
-                    transition={{ duration: 0.3 }}
-                  >
-                    {CardContent}
-                  </motion.div>
-                );
-              })}
-            </div>
+                  return exp.link ? (
+                    <motion.a
+                      href={exp.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="experience-card clickable"
+                      whileHover={{ scale: 1.02, y: -5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {CardContent}
+                    </motion.a>
+                  ) : (
+                    <motion.div
+                      className="experience-card"
+                      whileHover={{ scale: 1.02, y: -5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {CardContent}
+                    </motion.div>
+                  );
+                })()}
+              </div>
+            )}
+            
+            {/* Remaining jobs in a horizontal grid */}
+            {experience.length > 1 && (
+              <div className="cards-horizontal">
+                {experience.slice(1).map((exp, index) => {
+                  const CardContent = (
+                    <>
+                      <div className="card-header">
+                        <h4 className="company">{exp.company}</h4>
+                        <span className="duration">{exp.duration}</span>
+                      </div>
+                      <h5 className="role">{exp.role}</h5>
+                      <p className="description">{exp.description}</p>
+                      <motion.div
+                        className="card-accent"
+                        initial={{ width: 0 }}
+                        whileInView={{ width: '100%' }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 0.8, delay: 0.3 }}
+                      />
+                    </>
+                  );
+
+                  return exp.link ? (
+                    <motion.a
+                      key={index}
+                      href={exp.link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="experience-card clickable"
+                      whileHover={{ scale: 1.02, y: -5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {CardContent}
+                    </motion.a>
+                  ) : (
+                    <motion.div
+                      key={index}
+                      className="experience-card"
+                      whileHover={{ scale: 1.02, y: -5 }}
+                      transition={{ duration: 0.3 }}
+                    >
+                      {CardContent}
+                    </motion.div>
+                  );
+                })}
+              </div>
+            )}
           </motion.div>
         </div>
       </motion.div>

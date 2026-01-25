@@ -47,6 +47,8 @@ export const translations: Record<
       viewPortfolio: string;
       personalSite: string;
       githubHighlight: string;
+      githubHighlightPrefix: string;
+      githubHighlightLink: string;
       visitGithub: string;
     };
     resume: {
@@ -107,6 +109,8 @@ export const translations: Record<
       viewPortfolio: 'View Portfolio',
       personalSite: 'Personal Site',
       githubHighlight: 'One of the top contributors at Newfold Digital • Check out my open-source work',
+      githubHighlightPrefix: 'One of the top contributors at Newfold Digital',
+      githubHighlightLink: 'Check out my open-source work',
       visitGithub: 'Visit GitHub Profile',
     },
     resume: {
@@ -166,6 +170,8 @@ export const translations: Record<
       viewPortfolio: 'Portfolio ansehen',
       personalSite: 'Persönliche Seite',
       githubHighlight: 'Einer der Top-Mitwirkenden bei Newfold Digital • Sieh dir meine Open-Source-Arbeit an',
+      githubHighlightPrefix: 'Einer der Top-Mitwirkenden bei Newfold Digital',
+      githubHighlightLink: 'Sieh dir meine Open-Source-Arbeit an',
       visitGithub: 'GitHub-Profil besuchen',
     },
     resume: {

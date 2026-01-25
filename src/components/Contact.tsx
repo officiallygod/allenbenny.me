@@ -124,7 +124,9 @@ const Contact: React.FC = () => {
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.7 }}
         >
-          <p className="github-text">{t.contact.githubHighlight}</p>
+          <p className="github-text">
+            {t.contact.githubHighlightPrefix} • <a href={githubUrl} target="_blank" rel="noopener noreferrer" className="github-text-link">{t.contact.githubHighlightLink}</a>
+          </p>
           <motion.a
             href={githubUrl}
             target="_blank"

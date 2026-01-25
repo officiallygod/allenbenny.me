@@ -153,6 +153,19 @@
   font-weight: 400;
 }
 
+.github-text-link {
+  color: #2563eb;
+  text-decoration: none;
+  font-weight: 500;
+  transition: color 0.3s ease;
+  border-bottom: 2px solid transparent;
+}
+
+.github-text-link:hover {
+  color: #1d4ed8;
+  border-bottom-color: #1d4ed8;
+}
+
 .github-button {
   display: inline-flex;
   align-items: center;
