@@ -104,29 +104,27 @@ const Technologies: React.FC = () => {
         {t.sections.technologies}
       </motion.h2>
 
-      <motion.div
-        className="tech-categories"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, amount: 0.1 }}
-      >
-        {categories.map((category) => {
-          const config = getCategoryConfig(category);
-          const isSelected = selectedCategory === category;
-          const isHovered = hoveredCategory === category;
-          const shouldShowTags = selectedCategory === null || isSelected;
+      <div className="tech-container">
+        {/* Left: Categories */}
+        <motion.div
+          className="tech-categories-sidebar"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.1 }}
+        >
+          {categories.map((category) => {
+            const config = getCategoryConfig(category);
+            const isSelected = selectedCategory === category;
+            const isHovered = hoveredCategory === category;
 
-          return (
-            <motion.div
-              key={category}
-              className={`category-section ${isSelected ? 'selected' : ''}`}
-              variants={categoryVariants}
-              onHoverStart={() => setHoveredCategory(category)}
-              onHoverEnd={() => setHoveredCategory(null)}
-            >
+            return (
               <motion.div
-                className="category-header"
+                key={category}
+                className={`category-item ${isSelected ? 'selected' : ''}`}
+                variants={categoryVariants}
+                onHoverStart={() => setHoveredCategory(category)}
+                onHoverEnd={() => setHoveredCategory(null)}
                 onClick={() => handleCategoryClick(category)}
                 whileHover={{ scale: 1.03 }}
                 whileTap={{ scale: 0.98 }}
@@ -139,64 +137,74 @@ const Technologies: React.FC = () => {
                 <span className="category-emoji">{config.emoji}</span>
                 <span className="category-name">{category}</span>
                 <span className="category-count">{categorizedTech[category].length}</span>
-                <motion.span
-                  className="category-arrow"
-                  animate={{ rotate: isSelected ? 180 : 0 }}
-                  transition={{ duration: 0.3 }}
-                >
-                  ▼
-                </motion.span>
               </motion.div>
+            );
+          })}
+        </motion.div>
 
-              <AnimatePresence>
-                {shouldShowTags && (
-                  <motion.div
-                    className="tech-tags"
-                    initial="hidden"
-                    animate="visible"
-                    exit="hidden"
-                    variants={containerVariants}
-                  >
-                    {categorizedTech[category].map((tech) => (
-                      <motion.div
-                        key={`${category}-${tech.name}`}
-                        className="tag-wrapper"
-                        variants={tagVariants}
-                        layout
+        {/* Right: Selected category's technologies */}
+        <motion.div className="tech-values-panel">
+          <AnimatePresence mode="wait">
+            {selectedCategory ? (
+              <motion.div
+                key={selectedCategory}
+                className="tech-tags"
+                initial="hidden"
+                animate="visible"
+                exit="hidden"
+                variants={containerVariants}
+              >
+                {categorizedTech[selectedCategory].map((tech) => {
+                  const config = getCategoryConfig(selectedCategory);
+                  return (
+                    <motion.div
+                      key={`${selectedCategory}-${tech.name}`}
+                      className="tag-wrapper"
+                      variants={tagVariants}
+                      layout
+                    >
+                      <motion.span
+                        className="tag"
+                        style={{
+                          borderColor: config.color,
+                        }}
+                        whileHover={{
+                          scale: 1.15,
+                          y: -5,
+                          background: config.gradient,
+                          color: '#ffffff',
+                          borderColor: 'transparent',
+                          boxShadow: `0 8px 30px ${config.color}55`,
+                          transition: { duration: 0.2 },
+                        }}
+                        whileTap={{ scale: 0.95 }}
                       >
-                        <motion.span
-                          className="tag"
-                          style={{
-                            borderColor: config.color,
-                          }}
-                          whileHover={{
-                            scale: 1.15,
-                            y: -5,
-                            background: config.gradient,
-                            color: '#ffffff',
-                            borderColor: 'transparent',
-                            boxShadow: `0 8px 30px ${config.color}55`,
-                            transition: { duration: 0.2 },
-                          }}
-                          whileTap={{ scale: 0.95 }}
-                        >
-                          {tech.name}
-                          <motion.div
-                            className="tag-glow"
-                            style={{ background: `radial-gradient(circle, ${config.color}40 0%, transparent 70%)` }}
-                            initial={{ opacity: 0 }}
-                            whileHover={{ opacity: 1 }}
-                          />
-                        </motion.span>
-                      </motion.div>
-                    ))}
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </motion.div>
-          );
-        })}
-      </motion.div>
+                        {tech.name}
+                        <motion.div
+                          className="tag-glow"
+                          style={{ background: `radial-gradient(circle, ${config.color}40 0%, transparent 70%)` }}
+                          initial={{ opacity: 0 }}
+                          whileHover={{ opacity: 1 }}
+                        />
+                      </motion.span>
+                    </motion.div>
+                  );
+                })}
+              </motion.div>
+            ) : (
+              <motion.div
+                key="placeholder"
+                className="tech-placeholder"
+                initial={{ opacity: 0 }}
+                animate={{ opacity: 1 }}
+                exit={{ opacity: 0 }}
+              >
+                <p>{t.sections.technologiesPlaceholder}</p>
+              </motion.div>
+            )}
+          </AnimatePresence>
+        </motion.div>
+      </div>
     </motion.section>
   );
 };

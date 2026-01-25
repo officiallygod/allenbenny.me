@@ -18,6 +18,7 @@ export const translations: Record<
     sections: {
       about: string;
       technologies: string;
+      technologiesPlaceholder: string;
       experience: string;
       education: string;
       professionalExperience: string;
@@ -80,6 +81,7 @@ export const translations: Record<
     sections: {
       about: 'About Me',
       technologies: 'Tech Stack',
+      technologiesPlaceholder: 'Select a category to view technologies',
       experience: 'Education & Experience',
       education: 'Education',
       professionalExperience: 'Professional Experience',
@@ -141,6 +143,7 @@ export const translations: Record<
     sections: {
       about: 'Über mich',
       technologies: 'Tech-Stack',
+      technologiesPlaceholder: 'Wählen Sie eine Kategorie, um Technologien anzuzeigen',
       experience: 'Ausbildung & Erfahrung',
       education: 'Ausbildung',
       professionalExperience: 'Berufserfahrung',
