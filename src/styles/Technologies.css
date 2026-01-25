@@ -8,44 +8,55 @@
   margin: 0 auto;
 }
 
-.tech-categories {
+.tech-container {
   display: flex;
-  flex-direction: column;
   gap: 30px;
   max-width: 1200px;
-  margin: 0 auto;
-  margin-top: 50px;
+  margin: 50px auto 0;
+  min-height: 400px;
 }
 
-.category-section {
-  background: var(--bg-surface, #ffffff);
-  border-radius: 20px;
-  padding: 8px;
-  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
-  transition: all 0.3s ease;
-  border: 2px solid transparent;
+.tech-categories-sidebar {
+  flex: 0 0 280px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
-.category-section.selected {
-  box-shadow: 0 8px 35px rgba(15, 23, 42, 0.15);
-}
-
-.category-header {
+.category-item {
   display: flex;
   align-items: center;
-  gap: 15px;
-  padding: 20px 30px;
+  gap: 12px;
+  padding: 16px 20px;
   border-radius: 14px;
   cursor: pointer;
   transition: all 0.3s ease;
   border: 2px solid;
   font-weight: 600;
-  font-size: 1.2rem;
+  font-size: 1rem;
   user-select: none;
+  background: var(--bg-surface, #ffffff);
+  box-shadow: 0 2px 10px rgba(15, 23, 42, 0.06);
+}
+
+.category-item.selected {
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.12);
+}
+
+.tech-values-panel {
+  flex: 1;
+  background: var(--bg-surface, #ffffff);
+  border-radius: 20px;
+  padding: 30px;
+  box-shadow: 0 4px 20px rgba(15, 23, 42, 0.08);
+  min-height: 400px;
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
 .category-emoji {
-  font-size: 1.8rem;
+  font-size: 1.4rem;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -55,31 +66,38 @@
 .category-name {
   flex: 1;
   letter-spacing: 0.3px;
+  font-size: 0.95rem;
 }
 
 .category-count {
   background: rgba(255, 255, 255, 0.2);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.95rem;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 0.85rem;
   font-weight: 600;
-  min-width: 40px;
+  min-width: 32px;
   text-align: center;
   backdrop-filter: blur(4px);
-}
-
-.category-arrow {
-  font-size: 1rem;
-  transition: transform 0.3s ease;
-  opacity: 0.8;
 }
 
 .tech-tags {
   display: flex;
   flex-wrap: wrap;
   gap: 15px;
-  padding: 20px 25px;
-  margin-top: 8px;
+  width: 100%;
+  align-content: flex-start;
+}
+
+.tech-placeholder {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--text-secondary, #64748b);
+  font-size: 1.1rem;
+  text-align: center;
+  padding: 40px;
 }
 
 .tag-wrapper {
@@ -120,33 +138,58 @@
     padding: 80px 20px;
   }
 
-  .tech-categories {
-    gap: 25px;
+  .tech-container {
+    flex-direction: column;
+    gap: 20px;
   }
 
-  .category-header {
-    padding: 16px 24px;
-    font-size: 1.1rem;
-    gap: 12px;
+  .tech-categories-sidebar {
+    flex: 1;
+    flex-direction: row;
+    overflow-x: auto;
+    gap: 10px;
+    padding-bottom: 10px;
+  }
+
+  .category-item {
+    padding: 12px 18px;
+    font-size: 0.9rem;
+    gap: 10px;
+    flex-shrink: 0;
+    min-width: fit-content;
   }
 
   .category-emoji {
-    font-size: 1.6rem;
+    font-size: 1.2rem;
+  }
+
+  .category-name {
+    font-size: 0.85rem;
   }
 
   .category-count {
-    padding: 5px 12px;
-    font-size: 0.9rem;
+    padding: 3px 8px;
+    font-size: 0.75rem;
+    min-width: 28px;
+  }
+
+  .tech-values-panel {
+    padding: 20px;
+    min-height: 300px;
   }
 
   .tech-tags {
     gap: 12px;
-    padding: 16px 20px;
   }
 
   .tag {
     padding: 10px 22px;
     font-size: 0.9rem;
+  }
+
+  .tech-placeholder {
+    font-size: 1rem;
+    padding: 30px;
   }
 }
 
@@ -155,37 +198,50 @@
     padding: 60px 15px;
   }
 
-  .tech-categories {
-    gap: 20px;
+  .tech-container {
+    gap: 16px;
   }
 
-  .category-header {
-    padding: 14px 20px;
-    font-size: 1rem;
-    gap: 10px;
+  .tech-categories-sidebar {
+    gap: 8px;
+  }
+
+  .category-item {
+    padding: 10px 16px;
+    font-size: 0.85rem;
+    gap: 8px;
   }
 
   .category-emoji {
-    font-size: 1.4rem;
+    font-size: 1.1rem;
+  }
+
+  .category-name {
+    font-size: 0.8rem;
   }
 
   .category-count {
-    padding: 4px 10px;
-    font-size: 0.85rem;
-    min-width: 35px;
+    padding: 2px 6px;
+    font-size: 0.7rem;
+    min-width: 24px;
   }
 
-  .category-arrow {
-    font-size: 0.9rem;
+  .tech-values-panel {
+    padding: 16px;
+    min-height: 250px;
   }
 
   .tech-tags {
     gap: 10px;
-    padding: 14px 16px;
   }
 
   .tag {
     padding: 8px 18px;
     font-size: 0.85rem;
+  }
+
+  .tech-placeholder {
+    font-size: 0.95rem;
+    padding: 20px;
   }
 }
