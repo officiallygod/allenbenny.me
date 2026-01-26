@@ -283,14 +283,14 @@
     gap: 8px;
   }
 
-  .theme-toggle,
-  .language-toggle {
+  .theme-toggle {
     padding: 8px 14px;
     font-size: 0.85rem;
   }
 
   .language-toggle {
     padding: 8px 10px;
+    font-size: 0.85rem;
   }
 
   .hero-name {
@@ -382,14 +382,14 @@
     gap: 6px;
   }
 
-  .theme-toggle,
-  .language-toggle {
+  .theme-toggle {
     padding: 7px 12px;
     font-size: 0.8rem;
   }
 
   .language-toggle {
     padding: 7px 9px;
+    font-size: 0.8rem;
   }
 
   .hero-name {
