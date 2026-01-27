@@ -31,6 +31,7 @@ const Resume: React.FC = () => {
 
   // Use language-specific resume
   const resumePath = language === 'en' ? '/documents/resume-en.pdf' : '/documents/resume.pdf';
+  const downloadFilename = language === 'en' ? 'Allen_Benny_Resume_EN.pdf' : 'Allen_Benny_Resume_DE.pdf';
 
   return (
     <>
@@ -82,7 +83,7 @@ const Resume: React.FC = () => {
                 <div className="resume-viewer-actions">
                   <a
                     href={resumePath}
-                    download="Allen_Benny_Resume.pdf"
+                    download={downloadFilename}
                     className="resume-download-btn"
                     onClick={(e) => e.stopPropagation()}
                     aria-label={t.resume.download}
