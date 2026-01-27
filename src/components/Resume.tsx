@@ -6,7 +6,7 @@ import '../styles/Resume.css';
 
 const Resume: React.FC = () => {
   const { isResumeOpen, openResume, closeResume } = useResume();
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
 
   // Prevent body scroll when modal is open
   useEffect(() => {
@@ -28,6 +28,9 @@ const Resume: React.FC = () => {
   const handleCloseResume = () => {
     closeResume();
   };
+
+  // Use language-specific resume
+  const resumePath = language === 'en' ? '/documents/resume-en.pdf' : '/documents/resume.pdf';
 
   return (
     <>
@@ -78,7 +81,7 @@ const Resume: React.FC = () => {
                 <h3 className="resume-viewer-title">{t.resume.modalTitle}</h3>
                 <div className="resume-viewer-actions">
                   <a
-                    href="/documents/resume.pdf"
+                    href={resumePath}
                     download="Allen_Benny_Resume.pdf"
                     className="resume-download-btn"
                     onClick={(e) => e.stopPropagation()}
@@ -97,7 +100,7 @@ const Resume: React.FC = () => {
               </div>
               <div className="resume-viewer-content">
                 <iframe
-                  src="/documents/resume.pdf"
+                  src={resumePath}
                   className="resume-iframe"
                   title={t.resume.modalTitle}
                 />
