@@ -31,6 +31,7 @@ export interface Project {
   title: string;
   description: string;
   link?: string;
+  githubLink?: string;
   date: string;
 }
 
@@ -197,6 +198,13 @@ export const profileData: Record<Language, ProfileData> = {
         description: 'Published Flutter package on Pub.dev providing reusable loading animations and components for Flutter applications.',
         link: 'https://pub.dev/packages/flutter_loading_kit/',
         date: 'May 2021',
+      },
+      {
+        title: 'Recalla',
+        description: 'A modern Progressive Web App (PWA) for learning and remembering words through interactive games. Features word management, a match game, AI-powered spaced repetition, gamification (points, combos, levels), and offline support.',
+        link: 'https://officiallygod.github.io/Recalla/',
+        githubLink: 'https://github.com/officiallygod/Recalla',
+        date: '2025',
       },
     ],
     certifications: [
@@ -380,6 +388,13 @@ export const profileData: Record<Language, ProfileData> = {
         description: 'Flutter-Paket auf Pub.dev veröffentlicht, das wiederverwendbare Ladeanimationen und Komponenten bietet.',
         link: 'https://pub.dev/packages/flutter_loading_kit/',
         date: 'Mai 2021',
+      },
+      {
+        title: 'Recalla',
+        description: 'Eine moderne Progressive Web App (PWA) zum Lernen und Merken von Wörtern durch interaktive Spiele. Mit Wortverwaltung, einem Match-Spiel, KI-gestützter Spaced-Repetition, Gamification (Punkte, Combos, Level) und Offline-Unterstützung.',
+        link: 'https://officiallygod.github.io/Recalla/',
+        githubLink: 'https://github.com/officiallygod/Recalla',
+        date: '2025',
       },
     ],
     certifications: [
