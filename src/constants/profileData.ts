@@ -81,7 +81,7 @@ export const profileData: Record<Language, ProfileData> = {
       'MSc Computer Science (Informatik) student at KIT (Karlsruhe Institute of Technology) with 3+ years of hands-on professional experience building scalable onboarding systems and AI-powered features at Newfold Digital. Specialized in PHP, React, JavaScript, Node.js, WordPress, and TypeScript.',
       'Led development of open-source WordPress onboarding serving 1000+ daily users, integrated AI features from prompts, and optimized performance with advanced React patterns (Memo, caching). Represented Bluehost at WordCamp Sylhet 2023 and awarded Edward De Bono Award for innovation.',
       "I'm currently looking for a Werkstudent opportunity (up to 20 hours per week) where I can support my studies while continuing to grow professionally. With 3+ years of practical experience, I enjoy applying my skills to real-world challenges and learning from experienced teams.",
-      "I'm particularly interested in a long-term Werkstudentenstelle throughout my master's, where I can contribute reliably, gain deeper insight into the German work environment, and steadily strengthen my skills in software development—Full Stack, Backend, Frontend, Web, or App Development.",
+      "I'm particularly interested in a long-term Werkstudentenstelle throughout my master's, where I can contribute reliably, gain deeper insight into the German work environment, and steadily strengthen my skills in software development: Full Stack, Backend, Frontend, Web, or App Development.",
     ],
     technologies: [
       { name: 'PHP', category: 'Language' },
@@ -271,7 +271,7 @@ export const profileData: Record<Language, ProfileData> = {
     bio: [
       'MSc-Informatikstudent am KIT (Karlsruher Institut für Technologie) mit rund drei Jahren praktischer Berufserfahrung in skalierbaren Onboarding-Systemen und KI-Features bei Newfold Digital. Spezialisiert auf PHP, React, JavaScript, Node.js, WordPress und TypeScript.',
       'Leitete die Entwicklung eines Open-Source-WordPress-Onboardings für über 1000 tägliche Nutzer, integrierte KI-Features aus Prompts und optimierte die Performance mit fortgeschrittenen React-Patterns (Memo, Caching). Repräsentierte Bluehost auf der WordCamp Sylhet 2023 und erhielt den Edward De Bono Award für Innovation.',
-      'Ich suche derzeit eine Werkstudentenstelle (bis zu 20 Stunden pro Woche), um mein Studium zu unterstützen und gleichzeitig praktische Erfahrung zu sammeln. Mit rund drei Jahren Berufserfahrung arbeite ich gerne an realen Projekten und lerne von erfahrenen Teams. Während meines Masterstudiums möchte ich langfristig als Werkstudent arbeiten, den deutschen Arbeitsmarkt besser kennenlernen und meine Fähigkeiten in der Softwareentwicklung – Full Stack, Backend, Frontend, Web oder App Development – Schritt für Schritt ausbauen.',
+      'Ich suche derzeit eine Werkstudentenstelle (bis zu 20 Stunden pro Woche), um mein Studium zu unterstützen und gleichzeitig praktische Erfahrung zu sammeln. Mit rund drei Jahren Berufserfahrung arbeite ich gerne an realen Projekten und lerne von erfahrenen Teams. Während meines Masterstudiums möchte ich langfristig als Werkstudent arbeiten, den deutschen Arbeitsmarkt besser kennenlernen und meine Fähigkeiten in der Softwareentwicklung: Full Stack, Backend, Frontend, Web oder App Development – Schritt für Schritt ausbauen.',
     ],
     technologies: [
       { name: 'PHP', category: 'Language' },
