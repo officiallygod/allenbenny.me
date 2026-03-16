@@ -1,25 +1,24 @@
 .about {
-  padding: 100px 20px;
+  padding: 100px 24px;
   width: 100%;
+  background: var(--bg);
 }
 
 .about .section-title {
-  max-width: 900px;
+  max-width: 860px;
   margin: 0 auto;
 }
 
 .about-content {
-  background: var(--bg-surface, #ffffff);
-  border-radius: 30px;
-  padding: 60px;
-  box-shadow: 0 12px 30px rgba(15, 23, 42, 0.08);
-  border: 1px solid #e2e8f0;
-  max-width: 900px;
-  margin: 0 auto;
-  width: 100%;
+  background: var(--surface);
+  border-radius: var(--radius-xl);
+  padding: 52px;
+  box-shadow: var(--shadow-md);
+  border: 1.5px solid var(--border);
+  max-width: 860px;
+  margin: 48px auto 0;
   position: relative;
   overflow: hidden;
-  margin-top: 50px;
 }
 
 .about-content::before {
@@ -28,15 +27,15 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 4px;
-  background: linear-gradient(90deg, #2563eb, #1d4ed8);
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #a5b4fc);
 }
 
 .about p {
-  margin-bottom: 24px;
-  font-size: 1.15rem;
-  color: #334155;
-  line-height: 1.8;
+  margin-bottom: 22px;
+  font-size: 1.08rem;
+  color: var(--text-secondary);
+  line-height: 1.82;
   text-align: left;
 }
 
@@ -45,36 +44,22 @@
 }
 
 .about-decoration {
-  height: 4px;
-  background: linear-gradient(90deg, #2563eb, #1d4ed8);
-  border-radius: 2px;
-  margin: 40px auto 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), #a5b4fc);
+  border-radius: var(--radius-full);
+  margin: 36px auto 0;
+  max-width: 100px;
 }
 
 @media (max-width: 768px) {
-  .about {
-    padding: 80px 20px;
-  }
-
-  .about-content {
-    padding: 40px 30px;
-  }
-
-  .about p {
-    font-size: 1.05rem;
-  }
+  .about { padding: 80px 20px; }
+  .about-content { padding: 36px 28px; }
+  .about p { font-size: 1rem; }
 }
 
 @media (max-width: 480px) {
-  .about {
-    padding: 60px 15px;
-  }
-
-  .about-content {
-    padding: 30px 20px;
-  }
-
-  .about p {
-    font-size: 1rem;
-  }
+  .about { padding: 60px 16px; }
+  .about-content { padding: 28px 20px; }
+  .about p { font-size: 0.96rem; }
 }
+

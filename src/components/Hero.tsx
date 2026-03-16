@@ -9,7 +9,7 @@ import '../styles/Hero.css';
 import OptimizedBackground from './OptimizedBackground';
 
 const Hero: React.FC = () => {
-  const { name, title, tagline, socialLinks } = useProfile();
+  const { name, tagline, socialLinks } = useProfile();
   const { openResume } = useResume();
   const { theme, toggleTheme } = useTheme();
   const isDarkMode = theme === 'dark';
@@ -18,22 +18,24 @@ const Hero: React.FC = () => {
   const { language, toggleLanguage, t } = useLanguage();
   const languageFlag = language === 'en' ? '🇬🇧' : '🇩🇪';
   const currentLanguage = language === 'en' ? t.languageToggle.english : t.languageToggle.german;
+  const chips = [t.hero.chip1, t.hero.chip2, t.hero.chip3];
 
   return (
     <motion.section
       className="hero"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ duration: 0.6 }}
+      transition={{ duration: 0.5 }}
     >
       <OptimizedBackground />
 
+      {/* Controls */}
       <div className="hero-controls">
         <motion.button
           type="button"
           className="theme-toggle"
           onClick={toggleTheme}
-          whileHover={{ scale: 1.03 }}
+          whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.97 }}
           aria-label={`Switch to ${isDarkMode ? 'light' : 'dark'} mode`}
           aria-pressed={isDarkMode}
@@ -45,55 +47,74 @@ const Hero: React.FC = () => {
           type="button"
           className="language-toggle"
           onClick={toggleLanguage}
-          whileHover={{ scale: 1.05 }}
-          whileTap={{ scale: 0.95 }}
+          whileHover={{ scale: 1.04 }}
+          whileTap={{ scale: 0.96 }}
           aria-label={`${t.languageToggle.label}: ${currentLanguage}`}
           title={`${t.languageToggle.label}: ${currentLanguage}`}
         >
-          <span className="language-flag" aria-hidden="true">
-            {languageFlag}
-          </span>
+          <span className="language-flag" aria-hidden="true">{languageFlag}</span>
         </motion.button>
       </div>
-      
+
+      {/* Content */}
       <div className="hero-content-wrapper">
-        {/* Left side - Main content */}
+
+        {/* Left – main content */}
         <motion.div
           className="hero-main"
-          initial={{ opacity: 0, x: -30 }}
+          initial={{ opacity: 0, x: -24 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
+          transition={{ duration: 0.7, delay: 0.15 }}
         >
-          <motion.h1 
-            className="hero-name"
-            initial={{ opacity: 0, y: 20 }}
+          {/* Availability badge */}
+          <motion.div
+            className="hero-availability"
+            initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.3 }}
+            transition={{ duration: 0.5, delay: 0.2 }}
+          >
+            <span className="availability-dot" aria-hidden="true" />
+            {t.hero.availability}
+          </motion.div>
+
+          {/* Name */}
+          <motion.h1
+            className="hero-name"
+            initial={{ opacity: 0, y: 18 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.65, delay: 0.3 }}
           >
             {name}
           </motion.h1>
-          <motion.h2
-            className="hero-title"
-            initial={{ opacity: 0, y: 20 }}
+
+          {/* Role chips */}
+          <motion.div
+            className="hero-chips"
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.4 }}
+            transition={{ duration: 0.55, delay: 0.4 }}
           >
-            {title}
-          </motion.h2>
+            {chips.map((chip) => (
+              <span key={chip} className="hero-chip">{chip}</span>
+            ))}
+          </motion.div>
+
+          {/* Tagline */}
           <motion.p
             className="hero-tagline"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.5 }}
+            transition={{ duration: 0.55, delay: 0.5 }}
           >
             {tagline}
           </motion.p>
 
+          {/* CTA buttons */}
           <motion.div
             className="hero-cta"
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 12 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.6 }}
+            transition={{ duration: 0.55, delay: 0.6 }}
           >
             <motion.a
               href="#contact"
@@ -122,11 +143,12 @@ const Hero: React.FC = () => {
             </motion.button>
           </motion.div>
 
+          {/* Social links */}
           <motion.div
             className="social-links"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.7 }}
+            transition={{ duration: 0.5, delay: 0.7 }}
           >
             {socialLinks.map((link, index) => (
               <motion.a
@@ -137,9 +159,10 @@ const Hero: React.FC = () => {
                 className="social-link"
                 whileHover={{ y: -3 }}
                 whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: 10 }}
+                initial={{ opacity: 0, y: 8 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.8 + index * 0.1 }}
+                transition={{ delay: 0.75 + index * 0.08 }}
+                aria-label={link.name}
               >
                 <SocialIcon type={link.icon} className="social-icon" />
               </motion.a>
@@ -147,44 +170,46 @@ const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* Right side - Stats/Features */}
+        {/* Right – stat cards */}
         <motion.div
           className="hero-side"
-          initial={{ opacity: 0, x: 30 }}
+          initial={{ opacity: 0, x: 24 }}
           animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.8, delay: 0.4 }}
+          transition={{ duration: 0.7, delay: 0.35 }}
         >
-          <motion.div 
-            className="stat-card"
-            whileHover={{ y: -5 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className="stat-icon">💼</div>
-            <div className="stat-label">{t.hero.statExperience}</div>
-            <div className="stat-value">{t.hero.statExperienceValue}</div>
-          </motion.div>
-          <motion.div 
-            className="stat-card"
-            whileHover={{ y: -5 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className="stat-icon">🚀</div>
-            <div className="stat-label">{t.hero.statProjects}</div>
-            <div className="stat-value">{t.hero.statProjectsValue}</div>
-          </motion.div>
-          <motion.div 
-            className="stat-card"
-            whileHover={{ y: -5 }}
-            transition={{ duration: 0.2 }}
-          >
-            <div className="stat-icon">⚡</div>
-            <div className="stat-label">{t.hero.statFocus}</div>
-            <div className="stat-value">{t.hero.statFocusValue}</div>
-          </motion.div>
+          {[
+            { icon: '💼', label: t.hero.statExperience, value: t.hero.statExperienceValue },
+            { icon: '🚀', label: t.hero.statProjects,   value: t.hero.statProjectsValue   },
+            { icon: '⚡', label: t.hero.statFocus,      value: t.hero.statFocusValue      },
+          ].map((stat, i) => (
+            <motion.div
+              key={stat.label}
+              className="stat-card"
+              whileHover={{ y: -4 }}
+              transition={{ duration: 0.2 }}
+              initial={{ opacity: 0, y: 16 }}
+              animate={{ opacity: 1, y: 0 }}
+              style={{ transitionDelay: `${0.45 + i * 0.1}s` } as React.CSSProperties}
+            >
+              <div className="stat-icon" aria-hidden="true">{stat.icon}</div>
+              <div className="stat-info">
+                <div className="stat-label">{stat.label}</div>
+                <div className="stat-value">{stat.value}</div>
+              </div>
+            </motion.div>
+          ))}
         </motion.div>
+
+      </div>
+
+      {/* Scroll indicator */}
+      <div className="hero-scroll" aria-hidden="true">
+        <span className="hero-scroll-text">Scroll</span>
+        <div className="hero-scroll-line" />
       </div>
     </motion.section>
   );
 };
 
 export default React.memo(Hero);
+
