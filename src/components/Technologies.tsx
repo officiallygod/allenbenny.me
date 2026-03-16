@@ -16,7 +16,7 @@ const CATEGORY_CONFIG: Record<string, { color: string; gradient: string; emoji: 
 const Technologies: React.FC = () => {
   const { technologies } = useProfile();
   const { t } = useLanguage();
-  const [selectedCategory, setSelectedCategory] = useState<string | null>(null);
+  const [selectedCategory, setSelectedCategory] = useState<string | null>('Language');
   const [hoveredCategory, setHoveredCategory] = useState<string | null>(null);
 
   // Group technologies by category

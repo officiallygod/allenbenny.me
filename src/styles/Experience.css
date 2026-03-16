@@ -71,6 +71,23 @@
   cursor: pointer;
 }
 
+.card-link-indicator {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 15px;
+  height: 15px;
+  color: #94a3b8;
+  opacity: 0.6;
+  transition: opacity 0.2s ease, color 0.2s ease;
+  pointer-events: none;
+}
+
+.experience-card:hover .card-link-indicator {
+  opacity: 1;
+  color: #2563eb;
+}
+
 .experience-card:hover {
   box-shadow: 0 15px 40px rgba(37, 99, 235, 0.2);
 }

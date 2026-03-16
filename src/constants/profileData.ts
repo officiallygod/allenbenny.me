@@ -120,7 +120,7 @@ export const profileData: Record<Language, ProfileData> = {
       {
         company: 'Newfold Digital',
         role: 'Software Development Engineer (Full Stack)',
-        duration: 'Jan 2022 – Present',
+        duration: 'Jan 2022 – Apr 2025',
         description: 'Built open-source modern WordPress onboarding (PHP, React) serving 1000+ users daily. Developed an AI-powered onboarding experience from prompts. Created task systems & cron jobs for plugin installation automation. Optimised performance and reliability with advanced React features (Memo, caching) for responsive onboarding. Developed WordPress template drawer. Top contributor to team codebase. Represented Bluehost at WordCamp Sylhet 2023. Awarded Edward De Bono Award for innovation.',
         link: 'https://drive.google.com/file/d/1In551-F4hVtxegXlahdfrvepg8qZf-uL/view?usp=sharing',
       },
@@ -310,7 +310,7 @@ export const profileData: Record<Language, ProfileData> = {
       {
         company: 'Newfold Digital',
         role: 'Software Development Engineer (Full Stack)',
-        duration: 'Jan 2022 – Heute',
+        duration: 'Jan 2022 – Apr 2025',
         description: 'Entwickelte ein modernes Open-Source-WordPress-Onboarding (PHP, React) für über 1000 Nutzer täglich. Baute KI-gestützte Onboarding-Erlebnisse aus Prompts. Entwickelte Task-Systeme und Cron-Jobs zur Plugin-Installation. Optimierte Performance und Stabilität mit fortgeschrittenen React-Features (Memo, Caching). Entwickelte einen WordPress-Template-Drawer. Top-Beitragender im Team. Repräsentierte Bluehost auf der WordCamp Sylhet 2023. Ausgezeichnet mit dem Edward De Bono Award für Innovation.',
         link: 'https://drive.google.com/file/d/1In551-F4hVtxegXlahdfrvepg8qZf-uL/view?usp=sharing',
       },

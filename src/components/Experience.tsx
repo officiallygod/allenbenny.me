@@ -60,6 +60,13 @@ const Experience: React.FC = () => {
               {education.map((edu, index) => {
                 const CardContent = (
                   <>
+                    {edu.link && (
+                      <svg className="card-link-indicator" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                        <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                        <polyline points="15 3 21 3 21 9" />
+                        <line x1="10" y1="14" x2="21" y2="3" />
+                      </svg>
+                    )}
                     <div className="card-header">
                       <h4 className="company">{edu.institution}</h4>
                       <span className="duration">{edu.duration}</span>
@@ -115,6 +122,13 @@ const Experience: React.FC = () => {
                   const exp = experience[0];
                   const CardContent = (
                     <>
+                      {exp.link && (
+                        <svg className="card-link-indicator" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                      )}
                       <div className="card-header">
                         <h4 className="company">{exp.company}</h4>
                         <span className="duration">{exp.duration}</span>
@@ -161,6 +175,13 @@ const Experience: React.FC = () => {
                 {experience.slice(1).map((exp, index) => {
                   const CardContent = (
                     <>
+                      {exp.link && (
+                        <svg className="card-link-indicator" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                          <path d="M18 13v6a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h6" />
+                          <polyline points="15 3 21 3 21 9" />
+                          <line x1="10" y1="14" x2="21" y2="3" />
+                        </svg>
+                      )}
                       <div className="card-header">
                         <h4 className="company">{exp.company}</h4>
                         <span className="duration">{exp.duration}</span>
