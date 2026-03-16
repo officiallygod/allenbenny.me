@@ -36,6 +36,7 @@ module.exports = {
       patterns: [
         { from: 'public/favicon.svg', to: 'favicon.svg' },
         { from: 'public/documents', to: 'documents' },
+        { from: 'node_modules/pdfjs-dist/build/pdf.worker.min.mjs', to: 'pdf.worker.min.mjs' },
       ],
     }),
   ],

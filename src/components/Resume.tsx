@@ -1,12 +1,20 @@
-import React, { useEffect } from 'react';
+import React, { useCallback, useEffect, useRef, useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { Document, Page, pdfjs } from 'react-pdf';
+import 'react-pdf/dist/Page/AnnotationLayer.css';
+import 'react-pdf/dist/Page/TextLayer.css';
 import { useResume } from '../contexts/ResumeContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/Resume.css';
 
+pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+
 const Resume: React.FC = () => {
   const { isResumeOpen, openResume, closeResume } = useResume();
   const { t, language } = useLanguage();
+  const [numPages, setNumPages] = useState<number>(0);
+  const [pageWidth, setPageWidth] = useState<number>(800);
+  const contentRef = useRef<HTMLDivElement>(null);
 
   // Prevent body scroll when modal is open
   useEffect(() => {
@@ -14,20 +22,37 @@ const Resume: React.FC = () => {
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
 
-      // Cleanup function - restore original overflow value
       return () => {
         document.body.style.overflow = originalOverflow;
       };
     }
   }, [isResumeOpen]);
 
-  const handleOpenResume = () => {
-    openResume();
+  // Measure container width so the pages fill the viewer
+  const measureWidth = useCallback(() => {
+    if (contentRef.current) {
+      setPageWidth(Math.floor(contentRef.current.clientWidth) - 32);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (!isResumeOpen) return;
+    // Small delay to let the modal render and measure correctly
+    const id = window.setTimeout(measureWidth, 50);
+    window.addEventListener('resize', measureWidth);
+    return () => {
+      window.clearTimeout(id);
+      window.removeEventListener('resize', measureWidth);
+    };
+  }, [isResumeOpen, measureWidth]);
+
+  const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
+    setNumPages(numPages);
+    measureWidth();
   };
 
-  const handleCloseResume = () => {
-    closeResume();
-  };
+  const handleOpenResume = () => openResume();
+  const handleCloseResume = () => closeResume();
 
   // Use language-specific resume
   const resumePath = language === 'en' ? '/documents/resume-en.pdf' : '/documents/resume.pdf';
@@ -83,6 +108,16 @@ const Resume: React.FC = () => {
                 <div className="resume-viewer-actions">
                   <a
                     href={resumePath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="resume-newtab-btn"
+                    onClick={(e) => e.stopPropagation()}
+                    aria-label="Open in new tab"
+                  >
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                  <a
+                    href={resumePath}
                     download={downloadFilename}
                     className="resume-download-btn"
                     onClick={(e) => e.stopPropagation()}
@@ -99,12 +134,40 @@ const Resume: React.FC = () => {
                   </button>
                 </div>
               </div>
-              <div className="resume-viewer-content">
-                <iframe
-                  src={resumePath}
-                  className="resume-iframe"
-                  title={t.resume.modalTitle}
-                />
+
+              <div className="resume-viewer-content" ref={contentRef}>
+                <Document
+                  file={resumePath}
+                  onLoadSuccess={onDocumentLoadSuccess}
+                  loading={
+                    <div className="resume-loading">
+                      <div className="resume-spinner" aria-label="Loading" />
+                    </div>
+                  }
+                  error={
+                    <div className="resume-error">
+                      <p>Failed to load PDF.</p>
+                      <a
+                        href={resumePath}
+                        download={downloadFilename}
+                        className="resume-download-btn"
+                      >
+                        <span aria-hidden="true">⬇</span> {t.resume.download}
+                      </a>
+                    </div>
+                  }
+                >
+                  {Array.from({ length: numPages }, (_, i) => (
+                    <Page
+                      key={`page_${i + 1}`}
+                      pageNumber={i + 1}
+                      width={pageWidth > 0 ? pageWidth : undefined}
+                      renderTextLayer={true}
+                      renderAnnotationLayer={true}
+                      className="resume-pdf-page"
+                    />
+                  ))}
+                </Document>
               </div>
             </motion.div>
           </>
