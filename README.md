@@ -1,4 +1,4 @@
-# allenbenny.me
+# Allen Benny
 
 Personal portfolio website built with React, Redux, and Framer Motion.
 
