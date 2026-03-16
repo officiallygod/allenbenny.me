@@ -114,8 +114,8 @@ export const translations: Record<
       monthLocale: 'en-US',
     },
     contact: {
-      intro: 'Seeking Werkstudent opportunities (15-20h/week) in Karlsruhe and surrounding areas.',
-      introEmphasis: "Let's discuss how I can contribute to your team!",
+      intro: "I'm currently looking for a Werkstudent opportunity (up to 20h/week) in Karlsruhe and surrounding areas—a long-term role throughout my master's where I can contribute reliably and grow.",
+      introEmphasis: "With 3+ years of practical experience, I'd love to discuss how I can support your team!",
       viewPortfolio: 'View Portfolio',
       personalSite: 'Personal Site',
       githubHighlight: 'One of the top contributors at Newfold Digital • Check out my open-source work',
@@ -180,8 +180,8 @@ export const translations: Record<
       monthLocale: 'de-DE',
     },
     contact: {
-      intro: 'Suche nach Werkstudentenstellen (15–20 Std./Woche) in Karlsruhe und Umgebung.',
-      introEmphasis: 'Lass uns besprechen, wie ich dein Team unterstützen kann!',
+      intro: 'Ich suche derzeit eine Werkstudentenstelle (bis zu 20 Std./Woche) in Karlsruhe und Umgebung – langfristig während meines Masterstudiums, um zuverlässig beizutragen und zu wachsen.',
+      introEmphasis: 'Mit rund 3 Jahren Praxiserfahrung freue ich mich darauf, dein Team zu unterstützen!',
       viewPortfolio: 'Portfolio ansehen',
       personalSite: 'Persönliche Seite',
       githubHighlight: 'Einer der Top-Mitwirkenden bei Newfold Digital • Sieh dir meine Open-Source-Arbeit an',
