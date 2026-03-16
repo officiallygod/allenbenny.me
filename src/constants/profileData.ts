@@ -75,12 +75,12 @@ export interface ProfileData {
 export const profileData: Record<Language, ProfileData> = {
   en: {
     name: 'Allen Benny',
-    title: 'MSc Computer Science Student | Full Stack Developer | Seeking Werkstudent Role',
-    tagline: '3+ years building scalable systems • AI & WordPress onboarding at Newfold Digital • Available 15-20h/week in Karlsruhe',
+    title: 'MSc Computer Science Student at KIT | Full Stack Developer | Werkstudent (up to 20h/week)',
+    tagline: '3+ years building scalable systems • AI & WordPress onboarding at Newfold Digital • Seeking Werkstudent role in Karlsruhe (up to 20h/week)',
     bio: [
-      'MSc Computer Science student at KIT (Karlsruhe Institute of Technology) with 3+ years of experience building scalable onboarding systems and AI-powered features at Newfold Digital. Specialised in PHP, React, JavaScript, Node.js, WordPress, and TypeScript.',
+      'MSc Computer Science (Informatik) student at KIT (Karlsruhe Institute of Technology) with around 3 years of hands-on professional experience building scalable onboarding systems and AI-powered features at Newfold Digital. Specialised in PHP, React, JavaScript, Node.js, WordPress, and TypeScript.',
       'Led development of open-source WordPress onboarding serving 1000+ daily users, integrated AI features from prompts, and optimised performance with advanced React patterns (Memo, caching). Represented Bluehost at WordCamp Sylhet 2023 and awarded Edward De Bono Award for innovation.',
-      'Fast learner with strong communication, teamwork, and problem-solving skills. Actively seeking a Werkstudent position (15-20 hours/week) in software development—Full Stack, Backend, Frontend, Web, or App Development.',
+      "I'm currently looking for a Werkstudent opportunity (up to 20 hours per week) where I can support my studies while continuing to grow professionally. With around three years of practical experience, I enjoy applying my skills to real-world challenges and learning from experienced teams. I'm particularly interested in a long-term Werkstudentenstelle throughout my master's, where I can contribute reliably, gain deeper insight into the German work environment, and steadily strengthen my skills in software development—Full Stack, Backend, Frontend, Web, or App Development.",
     ],
     technologies: [
       { name: 'PHP', category: 'Language' },
