@@ -7,7 +7,10 @@ import { useResume } from '../contexts/ResumeContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/Resume.css';
 
-pdfjs.GlobalWorkerOptions.workerSrc = '/pdf.worker.min.mjs';
+pdfjs.GlobalWorkerOptions.workerSrc = new URL(
+  'pdfjs-dist/build/pdf.worker.min.mjs',
+  import.meta.url,
+).toString();
 
 const Resume: React.FC = () => {
   const { isResumeOpen, openResume, closeResume } = useResume();

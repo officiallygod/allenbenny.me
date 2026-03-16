@@ -23,6 +23,13 @@ module.exports = {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'],
       },
+      {
+        test: /pdf\.worker\.min\.mjs$/,
+        type: 'asset/resource',
+        generator: {
+          filename: 'pdf.worker.min.js',
+        },
+      },
     ],
   },
   resolve: {
@@ -36,7 +43,6 @@ module.exports = {
       patterns: [
         { from: 'public/favicon.svg', to: 'favicon.svg' },
         { from: 'public/documents', to: 'documents' },
-        { from: 'node_modules/pdfjs-dist/build/pdf.worker.min.mjs', to: 'pdf.worker.min.mjs' },
       ],
     }),
   ],
