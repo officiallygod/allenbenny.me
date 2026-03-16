@@ -13,7 +13,6 @@ const Resume: React.FC = () => {
   const { isResumeOpen, openResume, closeResume } = useResume();
   const { t, language } = useLanguage();
   const [numPages, setNumPages] = useState<number>(0);
-  const [pageNumber, setPageNumber] = useState<number>(1);
   const [pageWidth, setPageWidth] = useState<number>(800);
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -22,7 +21,6 @@ const Resume: React.FC = () => {
     if (isResumeOpen) {
       const originalOverflow = document.body.style.overflow;
       document.body.style.overflow = 'hidden';
-      setPageNumber(1);
 
       return () => {
         document.body.style.overflow = originalOverflow;
@@ -30,22 +28,27 @@ const Resume: React.FC = () => {
     }
   }, [isResumeOpen]);
 
-  // Measure container width so the page fills the viewer
+  // Measure container width so the pages fill the viewer
   const measureWidth = useCallback(() => {
     if (contentRef.current) {
-      setPageWidth(contentRef.current.clientWidth);
+      setPageWidth(Math.floor(contentRef.current.clientWidth) - 32);
     }
   }, []);
 
   useEffect(() => {
     if (!isResumeOpen) return;
-    measureWidth();
+    // Small delay to let the modal render and measure correctly
+    const id = window.setTimeout(measureWidth, 50);
     window.addEventListener('resize', measureWidth);
-    return () => window.removeEventListener('resize', measureWidth);
+    return () => {
+      window.clearTimeout(id);
+      window.removeEventListener('resize', measureWidth);
+    };
   }, [isResumeOpen, measureWidth]);
 
   const onDocumentLoadSuccess = ({ numPages }: { numPages: number }) => {
     setNumPages(numPages);
+    measureWidth();
   };
 
   const handleOpenResume = () => openResume();
@@ -105,6 +108,16 @@ const Resume: React.FC = () => {
                 <div className="resume-viewer-actions">
                   <a
                     href={resumePath}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="resume-newtab-btn"
+                    onClick={(e) => e.stopPropagation()}
+                    aria-label="Open in new tab"
+                  >
+                    <span aria-hidden="true">↗</span>
+                  </a>
+                  <a
+                    href={resumePath}
                     download={downloadFilename}
                     className="resume-download-btn"
                     onClick={(e) => e.stopPropagation()}
@@ -134,44 +147,28 @@ const Resume: React.FC = () => {
                   error={
                     <div className="resume-error">
                       <p>Failed to load PDF.</p>
-                      <a href={resumePath} download={downloadFilename} className="resume-download-btn">
+                      <a
+                        href={resumePath}
+                        download={downloadFilename}
+                        className="resume-download-btn"
+                      >
                         <span aria-hidden="true">⬇</span> {t.resume.download}
                       </a>
                     </div>
                   }
                 >
-                  <Page
-                    pageNumber={pageNumber}
-                    width={pageWidth}
-                    renderTextLayer={true}
-                    renderAnnotationLayer={true}
-                  />
+                  {Array.from({ length: numPages }, (_, i) => (
+                    <Page
+                      key={`page_${i + 1}`}
+                      pageNumber={i + 1}
+                      width={pageWidth > 0 ? pageWidth : undefined}
+                      renderTextLayer={true}
+                      renderAnnotationLayer={true}
+                      className="resume-pdf-page"
+                    />
+                  ))}
                 </Document>
               </div>
-
-              {numPages > 1 && (
-                <div className="resume-pagination">
-                  <button
-                    className="resume-page-btn"
-                    onClick={() => setPageNumber((p) => Math.max(p - 1, 1))}
-                    disabled={pageNumber <= 1}
-                    aria-label="Previous page"
-                  >
-                    ‹
-                  </button>
-                  <span className="resume-page-info">
-                    {pageNumber} / {numPages}
-                  </span>
-                  <button
-                    className="resume-page-btn"
-                    onClick={() => setPageNumber((p) => Math.min(p + 1, numPages))}
-                    disabled={pageNumber >= numPages}
-                    aria-label="Next page"
-                  >
-                    ›
-                  </button>
-                </div>
-              )}
             </motion.div>
           </>
         )}
