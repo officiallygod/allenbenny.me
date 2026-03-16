@@ -8,6 +8,10 @@ export const translations: Record<
       ctaPrimary: string;
       ctaSecondary: string;
       ctaResume: string;
+      availability: string;
+      chip1: string;
+      chip2: string;
+      chip3: string;
       statExperience: string;
       statExperienceValue: string;
       statProjects: string;
@@ -71,6 +75,10 @@ export const translations: Record<
       ctaPrimary: 'Get In Touch',
       ctaSecondary: 'View Projects',
       ctaResume: 'View Resume',
+      availability: 'Open to Werkstudent · Karlsruhe',
+      chip1: 'Full Stack Dev',
+      chip2: 'MSc CS @ KIT',
+      chip3: '3+ Years Exp',
       statExperience: 'Experience',
       statExperienceValue: 'Professional',
       statProjects: 'Projects',
@@ -133,6 +141,10 @@ export const translations: Record<
       ctaPrimary: 'Kontakt aufnehmen',
       ctaSecondary: 'Projekte ansehen',
       ctaResume: 'Lebenslauf ansehen',
+      availability: 'Werkstudent gesucht · Karlsruhe',
+      chip1: 'Full-Stack-Entwickler',
+      chip2: 'MSc CS @ KIT',
+      chip3: '3+ Jahre Erfahrung',
       statExperience: 'Erfahrung',
       statExperienceValue: 'Beruflich',
       statProjects: 'Projekte',

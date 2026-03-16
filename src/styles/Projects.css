@@ -1,10 +1,6 @@
 .projects-section {
-  padding: 100px 20px;
-  background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
-  min-height: 100vh;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  padding: 100px 24px;
+  background: var(--bg);
 }
 
 .projects-container {
@@ -16,21 +12,20 @@
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 30px;
-  margin-top: 50px;
+  gap: 24px;
+  margin-top: 48px;
 }
 
 .project-card {
-  background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(10px);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  border-radius: 16px;
-  padding: 30px;
+  background: var(--surface);
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: 28px;
   position: relative;
   overflow: hidden;
   cursor: pointer;
-  box-shadow: 0 10px 28px rgba(8, 12, 24, 0.25);
-  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  transition: var(--transition);
 }
 
 .project-card-link {
@@ -43,88 +38,94 @@
   position: absolute;
   top: 14px;
   right: 14px;
-  width: 15px;
-  height: 15px;
-  color: #64748b;
+  width: 14px;
+  height: 14px;
+  color: var(--text-muted);
   opacity: 0.5;
-  transition: opacity 0.2s ease, color 0.2s ease;
+  transition: var(--transition);
   pointer-events: none;
 }
 
 .project-card:hover .card-link-indicator {
   opacity: 1;
-  color: #3b82f6;
+  color: var(--accent);
 }
 
 .project-card:hover {
-  background: rgba(255, 255, 255, 0.05);
-  border-color: rgba(59, 130, 246, 0.4);
-  box-shadow: 0 18px 42px rgba(59, 130, 246, 0.2), 0 10px 26px rgba(4, 6, 14, 0.2);
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
 }
 
 .project-header {
   display: flex;
   justify-content: space-between;
   align-items: flex-start;
-  margin-bottom: 15px;
-  gap: 15px;
+  margin-bottom: 12px;
+  gap: 12px;
 }
 
 .project-title {
-  font-size: 1.4rem;
-  font-weight: 600;
-  color: #f8fafc;
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: var(--text);
   margin: 0;
   line-height: 1.3;
+  letter-spacing: -0.02em;
 }
 
 .project-date {
-  font-size: 0.9rem;
-  color: #94a3b8;
+  font-size: 0.82rem;
+  color: var(--text-muted);
   white-space: nowrap;
-  font-weight: 500;
+  font-weight: 600;
+  letter-spacing: 0.01em;
 }
 
 .project-description {
-  color: #cbd5e1;
-  line-height: 1.7;
-  margin: 15px 0 20px;
-  font-size: 1rem;
+  color: var(--text-secondary);
+  line-height: 1.72;
+  margin: 12px 0 18px;
+  font-size: 0.95rem;
 }
 
 .project-link {
-  display: inline-block;
-  color: #3b82f6;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  color: var(--accent);
   text-decoration: none;
-  font-weight: 500;
-  font-size: 0.95rem;
-  margin-top: 10px;
-  transition: color 0.3s ease;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-top: 8px;
+  transition: var(--transition);
 }
 
 .project-link:hover {
-  color: #60a5fa;
+  color: var(--accent-hover);
+  text-decoration: underline;
+  text-underline-offset: 3px;
 }
 
 .project-github-link {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  color: #94a3b8;
+  color: var(--text-secondary);
   text-decoration: none;
-  font-size: 0.85rem;
-  font-weight: 500;
-  margin-top: 12px;
+  font-size: 0.82rem;
+  font-weight: 600;
+  margin-top: 10px;
   padding: 5px 10px;
-  border: 1px solid rgba(148, 163, 184, 0.25);
-  border-radius: 6px;
-  transition: color 0.2s ease, border-color 0.2s ease, background 0.2s ease;
+  border: 1.5px solid var(--border);
+  border-radius: var(--radius-sm);
+  transition: var(--transition);
 }
 
 .project-github-link:hover {
-  color: #f8fafc;
-  border-color: rgba(248, 250, 252, 0.4);
-  background: rgba(255, 255, 255, 0.06);
+  color: var(--text);
+  border-color: var(--accent);
+  color: var(--accent);
 }
 
 .project-github-icon {
@@ -138,26 +139,14 @@
   bottom: 0;
   left: 0;
   height: 3px;
-  background: linear-gradient(90deg, #3b82f6, #8b5cf6);
-  border-radius: 0 0 16px 16px;
+  background: linear-gradient(90deg, var(--accent), #a5b4fc);
+  border-radius: 0 0 var(--radius-lg) var(--radius-lg);
 }
 
 @media (max-width: 768px) {
-  .projects-section {
-    padding: 60px 20px;
-  }
-
-  .projects-grid {
-    grid-template-columns: 1fr;
-    gap: 20px;
-  }
-
-  .project-title {
-    font-size: 1.2rem;
-  }
-
-  .project-header {
-    flex-direction: column;
-    gap: 8px;
-  }
+  .projects-section   { padding: 60px 20px; }
+  .projects-grid      { grid-template-columns: 1fr; gap: 18px; }
+  .project-title      { font-size: 1.1rem; }
+  .project-header     { flex-direction: column; gap: 6px; }
 }
+
