@@ -1,10 +1,12 @@
 import React, { lazy, Suspense } from 'react';
 import Hero from './components/Hero';
+import About from './components/About';
 import { useLanguage } from './contexts/LanguageContext';
 import './styles/App.css';
+import ViewportSection from './components/ViewportSection';
 
-// Lazy load components that are below the fold
-const About = lazy(() => import('./components/About'));
+// Lazy load components that are below the fold.
+// Combined with ViewportSection this keeps the main bundle lean and defers heavy mounts (e.g., charts) until scrolled.
 const Technologies = lazy(() => import('./components/Technologies'));
 const Experience = lazy(() => import('./components/Experience'));
 const Projects = lazy(() => import('./components/Projects'));
@@ -37,13 +39,27 @@ const App: React.FC = () => {
       <Hero />
       <Suspense fallback={<LoadingFallback />}>
         <About />
-        <Technologies />
-        <Experience />
-        <Projects />
-        <Contributions />
-        <Certifications />
-        <Contact />
-        <Resume />
+        <ViewportSection>
+          <Technologies />
+        </ViewportSection>
+        <ViewportSection>
+          <Experience />
+        </ViewportSection>
+        <ViewportSection>
+          <Projects />
+        </ViewportSection>
+        <ViewportSection>
+          <Contributions />
+        </ViewportSection>
+        <ViewportSection>
+          <Certifications />
+        </ViewportSection>
+        <ViewportSection>
+          <Contact />
+        </ViewportSection>
+        <ViewportSection>
+          <Resume />
+        </ViewportSection>
       </Suspense>
     </div>
   );

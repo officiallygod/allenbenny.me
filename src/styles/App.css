@@ -33,6 +33,31 @@
   border-radius: var(--radius-full);
 }
 
+.viewport-section {
+  position: relative;
+}
+
+.section-placeholder {
+  min-height: 420px;
+  width: 100%;
+  background: linear-gradient(180deg, rgba(0,0,0,0.04), rgba(0,0,0,0.02));
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-xs);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 @media (max-width: 768px) {
   .app-container { padding: 0; }
   .section-title  { margin-bottom: 40px; }
@@ -41,4 +66,3 @@
 @media (max-width: 480px) {
   .section-title::after { width: 30px; }
 }
-
