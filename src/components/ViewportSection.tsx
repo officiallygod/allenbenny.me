@@ -68,4 +68,4 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({
   );
 };
 
-export default React.memo(ViewportSection);
+export default ViewportSection;

@@ -37,9 +37,7 @@ const App: React.FC = () => {
     <div className="app-container">
       <Hero />
       <Suspense fallback={<LoadingFallback />}>
-        <ViewportSection>
-          <About />
-        </ViewportSection>
+        <About />
         <ViewportSection>
           <Technologies />
         </ViewportSection>
