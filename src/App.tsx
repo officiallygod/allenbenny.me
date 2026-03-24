@@ -5,7 +5,8 @@ import { useLanguage } from './contexts/LanguageContext';
 import './styles/App.css';
 import ViewportSection from './components/ViewportSection';
 
-// Lazy load components that are below the fold
+// Lazy load components that are below the fold.
+// Combined with ViewportSection this keeps the main bundle lean and defers heavy mounts (e.g., charts) until scrolled.
 const Technologies = lazy(() => import('./components/Technologies'));
 const Experience = lazy(() => import('./components/Experience'));
 const Projects = lazy(() => import('./components/Projects'));

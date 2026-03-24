@@ -42,7 +42,7 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({
 
     observer.observe(node);
     return () => observer.disconnect();
-  }, [rootMargin, shouldRender]);
+  }, [rootMargin]);
 
   return (
     <div
