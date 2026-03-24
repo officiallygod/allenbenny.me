@@ -2,6 +2,7 @@ import React, { lazy, Suspense } from 'react';
 import Hero from './components/Hero';
 import { useLanguage } from './contexts/LanguageContext';
 import './styles/App.css';
+import ViewportSection from './components/ViewportSection';
 
 // Lazy load components that are below the fold
 const About = lazy(() => import('./components/About'));
@@ -36,14 +37,30 @@ const App: React.FC = () => {
     <div className="app-container">
       <Hero />
       <Suspense fallback={<LoadingFallback />}>
-        <About />
-        <Technologies />
-        <Experience />
-        <Projects />
-        <Contributions />
-        <Certifications />
-        <Contact />
-        <Resume />
+        <ViewportSection>
+          <About />
+        </ViewportSection>
+        <ViewportSection>
+          <Technologies />
+        </ViewportSection>
+        <ViewportSection>
+          <Experience />
+        </ViewportSection>
+        <ViewportSection>
+          <Projects />
+        </ViewportSection>
+        <ViewportSection>
+          <Contributions />
+        </ViewportSection>
+        <ViewportSection>
+          <Certifications />
+        </ViewportSection>
+        <ViewportSection>
+          <Contact />
+        </ViewportSection>
+        <ViewportSection>
+          <Resume />
+        </ViewportSection>
       </Suspense>
     </div>
   );
