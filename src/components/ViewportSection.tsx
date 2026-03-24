@@ -22,9 +22,14 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({
     if (shouldRender) return;
     const node = containerRef.current;
     const isServer = typeof window === 'undefined';
-    const lacksObserver = !isServer && !('IntersectionObserver' in window);
+    const hasIntersectionObserver = !isServer && 'IntersectionObserver' in window;
 
-    if (!node || isServer || lacksObserver) {
+    if (!node) {
+      setShouldRender(true);
+      return;
+    }
+
+    if (isServer || !hasIntersectionObserver) {
       setShouldRender(true);
       return;
     }
