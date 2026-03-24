@@ -1,11 +1,11 @@
 import React, { lazy, Suspense } from 'react';
 import Hero from './components/Hero';
+import About from './components/About';
 import { useLanguage } from './contexts/LanguageContext';
 import './styles/App.css';
 import ViewportSection from './components/ViewportSection';
 
 // Lazy load components that are below the fold
-const About = lazy(() => import('./components/About'));
 const Technologies = lazy(() => import('./components/Technologies'));
 const Experience = lazy(() => import('./components/Experience'));
 const Projects = lazy(() => import('./components/Projects'));

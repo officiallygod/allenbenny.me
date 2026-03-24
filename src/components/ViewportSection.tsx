@@ -35,7 +35,7 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({
     const observer = new IntersectionObserver(
       (entries) => {
         const entry = entries[0];
-        if (entry?.isIntersecting) {
+        if (entry && entry.isIntersecting) {
           setShouldRender(true);
           observer.disconnect();
         }
