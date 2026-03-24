@@ -25,7 +25,7 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({
     // Exit early when the DOM node is missing, during SSR, or if IntersectionObserver isn't supported.
     const isMissingNode = !node;
     const isServer = typeof window === 'undefined';
-    const lacksObserver = isServer ? false : !('IntersectionObserver' in window);
+    const lacksObserver = !isServer && !('IntersectionObserver' in window);
 
     if (isMissingNode || isServer || lacksObserver) {
       setShouldRender(true);
@@ -34,12 +34,11 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({
 
     const observer = new IntersectionObserver(
       (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            setShouldRender(true);
-            observer.disconnect();
-          }
-        });
+        const entry = entries[0];
+        if (entry?.isIntersecting) {
+          setShouldRender(true);
+          observer.disconnect();
+        }
       },
       { rootMargin }
     );
