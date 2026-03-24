@@ -17,11 +17,12 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [shouldRender, setShouldRender] = useState(false);
-  const hasIntersectionObserver = typeof window !== 'undefined' && 'IntersectionObserver' in window;
 
   useEffect(() => {
     if (shouldRender) return;
     const node = containerRef.current;
+    const hasIntersectionObserver =
+      typeof window !== 'undefined' && 'IntersectionObserver' in window;
 
     if (!node) return;
 
