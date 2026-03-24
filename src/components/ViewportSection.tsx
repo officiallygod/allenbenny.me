@@ -15,21 +15,20 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({
   rootMargin = '320px',
   minHeight = 420,
 }) => {
-  const containerRef = useRef<HTMLDivElement | null>(null);
+  const containerRef = useRef<HTMLDivElement>(null);
   const [shouldRender, setShouldRender] = useState(false);
 
   useEffect(() => {
     if (shouldRender) return;
     const node = containerRef.current;
-    const isServer = typeof window === 'undefined';
-    const hasIntersectionObserver = !isServer && 'IntersectionObserver' in window;
+    const hasIntersectionObserver = typeof window !== 'undefined' && 'IntersectionObserver' in window;
 
     if (!node) {
       setShouldRender(true);
       return;
     }
 
-    if (isServer || !hasIntersectionObserver) {
+    if (!hasIntersectionObserver) {
       setShouldRender(true);
       return;
     }
