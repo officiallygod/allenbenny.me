@@ -23,10 +23,7 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({
     const node = containerRef.current;
     const hasIntersectionObserver = typeof window !== 'undefined' && 'IntersectionObserver' in window;
 
-    if (!node) {
-      setShouldRender(true);
-      return;
-    }
+    if (!node) return;
 
     if (!hasIntersectionObserver) {
       setShouldRender(true);
@@ -63,7 +60,7 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({
           role="status"
           aria-live="polite"
         >
-          <span className="sr-only">Section content loading</span>
+          <span className="sr-only">Section content will load when in view</span>
         </div>
       )}
     </div>
