@@ -21,7 +21,13 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({
   useEffect(() => {
     if (shouldRender) return;
     const node = containerRef.current;
-    if (!node || typeof window === 'undefined' || !('IntersectionObserver' in window)) {
+
+    // Exit early when the DOM node is missing, during SSR, or if IntersectionObserver isn't supported.
+    const isMissingNode = !node;
+    const isServer = typeof window === 'undefined';
+    const lacksObserver = isServer ? false : !('IntersectionObserver' in window);
+
+    if (isMissingNode || isServer || lacksObserver) {
       setShouldRender(true);
       return;
     }
@@ -48,7 +54,16 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({
       className="viewport-section"
       style={!shouldRender ? { minHeight } : undefined}
     >
-      {shouldRender ? children : <div className="section-placeholder" aria-hidden="true" />}
+      {shouldRender ? (
+        children
+      ) : (
+        <div
+          className="section-placeholder"
+          role="status"
+          aria-live="polite"
+          aria-label="Section content loading"
+        />
+      )}
     </div>
   );
 };
