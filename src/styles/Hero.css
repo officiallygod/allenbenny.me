@@ -131,6 +131,7 @@ body[data-theme='dark'] .hero-availability {
   line-height: 1.05;
   letter-spacing: -0.04em;
   margin-bottom: 20px;
+  padding-bottom: 20px;
   background: linear-gradient(135deg, var(--text) 0%, #5B5FEB 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
