@@ -75,13 +75,13 @@ export interface ProfileData {
 export const profileData: Record<Language, ProfileData> = {
   en: {
     name: 'Allen Benny',
-    title: 'MSc Computer Science Student at KIT | Full Stack Developer | Werkstudent (up to 20h/week)',
-    tagline: '3+ years building scalable systems • AI & WordPress onboarding at Newfold Digital • Seeking Werkstudent role in Karlsruhe (up to 20h/week)',
+    title: 'MSc Computer Science Student at KIT | Student Assistant at SCC, KIT | Full Stack Developer',
+    tagline: '3+ years building scalable systems • Student Assistant at Scientific Computing Center, KIT • JavaScript-based integration with DSL languages',
     bio: [
       'MSc Computer Science (Informatik) student at KIT (Karlsruhe Institute of Technology) with 3+ years of hands-on professional experience building scalable onboarding systems and AI-powered features at Newfold Digital. Specialized in PHP, React, JavaScript, Node.js, WordPress, and TypeScript.',
       'Led development of open-source WordPress onboarding serving 1000+ daily users, integrated AI features from prompts, and optimized performance with advanced React patterns (Memo, caching). Represented Bluehost at WordCamp Sylhet 2023 and awarded Edward De Bono Award for innovation.',
-      "I'm currently looking for a Werkstudent opportunity (up to 20 hours per week) where I can support my studies while continuing to grow professionally. With 3+ years of practical experience, I enjoy applying my skills to real-world challenges and learning from experienced teams.",
-      "I'm particularly interested in a long-term Werkstudentenstelle throughout my master's, where I can contribute reliably, gain deeper insight into the German work environment, and steadily strengthen my skills in software development: Full Stack, Backend, Frontend, Web, or App Development.",
+      'Currently working as a Student Assistant at the Scientific Computing Center (SCC), KIT, focusing on JavaScript-based integration with DSL (Domain-Specific Languages). Applying my full-stack expertise to bridge modern web technologies with specialized computing workflows.',
+      "Alongside my role at SCC, I continue to deepen my skills in software development throughout my master's—contributing to real-world projects and gaining deeper insight into scientific computing and the German work environment.",
     ],
     technologies: [
       { name: 'PHP', category: 'Language' },
@@ -118,6 +118,13 @@ export const profileData: Record<Language, ProfileData> = {
       { name: 'OpenAI API', category: 'AI' },
     ],
     experience: [
+      {
+        company: 'Scientific Computing Center (SCC), KIT',
+        role: 'Student Assistant (HiWi)',
+        duration: 'Apr 2025 – Present',
+        description: 'Working on JavaScript-based integration with DSL (Domain-Specific Languages) at the Scientific Computing Center. Bridging modern web technologies with specialized computing workflows to support research and scientific applications.',
+        link: 'https://www.scc.kit.edu/',
+      },
       {
         company: 'Newfold Digital',
         role: 'Software Development Engineer (Full Stack)',
@@ -266,12 +273,12 @@ export const profileData: Record<Language, ProfileData> = {
   },
   de: {
     name: 'Allen Benny',
-    title: 'MSc-Informatikstudent am KIT | Full-Stack-Entwickler | Werkstudent (bis zu 20 Std./Woche)',
-    tagline: '3+ Jahre skalierbare Systeme • KI- & WordPress-Onboarding bei Newfold Digital • Werkstudentenstelle gesucht in Karlsruhe (bis zu 20 Std./Woche)',
+    title: 'MSc-Informatikstudent am KIT | Studentische Hilfskraft am SCC, KIT | Full-Stack-Entwickler',
+    tagline: '3+ Jahre skalierbare Systeme • Studentische Hilfskraft am Scientific Computing Center, KIT • JavaScript-basierte Integration mit DSL-Sprachen',
     bio: [
       'MSc-Informatikstudent am KIT (Karlsruher Institut für Technologie) mit rund drei Jahren praktischer Berufserfahrung in skalierbaren Onboarding-Systemen und KI-Features bei Newfold Digital. Spezialisiert auf PHP, React, JavaScript, Node.js, WordPress und TypeScript.',
       'Leitete die Entwicklung eines Open-Source-WordPress-Onboardings für über 1000 tägliche Nutzer, integrierte KI-Features aus Prompts und optimierte die Performance mit fortgeschrittenen React-Patterns (Memo, Caching). Repräsentierte Bluehost auf der WordCamp Sylhet 2023 und erhielt den Edward De Bono Award für Innovation.',
-      'Ich suche derzeit eine Werkstudentenstelle (bis zu 20 Stunden pro Woche), um mein Studium zu unterstützen und gleichzeitig praktische Erfahrung zu sammeln. Mit rund drei Jahren Berufserfahrung arbeite ich gerne an realen Projekten und lerne von erfahrenen Teams. Während meines Masterstudiums möchte ich langfristig als Werkstudent arbeiten, den deutschen Arbeitsmarkt besser kennenlernen und meine Fähigkeiten in der Softwareentwicklung: Full Stack, Backend, Frontend, Web oder App Development – Schritt für Schritt ausbauen.',
+      'Derzeit arbeite ich als studentische Hilfskraft am Scientific Computing Center (SCC), KIT, mit Schwerpunkt auf JavaScript-basierter Integration mit DSL (domänenspezifischen Sprachen). Dabei bringe ich meine Full-Stack-Erfahrung ein, um moderne Webtechnologien mit spezialisierten Computing-Workflows zu verbinden.',
     ],
     technologies: [
       { name: 'PHP', category: 'Language' },
@@ -308,6 +315,13 @@ export const profileData: Record<Language, ProfileData> = {
       { name: 'OpenAI API', category: 'AI' },
     ],
     experience: [
+      {
+        company: 'Scientific Computing Center (SCC), KIT',
+        role: 'Studentische Hilfskraft (HiWi)',
+        duration: 'Apr 2025 – Heute',
+        description: 'Arbeite an JavaScript-basierter Integration mit DSL (domänenspezifischen Sprachen) am Scientific Computing Center. Verbindung moderner Webtechnologien mit spezialisierten Computing-Workflows zur Unterstützung von Forschung und wissenschaftlichen Anwendungen.',
+        link: 'https://www.scc.kit.edu/',
+      },
       {
         company: 'Newfold Digital',
         role: 'Software Development Engineer (Full Stack)',
