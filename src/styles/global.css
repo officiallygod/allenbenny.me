@@ -1,5 +1,5 @@
 /* ============================================================
-   Design System – CSS Custom Properties
+   Design System - CSS Custom Properties
    Palette: warm cream · indigo accent · soft shadows
    ============================================================ */
 :root {
@@ -15,13 +15,13 @@
   --text-secondary:#6B6860;
   --text-muted:    #A09D9B;
 
-  /* Accent – Indigo */
+  /* Accent - Indigo */
   --accent:        #6366F1;
   --accent-hover:  #4F52D9;
   --accent-soft:   #EEF2FF;
   --accent-mid:    rgba(99,102,241,0.15);
 
-  /* Green – availability */
+  /* Green - availability */
   --green:         #22C55E;
   --green-soft:    #DCFCE7;
 

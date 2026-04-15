@@ -180,7 +180,7 @@ export const translations: Record<
       monthLocale: 'de-DE',
     },
     contact: {
-      intro: 'Ich arbeite derzeit als studentische Hilfskraft am Scientific Computing Center (SCC), KIT, mit Schwerpunkt auf JavaScript-basierter Integration mit DSL-Sprachen – eine Verbindung von Webtechnologien mit wissenschaftlichem Computing.',
+      intro: 'Ich arbeite derzeit als studentische Hilfskraft am Scientific Computing Center (SCC), KIT, mit Schwerpunkt auf JavaScript-basierter Integration mit DSL-Sprachen - eine Verbindung von Webtechnologien mit wissenschaftlichem Computing.',
       introEmphasis: 'Mit rund 3 Jahren Praxiserfahrung freue ich mich über Austausch zu Technologie, Zusammenarbeit oder neuen Ideen!',
       viewPortfolio: 'Portfolio ansehen',
       personalSite: 'Persönliche Seite',
