@@ -1,5 +1,5 @@
 /* ====================================================
-   Hero – Minimal, Dribbble-inspired light design
+   Hero - Minimal, Dribbble-inspired light design
    ==================================================== */
 
 .hero {
@@ -80,7 +80,7 @@
   align-items: center;
 }
 
-/* ── Left – main ── */
+/* ── Left - main ── */
 .hero-main {
   text-align: left;
 }
@@ -179,7 +179,7 @@ body[data-theme='dark'] .hero-chip {
   color: var(--text-secondary);
   margin-bottom: 20px;
   letter-spacing: -0.01em;
-  display: none; /* hidden – replaced by chips */
+  display: none; /* hidden - replaced by chips */
 }
 
 /* Tagline */
@@ -280,7 +280,7 @@ body[data-theme='dark'] .hero-chip {
   display: block;
 }
 
-/* ── Right – stat cards ── */
+/* ── Right - stat cards ── */
 .hero-side {
   display: flex;
   flex-direction: column;

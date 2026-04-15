@@ -1,4 +1,4 @@
-/* Optimized Background – light cream + soft coloured orbs */
+/* Optimized Background - light cream + soft coloured orbs */
 .optimized-background {
   position: absolute;
   inset: 0;
@@ -57,7 +57,7 @@ body[data-theme='dark'] .gradient-orb-3 {
   background: radial-gradient(circle, rgba(20,184,166,0.14) 0%, transparent 70%);
 }
 
-/* No particles – keep it clean */
+/* No particles - keep it clean */
 .css-particles {
   display: none;
 }

@@ -75,13 +75,13 @@ export interface ProfileData {
 export const profileData: Record<Language, ProfileData> = {
   en: {
     name: 'Allen Benny',
-    title: 'MSc Computer Science Student at KIT | Full Stack Developer | Werkstudent (up to 20h/week)',
-    tagline: '3+ years building scalable systems • AI & WordPress onboarding at Newfold Digital • Seeking Werkstudent role in Karlsruhe (up to 20h/week)',
+    title: 'MSc Computer Science Student at KIT | Student Assistant at SCC, KIT | Full Stack Developer',
+    tagline: '3+ years building scalable systems • Student Assistant at Scientific Computing Center, KIT • JavaScript-based integration with DSL languages',
     bio: [
       'MSc Computer Science (Informatik) student at KIT (Karlsruhe Institute of Technology) with 3+ years of hands-on professional experience building scalable onboarding systems and AI-powered features at Newfold Digital. Specialized in PHP, React, JavaScript, Node.js, WordPress, and TypeScript.',
       'Led development of open-source WordPress onboarding serving 1000+ daily users, integrated AI features from prompts, and optimized performance with advanced React patterns (Memo, caching). Represented Bluehost at WordCamp Sylhet 2023 and awarded Edward De Bono Award for innovation.',
-      "I'm currently looking for a Werkstudent opportunity (up to 20 hours per week) where I can support my studies while continuing to grow professionally. With 3+ years of practical experience, I enjoy applying my skills to real-world challenges and learning from experienced teams.",
-      "I'm particularly interested in a long-term Werkstudentenstelle throughout my master's, where I can contribute reliably, gain deeper insight into the German work environment, and steadily strengthen my skills in software development: Full Stack, Backend, Frontend, Web, or App Development.",
+      'Currently working as a Student Assistant at the Scientific Computing Center (SCC), KIT, focusing on JavaScript-based integration with DSL (Domain-Specific Languages). Applying my full-stack expertise to bridge modern web technologies with specialized computing workflows.',
+      "Alongside my role at SCC, I continue to deepen my skills in software development throughout my master's—contributing to real-world projects and gaining deeper insight into scientific computing and the German work environment.",
     ],
     technologies: [
       { name: 'PHP', category: 'Language' },
@@ -119,30 +119,37 @@ export const profileData: Record<Language, ProfileData> = {
     ],
     experience: [
       {
+        company: 'Scientific Computing Center (SCC), KIT',
+        role: 'Student Assistant (HiWi)',
+        duration: 'Apr 2025 - Present',
+        description: 'Working on JavaScript-based integration with DSL (Domain-Specific Languages) at the Scientific Computing Center. Bridging modern web technologies with specialized computing workflows to support research and scientific applications.',
+        link: 'https://www.scc.kit.edu/',
+      },
+      {
         company: 'Newfold Digital',
         role: 'Software Development Engineer (Full Stack)',
-        duration: 'Jan 2022 – Apr 2025',
+        duration: 'Jan 2022 - Apr 2025',
         description: 'Built open-source modern WordPress onboarding (PHP, React) serving 1000+ users daily. Developed an AI-powered onboarding experience from prompts. Created task systems & cron jobs for plugin installation automation. Optimised performance and reliability with advanced React features (Memo, caching) for responsive onboarding. Developed WordPress template drawer. Top contributor to team codebase. Represented Bluehost at WordCamp Sylhet 2023. Awarded Edward De Bono Award for innovation.',
         link: 'https://drive.google.com/file/d/1In551-F4hVtxegXlahdfrvepg8qZf-uL/view?usp=sharing',
       },
       {
         company: 'TecideXa Services',
         role: 'Lead Developer Intern',
-        duration: 'Dec 2020 – Jan 2021',
+        duration: 'Dec 2020 - Jan 2021',
         description: 'Designed, developed, and tested Flutter client applications. Led development initiatives and ensured high-quality code delivery.',
         link: 'https://drive.google.com/file/d/1X_68Jobe1L5WtrS9oHgCZfM3dOPKiNa6/view?usp=sharing',
       },
       {
         company: 'Gliitz (Freelance)',
         role: 'App Developer',
-        duration: 'Aug 2020 – Nov 2020',
+        duration: 'Aug 2020 - Nov 2020',
         description: 'Translated UI/UX designs into production-ready Flutter applications. Conducted rigorous testing and deployment to ensure high quality and reliability.',
         link: 'https://drive.google.com/file/d/1QvoLWsXpRrS3uF_Ea1D8qE3ek_3UggyP/view?usp=sharing',
       },
       {
         company: 'Itukaa (Freelance)',
         role: 'App Developer',
-        duration: 'Apr 2021 – Jun 2021',
+        duration: 'Apr 2021 - Jun 2021',
         description: 'Built and deployed market-ready application for construction materials company. Improved operational efficiency through custom mobile solutions.',
         // link: '',
       },
@@ -266,12 +273,12 @@ export const profileData: Record<Language, ProfileData> = {
   },
   de: {
     name: 'Allen Benny',
-    title: 'MSc-Informatikstudent am KIT | Full-Stack-Entwickler | Werkstudent (bis zu 20 Std./Woche)',
-    tagline: '3+ Jahre skalierbare Systeme • KI- & WordPress-Onboarding bei Newfold Digital • Werkstudentenstelle gesucht in Karlsruhe (bis zu 20 Std./Woche)',
+    title: 'MSc-Informatikstudent am KIT | Studentische Hilfskraft am SCC, KIT | Full-Stack-Entwickler',
+    tagline: '3+ Jahre skalierbare Systeme • Studentische Hilfskraft am Scientific Computing Center, KIT • JavaScript-basierte Integration mit DSL-Sprachen',
     bio: [
       'MSc-Informatikstudent am KIT (Karlsruher Institut für Technologie) mit rund drei Jahren praktischer Berufserfahrung in skalierbaren Onboarding-Systemen und KI-Features bei Newfold Digital. Spezialisiert auf PHP, React, JavaScript, Node.js, WordPress und TypeScript.',
       'Leitete die Entwicklung eines Open-Source-WordPress-Onboardings für über 1000 tägliche Nutzer, integrierte KI-Features aus Prompts und optimierte die Performance mit fortgeschrittenen React-Patterns (Memo, Caching). Repräsentierte Bluehost auf der WordCamp Sylhet 2023 und erhielt den Edward De Bono Award für Innovation.',
-      'Ich suche derzeit eine Werkstudentenstelle (bis zu 20 Stunden pro Woche), um mein Studium zu unterstützen und gleichzeitig praktische Erfahrung zu sammeln. Mit rund drei Jahren Berufserfahrung arbeite ich gerne an realen Projekten und lerne von erfahrenen Teams. Während meines Masterstudiums möchte ich langfristig als Werkstudent arbeiten, den deutschen Arbeitsmarkt besser kennenlernen und meine Fähigkeiten in der Softwareentwicklung: Full Stack, Backend, Frontend, Web oder App Development – Schritt für Schritt ausbauen.',
+      'Derzeit arbeite ich als studentische Hilfskraft am Scientific Computing Center (SCC), KIT, mit Schwerpunkt auf JavaScript-basierter Integration mit DSL (domänenspezifischen Sprachen). Dabei bringe ich meine Full-Stack-Erfahrung ein, um moderne Webtechnologien mit spezialisierten Computing-Workflows zu verbinden.',
     ],
     technologies: [
       { name: 'PHP', category: 'Language' },
@@ -309,30 +316,37 @@ export const profileData: Record<Language, ProfileData> = {
     ],
     experience: [
       {
+        company: 'Scientific Computing Center (SCC), KIT',
+        role: 'Studentische Hilfskraft (HiWi)',
+        duration: 'Apr 2025 - Heute',
+        description: 'Arbeite an JavaScript-basierter Integration mit DSL (domänenspezifischen Sprachen) am Scientific Computing Center. Verbindung moderner Webtechnologien mit spezialisierten Computing-Workflows zur Unterstützung von Forschung und wissenschaftlichen Anwendungen.',
+        link: 'https://www.scc.kit.edu/',
+      },
+      {
         company: 'Newfold Digital',
         role: 'Software Development Engineer (Full Stack)',
-        duration: 'Jan 2022 – Apr 2025',
+        duration: 'Jan 2022 - Apr 2025',
         description: 'Entwickelte ein modernes Open-Source-WordPress-Onboarding (PHP, React) für über 1000 Nutzer täglich. Baute KI-gestützte Onboarding-Erlebnisse aus Prompts. Entwickelte Task-Systeme und Cron-Jobs zur Plugin-Installation. Optimierte Performance und Stabilität mit fortgeschrittenen React-Features (Memo, Caching). Entwickelte einen WordPress-Template-Drawer. Top-Beitragender im Team. Repräsentierte Bluehost auf der WordCamp Sylhet 2023. Ausgezeichnet mit dem Edward De Bono Award für Innovation.',
         link: 'https://drive.google.com/file/d/1In551-F4hVtxegXlahdfrvepg8qZf-uL/view?usp=sharing',
       },
       {
         company: 'TecideXa Services',
         role: 'Lead Developer Intern',
-        duration: 'Dez 2020 – Jan 2021',
+        duration: 'Dez 2020 - Jan 2021',
         description: 'Konzipierte, entwickelte und testete Flutter-Client-Anwendungen. Leitete Entwicklungsinitiativen und stellte hochwertige Codequalität sicher.',
         link: 'https://drive.google.com/file/d/1X_68Jobe1L5WtrS9oHgCZfM3dOPKiNa6/view?usp=sharing',
       },
       {
         company: 'Gliitz (Freelance)',
         role: 'App-Entwickler',
-        duration: 'Aug 2020 – Nov 2020',
+        duration: 'Aug 2020 - Nov 2020',
         description: 'Setzte UI/UX-Designs in produktionsreife Flutter-Anwendungen um. Führte gründliche Tests und Deployments für hohe Qualität durch.',
         link: 'https://drive.google.com/file/d/1QvoLWsXpRrS3uF_Ea1D8qE3ek_3UggyP/view?usp=sharing',
       },
       {
         company: 'Itukaa (Freelance)',
         role: 'App-Entwickler',
-        duration: 'Apr 2021 – Jun 2021',
+        duration: 'Apr 2021 - Jun 2021',
         description: 'Baute und veröffentlichte eine marktreife App für ein Baustoffunternehmen. Steigerte die Effizienz durch maßgeschneiderte mobile Lösungen.',
         // link: '',
       },
@@ -448,7 +462,7 @@ export const profileData: Record<Language, ProfileData> = {
       },
       {
         category: 'Sprachen',
-        items: ['Englisch (C1)', 'Deutsch (A2 – in Arbeit)'],
+        items: ['Englisch (C1)', 'Deutsch (A2 - in Arbeit)'],
       },
     ],
     portfolioUrl: 'https://officiallygod.github.io/material-projects/',

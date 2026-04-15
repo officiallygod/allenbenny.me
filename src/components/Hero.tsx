@@ -59,7 +59,7 @@ const Hero: React.FC = () => {
       {/* Content */}
       <div className="hero-content-wrapper">
 
-        {/* Left – main content */}
+        {/* Left - main content */}
         <motion.div
           className="hero-main"
           initial={{ opacity: 0, x: -24 }}
@@ -170,7 +170,7 @@ const Hero: React.FC = () => {
           </motion.div>
         </motion.div>
 
-        {/* Right – stat cards */}
+        {/* Right - stat cards */}
         <motion.div
           className="hero-side"
           initial={{ opacity: 0, x: 24 }}
