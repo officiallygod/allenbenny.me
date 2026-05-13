@@ -23,22 +23,23 @@ const Resume: React.FC = () => {
   useEffect(() => {
     if (isResumeOpen) {
       const bodyStyle = document.body.style;
+      const htmlStyle = document.documentElement.style;
       const originalOverflow = bodyStyle.overflow;
-      const originalPosition = bodyStyle.position;
-      const originalTop = bodyStyle.top;
-      const originalWidth = bodyStyle.width;
+      const originalHtmlOverflow = htmlStyle.overflow;
+      const originalOverscrollBehavior = bodyStyle.overscrollBehavior;
+      const originalHtmlOverscrollBehavior = htmlStyle.overscrollBehavior;
       const scrollY = window.scrollY;
 
       bodyStyle.overflow = 'hidden';
-      bodyStyle.position = 'fixed';
-      bodyStyle.top = `-${scrollY}px`;
-      bodyStyle.width = '100%';
+      htmlStyle.overflow = 'hidden';
+      bodyStyle.overscrollBehavior = 'none';
+      htmlStyle.overscrollBehavior = 'none';
 
       return () => {
         bodyStyle.overflow = originalOverflow;
-        bodyStyle.position = originalPosition;
-        bodyStyle.top = originalTop;
-        bodyStyle.width = originalWidth;
+        htmlStyle.overflow = originalHtmlOverflow;
+        bodyStyle.overscrollBehavior = originalOverscrollBehavior;
+        htmlStyle.overscrollBehavior = originalHtmlOverscrollBehavior;
         window.scrollTo(0, scrollY);
       };
     }
