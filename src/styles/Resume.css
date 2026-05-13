@@ -157,6 +157,8 @@
 .resume-viewer-content {
   flex: 1;
   overflow: hidden auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
   background: #f0f0f0;
   position: relative;
   display: flex;

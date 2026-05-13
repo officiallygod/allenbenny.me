@@ -22,11 +22,25 @@ const Resume: React.FC = () => {
   // Prevent body scroll when modal is open
   useEffect(() => {
     if (isResumeOpen) {
-      const originalOverflow = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
+      const bodyStyle = document.body.style;
+      const htmlStyle = document.documentElement.style;
+      const originalOverflow = bodyStyle.overflow;
+      const originalHtmlOverflow = htmlStyle.overflow;
+      const originalOverscrollBehavior = bodyStyle.overscrollBehavior;
+      const originalHtmlOverscrollBehavior = htmlStyle.overscrollBehavior;
+      const scrollY = window.scrollY;
+
+      bodyStyle.overflow = 'hidden';
+      htmlStyle.overflow = 'hidden';
+      bodyStyle.overscrollBehavior = 'none';
+      htmlStyle.overscrollBehavior = 'none';
 
       return () => {
-        document.body.style.overflow = originalOverflow;
+        bodyStyle.overflow = originalOverflow;
+        htmlStyle.overflow = originalHtmlOverflow;
+        bodyStyle.overscrollBehavior = originalOverscrollBehavior;
+        htmlStyle.overscrollBehavior = originalHtmlOverscrollBehavior;
+        window.scrollTo(0, scrollY);
       };
     }
   }, [isResumeOpen]);

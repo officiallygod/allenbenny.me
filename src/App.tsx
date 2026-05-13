@@ -1,6 +1,7 @@
 import React, { lazy, Suspense } from 'react';
 import Hero from './components/Hero';
 import About from './components/About';
+import Resume from './components/Resume';
 import { useLanguage } from './contexts/LanguageContext';
 import './styles/App.css';
 import ViewportSection from './components/ViewportSection';
@@ -13,7 +14,6 @@ const Projects = lazy(() => import('./components/Projects'));
 const Contributions = lazy(() => import('./components/Contributions'));
 const Certifications = lazy(() => import('./components/Certifications'));
 const Contact = lazy(() => import('./components/Contact'));
-const Resume = lazy(() => import('./components/Resume'));
 
 // Simple loading fallback
 const LoadingFallback = () => (
@@ -57,9 +57,7 @@ const App: React.FC = () => {
         <ViewportSection>
           <Contact />
         </ViewportSection>
-        <ViewportSection>
-          <Resume />
-        </ViewportSection>
+        <Resume />
       </Suspense>
     </div>
   );
