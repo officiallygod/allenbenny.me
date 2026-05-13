@@ -28,7 +28,6 @@ const Resume: React.FC = () => {
       const originalHtmlOverflow = htmlStyle.overflow;
       const originalOverscrollBehavior = bodyStyle.overscrollBehavior;
       const originalHtmlOverscrollBehavior = htmlStyle.overscrollBehavior;
-      const scrollY = window.scrollY;
 
       bodyStyle.overflow = 'hidden';
       htmlStyle.overflow = 'hidden';
@@ -40,7 +39,6 @@ const Resume: React.FC = () => {
         htmlStyle.overflow = originalHtmlOverflow;
         bodyStyle.overscrollBehavior = originalOverscrollBehavior;
         htmlStyle.overscrollBehavior = originalHtmlOverscrollBehavior;
-        window.scrollTo(0, scrollY);
       };
     }
   }, [isResumeOpen]);
