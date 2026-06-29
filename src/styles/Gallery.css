@@ -1,20 +1,26 @@
 .gallery-section {
   padding: 100px 24px;
-  background: var(--surface); /* Alternate background */
+  background: var(--surface);
 }
 
 .gallery-container {
-  max-width: 1200px;
+  max-width: 1400px;
   width: 100%;
   margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.gallery-header {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 .gallery-subtitle {
-  text-align: center;
   color: var(--text-secondary);
   font-size: 1.1rem;
-  margin-top: -30px;
-  margin-bottom: 50px;
+  margin-top: -15px;
 }
 
 .gallery-subtitle code {
@@ -25,81 +31,170 @@
   color: var(--accent);
 }
 
-.gallery-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-  gap: 24px;
+/* CAROUSEL MAIN */
+.carousel-main {
+  position: relative;
+  display: flex;
   align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 1200px;
+  gap: 20px;
 }
 
-.gallery-item {
+.carousel-image-wrapper {
+  flex: 1;
   position: relative;
   border-radius: var(--radius-lg);
   overflow: hidden;
-  box-shadow: var(--shadow-sm);
-  cursor: pointer;
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
   background: var(--bg);
   border: 1px solid var(--border);
+  aspect-ratio: 16 / 9;
   isolation: isolate;
   -webkit-transform: translateZ(0);
 }
 
-.gallery-image-wrapper {
-  position: relative;
-  width: 100%;
-  padding-top: 56.25%; /* 16:9 Aspect Ratio */
-}
-
-.gallery-image-wrapper img {
+.carousel-active-image {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
   object-fit: cover;
-  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+  border-radius: var(--radius-lg);
 }
 
-.gallery-item:hover .gallery-image-wrapper img {
-  transform: scale(1.05);
-}
-
-.gallery-overlay {
+.carousel-overlay {
   position: absolute;
-  inset: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  padding: 40px 30px 30px;
   background: linear-gradient(
     to bottom,
     rgba(0,0,0,0) 0%,
-    rgba(0,0,0,0.2) 60%,
-    rgba(0,0,0,0.85) 100%
+    rgba(0,0,0,0.6) 50%,
+    rgba(0,0,0,0.9) 100%
   );
-  opacity: 0;
   display: flex;
+  justify-content: flex-start;
   align-items: flex-end;
-  padding: 24px;
-  transition: opacity 0.4s ease;
+  pointer-events: none;
 }
 
-.gallery-item:hover .gallery-overlay {
-  opacity: 1;
-}
-
-.gallery-caption {
-  color: #fff;
+.carousel-caption {
+  color: #ffffff;
+  font-size: 1.8rem;
   font-weight: 700;
-  font-size: 1.2rem;
-  text-shadow: 0 2px 4px rgba(0,0,0,0.5);
-  transform: translateY(10px);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  margin: 0;
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+  letter-spacing: -0.01em;
 }
 
-.gallery-item:hover .gallery-caption {
-  transform: translateY(0);
+/* CONTROLS */
+.carousel-control {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  color: #fff;
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  flex-shrink: 0;
+  z-index: 10;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
 }
 
-@media (max-width: 768px) {
-  .gallery-section { padding: 60px 20px; }
-  .gallery-grid { grid-template-columns: 1fr; gap: 20px; }
-  .gallery-overlay { opacity: 1; background: linear-gradient(to bottom, rgba(0,0,0,0) 40%, rgba(0,0,0,0.8) 100%); }
-  .gallery-caption { transform: translateY(0); font-size: 1.1rem; }
+.carousel-control svg {
+  width: 24px;
+  height: 24px;
+}
+
+.carousel-control:hover {
+  background: var(--accent);
+  border-color: var(--accent);
+  transform: scale(1.1);
+  box-shadow: 0 8px 24px rgba(var(--accent-rgb), 0.4);
+}
+
+.carousel-control:active {
+  transform: scale(0.95);
+}
+
+/* THUMBNAILS */
+.carousel-thumbnails {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 32px;
+  flex-wrap: wrap;
+  max-width: 1200px;
+  padding: 0 20px;
+}
+
+.thumbnail-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  width: 80px;
+  aspect-ratio: 16 / 9;
+  border-radius: var(--radius-md);
+  overflow: hidden;
+  cursor: pointer;
+  opacity: 0.4;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.thumbnail-btn img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.thumbnail-btn:hover {
+  opacity: 0.8;
+  transform: translateY(-2px);
+}
+
+.thumbnail-btn.active {
+  opacity: 1;
+  box-shadow: 0 0 0 2px var(--accent);
+  transform: scale(1.05);
+}
+
+@media (max-width: 900px) {
+  .carousel-main {
+    position: relative;
+    gap: 0;
+  }
+  
+  .carousel-control {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+  }
+
+  .carousel-control:hover {
+    transform: translateY(-50%) scale(1.1);
+  }
+
+  .carousel-control:active {
+    transform: translateY(-50%) scale(0.95);
+  }
+
+  .carousel-control.prev { left: 16px; }
+  .carousel-control.next { right: 16px; }
+  
+  .carousel-caption { font-size: 1.4rem; }
+  
+  .thumbnail-btn { width: 60px; }
 }

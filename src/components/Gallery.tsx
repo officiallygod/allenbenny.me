@@ -1,10 +1,9 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useState } from 'react';
+import { motion, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/Gallery.css';
 
 // Import all screenshots
-// You can replace these files in src/assets/gallery/ with your real screenshots!
 import smartFarmingImg from '../assets/gallery/smart_farming.png';
 import mouseMovementsImg from '../assets/gallery/mouse_movements.png';
 import coronaiImg from '../assets/gallery/coronai.png';
@@ -25,70 +24,88 @@ const galleryItems = [
 
 const Gallery: React.FC = () => {
   const { t } = useLanguage();
+  const [currentIndex, setCurrentIndex] = useState(0);
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15,
-      },
-    },
+  const handleNext = () => {
+    setCurrentIndex((prev) => (prev + 1) % galleryItems.length);
   };
 
-  const itemVariants = {
-    hidden: { opacity: 0, scale: 0.95 },
-    visible: {
-      opacity: 1,
-      scale: 1,
-      transition: { duration: 0.5, ease: 'easeOut' as const },
-    },
+  const handlePrev = () => {
+    setCurrentIndex((prev) => (prev - 1 + galleryItems.length) % galleryItems.length);
   };
+
+  const activeItem = galleryItems[currentIndex];
 
   return (
     <section id="gallery" className="gallery-section">
       <motion.div
         className="gallery-container"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
         viewport={{ once: true, amount: 0.1 }}
+        transition={{ duration: 0.6 }}
       >
-        <motion.h2
-          className="section-title"
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6 }}
-        >
-          Project Showcase
-        </motion.h2>
-        
-        <motion.p 
-          className="gallery-subtitle"
-          initial={{ opacity: 0 }}
-          whileInView={{ opacity: 1 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.6, delay: 0.2 }}
-        >
-          A visual gallery of my professional work. Drop your real screenshots into the <code>src/assets/gallery</code> folder!
-        </motion.p>
+        <div className="gallery-header">
+          <h2 className="section-title">Project Showcase</h2>
+          <p className="gallery-subtitle">
+            A visual gallery of my professional work. Drop your real screenshots into the <code>src/assets/gallery</code> folder!
+          </p>
+        </div>
 
-        <div className="gallery-grid">
-          {galleryItems.map((item) => (
-            <motion.div
+        <div className="carousel-main">
+          <button className="carousel-control prev" onClick={handlePrev} aria-label="Previous image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="15 18 9 12 15 6"></polyline>
+            </svg>
+          </button>
+          
+          <div className="carousel-image-wrapper">
+            <AnimatePresence mode="wait">
+              <motion.img
+                key={activeItem.id}
+                src={activeItem.src}
+                alt={activeItem.alt}
+                initial={{ opacity: 0, scale: 0.98 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 1.02 }}
+                transition={{ duration: 0.4, ease: "easeInOut" }}
+                className="carousel-active-image"
+              />
+            </AnimatePresence>
+
+            <div className="carousel-overlay">
+              <AnimatePresence mode="wait">
+                <motion.h3 
+                  key={activeItem.id}
+                  initial={{ opacity: 0, y: 10 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, y: -10 }}
+                  transition={{ duration: 0.3 }}
+                  className="carousel-caption"
+                >
+                  {activeItem.alt}
+                </motion.h3>
+              </AnimatePresence>
+            </div>
+          </div>
+
+          <button className="carousel-control next" onClick={handleNext} aria-label="Next image">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+              <polyline points="9 18 15 12 9 6"></polyline>
+            </svg>
+          </button>
+        </div>
+
+        <div className="carousel-thumbnails">
+          {galleryItems.map((item, index) => (
+            <button
               key={item.id}
-              className="gallery-item"
-              variants={itemVariants}
-              whileHover={{ scale: 1.02, y: -5 }}
+              className={`thumbnail-btn ${index === currentIndex ? 'active' : ''}`}
+              onClick={() => setCurrentIndex(index)}
+              aria-label={`View ${item.alt}`}
             >
-              <div className="gallery-image-wrapper">
-                <img src={item.src} alt={item.alt} loading="lazy" />
-                <div className="gallery-overlay">
-                  <span className="gallery-caption">{item.alt}</span>
-                </div>
-              </div>
-            </motion.div>
+              <img src={item.src} alt={`Thumbnail of ${item.alt}`} loading="lazy" />
+            </button>
           ))}
         </div>
       </motion.div>
