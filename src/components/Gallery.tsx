@@ -13,13 +13,13 @@ import deutschwayImg from '../assets/gallery/deutschway.png';
 import roameroImg from '../assets/gallery/roamero.png';
 
 const galleryItems = [
-  { id: 'recalla', src: recallaImg, alt: 'Recalla' },
-  { id: 'deutschway', src: deutschwayImg, alt: 'Deutschway' },
-  { id: 'roamero', src: roameroImg, alt: 'Roamero' },
-  { id: 'smart_farming', src: smartFarmingImg, alt: 'Smart Farming IoT System' },
-  { id: 'mouse_movements', src: mouseMovementsImg, alt: 'Automating Mouse Movements' },
-  { id: 'coronai', src: coronaiImg, alt: 'CORONAI' },
-  { id: 'flutter_loading_kit', src: flutterLoadingKitImg, alt: 'Flutter Loading Kit' },
+  { id: 'roamero', src: roameroImg, alt: 'Roamero', url: 'https://officiallygod.github.io/Roamero/' },
+  { id: 'deutschway', src: deutschwayImg, alt: 'DeutschWay', url: 'https://officiallygod.github.io/Deutschway/' },
+  { id: 'recalla', src: recallaImg, alt: 'Recalla', url: 'https://officiallygod.github.io/Recalla/' },
+  { id: 'coronai', src: coronaiImg, alt: 'Coronai', url: 'https://www.youtube.com/embed/p3iMV9qt6Qs?autoplay=1&mute=1&controls=0&loop=1&playlist=p3iMV9qt6Qs' },
+  { id: 'mouse_movements', src: mouseMovementsImg, alt: 'Automating Mouse Movements', url: 'https://www.researchgate.net/publication/344604018_Automating_Mouse_Movements_with_Pupil_Detection_and_OpenCV' },
+  { id: 'smart_farming', src: smartFarmingImg, alt: 'Smart Farming IoT', url: 'https://www.researchgate.net/publication/345607363_Smart_Farming_IoT_Based_Water_Managing_System' },
+  { id: 'flutter_loading_kit', src: flutterLoadingKitImg, alt: 'Flutter Loading Kit PUBAI', url: 'https://pub.dev/packages/flutter_loading_kit' },
 ];
 
 const Gallery: React.FC = () => {
@@ -37,7 +37,7 @@ const Gallery: React.FC = () => {
   const activeItem = galleryItems[currentIndex];
 
   return (
-    <section id="gallery" className="gallery-section">
+    <section id="gallery" className="gallery-section custom-touch-cursor">
       <motion.div
         className="gallery-container"
         initial={{ opacity: 0 }}
@@ -46,14 +46,14 @@ const Gallery: React.FC = () => {
         transition={{ duration: 0.6 }}
       >
         <div className="gallery-header">
-          <h2 className="section-title">Project Showcase</h2>
+          <h2 className="section-title">Live Previews</h2>
           <p className="gallery-subtitle">
-            A visual gallery of my professional work. Drop your real screenshots into the <code>src/assets/gallery</code> folder!
+            Interactive, locked live feeds of my projects.
           </p>
         </div>
 
         <div className="carousel-main">
-          <button className="carousel-control prev" onClick={handlePrev} aria-label="Previous image">
+          <button className="carousel-control prev" onClick={handlePrev} aria-label="Previous preview">
             <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
               <polyline points="15 18 9 12 15 6"></polyline>
             </svg>
@@ -61,15 +61,18 @@ const Gallery: React.FC = () => {
           
           <div className="carousel-image-wrapper">
             <AnimatePresence mode="wait">
-              <motion.img
+              <motion.iframe
                 key={activeItem.id}
-                src={activeItem.src}
-                alt={activeItem.alt}
+                src={activeItem.url}
+                title={activeItem.alt}
+                sandbox="allow-scripts allow-same-origin"
+                className="carousel-active-iframe"
                 initial={{ opacity: 0, scale: 0.98 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 1.02 }}
                 transition={{ duration: 0.4, ease: "easeInOut" }}
-                className="carousel-active-image"
+                loading="lazy"
+                allow="autoplay"
               />
             </AnimatePresence>
 
