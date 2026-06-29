@@ -73,7 +73,7 @@ const App: React.FC = () => {
           <Gallery />
         </Suspense>
       </ViewportSection>
-      <ViewportSection>
+      <ViewportSection id="projects">
         <Suspense fallback={<LoadingFallback />}>
           <Projects />
         </Suspense>
@@ -88,7 +88,7 @@ const App: React.FC = () => {
           <Certifications />
         </Suspense>
       </ViewportSection>
-      <ViewportSection>
+      <ViewportSection id="contact">
         <Suspense fallback={<LoadingFallback />}>
           <Contact />
         </Suspense>

@@ -114,7 +114,7 @@ export const translations: Record<
       monthLocale: 'en-US',
     },
     contact: {
-      intro: "I'm currently working as a Student Assistant at the Scientific Computing Center (SCC), KIT, focusing on JavaScript-based integration with DSL languages—combining web technologies with scientific computing.",
+      intro: "I'm currently working as a Student Assistant at the Scientific Computing Center (SCC), KIT, focusing on JavaScript-based integration with DSL languages - combining web technologies with scientific computing.",
       introEmphasis: "With 3+ years of practical experience, I'd love to connect and discuss technology, collaboration, or new ideas!",
       viewPortfolio: 'View Portfolio',
       personalSite: 'Personal Site',

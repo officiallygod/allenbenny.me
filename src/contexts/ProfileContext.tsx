@@ -60,8 +60,10 @@ export const ProfileProvider: React.FC<{ children: React.ReactNode }> = ({ child
   const languageProfile = profileData[language];
   const projects = mergeProjects(language);
 
+  const value = React.useMemo(() => ({ ...languageProfile, projects }), [languageProfile, projects]);
+
   return (
-    <ProfileContext.Provider value={{ ...languageProfile, projects }}>
+    <ProfileContext.Provider value={value}>
       {children}
     </ProfileContext.Provider>
   );

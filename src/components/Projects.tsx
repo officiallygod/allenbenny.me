@@ -31,7 +31,7 @@ const Projects: React.FC = () => {
   };
 
   return (
-    <section id="projects" className="projects-section">
+    <section className="projects-section">
       <motion.div
         className="projects-container"
         variants={containerVariants}
@@ -112,4 +112,4 @@ const Projects: React.FC = () => {
   );
 };
 
-export default Projects;
+export default React.memo(Projects);

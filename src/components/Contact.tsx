@@ -10,7 +10,7 @@ const Contact: React.FC = () => {
   const { t } = useLanguage();
 
   return (
-    <section id="contact" className="contact-section">
+    <section className="contact-section">
       <motion.div
         className="contact-container"
         initial={{ opacity: 0, y: 30 }}
@@ -144,4 +144,4 @@ const Contact: React.FC = () => {
   );
 };
 
-export default Contact;
+export default React.memo(Contact);

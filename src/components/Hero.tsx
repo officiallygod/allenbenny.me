@@ -1,5 +1,5 @@
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useMemo } from 'react';
+import { motion, Variants } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
 import { useResume } from '../contexts/ResumeContext';
 import { useTheme } from '../contexts/ThemeContext';
@@ -8,7 +8,36 @@ import SocialIcon from './SocialIcon';
 import '../styles/Hero.css';
 import OptimizedBackground from './OptimizedBackground';
 
-const Hero: React.FC = () => {
+const containerVariants: Variants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1,
+      delayChildren: 0.1
+    }
+  }
+};
+
+const itemVariants: Variants = {
+  hidden: { opacity: 0, y: 12 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+};
+
+const leftItemVariants: Variants = {
+  hidden: { opacity: 0, x: -20 },
+  visible: {
+    opacity: 1,
+    x: 0,
+    transition: { duration: 0.5, ease: "easeOut" }
+  }
+};
+
+const Hero: React.FC = React.memo(() => {
   const { name, tagline, socialLinks } = useProfile();
   const { openResume } = useResume();
   const { theme, toggleTheme } = useTheme();
@@ -18,15 +47,23 @@ const Hero: React.FC = () => {
   const { language, toggleLanguage, t } = useLanguage();
   const languageFlag = language === 'en' ? '🇬🇧' : '🇩🇪';
   const currentLanguage = language === 'en' ? t.languageToggle.english : t.languageToggle.german;
-  const chips = [t.hero.chip1, t.hero.chip2, t.hero.chip3];
+  
+  const chips = useMemo(() => [t.hero.chip1, t.hero.chip2, t.hero.chip3], [t.hero]);
+
+  // Smooth scroll handler for anchor links
+  const handleSmoothScroll = (e: React.MouseEvent<HTMLAnchorElement>, targetId: string) => {
+    e.preventDefault();
+    const target = document.getElementById(targetId);
+    if (target) {
+      target.scrollIntoView({ behavior: 'smooth' });
+    } else {
+      // Fallback if not mounted yet
+      window.location.hash = targetId;
+    }
+  };
 
   return (
-    <motion.section
-      className="hero"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <section className="hero">
       <OptimizedBackground />
 
       {/* Controls */}
@@ -62,62 +99,38 @@ const Hero: React.FC = () => {
         {/* Left - main content */}
         <motion.div
           className="hero-main"
-          initial={{ opacity: 0, x: -24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.15 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
           {/* Availability badge */}
-          <motion.div
-            className="hero-availability"
-            initial={{ opacity: 0, y: -10 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-          >
+          <motion.div className="hero-availability" variants={leftItemVariants}>
             <span className="availability-dot" aria-hidden="true" />
             {t.hero.availability}
           </motion.div>
 
           {/* Name */}
-          <motion.h1
-            className="hero-name"
-            initial={{ opacity: 0, y: 18 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.65, delay: 0.3 }}
-          >
+          <motion.h1 className="hero-name" variants={leftItemVariants}>
             {name}
           </motion.h1>
 
           {/* Role chips */}
-          <motion.div
-            className="hero-chips"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.4 }}
-          >
+          <motion.div className="hero-chips" variants={leftItemVariants}>
             {chips.map((chip) => (
               <span key={chip} className="hero-chip">{chip}</span>
             ))}
           </motion.div>
 
           {/* Tagline */}
-          <motion.p
-            className="hero-tagline"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.5 }}
-          >
+          <motion.p className="hero-tagline" variants={leftItemVariants}>
             {tagline}
           </motion.p>
 
           {/* CTA buttons */}
-          <motion.div
-            className="hero-cta"
-            initial={{ opacity: 0, y: 12 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.55, delay: 0.6 }}
-          >
+          <motion.div className="hero-cta" variants={leftItemVariants}>
             <motion.a
               href="#contact"
+              onClick={(e) => handleSmoothScroll(e, 'contact')}
               className="cta-button primary"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -126,6 +139,7 @@ const Hero: React.FC = () => {
             </motion.a>
             <motion.a
               href="#projects"
+              onClick={(e) => handleSmoothScroll(e, 'projects')}
               className="cta-button secondary"
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
@@ -144,12 +158,7 @@ const Hero: React.FC = () => {
           </motion.div>
 
           {/* Social links */}
-          <motion.div
-            className="social-links"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.5, delay: 0.7 }}
-          >
+          <motion.div className="social-links" variants={containerVariants}>
             {socialLinks.map((link, index) => (
               <motion.a
                 key={index}
@@ -157,11 +166,9 @@ const Hero: React.FC = () => {
                 target="_blank"
                 rel="noopener noreferrer"
                 className="social-link"
+                variants={itemVariants}
                 whileHover={{ y: -3 }}
                 whileTap={{ scale: 0.95 }}
-                initial={{ opacity: 0, y: 8 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.75 + index * 0.08 }}
                 aria-label={link.name}
               >
                 <SocialIcon type={link.icon} className="social-icon" />
@@ -173,23 +180,21 @@ const Hero: React.FC = () => {
         {/* Right - stat cards */}
         <motion.div
           className="hero-side"
-          initial={{ opacity: 0, x: 24 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 0.7, delay: 0.35 }}
+          variants={containerVariants}
+          initial="hidden"
+          animate="visible"
         >
           {[
             { icon: '💼', label: t.hero.statExperience, value: t.hero.statExperienceValue },
             { icon: '🚀', label: t.hero.statProjects,   value: t.hero.statProjectsValue   },
             { icon: '⚡', label: t.hero.statFocus,      value: t.hero.statFocusValue      },
-          ].map((stat, i) => (
+          ].map((stat) => (
             <motion.div
               key={stat.label}
               className="stat-card"
+              variants={itemVariants}
               whileHover={{ y: -4 }}
               transition={{ duration: 0.2 }}
-              initial={{ opacity: 0, y: 16 }}
-              animate={{ opacity: 1, y: 0 }}
-              style={{ transitionDelay: `${0.45 + i * 0.1}s` } as React.CSSProperties}
             >
               <div className="stat-icon" aria-hidden="true">{stat.icon}</div>
               <div className="stat-info">
@@ -207,9 +212,9 @@ const Hero: React.FC = () => {
         <span className="hero-scroll-text">Scroll</span>
         <div className="hero-scroll-line" />
       </div>
-    </motion.section>
+    </section>
   );
-};
+});
 
-export default React.memo(Hero);
+export default Hero;
 

@@ -4,6 +4,7 @@ type ViewportSectionProps = {
   children: React.ReactNode;
   rootMargin?: string;
   minHeight?: number;
+  id?: string;
 };
 
 /**
@@ -14,6 +15,7 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({
   children,
   rootMargin = '320px',
   minHeight = 420,
+  id,
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const [shouldRender, setShouldRender] = useState(false);
@@ -48,6 +50,7 @@ const ViewportSection: React.FC<ViewportSectionProps> = ({
 
   return (
     <div
+      id={id}
       ref={containerRef}
       className="viewport-section"
       aria-busy={!shouldRender}

@@ -82,7 +82,7 @@ export const profileData: Record<Language, ProfileData> = {
       'MSc Computer Science (Informatik) student at KIT (Karlsruhe Institute of Technology) with 3+ years of hands-on professional experience building scalable onboarding systems and AI-powered features at Newfold Digital. Specialized in PHP, React, JavaScript, Node.js, WordPress, and TypeScript.',
       'Led development of open-source WordPress onboarding serving 1000+ daily users, integrated AI features from prompts, and optimized performance with advanced React patterns (Memo, caching). Represented Bluehost at WordCamp Sylhet 2023 and awarded Edward De Bono Award for innovation.',
       'Currently working as a Student Assistant at the Scientific Computing Center (SCC), KIT, focusing on JavaScript-based integration with DSL (Domain-Specific Languages). Applying my full-stack expertise to bridge modern web technologies with specialized computing workflows.',
-      "Alongside my role at SCC, I continue to deepen my skills in software development throughout my master's—contributing to real-world projects and gaining deeper insight into scientific computing and the German work environment.",
+      "Alongside my role at SCC, I continue to deepen my skills in software development throughout my master's - contributing to real-world projects and gaining deeper insight into scientific computing and the German work environment.",
     ],
     technologies: [
       { name: 'PHP', category: 'Language' },
