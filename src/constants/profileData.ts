@@ -214,6 +214,20 @@ export const profileData: Record<Language, ProfileData> = {
         githubLink: 'https://github.com/officiallygod/Recalla',
         date: '2025',
       },
+      {
+        title: 'Deutschway',
+        description: 'A platform for daily learning and tracking progress in the German language. Open source project built for language learners.',
+        link: 'https://github.com/officiallygod/Deutschway',
+        githubLink: 'https://github.com/officiallygod/Deutschway',
+        date: '2025',
+      },
+      {
+        title: 'Roamero',
+        description: 'A modern travel and journey companion application to discover and document every place. Every place, every journey.',
+        link: 'https://github.com/officiallygod/Roamero',
+        githubLink: 'https://github.com/officiallygod/Roamero',
+        date: '2025',
+      },
     ],
     certifications: [
       {
@@ -409,6 +423,20 @@ export const profileData: Record<Language, ProfileData> = {
         description: 'Eine moderne Progressive Web App (PWA) zum Lernen und Merken von Wörtern durch interaktive Spiele. Mit Wortverwaltung, einem Match-Spiel, KI-gestützter Spaced-Repetition, Gamification (Punkte, Combos, Level) und Offline-Unterstützung.',
         link: 'https://officiallygod.github.io/Recalla/',
         githubLink: 'https://github.com/officiallygod/Recalla',
+        date: '2025',
+      },
+      {
+        title: 'Deutschway',
+        description: 'Eine Plattform für das tägliche Lernen und die Verfolgung von Fortschritten in der deutschen Sprache. Open-Source-Projekt für Sprachlerner.',
+        link: 'https://github.com/officiallygod/Deutschway',
+        githubLink: 'https://github.com/officiallygod/Deutschway',
+        date: '2025',
+      },
+      {
+        title: 'Roamero',
+        description: 'Eine moderne App als Reisebegleiter, um jeden Ort zu entdecken und zu dokumentieren. Jeder Ort, jede Reise.',
+        link: 'https://github.com/officiallygod/Roamero',
+        githubLink: 'https://github.com/officiallygod/Roamero',
         date: '2025',
       },
     ],

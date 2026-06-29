@@ -1,4 +1,4 @@
-import React, { lazy, Suspense } from 'react';
+import React, { lazy, Suspense, useEffect } from 'react';
 import Hero from './components/Hero';
 import About from './components/About';
 import Resume from './components/Resume';
@@ -7,7 +7,6 @@ import './styles/App.css';
 import ViewportSection from './components/ViewportSection';
 
 // Lazy load components that are below the fold.
-// Combined with ViewportSection this keeps the main bundle lean and defers heavy mounts (e.g., charts) until scrolled.
 const Technologies = lazy(() => import('./components/Technologies'));
 const Experience = lazy(() => import('./components/Experience'));
 const Projects = lazy(() => import('./components/Projects'));
@@ -34,31 +33,60 @@ const LoadingMessage = () => {
 };
 
 const App: React.FC = () => {
+  useEffect(() => {
+    // Preload lazy components during browser idle time for maximum performance and zero lag
+    const preloadComponents = () => {
+      import('./components/Technologies');
+      import('./components/Experience');
+      import('./components/Projects');
+      import('./components/Contributions');
+      import('./components/Certifications');
+      import('./components/Contact');
+    };
+
+    if ('requestIdleCallback' in window) {
+      // Use type assertion since requestIdleCallback isn't in standard TS DOM by default on all TS versions
+      (window as any).requestIdleCallback(preloadComponents);
+    } else {
+      setTimeout(preloadComponents, 2000);
+    }
+  }, []);
+
   return (
     <div className="app-container">
       <Hero />
-      <Suspense fallback={<LoadingFallback />}>
-        <About />
-        <ViewportSection>
+      <About />
+      <ViewportSection>
+        <Suspense fallback={<LoadingFallback />}>
           <Technologies />
-        </ViewportSection>
-        <ViewportSection>
+        </Suspense>
+      </ViewportSection>
+      <ViewportSection>
+        <Suspense fallback={<LoadingFallback />}>
           <Experience />
-        </ViewportSection>
-        <ViewportSection>
+        </Suspense>
+      </ViewportSection>
+      <ViewportSection>
+        <Suspense fallback={<LoadingFallback />}>
           <Projects />
-        </ViewportSection>
-        <ViewportSection>
+        </Suspense>
+      </ViewportSection>
+      <ViewportSection>
+        <Suspense fallback={<LoadingFallback />}>
           <Contributions />
-        </ViewportSection>
-        <ViewportSection>
+        </Suspense>
+      </ViewportSection>
+      <ViewportSection>
+        <Suspense fallback={<LoadingFallback />}>
           <Certifications />
-        </ViewportSection>
-        <ViewportSection>
+        </Suspense>
+      </ViewportSection>
+      <ViewportSection>
+        <Suspense fallback={<LoadingFallback />}>
           <Contact />
-        </ViewportSection>
-        <Resume />
-      </Suspense>
+        </Suspense>
+      </ViewportSection>
+      <Resume />
     </div>
   );
 };
