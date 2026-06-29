@@ -70,12 +70,12 @@ const App: React.FC = () => {
       </ViewportSection>
       <ViewportSection>
         <Suspense fallback={<LoadingFallback />}>
-          <Projects />
+          <Gallery />
         </Suspense>
       </ViewportSection>
       <ViewportSection>
         <Suspense fallback={<LoadingFallback />}>
-          <Gallery />
+          <Projects />
         </Suspense>
       </ViewportSection>
       <ViewportSection>
