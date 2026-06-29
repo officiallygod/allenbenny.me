@@ -10,6 +10,7 @@ import ViewportSection from './components/ViewportSection';
 const Technologies = lazy(() => import('./components/Technologies'));
 const Experience = lazy(() => import('./components/Experience'));
 const Projects = lazy(() => import('./components/Projects'));
+const Gallery = lazy(() => import('./components/Gallery'));
 const Contributions = lazy(() => import('./components/Contributions'));
 const Certifications = lazy(() => import('./components/Certifications'));
 const Contact = lazy(() => import('./components/Contact'));
@@ -39,6 +40,7 @@ const App: React.FC = () => {
       import('./components/Technologies');
       import('./components/Experience');
       import('./components/Projects');
+      import('./components/Gallery');
       import('./components/Contributions');
       import('./components/Certifications');
       import('./components/Contact');
@@ -69,6 +71,11 @@ const App: React.FC = () => {
       <ViewportSection>
         <Suspense fallback={<LoadingFallback />}>
           <Projects />
+        </Suspense>
+      </ViewportSection>
+      <ViewportSection>
+        <Suspense fallback={<LoadingFallback />}>
+          <Gallery />
         </Suspense>
       </ViewportSection>
       <ViewportSection>
