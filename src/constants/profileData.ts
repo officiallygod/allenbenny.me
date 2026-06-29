@@ -33,6 +33,7 @@ export interface Project {
   link?: string;
   githubLink?: string;
   date: string;
+  image?: string;
 }
 
 export interface Certification {
@@ -188,24 +189,28 @@ export const profileData: Record<Language, ProfileData> = {
         description: 'Published research paper on IoT-based smart farming system in IJIITEE journal. Developed an intelligent agricultural monitoring solution.',
         link: 'https://www.researchgate.net/publication/345607363_Smart_Farming_IoT_Based_Water_Managing_System',
         date: 'Feb 2020',
+        image: '/images/projects/smart_farming.png',
       },
       {
         title: 'Automating Mouse Movements',
         description: 'Research published on ResearchGate exploring automation techniques for mouse movements and user interface interactions.',
         link: 'https://www.researchgate.net/publication/344604018_Automating_Mouse_Movements_with_Pupil_Detection_and_OpenCV',
         date: 'Oct 2020',
+        image: '/images/projects/mouse_movements.png',
       },
       {
         title: 'CORONAI',
         description: 'AI-powered solution developed during HackAIthon for COVID-19 related challenges. Leveraged machine learning for healthcare insights.',
         link: 'https://github.com/officiallygod/CORONAI',
         date: 'Nov 2020',
+        image: '/images/projects/coronai.png',
       },
       {
         title: 'Flutter Loading Kit',
         description: 'Published Flutter package on Pub.dev providing reusable loading animations and components for Flutter applications.',
         link: 'https://pub.dev/packages/flutter_loading_kit/',
         date: 'May 2021',
+        image: '/images/projects/flutter_loading_kit.png',
       },
       {
         title: 'Recalla',
@@ -213,6 +218,7 @@ export const profileData: Record<Language, ProfileData> = {
         link: 'https://officiallygod.github.io/Recalla/',
         githubLink: 'https://github.com/officiallygod/Recalla',
         date: '2025',
+        image: '/images/projects/recalla.png',
       },
       {
         title: 'Deutschway',
@@ -220,6 +226,7 @@ export const profileData: Record<Language, ProfileData> = {
         link: 'https://github.com/officiallygod/Deutschway',
         githubLink: 'https://github.com/officiallygod/Deutschway',
         date: '2025',
+        image: '/images/projects/deutschway.png',
       },
       {
         title: 'Roamero',
@@ -227,6 +234,7 @@ export const profileData: Record<Language, ProfileData> = {
         link: 'https://github.com/officiallygod/Roamero',
         githubLink: 'https://github.com/officiallygod/Roamero',
         date: '2025',
+        image: '/images/projects/roamero.png',
       },
     ],
     certifications: [
@@ -399,24 +407,28 @@ export const profileData: Record<Language, ProfileData> = {
         description: 'Veröffentlichte Forschung zu IoT-basiertem Smart-Farming-System im IJIITEE-Journal. Entwickelte eine intelligente Agrarüberwachungslösung.',
         link: 'https://www.researchgate.net/publication/345607363_Smart_Farming_IoT_Based_Water_Managing_System',
         date: 'Feb 2020',
+        image: '/images/projects/smart_farming.png',
       },
       {
         title: 'Automating Mouse Movements',
         description: 'Forschung auf ResearchGate über Automatisierungstechniken für Mausbewegungen und UI-Interaktionen veröffentlicht.',
         link: 'https://www.researchgate.net/publication/344604018_Automating_Mouse_Movements_with_Pupil_Detection_and_OpenCV',
         date: 'Okt 2020',
+        image: '/images/projects/mouse_movements.png',
       },
       {
         title: 'CORONAI',
         description: 'KI-basierte Lösung für COVID-19-Herausforderungen im HackAIthon. Nutzte Machine Learning für Gesundheitsanalysen.',
         link: 'https://github.com/officiallygod/CORONAI',
         date: 'Nov 2020',
+        image: '/images/projects/coronai.png',
       },
       {
         title: 'Flutter Loading Kit',
         description: 'Flutter-Paket auf Pub.dev veröffentlicht, das wiederverwendbare Ladeanimationen und Komponenten bietet.',
         link: 'https://pub.dev/packages/flutter_loading_kit/',
         date: 'Mai 2021',
+        image: '/images/projects/flutter_loading_kit.png',
       },
       {
         title: 'Recalla',
@@ -424,6 +436,7 @@ export const profileData: Record<Language, ProfileData> = {
         link: 'https://officiallygod.github.io/Recalla/',
         githubLink: 'https://github.com/officiallygod/Recalla',
         date: '2025',
+        image: '/images/projects/recalla.png',
       },
       {
         title: 'Deutschway',
@@ -431,6 +444,7 @@ export const profileData: Record<Language, ProfileData> = {
         link: 'https://github.com/officiallygod/Deutschway',
         githubLink: 'https://github.com/officiallygod/Deutschway',
         date: '2025',
+        image: '/images/projects/deutschway.png',
       },
       {
         title: 'Roamero',
@@ -438,6 +452,7 @@ export const profileData: Record<Language, ProfileData> = {
         link: 'https://github.com/officiallygod/Roamero',
         githubLink: 'https://github.com/officiallygod/Roamero',
         date: '2025',
+        image: '/images/projects/roamero.png',
       },
     ],
     certifications: [
