@@ -10,28 +10,38 @@ const ExperimentalHero: React.FC = () => {
         <h1 className="exp-heading-massive">
           {name}
         </h1>
-        <h2 className="exp-heading-neon" style={{ marginTop: '20px', marginBottom: '40px' }}>
+        <h2 className="exp-heading-brush">
           Full Stack Developer
         </h2>
-        <p className="exp-subheading" style={{ maxWidth: '600px', marginBottom: '60px' }}>
-          {tagline}
-        </p>
         
-        <div style={{ display: 'flex', gap: '20px', flexWrap: 'wrap' }}>
-          {socialLinks.map((link) => (
+        <div style={{ marginTop: '60px', marginLeft: '5vw', position: 'relative' }}>
+          <p className="exp-subheading" style={{ maxWidth: '600px', marginBottom: '60px' }}>
+            {tagline}
+          </p>
+          
+          <div style={{ display: 'flex', gap: '30px', flexWrap: 'wrap', transform: 'rotate(2deg)' }}>
+            {socialLinks.map((link) => (
+              <a 
+                key={link.name} 
+                href={link.url} 
+                target="_blank" 
+                rel="noreferrer"
+                className="exp-btn-funky"
+              >
+                {link.name}
+              </a>
+            ))}
             <a 
-              key={link.name} 
-              href={link.url} 
-              target="_blank" 
-              rel="noreferrer"
-              className="exp-glitch-btn"
+              href="#exp-projects" 
+              className="exp-btn-funky" 
+              style={{ 
+                background: 'var(--exp-neon-blue)', 
+                boxShadow: '6px 6px 0px var(--exp-neon-pink)' 
+              }}
             >
-              {link.name}
+              EXPLORE
             </a>
-          ))}
-          <a href="#exp-projects" className="exp-glitch-btn" style={{ borderColor: 'var(--exp-neon-blue)', color: 'var(--exp-neon-blue)' }}>
-            EXPLORE
-          </a>
+          </div>
         </div>
       </div>
     </section>

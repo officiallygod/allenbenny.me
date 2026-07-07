@@ -1,22 +1,20 @@
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Permanent+Marker&family=Space+Grotesk:wght@300;700;900&display=swap');
+
 /* ============================================================
-   Experimental Funky Design System
-   Palette: Neon Pink, Electric Blue, Lime Green, Jet Black
+   Experimental Funky Design System - True Mockup Fidelity
    ============================================================ */
 
 .experimental-root {
-  --exp-bg: #050505;
+  --exp-bg: #09090b;
   --exp-text: #F8F8F8;
   --exp-text-dim: #A0A0A0;
   
-  --exp-neon-pink: #FF00FF;
-  --exp-neon-blue: #00FFFF;
+  --exp-neon-pink: #FF107A;
+  --exp-neon-blue: #00F0FF;
   --exp-neon-green: #39FF14;
-  --exp-neon-yellow: #FFFF00;
+  --exp-neon-yellow: #FFE800;
 
-  --exp-surface: rgba(255, 255, 255, 0.03);
-  --exp-border: rgba(255, 255, 255, 0.1);
-
-  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  font-family: 'Space Grotesk', sans-serif;
   background: var(--exp-bg);
   color: var(--exp-text);
   min-height: 100vh;
@@ -24,84 +22,111 @@
   position: relative;
 }
 
-/* Background Brush Stroke Effects */
+/* ── Brush Stroke Backgrounds ── */
+/* Using complex overlapping SVG paths as masks for authentic paint looks */
 .exp-bg-stroke {
   position: fixed;
   z-index: 0;
-  border-radius: 50%;
-  filter: blur(120px);
-  opacity: 0.4;
   pointer-events: none;
+  background-color: currentColor;
+  -webkit-mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' preserveAspectRatio='none'%3E%3Cpath d='M10,50 Q30,20 60,40 T120,30 T180,60 Q190,80 160,70 T100,80 T40,60 Q20,70 10,50 Z'/%3E%3Cpath d='M0,40 Q40,10 80,45 T160,25 T200,50 Q180,90 140,75 T60,85 T0,40 Z' opacity='0.7'/%3E%3Cpath d='M20,60 Q50,30 90,55 T150,45 T190,70 Q170,100 120,85 T50,95 T20,60 Z' opacity='0.4'/%3E%3C/svg%3E");
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 200 100' preserveAspectRatio='none'%3E%3Cpath d='M10,50 Q30,20 60,40 T120,30 T180,60 Q190,80 160,70 T100,80 T40,60 Q20,70 10,50 Z'/%3E%3Cpath d='M0,40 Q40,10 80,45 T160,25 T200,50 Q180,90 140,75 T60,85 T0,40 Z' opacity='0.7'/%3E%3Cpath d='M20,60 Q50,30 90,55 T150,45 T190,70 Q170,100 120,85 T50,95 T20,60 Z' opacity='0.4'/%3E%3C/svg%3E");
+  -webkit-mask-size: 100% 100%;
+  mask-size: 100% 100%;
+  -webkit-mask-repeat: no-repeat;
+  mask-repeat: no-repeat;
 }
 
 .exp-stroke-1 {
-  background: var(--exp-neon-pink);
-  width: 500px;
-  height: 200px;
-  top: -50px;
-  left: -100px;
+  color: var(--exp-neon-pink);
+  width: 120vw;
+  height: 60vh;
+  top: -10vh;
+  left: -10vw;
   transform: rotate(-15deg);
+  opacity: 0.6;
 }
 
 .exp-stroke-2 {
-  background: var(--exp-neon-blue);
-  width: 600px;
-  height: 250px;
-  bottom: -100px;
-  right: -150px;
+  color: var(--exp-neon-blue);
+  width: 140vw;
+  height: 70vh;
+  bottom: -20vh;
+  right: -20vw;
   transform: rotate(25deg);
+  opacity: 0.5;
 }
 
 .exp-stroke-3 {
-  background: var(--exp-neon-green);
-  width: 400px;
-  height: 150px;
-  top: 40%;
-  left: -50px;
+  color: var(--exp-neon-green);
+  width: 80vw;
+  height: 40vh;
+  top: 30vh;
+  left: -20vw;
   transform: rotate(45deg);
-  opacity: 0.2;
+  opacity: 0.3;
 }
 
-/* Typography */
+/* ── Typography ── */
 .exp-heading-massive {
-  font-size: clamp(4rem, 10vw, 10rem);
-  font-weight: 900;
-  line-height: 0.9;
-  letter-spacing: -0.05em;
-  text-transform: uppercase;
+  font-family: 'Bungee Shade', cursive;
+  font-size: clamp(4rem, 12vw, 12rem);
+  line-height: 0.8;
   margin: 0;
-  background: linear-gradient(90deg, var(--exp-text) 0%, var(--exp-text-dim) 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--exp-text);
+  text-shadow: 10px 10px 0px var(--exp-neon-pink);
+  z-index: 10;
+  position: relative;
+  transform: rotate(-5deg);
+}
+
+.exp-heading-brush {
+  font-family: 'Permanent Marker', cursive;
+  font-size: clamp(2.5rem, 6vw, 6rem);
+  color: var(--exp-neon-yellow);
+  transform: rotate(-2deg);
+  margin-top: -20px;
+  position: relative;
+  z-index: 11;
+  text-shadow: 2px 2px 0px #000;
 }
 
 .exp-heading-neon {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(2rem, 5vw, 4rem);
-  font-weight: 800;
+  font-weight: 900;
   text-transform: uppercase;
-  letter-spacing: -0.03em;
   color: transparent;
-  -webkit-text-stroke: 1.5px var(--exp-neon-blue);
+  -webkit-text-stroke: 2px var(--exp-neon-blue);
+  position: relative;
 }
 
-.exp-heading-neon:hover {
-  color: var(--exp-neon-blue);
-  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
-  transition: all 0.3s ease;
+.exp-heading-neon::before {
+  content: attr(data-text);
+  position: absolute;
+  left: -4px;
+  top: 4px;
+  color: var(--exp-neon-pink);
+  z-index: -1;
+  -webkit-text-stroke: 0;
+  opacity: 0.7;
 }
 
 .exp-subheading {
+  font-family: 'Space Grotesk', sans-serif;
   font-size: clamp(1.2rem, 2vw, 1.8rem);
-  font-weight: 300;
-  color: var(--exp-text-dim);
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
+  font-weight: 700;
+  color: var(--exp-text);
+  background: #000;
+  padding: 10px 20px;
+  display: inline-block;
+  border-left: 5px solid var(--exp-neon-green);
+  box-shadow: 8px 8px 0px var(--exp-neon-blue);
 }
 
-/* Layout */
+/* ── Layout & Sections ── */
 .exp-container {
-  max-width: 1400px;
+  max-width: 1600px;
   margin: 0 auto;
   padding: 0 40px;
   position: relative;
@@ -113,81 +138,82 @@
   display: flex;
   flex-direction: column;
   justify-content: center;
-  padding: 100px 0;
+  padding: 150px 0;
+  position: relative;
 }
 
-/* Minimal Cards */
-.exp-card {
-  background: var(--exp-surface);
-  border: 1px solid var(--exp-border);
-  backdrop-filter: blur(20px);
+/* ── Floating / Scattered Cards ── */
+.exp-card-scatter {
+  position: relative;
+  background: rgba(0, 0, 0, 0.8);
+  border: 4px solid var(--exp-neon-blue);
   padding: 40px;
-  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-  cursor: pointer;
+  box-shadow: -15px 15px 0px rgba(0, 240, 255, 0.3);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.exp-card:hover {
-  transform: translateY(-10px) scale(1.02);
+.exp-card-scatter:hover {
+  transform: translate(10px, -10px);
+  box-shadow: -25px 25px 0px var(--exp-neon-pink);
   border-color: var(--exp-neon-pink);
-  box-shadow: 0 20px 40px rgba(255, 0, 255, 0.15);
 }
 
-.exp-card-title {
-  font-size: 2rem;
-  font-weight: 700;
-  margin-bottom: 10px;
+.exp-card-scatter-title {
+  font-family: 'Bungee Shade', cursive;
+  font-size: 2.5rem;
   color: var(--exp-text);
-  line-height: 1.1;
+  margin-bottom: 15px;
+  line-height: 1;
 }
 
-.exp-card:hover .exp-card-title {
-  color: var(--exp-neon-blue);
-}
-
-.exp-card-meta {
-  font-family: monospace;
-  color: var(--exp-neon-green);
-  font-size: 0.9rem;
+.exp-card-scatter-meta {
+  font-family: 'Permanent Marker', cursive;
+  color: var(--exp-neon-yellow);
+  font-size: 1.5rem;
   margin-bottom: 20px;
   display: block;
-  text-transform: uppercase;
 }
 
 .exp-card-desc {
-  color: var(--exp-text-dim);
+  font-size: 1.1rem;
   line-height: 1.6;
+  font-weight: 300;
 }
 
-/* Funky Elements */
-.exp-glitch-btn {
+/* ── Glitch Buttons ── */
+.exp-btn-funky {
+  font-family: 'Space Grotesk', sans-serif;
   display: inline-block;
-  padding: 16px 32px;
-  background: transparent;
-  color: var(--exp-neon-pink);
-  border: 2px solid var(--exp-neon-pink);
-  font-weight: 800;
+  padding: 15px 30px;
+  background: var(--exp-neon-pink);
+  color: #000;
+  font-weight: 900;
+  font-size: 1.2rem;
   text-transform: uppercase;
-  letter-spacing: 2px;
+  border: none;
   cursor: pointer;
   position: relative;
-  overflow: hidden;
-  transition: all 0.2s ease;
   text-decoration: none;
+  transition: transform 0.2s;
+  box-shadow: 6px 6px 0px var(--exp-neon-yellow);
 }
 
-.exp-glitch-btn:hover {
-  background: var(--exp-neon-pink);
-  color: var(--exp-bg);
-  box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
+.exp-btn-funky:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 10px 10px 0px var(--exp-neon-blue);
 }
 
-.exp-grid {
+.exp-grid-loose {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-  gap: 40px;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 80px;
+  margin-top: 60px;
 }
 
+/* Mobile Adjustments */
 @media (max-width: 768px) {
   .exp-container { padding: 0 20px; }
-  .exp-grid { grid-template-columns: 1fr; }
+  .exp-grid-loose { grid-template-columns: 1fr; gap: 40px; }
+  .exp-heading-massive { font-size: 4rem; }
+  .exp-heading-brush { font-size: 2.5rem; }
 }
