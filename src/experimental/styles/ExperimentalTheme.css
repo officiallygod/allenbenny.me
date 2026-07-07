@@ -1,0 +1,193 @@
+/* ============================================================
+   Experimental Funky Design System
+   Palette: Neon Pink, Electric Blue, Lime Green, Jet Black
+   ============================================================ */
+
+.experimental-root {
+  --exp-bg: #050505;
+  --exp-text: #F8F8F8;
+  --exp-text-dim: #A0A0A0;
+  
+  --exp-neon-pink: #FF00FF;
+  --exp-neon-blue: #00FFFF;
+  --exp-neon-green: #39FF14;
+  --exp-neon-yellow: #FFFF00;
+
+  --exp-surface: rgba(255, 255, 255, 0.03);
+  --exp-border: rgba(255, 255, 255, 0.1);
+
+  font-family: 'Inter', 'Helvetica Neue', sans-serif;
+  background: var(--exp-bg);
+  color: var(--exp-text);
+  min-height: 100vh;
+  overflow-x: hidden;
+  position: relative;
+}
+
+/* Background Brush Stroke Effects */
+.exp-bg-stroke {
+  position: fixed;
+  z-index: 0;
+  border-radius: 50%;
+  filter: blur(120px);
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.exp-stroke-1 {
+  background: var(--exp-neon-pink);
+  width: 500px;
+  height: 200px;
+  top: -50px;
+  left: -100px;
+  transform: rotate(-15deg);
+}
+
+.exp-stroke-2 {
+  background: var(--exp-neon-blue);
+  width: 600px;
+  height: 250px;
+  bottom: -100px;
+  right: -150px;
+  transform: rotate(25deg);
+}
+
+.exp-stroke-3 {
+  background: var(--exp-neon-green);
+  width: 400px;
+  height: 150px;
+  top: 40%;
+  left: -50px;
+  transform: rotate(45deg);
+  opacity: 0.2;
+}
+
+/* Typography */
+.exp-heading-massive {
+  font-size: clamp(4rem, 10vw, 10rem);
+  font-weight: 900;
+  line-height: 0.9;
+  letter-spacing: -0.05em;
+  text-transform: uppercase;
+  margin: 0;
+  background: linear-gradient(90deg, var(--exp-text) 0%, var(--exp-text-dim) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.exp-heading-neon {
+  font-size: clamp(2rem, 5vw, 4rem);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: -0.03em;
+  color: transparent;
+  -webkit-text-stroke: 1.5px var(--exp-neon-blue);
+}
+
+.exp-heading-neon:hover {
+  color: var(--exp-neon-blue);
+  text-shadow: 0 0 20px rgba(0, 255, 255, 0.5);
+  transition: all 0.3s ease;
+}
+
+.exp-subheading {
+  font-size: clamp(1.2rem, 2vw, 1.8rem);
+  font-weight: 300;
+  color: var(--exp-text-dim);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+/* Layout */
+.exp-container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+  z-index: 1;
+}
+
+.exp-section {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 100px 0;
+}
+
+/* Minimal Cards */
+.exp-card {
+  background: var(--exp-surface);
+  border: 1px solid var(--exp-border);
+  backdrop-filter: blur(20px);
+  padding: 40px;
+  transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+}
+
+.exp-card:hover {
+  transform: translateY(-10px) scale(1.02);
+  border-color: var(--exp-neon-pink);
+  box-shadow: 0 20px 40px rgba(255, 0, 255, 0.15);
+}
+
+.exp-card-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+  color: var(--exp-text);
+  line-height: 1.1;
+}
+
+.exp-card:hover .exp-card-title {
+  color: var(--exp-neon-blue);
+}
+
+.exp-card-meta {
+  font-family: monospace;
+  color: var(--exp-neon-green);
+  font-size: 0.9rem;
+  margin-bottom: 20px;
+  display: block;
+  text-transform: uppercase;
+}
+
+.exp-card-desc {
+  color: var(--exp-text-dim);
+  line-height: 1.6;
+}
+
+/* Funky Elements */
+.exp-glitch-btn {
+  display: inline-block;
+  padding: 16px 32px;
+  background: transparent;
+  color: var(--exp-neon-pink);
+  border: 2px solid var(--exp-neon-pink);
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.2s ease;
+  text-decoration: none;
+}
+
+.exp-glitch-btn:hover {
+  background: var(--exp-neon-pink);
+  color: var(--exp-bg);
+  box-shadow: 0 0 30px rgba(255, 0, 255, 0.6);
+}
+
+.exp-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+}
+
+@media (max-width: 768px) {
+  .exp-container { padding: 0 20px; }
+  .exp-grid { grid-template-columns: 1fr; }
+}
