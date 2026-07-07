@@ -1,5 +1,5 @@
 import React, { useEffect, useMemo, useState, useRef } from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -332,14 +332,14 @@ const Contributions: React.FC = () => {
   );
 
   return (
-    <motion.section
+    <m.section
       className="contributions"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.8 }}
     >
-      <motion.h2
+      <m.h2
         className="section-title"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -347,9 +347,9 @@ const Contributions: React.FC = () => {
         transition={{ duration: 0.6 }}
       >
         {t.sections.contributions}
-      </motion.h2>
+      </m.h2>
 
-      <motion.div
+      <m.div
         className="contributions-card"
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -404,8 +404,8 @@ const Contributions: React.FC = () => {
             </div>
           )}
         </div>
-      </motion.div>
-    </motion.section>
+      </m.div>
+    </m.section>
   );
 };
 

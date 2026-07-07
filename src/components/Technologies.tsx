@@ -1,5 +1,5 @@
 import React, { useState, useMemo } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/Technologies.css';
@@ -87,14 +87,14 @@ const Technologies: React.FC = () => {
   };
 
   return (
-    <motion.section
+    <m.section
       className="technologies"
       initial={{ opacity: 0 }}
       whileInView={{ opacity: 1 }}
       viewport={{ once: true, amount: 0.3 }}
       transition={{ duration: 0.8 }}
     >
-      <motion.h2
+      <m.h2
         className="section-title"
         initial={{ opacity: 0, y: -20 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -102,11 +102,11 @@ const Technologies: React.FC = () => {
         transition={{ duration: 0.6 }}
       >
         {t.sections.technologies}
-      </motion.h2>
+      </m.h2>
 
       <div className="tech-container">
         {/* Left: Categories */}
-        <motion.div
+        <m.div
           className="tech-categories-sidebar"
           variants={containerVariants}
           initial="hidden"
@@ -119,7 +119,7 @@ const Technologies: React.FC = () => {
             const isHovered = hoveredCategory === category;
 
             return (
-              <motion.div
+              <m.div
                 key={category}
                 className={`category-item ${isSelected ? 'selected' : ''}`}
                 variants={categoryVariants}
@@ -137,16 +137,16 @@ const Technologies: React.FC = () => {
                 <span className="category-emoji">{config.emoji}</span>
                 <span className="category-name">{category}</span>
                 <span className="category-count">{categorizedTech[category].length}</span>
-              </motion.div>
+              </m.div>
             );
           })}
-        </motion.div>
+        </m.div>
 
         {/* Right: Selected category's technologies */}
-        <motion.div className="tech-values-panel">
+        <m.div className="tech-values-panel">
           <AnimatePresence mode="wait">
             {selectedCategory ? (
-              <motion.div
+              <m.div
                 key={selectedCategory}
                 className="tech-tags"
                 initial="hidden"
@@ -157,13 +157,13 @@ const Technologies: React.FC = () => {
                 {categorizedTech[selectedCategory].map((tech) => {
                   const config = getCategoryConfig(selectedCategory);
                   return (
-                    <motion.div
+                    <m.div
                       key={`${selectedCategory}-${tech.name}`}
                       className="tag-wrapper"
                       variants={tagVariants}
                       layout
                     >
-                      <motion.span
+                      <m.span
                         className="tag"
                         style={{
                           borderColor: config.color,
@@ -180,19 +180,19 @@ const Technologies: React.FC = () => {
                         whileTap={{ scale: 0.95 }}
                       >
                         {tech.name}
-                        <motion.div
+                        <m.div
                           className="tag-glow"
                           style={{ background: `radial-gradient(circle, ${config.color}40 0%, transparent 70%)` }}
                           initial={{ opacity: 0 }}
                           whileHover={{ opacity: 1 }}
                         />
-                      </motion.span>
-                    </motion.div>
+                      </m.span>
+                    </m.div>
                   );
                 })}
-              </motion.div>
+              </m.div>
             ) : (
-              <motion.div
+              <m.div
                 key="placeholder"
                 className="tech-placeholder"
                 initial={{ opacity: 0 }}
@@ -200,12 +200,12 @@ const Technologies: React.FC = () => {
                 exit={{ opacity: 0 }}
               >
                 <p>{t.sections.technologiesPlaceholder}</p>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
-        </motion.div>
+        </m.div>
       </div>
-    </motion.section>
+    </m.section>
   );
 };
 

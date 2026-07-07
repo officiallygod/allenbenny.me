@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/Certifications.css';
@@ -32,14 +32,14 @@ const Certifications: React.FC = () => {
 
   return (
     <section id="certifications" className="certifications-section">
-      <motion.div
+      <m.div
         className="certifications-container"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <motion.h2
+        <m.h2
           className="section-title"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ const Certifications: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           {t.sections.certifications}
-        </motion.h2>
+        </m.h2>
 
         <div className="certifications-grid">
           {certifications.map((cert) => {
@@ -81,7 +81,7 @@ const Certifications: React.FC = () => {
                   <p className="cert-issuer">{cert.issuer}</p>
                   <span className="cert-date">{cert.date}</span>
                 </div>
-                <motion.div
+                <m.div
                   className="cert-accent"
                   initial={{ height: 0 }}
                   whileInView={{ height: '100%' }}
@@ -92,7 +92,7 @@ const Certifications: React.FC = () => {
             );
           })}
         </div>
-      </motion.div>
+      </m.div>
     </section>
   );
 };

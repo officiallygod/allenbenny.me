@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import { motion, Variants } from 'framer-motion';
+import { m, Variants } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
 import { useResume } from '../contexts/ResumeContext';
 import { useTheme } from '../contexts/ThemeContext';
@@ -68,7 +68,7 @@ const Hero: React.FC = React.memo(() => {
 
       {/* Controls */}
       <div className="hero-controls">
-        <motion.button
+        <m.button
           type="button"
           className="theme-toggle"
           onClick={toggleTheme}
@@ -79,8 +79,8 @@ const Hero: React.FC = React.memo(() => {
         >
           <span className="theme-toggle-icon">{toggleIcon}</span>
           <span>{toggleLabel}</span>
-        </motion.button>
-        <motion.button
+        </m.button>
+        <m.button
           type="button"
           className="language-toggle"
           onClick={toggleLanguage}
@@ -90,45 +90,45 @@ const Hero: React.FC = React.memo(() => {
           title={`${t.languageToggle.label}: ${currentLanguage}`}
         >
           <span className="language-flag" aria-hidden="true">{languageFlag}</span>
-        </motion.button>
+        </m.button>
       </div>
 
       {/* Content */}
       <div className="hero-content-wrapper">
 
         {/* Left - main content */}
-        <motion.div
+        <m.div
           className="hero-main"
           variants={containerVariants}
           initial="hidden"
           animate="visible"
         >
           {/* Availability badge */}
-          <motion.div className="hero-availability" variants={leftItemVariants}>
+          <m.div className="hero-availability" variants={leftItemVariants}>
             <span className="availability-dot" aria-hidden="true" />
             {t.hero.availability}
-          </motion.div>
+          </m.div>
 
           {/* Name */}
-          <motion.h1 className="hero-name" variants={leftItemVariants}>
+          <m.h1 className="hero-name" variants={leftItemVariants}>
             {name}
-          </motion.h1>
+          </m.h1>
 
           {/* Role chips */}
-          <motion.div className="hero-chips" variants={leftItemVariants}>
+          <m.div className="hero-chips" variants={leftItemVariants}>
             {chips.map((chip) => (
               <span key={chip} className="hero-chip">{chip}</span>
             ))}
-          </motion.div>
+          </m.div>
 
           {/* Tagline */}
-          <motion.p className="hero-tagline" variants={leftItemVariants}>
+          <m.p className="hero-tagline" variants={leftItemVariants}>
             {tagline}
-          </motion.p>
+          </m.p>
 
           {/* CTA buttons */}
-          <motion.div className="hero-cta" variants={leftItemVariants}>
-            <motion.a
+          <m.div className="hero-cta" variants={leftItemVariants}>
+            <m.a
               href="#contact"
               onClick={(e) => handleSmoothScroll(e, 'contact')}
               className="cta-button primary"
@@ -136,8 +136,8 @@ const Hero: React.FC = React.memo(() => {
               whileTap={{ scale: 0.98 }}
             >
               {t.hero.ctaPrimary}
-            </motion.a>
-            <motion.a
+            </m.a>
+            <m.a
               href="#projects"
               onClick={(e) => handleSmoothScroll(e, 'projects')}
               className="cta-button secondary"
@@ -145,8 +145,8 @@ const Hero: React.FC = React.memo(() => {
               whileTap={{ scale: 0.98 }}
             >
               {t.hero.ctaSecondary}
-            </motion.a>
-            <motion.button
+            </m.a>
+            <m.button
               onClick={openResume}
               className="cta-button secondary"
               whileHover={{ scale: 1.02 }}
@@ -154,13 +154,13 @@ const Hero: React.FC = React.memo(() => {
               aria-label={t.hero.ctaResume}
             >
               {t.hero.ctaResume}
-            </motion.button>
-          </motion.div>
+            </m.button>
+          </m.div>
 
           {/* Social links */}
-          <motion.div className="social-links" variants={containerVariants}>
+          <m.div className="social-links" variants={containerVariants}>
             {socialLinks.map((link, index) => (
-              <motion.a
+              <m.a
                 key={index}
                 href={link.url}
                 target="_blank"
@@ -172,13 +172,13 @@ const Hero: React.FC = React.memo(() => {
                 aria-label={link.name}
               >
                 <SocialIcon type={link.icon} className="social-icon" />
-              </motion.a>
+              </m.a>
             ))}
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
 
         {/* Right - stat cards */}
-        <motion.div
+        <m.div
           className="hero-side"
           variants={containerVariants}
           initial="hidden"
@@ -189,7 +189,7 @@ const Hero: React.FC = React.memo(() => {
             { icon: '🚀', label: t.hero.statProjects,   value: t.hero.statProjectsValue   },
             { icon: '⚡', label: t.hero.statFocus,      value: t.hero.statFocusValue      },
           ].map((stat) => (
-            <motion.div
+            <m.div
               key={stat.label}
               className="stat-card"
               variants={itemVariants}
@@ -201,9 +201,9 @@ const Hero: React.FC = React.memo(() => {
                 <div className="stat-label">{stat.label}</div>
                 <div className="stat-value">{stat.value}</div>
               </div>
-            </motion.div>
+            </m.div>
           ))}
-        </motion.div>
+        </m.div>
 
       </div>
 

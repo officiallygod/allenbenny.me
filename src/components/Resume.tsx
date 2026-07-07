@@ -1,5 +1,5 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
@@ -76,14 +76,14 @@ const Resume: React.FC = () => {
   return (
     <>
       <section id="resume" className="resume-section">
-        <motion.div
+        <m.div
           className="resume-container"
           initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <motion.button
+          <m.button
             className="resume-button"
             onClick={handleOpenResume}
             whileHover={{ scale: 1.05, boxShadow: '0 10px 35px rgba(16, 185, 129, 0.4)' }}
@@ -96,14 +96,14 @@ const Resume: React.FC = () => {
           >
             <span className="resume-icon" aria-hidden="true">📄</span>
             <span className="resume-text">{t.resume.viewResume}</span>
-          </motion.button>
-        </motion.div>
+          </m.button>
+        </m.div>
       </section>
 
       <AnimatePresence>
         {isResumeOpen && (
           <>
-            <motion.div
+            <m.div
               className="resume-overlay"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
@@ -111,7 +111,7 @@ const Resume: React.FC = () => {
               transition={{ duration: 0.3 }}
               onClick={handleCloseResume}
             />
-            <motion.div
+            <m.div
               className="resume-viewer"
               initial={{ opacity: 0, scale: 0.9, y: 50 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
@@ -184,7 +184,7 @@ const Resume: React.FC = () => {
                   ))}
                 </Document>
               </div>
-            </motion.div>
+            </m.div>
           </>
         )}
       </AnimatePresence>

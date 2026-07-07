@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/Projects.css';
@@ -32,14 +32,14 @@ const Projects: React.FC = () => {
 
   return (
     <section className="projects-section">
-      <motion.div
+      <m.div
         className="projects-container"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.2 }}
       >
-        <motion.h2
+        <m.h2
           className="section-title"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -47,7 +47,7 @@ const Projects: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           {t.sections.projects}
-        </motion.h2>
+        </m.h2>
 
         <div className="projects-grid">
           {projects.map((project, index) => {
@@ -96,7 +96,7 @@ const Projects: React.FC = () => {
                     GitHub
                   </a>
                 )}
-                <motion.div
+                <m.div
                   className="card-accent"
                   initial={{ width: 0 }}
                   whileInView={{ width: '100%' }}
@@ -107,7 +107,7 @@ const Projects: React.FC = () => {
             );
           })}
         </div>
-      </motion.div>
+      </m.div>
     </section>
   );
 };

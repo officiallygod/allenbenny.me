@@ -1,4 +1,5 @@
 import React, { lazy, Suspense, useEffect } from 'react';
+import { LazyMotion } from 'framer-motion';
 import Hero from './components/Hero';
 import About from './components/About';
 import Resume from './components/Resume';
@@ -33,6 +34,9 @@ const LoadingMessage = () => {
   return <div>{t.loading}</div>;
 };
 
+// Dynamic import of framer-motion DOM animation features
+const loadFeatures = () => import('framer-motion').then(res => res.domAnimation);
+
 const App: React.FC = () => {
   useEffect(() => {
     // Preload lazy components during browser idle time for maximum performance and zero lag
@@ -55,9 +59,10 @@ const App: React.FC = () => {
   }, []);
 
   return (
-    <div className="app-container">
-      <Hero />
-      <About />
+    <LazyMotion features={loadFeatures} strict>
+      <div className="app-container">
+        <Hero />
+        <About />
       <ViewportSection>
         <Suspense fallback={<LoadingFallback />}>
           <Technologies />
@@ -94,7 +99,8 @@ const App: React.FC = () => {
         </Suspense>
       </ViewportSection>
       <Resume />
-    </div>
+      </div>
+    </LazyMotion>
   );
 };
 

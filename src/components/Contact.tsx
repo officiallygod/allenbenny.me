@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
 import SocialIcon from './SocialIcon';
 import { useLanguage } from '../contexts/LanguageContext';
@@ -11,14 +11,14 @@ const Contact: React.FC = () => {
 
   return (
     <section className="contact-section">
-      <motion.div
+      <m.div
         className="contact-container"
         initial={{ opacity: 0, y: 30 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ duration: 0.8 }}
       >
-        <motion.h2
+        <m.h2
           className="section-title"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -26,9 +26,9 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           {t.sections.contact}
-        </motion.h2>
+        </m.h2>
         
-        <motion.p
+        <m.p
           className="contact-text"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -38,9 +38,9 @@ const Contact: React.FC = () => {
           {t.contact.intro}
           {' '}
           {t.contact.introEmphasis}
-        </motion.p>
+        </m.p>
 
-        <motion.div
+        <m.div
           className="contact-info"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -59,9 +59,9 @@ const Contact: React.FC = () => {
             <span className="contact-icon">📍</span>
             <span className="contact-link-text">{contact.location}</span>
           </div>
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="contact-links"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
@@ -69,7 +69,7 @@ const Contact: React.FC = () => {
           transition={{ duration: 0.6, delay: 0.4 }}
         >
           {socialLinks.map((link, index) => (
-            <motion.a
+            <m.a
               key={index}
               href={link.url}
               target="_blank"
@@ -84,18 +84,18 @@ const Contact: React.FC = () => {
             >
               <SocialIcon type={link.icon} className="link-icon" />
               <span className="link-text">{link.name}</span>
-            </motion.a>
+            </m.a>
           ))}
-        </motion.div>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="portfolio-links"
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.6 }}
         >
-          <motion.a
+          <m.a
             href={portfolioUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -104,8 +104,8 @@ const Contact: React.FC = () => {
             whileTap={{ scale: 0.95 }}
           >
             {t.contact.viewPortfolio}
-          </motion.a>
-          <motion.a
+          </m.a>
+          <m.a
             href={personalSiteUrl}
             target="_blank"
             rel="noopener noreferrer"
@@ -114,10 +114,10 @@ const Contact: React.FC = () => {
             whileTap={{ scale: 0.95 }}
           >
             {t.contact.personalSite}
-          </motion.a>
-        </motion.div>
+          </m.a>
+        </m.div>
 
-        <motion.div
+        <m.div
           className="github-highlight"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -127,7 +127,7 @@ const Contact: React.FC = () => {
           <p className="github-text">
             {t.contact.githubHighlightPrefix} • <a href={githubUrlProfile} target="_blank" rel="noopener noreferrer" className="github-text-link">{t.contact.githubHighlightLink}</a>
           </p>
-          <motion.a
+          <m.a
             href={githubUrlProfile}
             target="_blank"
             rel="noopener noreferrer"
@@ -137,9 +137,9 @@ const Contact: React.FC = () => {
           >
             <SocialIcon type="github" className="github-icon" />
             <span>{t.contact.visitGithub}</span>
-          </motion.a>
-        </motion.div>
-      </motion.div>
+          </m.a>
+        </m.div>
+      </m.div>
     </section>
   );
 };

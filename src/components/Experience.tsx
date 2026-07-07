@@ -1,5 +1,5 @@
 import React from 'react';
-import { motion } from 'framer-motion';
+import { m } from 'framer-motion';
 import { useProfile } from '../contexts/ProfileContext';
 import { useLanguage } from '../contexts/LanguageContext';
 import '../styles/Experience.css';
@@ -32,14 +32,14 @@ const Experience: React.FC = () => {
 
   return (
     <section id="experience" className="experience-section">
-      <motion.div
+      <m.div
         className="experience-container"
         variants={containerVariants}
         initial="hidden"
         whileInView="visible"
         viewport={{ once: true, amount: 0.3 }}
       >
-        <motion.h2
+        <m.h2
           className="section-title"
           initial={{ opacity: 0, y: -20 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -47,11 +47,11 @@ const Experience: React.FC = () => {
           transition={{ duration: 0.6 }}
         >
           {t.sections.experience}
-        </motion.h2>
+        </m.h2>
 
         <div className="experience-layout">
           {/* Education Section */}
-          <motion.div className="section-block" variants={itemVariants}>
+          <m.div className="section-block" variants={itemVariants}>
             <div className="section-header">
               <span className="section-icon">🎓</span>
               <h3 className="section-title-text">{t.sections.education}</h3>
@@ -72,7 +72,7 @@ const Experience: React.FC = () => {
                       <span className="duration">{edu.duration}</span>
                     </div>
                     <h5 className="role">{edu.degree}</h5>
-                    <motion.div
+                    <m.div
                       className="card-accent"
                       initial={{ width: 0 }}
                       whileInView={{ width: '100%' }}
@@ -83,7 +83,7 @@ const Experience: React.FC = () => {
                 );
 
                 return edu.link ? (
-                  <motion.a
+                  <m.a
                     key={index}
                     href={edu.link}
                     target="_blank"
@@ -93,23 +93,23 @@ const Experience: React.FC = () => {
                     transition={{ duration: 0.3 }}
                   >
                     {CardContent}
-                  </motion.a>
+                  </m.a>
                 ) : (
-                  <motion.div
+                  <m.div
                     key={index}
                     className="experience-card education-card"
                     whileHover={{ scale: 1.02, y: -5 }}
                     transition={{ duration: 0.3 }}
                   >
                     {CardContent}
-                  </motion.div>
+                  </m.div>
                 );
               })}
             </div>
-          </motion.div>
+          </m.div>
 
           {/* Professional Experience Section */}
-          <motion.div className="section-block" variants={itemVariants}>
+          <m.div className="section-block" variants={itemVariants}>
             <div className="section-header">
               <span className="section-icon">💼</span>
               <h3 className="section-title-text">{t.sections.professionalExperience}</h3>
@@ -135,7 +135,7 @@ const Experience: React.FC = () => {
                       </div>
                       <h5 className="role">{exp.role}</h5>
                       <p className="description">{exp.description}</p>
-                      <motion.div
+                      <m.div
                         className="card-accent"
                         initial={{ width: 0 }}
                         whileInView={{ width: '100%' }}
@@ -146,7 +146,7 @@ const Experience: React.FC = () => {
                   );
 
                   return exp.link ? (
-                    <motion.a
+                    <m.a
                       href={exp.link}
                       target="_blank"
                       rel="noopener noreferrer"
@@ -155,15 +155,15 @@ const Experience: React.FC = () => {
                       transition={{ duration: 0.3 }}
                     >
                       {CardContent}
-                    </motion.a>
+                    </m.a>
                   ) : (
-                    <motion.div
+                    <m.div
                       className="experience-card"
                       whileHover={{ scale: 1.02, y: -5 }}
                       transition={{ duration: 0.3 }}
                     >
                       {CardContent}
-                    </motion.div>
+                    </m.div>
                   );
                 })()}
               </div>
@@ -188,7 +188,7 @@ const Experience: React.FC = () => {
                       </div>
                       <h5 className="role">{exp.role}</h5>
                       <p className="description">{exp.description}</p>
-                      <motion.div
+                      <m.div
                         className="card-accent"
                         initial={{ width: 0 }}
                         whileInView={{ width: '100%' }}
@@ -199,7 +199,7 @@ const Experience: React.FC = () => {
                   );
 
                   return exp.link ? (
-                    <motion.a
+                    <m.a
                       key={index}
                       href={exp.link}
                       target="_blank"
@@ -209,23 +209,23 @@ const Experience: React.FC = () => {
                       transition={{ duration: 0.3 }}
                     >
                       {CardContent}
-                    </motion.a>
+                    </m.a>
                   ) : (
-                    <motion.div
+                    <m.div
                       key={index}
                       className="experience-card"
                       whileHover={{ scale: 1.02, y: -5 }}
                       transition={{ duration: 0.3 }}
                     >
                       {CardContent}
-                    </motion.div>
+                    </m.div>
                   );
                 })}
               </div>
             )}
-          </motion.div>
+          </m.div>
         </div>
-      </motion.div>
+      </m.div>
     </section>
   );
 };

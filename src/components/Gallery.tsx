@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { m, AnimatePresence } from 'framer-motion';
 import { useLanguage } from '../contexts/LanguageContext';
 import { ExternalLink, Map, BookOpen, Languages, PlayCircle, MousePointer2, Sprout, Smartphone } from 'lucide-react';
 import '../styles/Gallery.css';
@@ -31,7 +31,7 @@ const Gallery: React.FC = React.memo(() => {
 
   return (
     <section id="gallery" className="gallery-section custom-touch-cursor">
-      <motion.div
+      <m.div
         className="gallery-container"
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
@@ -55,7 +55,7 @@ const Gallery: React.FC = React.memo(() => {
           <div className="carousel-image-wrapper">
             <AnimatePresence mode="wait">
               {activeItem.allowIframe ? (
-                <motion.iframe
+                <m.iframe
                   key={activeItem.id + '-iframe'}
                   src={activeItem.url}
                   title={activeItem.alt}
@@ -69,7 +69,7 @@ const Gallery: React.FC = React.memo(() => {
                   allow="autoplay"
                 />
               ) : (
-                <motion.div
+                <m.div
                   key={activeItem.id + '-fallback'}
                   className="carousel-fallback-card"
                   initial={{ opacity: 0, scale: 0.98 }}
@@ -83,7 +83,7 @@ const Gallery: React.FC = React.memo(() => {
                   <a href={activeItem.url} target="_blank" rel="noopener noreferrer" className="fallback-btn">
                     View Live <ExternalLink size={18} />
                   </a>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
           </div>
@@ -110,7 +110,7 @@ const Gallery: React.FC = React.memo(() => {
             );
           })}
         </div>
-      </motion.div>
+      </m.div>
     </section>
   );
 });
