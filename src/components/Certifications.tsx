@@ -51,7 +51,7 @@ const Certifications: React.FC = () => {
 
         <div className="certifications-grid">
           {certifications.map((cert) => {
-            const CardWrapper = cert.link ? motion.a : motion.div;
+            const CardWrapper = cert.link ? m.a : m.div;
             const cardProps = cert.link
               ? {
                   href: cert.link,

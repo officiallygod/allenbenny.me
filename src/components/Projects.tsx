@@ -51,7 +51,7 @@ const Projects: React.FC = () => {
 
         <div className="projects-grid">
           {projects.map((project, index) => {
-            const CardWrapper = project.link ? motion.a : motion.div;
+            const CardWrapper = project.link ? m.a : m.div;
             const cardProps = project.link
               ? {
                   href: project.link,
