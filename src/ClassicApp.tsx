@@ -61,6 +61,13 @@ const ClassicApp: React.FC = () => {
   return (
     <LazyMotion features={loadFeatures} strict>
       <div className="app-container">
+        <a
+          href="#/parallel"
+          className="funky-float"
+          aria-label="Feeling Funky? Visit the parallel site"
+        >
+          ⚡ Feeling Funky? <span className="funky-float-arrow">→ /parallel</span>
+        </a>
         <Hero />
         <About />
       <ViewportSection>

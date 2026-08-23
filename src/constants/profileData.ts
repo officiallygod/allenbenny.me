@@ -223,7 +223,7 @@ export const profileData: Record<Language, ProfileData> = {
       {
         title: 'Deutschway',
         description: 'A platform for daily learning and tracking progress in the German language. Open source project built for language learners.',
-        link: 'https://github.com/officiallygod/Deutschway',
+        link: 'https://officiallygod.github.io/Deutschway/',
         githubLink: 'https://github.com/officiallygod/Deutschway',
         date: '2025',
         image: '/images/projects/deutschway.png',
@@ -231,7 +231,7 @@ export const profileData: Record<Language, ProfileData> = {
       {
         title: 'Roamero',
         description: 'A modern travel and journey companion application to discover and document every place. Every place, every journey.',
-        link: 'https://github.com/officiallygod/Roamero',
+        link: 'https://officiallygod.github.io/Roamero/#/map',
         githubLink: 'https://github.com/officiallygod/Roamero',
         date: '2025',
         image: '/images/projects/roamero.png',

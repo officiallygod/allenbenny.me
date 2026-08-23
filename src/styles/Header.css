@@ -26,6 +26,8 @@
   font-weight: 400;
 }
 
+/* Feeling Funky? badge moved to global.css as .funky-float */
+
 @media (max-width: 768px) {
   .header {
     padding: 28px 20px;
