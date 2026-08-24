@@ -424,3 +424,35 @@ body[data-theme='dark'] .portfolio-button {
   .funky-float { bottom: 96px; padding: 10px 14px; font-size: .85rem; }
 }
 
+/* --- 🎮 game badge -> /game (both sites) --- */
+.game-float {
+  position: fixed;
+  bottom: 18px;
+  left: 18px;
+  z-index: 999;
+  width: 58px; height: 58px;
+  display: grid; place-items: center;
+  font-size: 28px;
+  border-radius: 50%;
+  border: 2.5px solid #111;
+  background: linear-gradient(135deg, #00e5ff, #7c3aed);
+  box-shadow: 4px 4px 0 #111;
+  text-decoration: none;
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s;
+  animation: game-spin-hint 6s ease-in-out infinite;
+}
+@keyframes game-spin-hint {
+  0%, 88%, 100% { rotate: 0deg; translate: 0 0; }
+  92% { rotate: -12deg; translate: 0 -6px; }
+  96% { rotate: 10deg; }
+}
+.game-float:hover {
+  transform: scale(1.15);
+  filter: saturate(1.4);
+  box-shadow: 6px 8px 0 #111;
+  animation-play-state: paused;
+}
+@media (max-width: 640px) {
+  .game-float { width: 48px; height: 48px; font-size: 23px; bottom: 14px; left: 14px; }
+}
+

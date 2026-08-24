@@ -69,6 +69,13 @@ const ClassicApp: React.FC = () => {
           ⚡ Feeling Funky? <span className="funky-float-arrow">→ /parallel</span>
         </a>
         <Hero />
+        <a
+          href="#/game"
+          className="game-float"
+          aria-label="Play Jeep Drift"
+        >
+          🎮
+        </a>
         <About />
       <ViewportSection>
         <Suspense fallback={<LoadingFallback />}>
