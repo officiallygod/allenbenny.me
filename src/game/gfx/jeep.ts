@@ -10,7 +10,7 @@ import type { Jeep, MaterialLibrary } from './types';
    mesh.rotation.x = roll — never combined on one Euler.
    ================================================================ */
 
-const WHEEL_BASE_Y = 0.55;
+const WHEEL_BASE_Y = 0.72;   // raised: keeps sculpted arches clear of the ground
 
 /* side profile in (lengthZ, heightY); extruded across X width */
 function bodyProfile(): THREE.Shape {

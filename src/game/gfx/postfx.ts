@@ -87,15 +87,13 @@ export function buildPostFX(
   renderer.toneMapping = THREE.ACESFilmicToneMapping;
 
   // Compatibility-first target: many Windows/ANGLE GPUs silently fail
-  // on HalfFloat + MSAA render targets (black output, zero errors).
-  // Plain RGBA8 + no explicit MSAA renders everywhere; FXAA-free aliasing
-  // is masked by the film grain + high pixelRatio.
+  // on HalfFloat + MSAA + sRGB-encoded render targets (black output,
+  // zero errors). Plain linear RGBA8 renders everywhere.
   const rt = new THREE.WebGLRenderTarget(
     Math.max(1, Math.floor(renderer.domElement.width)),
     Math.max(1, Math.floor(renderer.domElement.height)),
     {
       type: THREE.UnsignedByteType,
-      colorSpace: THREE.SRGBColorSpace,
     },
   );
 
@@ -124,6 +122,30 @@ export function buildPostFX(
     composer,
     setSize(w, h) {
       composer.setSize(w, h);
+    },
+    /**
+     * One-time integrity check: re-run the chain WITHOUT presenting to
+     * screen, then read back the final buffer. Dark output ⇒ this GPU's
+     * composer path is broken ⇒ caller falls back to renderer.render().
+     */
+    selfTest(): boolean {
+      const prev = composer.renderToScreen;
+      composer.renderToScreen = false;
+      try {
+        composer.render(0);
+        const buf = (composer as unknown as { writeBuffer: THREE.WebGLRenderTarget }).writeBuffer;
+        const px = new Uint8Array(4);
+        renderer.setRenderTarget(buf);
+        renderer.readRenderTargetPixels(
+          buf, Math.floor(buf.width / 2), Math.floor(buf.height / 2), 1, 1, px,
+        );
+        renderer.setRenderTarget(null);
+        return (px[0] + px[1] + px[2]) > 24;
+      } catch {
+        return false;
+      } finally {
+        composer.renderToScreen = prev;
+      }
     },
     render(dt) {
       // advance grain animation

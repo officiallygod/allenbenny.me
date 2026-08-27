@@ -6,6 +6,7 @@ import {
 import {
   terrainH, terrainNormalInto, biomeAt, roadDist,
   ROAD_HALF_WIDTH, ROAD_SHOULDER,
+  islandMask, ISLAND_HALF, ROAD_END, BULB_W,
 } from './terrain';
 import type { BuiltChunk, ChunkBuildContext, ChunkObstacle } from './types';
 
@@ -43,6 +44,8 @@ function xform(geo: THREE.BufferGeometry, m: THREE.Matrix4): THREE.BufferGeometr
 
 const _m = new THREE.Matrix4();
 const _e = new THREE.Euler();
+const _q = new THREE.Quaternion();
+const _upQ = new THREE.Vector3(0, 1, 0);
 
 /* memo for merged prototypes */
 const protoCache = new Map<string, THREE.BufferGeometry | null>();
@@ -61,37 +64,44 @@ function compose(px: number, py: number, pz: number, rx: number, ry: number, rz:
 }
 
 /* ---- pine (merged trunk+branches / merged foliage w/ baked colours) ---- */
-const PINE_TIERS = 6;
+const PINE_TIERS = 7;
 function pineParts(): { trunk: THREE.BufferGeometry; foliSnow: THREE.BufferGeometry; foliGreen: THREE.BufferGeometry } {
   return {
     trunk: cachedMerged('pine-trunk-full', () => {
       const parts: THREE.BufferGeometry[] = [];
-      const tg = colorize(new THREE.CylinderGeometry(.16, .38, 1.6, 10), 0x5e4128);
-      tg.translate(0, .8, 0);
+      const tg = colorize(new THREE.CylinderGeometry(.16, .42, 1.8, 10), 0x5e4128);
+      tg.translate(0, .9, 0);
       parts.push(tg);
-      const bg = new THREE.CylinderGeometry(.04, .07, .9, 5);
-      bg.translate(0, .45, 0);
+      const bg = new THREE.CylinderGeometry(.04, .08, 1.1, 5);
+      bg.translate(0, .55, 0);
       colorize(bg, 0x5e4128);
-      for (let br = 0; br < 3; br++) {
-        parts.push(xform(bg, compose(0, .6 + br * .45, 0, 0, br * 2.4 + hash2(br, 9) * 1.5, 1.1 + hash2(br, 3) * .3)));
+      for (let br = 0; br < 5; br++) {
+        parts.push(xform(bg, compose(0, .7 + br * .5, 0, 0, br * 2.4 + hash2(br, 9) * 1.5, 1.05 + hash2(br, 3) * .35)));
       }
       return mergeGeometries(parts, false);
     })!,
     foliSnow: cachedMerged('pine-foli-snow', () => {
       const parts: THREE.BufferGeometry[] = [];
+      /* 3 stacked cones per tier ⇒ full silhouette, no gaps */
       for (let i = 0; i < PINE_TIERS; i++) {
-        const cone = colorize(new THREE.ConeGeometry(1.75 - i * .3, 1.35, 12), i === 0 ? 0x35604b : 0x243d30);
-        parts.push(xform(cone, compose(0, 1.7 + i * .92, 0, (hash2(i, 13) - .5) * .12, i * .5, 0)));
-        const cap = colorize(new THREE.ConeGeometry((1.75 - i * .3) * .68, .5, 12), 0xfdfeff);
-        parts.push(xform(cap, compose(0, 2.28 + i * .92, 0, 0, i * .5, 0)));
+        const rad = (1.95 - i * .24);
+        const cone = colorize(new THREE.ConeGeometry(rad, 1.5, 12), i === 0 ? 0x35604b : 0x243d30);
+        parts.push(xform(cone, compose(0, 2.0 + i * .88, 0, (hash2(i, 13) - .5) * .12, i * .5, 0)));
+        const inner = colorize(new THREE.ConeGeometry(rad * .82, 1.15, 10), i % 2 ? 0x2a4a38 : 0x20402f);
+        parts.push(xform(inner, compose(0, 2.0 + i * .88 - .28, 0, 0, i * 1.3, 0)));
+        const cap = colorize(new THREE.ConeGeometry(rad * .66, .55, 12), 0xfdfeff);
+        parts.push(xform(cap, compose(0, 2.62 + i * .88, 0, 0, i * .5, 0)));
       }
       return mergeGeometries(parts, false);
     })!,
     foliGreen: cachedMerged('pine-foli-green', () => {
       const parts: THREE.BufferGeometry[] = [];
       for (let i = 0; i < PINE_TIERS; i++) {
-        const cone = colorize(new THREE.ConeGeometry(1.75 - i * .3, 1.35, 12), i === 0 ? 0x2e6b34 : 0x243d30);
-        parts.push(xform(cone, compose(0, 1.7 + i * .92, 0, (hash2(i, 13) - .5) * .12, i * .5, 0)));
+        const rad = (1.95 - i * .24);
+        const cone = colorize(new THREE.ConeGeometry(rad, 1.5, 12), i === 0 ? 0x2e6b34 : 0x245226);
+        parts.push(xform(cone, compose(0, 2.0 + i * .88, 0, (hash2(i, 13) - .5) * .12, i * .5, 0)));
+        const inner = colorize(new THREE.ConeGeometry(rad * .82, 1.15, 10), i % 2 ? 0x1f4d20 : 0x2a5c2c);
+        parts.push(xform(inner, compose(0, 2.0 + i * .88 - .28, 0, 0, i * 1.3, 0)));
       }
       return mergeGeometries(parts, false);
     })!,
@@ -116,14 +126,18 @@ function broadParts(): { trunk: THREE.BufferGeometry; foli: THREE.BufferGeometry
     })!,
     foli: cachedMerged('broad-foli', () => {
       const parts: THREE.BufferGeometry[] = [];
-      for (let i = 0; i < 7; i++) {
-        const pr = .7 + (i % 3) * .22;
+      /* 11 puffs in two shells ⇒ dense rounded canopy */
+      for (let i = 0; i < 11; i++) {
+        const pr = .78 + (i % 3) * .24;
         const puff = new THREE.IcosahedronGeometry(pr, 2);
         puff.translate(0, pr, 0);
-        puff.scale(1, .85, 1);
-        colorize(puff, 0x2e6b34);
+        puff.scale(1, .86, 1);
+        colorize(puff, i % 3 === 0 ? 0x39793c : 0x2e6b34);
+        const shellR = i < 6 ? .95 : 1.55;
+        const a = (i / (i < 6 ? 6 : 5)) * Math.PI * 2;
         parts.push(xform(puff, compose(
-          (hash2(i, 1) - .5) * 1.8, 2.25 + (hash2(i, 2) - .5) * 1.2 - pr * .5, (hash2(i, 3) - .5) * 1.8,
+          Math.cos(a) * shellR * .62, 2.35 + (i < 6 ? .35 : .85) + (hash2(i, 2) - .5) * .7,
+          Math.sin(a) * shellR * .62,
           0, hash2(i, 51) * 6.28, 0,
         )));
       }
@@ -220,14 +234,39 @@ function flushBatch(group: THREE.Group, b: Batch, dummy: THREE.Object3D): void {
   group.add(inst);
 }
 
-/* ---------------- curved grass blade ---------------- */
-function makeBladeGeo(): THREE.PlaneGeometry {
-  const g = new THREE.PlaneGeometry(.14, .7, 1, 3);
-  g.translate(0, .35, 0);
+/* ---------------- grass: merged TUFT (one instance = a clump) ----------------
+   Real turf = thousands of blades/m². We fake it honestly: each instance is a
+   crossed fan of 10 textured blades, so 3400 instances read as ~34k blades.
+   Blades are planted at y=0 and the whole tuft gets tilted to the terrain
+   normal by the placer (no random floaters). */
+/* fuller clump: 8 arced blades + 2 centre spikes ⇒ ~10 blades/instance */
+function bladePlane(leanX: number, rotY: number): THREE.PlaneGeometry {
+  const g = new THREE.PlaneGeometry(.11, .58, 1, 3);
+  g.translate(0, .29, 0);
   const p = g.attributes.position as THREE.BufferAttribute;
-  for (let i = 0; i < p.count; i++) p.setZ(i, p.getY(i) * .15);
-  g.computeVertexNormals();
+  for (let i = 0; i < p.count; i++) {
+    const h = p.getY(i);
+    p.setZ(i, h * h * .26);                   // gentle arc, tip leans most
+    p.setX(i, p.getX(i) + h * leanX);         // per-blade lean
+  }
+  /* normals all point UP: every blade shades like the ground does —
+     kills the dark-backface slivers DoubleSide cards otherwise get */
+  const n = g.attributes.normal as THREE.BufferAttribute;
+  for (let i = 0; i < n.count; i++) n.setXYZ(i, 0, 1, 0);
+  g.rotateY(rotY);
   return g;
+}
+export function buildClumpGeo(): THREE.BufferGeometry {
+  return cachedMerged('grass-clump', () => {
+    const parts: THREE.BufferGeometry[] = [];
+    for (let i = 0; i < 8; i++) {
+      parts.push(bladePlane((hash2(i, 61) - .5) * .95, (i / 8) * Math.PI * 2 + hash2(i, 62)));
+    }
+    /* centre vertical spikes */
+    parts.push(bladePlane(0, hash2(9, 63)));
+    parts.push(bladePlane(.08, hash2(11, 64)));
+    return mergeGeometries(parts, false)!;
+  })!;
 }
 
 /* ================================================================
@@ -286,12 +325,15 @@ function roadRibbons(cx: number, cz: number): RibbonSamples[][] {
   const MARGIN = 18;
   const out: RibbonSamples[][] = [];
   const inB = (x: number, z: number): boolean =>
-    x >= ox - MARGIN && x <= ox + CHUNK + MARGIN && z >= oz - MARGIN && z <= oz + CHUNK + MARGIN;
+    x >= ox - MARGIN && x <= ox + CHUNK + MARGIN && z >= oz - MARGIN && z <= oz + CHUNK + MARGIN &&
+    Math.abs(x) <= ISLAND_HALF && Math.abs(z) <= ISLAND_HALF;   // roads stop at the shore
 
-  /* N-S spine x=0 */
+  /* N-S spine x=0 — stops at the U-turn bulb, never reaches the sea */
   {
     const s: RibbonSamples[] = [];
-    for (let z = oz - MARGIN; z <= oz + CHUNK + MARGIN; z += 6) {
+    const zLo = Math.max(oz - MARGIN, -ROAD_END - BULB_W * .6);
+    const zHi = Math.min(oz + CHUNK + MARGIN, ROAD_END + BULB_W * .6);
+    for (let z = zLo; z <= zHi; z += 6) {
       if (!inB(0, z)) continue;
       const n = tangentNormal(0, z, 0, 1);
       s.push({ cx: 0, cz: z, ...n });
@@ -301,7 +343,9 @@ function roadRibbons(cx: number, cz: number): RibbonSamples[][] {
   /* E-W spine z=0 */
   {
     const s: RibbonSamples[] = [];
-    for (let x = ox - MARGIN; x <= ox + CHUNK + MARGIN; x += 6) {
+    const xLo = Math.max(ox - MARGIN, -ROAD_END - BULB_W * .6);
+    const xHi = Math.min(ox + CHUNK + MARGIN, ROAD_END + BULB_W * .6);
+    for (let x = xLo; x <= xHi; x += 6) {
       if (!inB(x, 0)) continue;
       const n = tangentNormal(x, 0, 1, 0);
       s.push({ cx: x, cz: 0, ...n });
@@ -363,7 +407,7 @@ export function buildChunk(cx: number, cz: number, ctx: ChunkBuildContext): Buil
   geo.rotateX(-Math.PI / 2);
   const uvAttr = geo.attributes.uv as THREE.BufferAttribute;
   for (let i = 0; i < uvAttr.count; i++) {
-    uvAttr.setXY(i, uvAttr.getX(i) * 10, uvAttr.getY(i) * 10);   // ~9 m / tile
+    uvAttr.setXY(i, uvAttr.getX(i) * 4.5, uvAttr.getY(i) * 4.5);   // ~20 m / tile: reads as ground, not wallpaper
   }
   const posAttr = geo.attributes.position as THREE.BufferAttribute;
   const colors = new Float32Array(posAttr.count * 3);
@@ -410,18 +454,35 @@ export function buildChunk(cx: number, cz: number, ctx: ChunkBuildContext): Buil
   terr.receiveShadow = true;
   group.add(terr);
 
+  /* U-turn bulbs where the straights dead-end (asphalt pads, flush).
+     Built once per pad: only by the chunk that contains its centre. */
+  for (const sx of [-1, 1]) {
+    for (const [px, pz2] of [[0, sx * ROAD_END], [sx * ROAD_END, 0]] as const) {
+      if (Math.floor(px / CHUNK) !== cx || Math.floor(pz2 / CHUNK) !== cz) continue;
+      const pad = new THREE.Mesh(
+        new THREE.CircleGeometry(ROAD_HALF_WIDTH + BULB_W * .8, 28),
+        mats.asphalt,
+      );
+      pad.rotation.x = -Math.PI / 2;
+      pad.position.set(px, terrainH(px, pz2) + .085, pz2);
+      pad.receiveShadow = true;
+      group.add(pad);
+    }
+  }
+
   /* ---------- asphalt ribbons + furniture ---------- */
   const ribbons = roadRibbons(cx, cz);
   let lampCount = 0;
   for (const rs of ribbons) {
-    buildRibbon(rs, group, mats.asphalt);
+    if (rs.length > 1) buildRibbon(rs, group, mats.asphalt);
     /* furniture every ~45 m along this ribbon */
     for (let i = 0; i < rs.length; i++) {
       const s = rs[i];
       const key = Math.floor((s.cx * 1.31 + s.cz * 2.17) / 45);
       const h = hash2(key * 7.7 + cx * 1.7, key * 3.3 + cz * 9.1);
       if (h > .16) continue;
-      const kind: 'sign' | 'lamp' = h < .08 && !IS_MOBILE && lampCount < 2 ? 'lamp' : 'sign';
+        const kind: 'sign' | 'lamp' =
+          h < .08 && !IS_MOBILE && lampCount < 2 && (b0 === 0 || b0 === 2) ? 'lamp' : 'sign';
       if (kind === 'lamp') lampCount++;
       const side = hash2(key, 91) > .5 ? 1 : -1;
       const fx = s.cx + s.nx * side * 8.2;
@@ -470,7 +531,7 @@ export function buildChunk(cx: number, cz: number, ctx: ChunkBuildContext): Buil
       const pick = hash2(gx * 31.7 + cx * 91.3, gz * 17.9 + cz * 57.1);
       const wx = ox + gx * CELL + rx * CELL;
       const wz = oz + gz * CELL + rz * CELL;
-      if (inWaterLocal(wx, wz, ctx) || !offRoadClear(wx, wz)) continue;
+      if (inWaterLocal(wx, wz, ctx) || !offRoadClear(wx, wz) || islandMask(wx, wz) > 0) continue;
       const b = biomeAt(wx, wz);
       const density = b === 0 ? .34 : b === 1 ? .3 : b === 3 ? .3 : .42;
       if (pick > density) continue;
@@ -508,7 +569,7 @@ export function buildChunk(cx: number, cz: number, ctx: ChunkBuildContext): Buil
         const pick = hash2(gx * 23.7 + cx * 61.1 + 91.7, gz * 41.3 + cz * 13.9);
         const wx = ox + gx * TCELL + rx * TCELL;
         const wz = oz + gz * TCELL + rz * TCELL;
-        if (inWaterLocal(wx, wz, ctx) || !offRoadClear(wx, wz)) continue;
+        if (inWaterLocal(wx, wz, ctx) || !offRoadClear(wx, wz) || islandMask(wx, wz) > 0) continue;
         const grove = b0 === 0
           ? hash2(gx * 3.1 + cx, gz * 5.7 + cz)
           : Math.max(hash2(gx * 7.9 + cz, gz * 2.3 + cx), hash2(gx * 5.3 - cz, gz * 9.1 + cx));
@@ -582,33 +643,75 @@ export function buildChunk(cx: number, cz: number, ctx: ChunkBuildContext): Buil
     group.add(heads);
   }
 
-  /* ---------- grass blades ---------- */
+  /* ---------- grass: dense normal-aligned tufts (meadow/snow) ---------- */
   if (b0 === 2 || b0 === 0) {
-    const bladeCount = IS_MOBILE ? (b0 === 2 ? 280 : 100) : (b0 === 2 ? 500 : 180);
-    const gGeo = makeBladeGeo();
-    const grassA = new THREE.InstancedMesh(gGeo, mats.grassBladeA, Math.ceil(bladeCount / 2));
-    const grassB = new THREE.InstancedMesh(gGeo, mats.grassBladeB, bladeCount - Math.ceil(bladeCount / 2));
+    /* desktop: 3400 clumps/chunk (~34k blades); mobile: 1200 */
+    const target = IS_MOBILE ? 1200 : 3400;
+    const gGeo = buildClumpGeo();
+    const grassA = new THREE.InstancedMesh(gGeo, mats.grassBladeA, Math.ceil(target / 2));
+    const grassB = new THREE.InstancedMesh(gGeo, mats.grassBladeB, target - Math.ceil(target / 2));
+    const nrmV = new THREE.Vector3();
+    const colV = new THREE.Color();
     let placedN = 0;
-    for (let i = 0; i < bladeCount * 2 && placedN < bladeCount; i++) {
-      const gx = ox + (hash2(i * 1.7 + cx, cz * 3.1) - .5) * CHUNK;
-      const gz = oz + (hash2(cz * 5.3 + i, cx * 7.7) - .5) * CHUNK;
-      if (inWaterLocal(gx, gz, ctx) || !offRoadClear(gx, gz)) continue;
-      dummy.position.set(gx, terrainH(gx, gz), gz);
-      dummy.rotation.set((hash2(i, 11) - .5) * .2, hash2(i, 22) * 6.28, (hash2(i, 33) - .5) * .2);
-      dummy.scale.set(1, .8 + hash2(i, 44) * .35, 1);
-      dummy.updateMatrix();
-      ((placedN % 2 ? grassB : grassA) as THREE.InstancedMesh).setMatrixAt(Math.floor(placedN / 2), dummy.matrix);
-      placedN++;
+    const maxTry = target * 3;
+    /* stratified: fine grid over the chunk, jittered per cell ⇒ even coverage */
+    const GCELL = CHUNK / Math.ceil(Math.sqrt(target));
+    const nG = Math.ceil(CHUNK / GCELL);
+    outer:
+    for (let gx = 0; gx < nG; gx++) {
+      for (let gz = 0; gz < nG; gz++) {
+        if (placedN >= target) break outer;
+        const jx = hash2(gx * 12.7 + cx * 5.1, gz * 7.9 + cz * 2.3);
+        const jz = hash2(gz * 9.1 + cz * 6.7, gx * 4.3 + cx * 8.9);
+        const wx = ox + (gx + jx) * GCELL;
+        const wz = oz + (gz + jz) * GCELL;
+        if (inWaterLocal(wx, wz, ctx) || !offRoadClear(wx, wz) || islandMask(wx, wz) > 0) continue;
+        const b = biomeAt(wx, wz);
+        if (!(b === 2 || b === 0)) continue;
+        terrainNormalInto(nrmV, wx, wz, .8);
+        dummy.position.set(wx, terrainH(wx, wz), wz);
+        /* align +Y to the terrain normal via quaternion, then spin —
+           this is the "fix the vectors" part: no floaters */
+        _q.setFromUnitVectors(_upQ, nrmV);
+        dummy.quaternion.copy(_q);
+        dummy.rotateY(jx * Math.PI * 2);
+        const gs = .78 + hash2(gx * 3.3, gz * 5.5) * .5;   // size variety
+        dummy.scale.set(gs, .88 + hash2(gz * 2.2, gx * 6.6) * .42, gs);
+        dummy.updateMatrix();
+        const mesh = placedN % 2 ? grassB : grassA;
+        mesh.setMatrixAt(Math.floor(placedN / 2), dummy.matrix);
+        /* per-clump tint: SPATIALLY COHERENT dry↔lush meadow patches
+           (bilinear-smoothed low-freq noise over world position) — never
+           per-clump confetti. Multipliers stay near 1.0. */
+        const cxw = Math.floor(wx / 24), czw = Math.floor(wz / 24);
+        const fx = wx / 24 - cxw, fz = wz / 24 - czw;
+        const sxx = fx * fx * (3 - 2 * fx), szz = fz * fz * (3 - 2 * fz);
+        const h00 = hash2(cxw, czw), h10 = hash2(cxw + 1, czw);
+        const h01 = hash2(cxw, czw + 1), h11 = hash2(cxw + 1, czw + 1);
+        const dry = h00 + (h10 - h00) * sxx + (h01 - h00) * szz + (h00 - h01 - h10 + h11) * sxx * szz;
+        colV.setRGB(
+          .96 + dry * .17,          // dry patches go warm
+          1.03 - dry * .06,
+          .90 - dry * .16,          // …and lose blue
+        );
+        if (b === 0) colV.multiplyScalar(.92);             // snow biome: colder
+        mesh.setColorAt(Math.floor(placedN / 2), colV);
+        placedN++;
+      }
     }
-    dummy.rotation.set(0, 0, 0); dummy.scale.setScalar(.001);
+    dummy.rotation.set(0, 0, 0); dummy.quaternion.identity(); dummy.scale.setScalar(.001);
     for (let j = Math.ceil(placedN / 2); j < grassA.count; j++) {
       dummy.position.set(0, -50, 0); dummy.updateMatrix(); grassA.setMatrixAt(j, dummy.matrix);
+      colV.setRGB(1, 1, 1); grassA.setColorAt(j, colV);
     }
     for (let j = Math.floor(placedN / 2); j < grassB.count; j++) {
       dummy.position.set(0, -50, 0); dummy.updateMatrix(); grassB.setMatrixAt(j, dummy.matrix);
+      colV.setRGB(1, 1, 1); grassB.setColorAt(j, colV);
     }
     grassA.instanceMatrix.needsUpdate = true;
     grassB.instanceMatrix.needsUpdate = true;
+    if (grassA.instanceColor) grassA.instanceColor.needsUpdate = true;
+    if (grassB.instanceColor) grassB.instanceColor.needsUpdate = true;
     group.add(grassA, grassB);
   }
 
@@ -621,7 +724,7 @@ export function buildChunk(cx: number, cz: number, ctx: ChunkBuildContext): Buil
       const lr = 10 + hash2(cx * 3.3, cz * 7.1) * 14;
       if (roadDist(lx, lz) >= lr + 10) {           // lakes never swallow a road
         lakes.push({ x: lx, z: lz, r: lr });
-        const lake = new THREE.Mesh(new THREE.CircleGeometry(lr, 32), mats.water);
+        const lake = new THREE.Mesh(new THREE.CircleGeometry(lr, 32), mats.pond);
         lake.rotation.x = -Math.PI / 2;
         lake.position.set(lx, terrainH(lx, lz) + .12, lz);
         group.add(lake);
@@ -673,7 +776,7 @@ export function buildChunk(cx: number, cz: number, ctx: ChunkBuildContext): Buil
     if (rr > .5) continue;
     const px = ox + (hash2(i * 3.3 + cx, cz * 5.1) - .5) * CHUNK * .8;
     const pz = oz + (hash2(cz * 8.9 + i, cx * 2.7) - .5) * CHUNK * .8;
-    if (inWaterLocal(px, pz, ctx) || !offRoadClear(px, pz)) continue;
+    if (inWaterLocal(px, pz, ctx) || !offRoadClear(px, pz) || islandMask(px, pz) > 0) continue;
     const roll = rr * 2;
     const kind: 'fuel' | 'coin' | 'crate' = roll < .18 ? 'fuel' : roll < .85 ? 'coin' : 'crate';
     let mesh: THREE.Object3D;

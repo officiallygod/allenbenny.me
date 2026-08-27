@@ -86,6 +86,25 @@
   transition: transform .12s linear;
 }
 .g-btn-active { outline: 2px solid rgba(77,163,255,.7); }
+/* on-screen pedals — hold to drive */
+.g-pedals { display: flex; flex-direction: column; gap: 6px; }
+.g-pedal {
+  pointer-events: auto;
+  width: 42px; height: 42px; border-radius: 12px;
+  display: grid; place-items: center;
+  color: #fff; font-size: 15px; cursor: pointer;
+  user-select: none; -webkit-user-select: none;
+  touch-action: none;
+}
+.g-pedal-on { background: rgba(55,208,103,.45) !important; outline: 2px solid rgba(55,208,103,.8); }
+#game-veh-status {
+  position: fixed; bottom: 10px; left: 12px; z-index: 9;
+  font: 600 11px system-ui, sans-serif; letter-spacing: .04em;
+  color: rgba(255,255,255,.75);
+  background: rgba(10,14,20,.4); border: 1px solid rgba(255,255,255,.12);
+  border-radius: 999px; padding: 4px 12px;
+  backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px);
+}
 .g-hud-actions { display: flex; flex-direction: column; gap: 8px; }
 .g-hud-btn {
   pointer-events: auto;
@@ -183,4 +202,39 @@
   .g-speedo-svg { height: 34px; }
   .g-speedo-num { font-size: 16px; margin-top: -26px; }
   .g-hud-btn { width: 34px; height: 34px; font-size: 14px; border-radius: 12px; }
+}
+
+/* ---- Forza-style digital speedometer ---- */
+.g-dspeedo { padding: 9px 14px 7px; min-width: 196px; text-align: center; }
+.g-dspeedo-bar { display: flex; gap: 2px; margin-bottom: 6px; }
+.g-dspeedo-bar i {
+  flex: 1; height: 6px; border-radius: 1.5px;
+  background: rgba(255,255,255,.13);
+  transition: background .1s;
+}
+.g-dspeedo-bar i.on { background: #59d1ff; box-shadow: 0 0 7px rgba(89,209,255,.5); }
+.g-dspeedo-bar i.red.on { background: #ff5340; box-shadow: 0 0 7px rgba(255,83,64,.6); }
+.g-dspeedo-main {
+  display: flex; align-items: baseline; justify-content: center; gap: 9px;
+  font-variant-numeric: tabular-nums;
+}
+.g-dspeedo-gear {
+  font: 800 14px/1 'Manrope', system-ui, sans-serif;
+  color: #ffd75e;
+  background: rgba(255,255,255,.07);
+  border: 1px solid rgba(255,255,255,.2);
+  border-radius: 7px; padding: 4px 8px;
+}
+.g-dspeedo-num {
+  font: 800 42px/1 'Manrope', system-ui, sans-serif;
+  font-style: italic; letter-spacing: .5px;
+  color: #fff; text-shadow: 0 2px 14px rgba(0,0,0,.55);
+}
+.g-dspeedo-unit {
+  font: 700 11px/1 system-ui, sans-serif; letter-spacing: 2px;
+  color: rgba(255,255,255,.6);
+}
+@media (max-width: 640px) {
+  .g-dspeedo { min-width: 150px; padding: 7px 10px 5px; }
+  .g-dspeedo-num { font-size: 30px; }
 }

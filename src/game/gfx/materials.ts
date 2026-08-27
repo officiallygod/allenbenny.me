@@ -110,25 +110,50 @@ function sandCanvas(): HTMLCanvasElement {
   });
 }
 
-// GRASS — thousands of tiny blade strokes in varied greens
+// GRASS — dense turf: layered blade strokes + dry patches + clover specks
 function grassCanvas(): HTMLCanvasElement {
   const rnd = mulberry32(303);
   const s = 256;
-  return paintCanvas('#4c8a3f', s, (ctx, S) => {
-    for (let i = 0; i < 7000; i++) {
-      const h = 100 + rnd() * 40;
-      ctx.strokeStyle = `hsla(${h},${35 + rnd() * 30}%,${22 + rnd() * 26}%,.7)`;
-      ctx.lineWidth = 1 + rnd();
+  return paintCanvas('#3f7a36', s, (ctx, S) => {
+    /* LARGE soft tonal blotches (low-frequency only — fine noise shimmers
+       into TV-static at driving distance) */
+    for (let i = 0; i < 34; i++) {
+      const g = 90 + rnd() * 50;
+      ctx.fillStyle = `hsla(${95 + rnd() * 25},${30 + rnd() * 22}%,${g * .32}%,.13)`;
+      ctx.beginPath();
+      ctx.arc(rnd() * S, rnd() * S, 22 + rnd() * 52, 0, 7);
+      ctx.fill();
+    }
+    /* blades — two coherent passes, moderate count, gentle uniform curve */
+    for (let pass = 0; pass < 2; pass++) {
+      const light = pass === 1;
+      for (let i = 0; i < 2600; i++) {
+        const h = 96 + rnd() * 44;
+        ctx.strokeStyle = `hsla(${h},${(light ? 36 : 30) + rnd() * 20}%,${(light ? 27 : 16) + rnd() * (light ? 18 : 10)}%,${light ? .65 : .8})`;
+        ctx.lineWidth = .8 + rnd() * (light ? 1 : .8);
+        const x = rnd() * S, y = rnd() * S;
+        const lean = (rnd() - .5) * 2.6;
+        ctx.beginPath();
+        ctx.moveTo(x, y);
+        ctx.quadraticCurveTo(x + lean, y - 2 - rnd() * 2.5, x + lean * 1.5, y - 3 - rnd() * 4);
+        ctx.stroke();
+      }
+    }
+    /* sparse dry-grass accents */
+    for (let i = 0; i < 380; i++) {
+      ctx.strokeStyle = `hsla(${52 + rnd() * 18},${28 + rnd() * 22}%,${40 + rnd() * 14}%,.22)`;
+      ctx.lineWidth = .7 + rnd() * .7;
       const x = rnd() * S, y = rnd() * S;
       ctx.beginPath();
       ctx.moveTo(x, y);
-      ctx.lineTo(x + (rnd() - .5) * 2.5, y + 2 + rnd() * 4);
+      ctx.lineTo(x + (rnd() - .5) * 2.4, y - 2 - rnd() * 3);
       ctx.stroke();
     }
-    for (let i = 0; i < 26; i++) {
-      ctx.fillStyle = 'rgba(150,200,110,.06)';
+    /* clover / plantain specks */
+    for (let i = 0; i < 90; i++) {
+      ctx.fillStyle = `hsla(${100 + rnd() * 20},45%,${30 + rnd() * 18}%,.42)`;
       ctx.beginPath();
-      ctx.arc(rnd() * S, rnd() * S, 14 + rnd() * 24, 0, 7);
+      ctx.ellipse(rnd() * S, rnd() * S, 1.2 + rnd() * 1.8, 1 + rnd() * 1.4, rnd() * 3, 0, 7);
       ctx.fill();
     }
   });
@@ -415,18 +440,21 @@ const treeLeafSnow = new THREE.MeshStandardMaterial({ color: 0x35604b, roughness
   windify(treeLeaf, .06, .5, 1.5);
   windify(treeLeafSnow, .05, .5, 1.4);
 
-  /* ---- water: dual scrolling normal layers, physical shading ---- */
+  /* ---- water: folio-2025 look — thin reflective surface skin over the bed.
+     Dual scrolling normal layers + fresnel-ish opacity via envMapIntensity;
+     transparent so the sand shelf reads through the shallows. ---- */
   const normalMapA = toTexture(waterNormalCanvas(707), MAX_ANISO, 4, 4);
   const normalMapB = toTexture(waterNormalCanvas(808), MAX_ANISO, 7, 7); // offset scale+seed → interference
   const water = new THREE.MeshPhysicalMaterial({
-    color: 0x1565a0,           // deep blue-teal
+    color: 0x1c7fae,           // tropical shallow-sea blue
     transparent: true,
-    opacity: .82,
-    roughness: .06,
-    metalness: .1,
+    opacity: .58,              // thin skin — you see the bed through it
+    roughness: .045,
+    metalness: 0,
     normalMap: normalMapA,
-    normalScale: new THREE.Vector2(.65, .65),
-    envMapIntensity: 2.2,      // high — sky/PMREM reflections carry the look
+    normalScale: new THREE.Vector2(.55, .55),
+    envMapIntensity: 3.2,      // strong sky/PMREM reflections carry the look
+    side: THREE.DoubleSide,    // visible from below when wading
   });
   // second ripple layer scrolled the OPPOSITE way by updateTimeUniforms;
   // combined in-shader with layer A for moving-interference normals.
@@ -448,11 +476,67 @@ const treeLeafSnow = new THREE.MeshStandardMaterial({ color: 0x35604b, roughness
            normal = normalize(tbn * nAvg);
          }`,
       );
+    /* DEPTH-TINTED water — analytic: the ocean is a FLAT plane, so its own
+       height says nothing about depth. We rebuild the square-island mask in
+       the shader (identical constants to terrain.ts): distance outside the
+       land square drives shallow-turquoise → deep-navy, and the opacity
+       thickens with depth so the bed shows through near the beach only. */
+    shader.vertexShader =
+      'varying vec3 vWPos;\n' +
+      shader.vertexShader.replace(
+        '#include <begin_vertex>',
+        `#include <begin_vertex>
+         vec4 _wp = modelMatrix * vec4(position, 1.0);
+         vWPos = _wp.xyz;`,
+      );
+    shader.fragmentShader =
+      'varying vec3 vWPos;\n' +
+      shader.fragmentShader.replace(
+        '#include <color_fragment>',
+        `#include <color_fragment>
+         {
+           vec2 d = max(abs(vWPos.xz) - 380.0, vec2(0.0));
+           float out1 = length(d);                       // metres off the island
+           float depth01 = clamp(out1 / 78.0, 0.0, 1.0); // full deep at +78 m
+           depth01 *= depth01 * (3.0 - 2.0 * depth01);   // smooth
+           diffuseColor.rgb = mix(vec3(0.22, 0.62, 0.72), vec3(0.03, 0.15, 0.32), depth01);
+           diffuseColor.a *= mix(0.40, 0.96, depth01);   // see the sand near shore
+         }`,
+      );
+  };
+
+  /* ponds & rivers: richer, more opaque blue than the ocean skin so inland
+     water reads DEEP and blue even where the bed is only ~1 m down */
+  const pond = new THREE.MeshPhysicalMaterial({
+    color: 0x0e5f9e,
+    transparent: true,
+    opacity: .88,
+    roughness: .05,
+    metalness: 0,
+    normalMap: normalMapA,
+    normalScale: new THREE.Vector2(.5, .5),
+    envMapIntensity: 2.6,
+  });
+  pond.customProgramCacheKey = () => 'pond-scroll';
+  pond.onBeforeCompile = (shader) => {
+    shader.uniforms.uTime = windUniforms.uTime;
+    shader.fragmentShader =
+      'uniform float uTime;\n' +
+      shader.fragmentShader.replace(
+        '#include <normal_fragment_maps>',
+        `#include <normal_fragment_maps>
+         {
+           vec2 uvA = vNormalMapUv + vec2(uTime * 0.02, uTime * 0.014);
+           vec3 nA = texture2D(normalMap, uvA).xyz * 2.0 - 1.0;
+           normal = normalize(tbn * nA);
+         }`,
+      );
   };
 
   return {
     ground,
     asphalt,
+    pond,
     jeepPaint,
     jeepDark,
     jeepGlass,

@@ -15,6 +15,7 @@ import {
 import {
   terrainH, terrainNormalInto, biomeAt, roadDist, onRoad,
   ROAD_HALF_WIDTH, BIOME_NAMES, BIOME_TINTS,
+  ISLAND_HALF, BEACH, ROAD_END,
 } from './gfx/terrain';
 import { buildMaterials, updateTimeUniforms, type MaterialLibrary } from './gfx/materials';
 import {
@@ -24,9 +25,9 @@ import {
 import { buildPostFX } from './gfx/postfx';
 import { buildChaseCam } from './gfx/camera';
 import { buildJeep } from './gfx/jeep';
-import { buildChunk } from './gfx/chunks';
-import type { BuiltChunk, ChunkBuildContext } from './gfx/types';
-import type { ChaseCam, Jeep } from './gfx/types';
+import { buildChunk, buildClumpGeo } from './gfx/chunks';
+import { loadFerrari, type Ferrari } from './gfx/ferrari';
+import type { BuiltChunk, ChunkBuildContext, ChaseCam, Jeep } from './gfx/types';
 
 interface Pickup { mesh: THREE.Object3D; kind: 'fuel' | 'coin' | 'crate'; }
 interface Roller { mesh: THREE.Mesh; vx: number; vz: number; }
@@ -36,7 +37,7 @@ const MAP_HALF = WORLD_HALF;
 
 /* every lake ever created (bounded map ⇒ finite); keeps spawns dry */
 const lakeRects: { x: number; z: number; r: number }[] = [];
-function inWater(x: number, z: number): boolean {
+function lakeAt(x: number, z: number): boolean {
   return lakeRects.some(l => Math.hypot(x - l.x, z - l.z) < l.r + 2);
 }
 
@@ -55,73 +56,170 @@ function makeBladeGeo(): THREE.PlaneGeometry {
   return g;
 }
 
-/* ---------------- biome minimap (now WITH roads) ---------------- */
-const MINI_COLORS = BIOME_TINTS.map(b => b.mini);
-function renderMinimap(ctx: CanvasRenderingContext2D, px: number, pz: number, heading: number) {
-  const SIZE = 160, C = SIZE / 2;
+/* ---------------- minimap — GTA-style rotating RECTANGLE ----------------
+   Monochrome nav map: a dark land plate floating in open water, basic
+   roads, world rotating under a fixed player arrow (drive direction is
+   always screen-up). Outside the island: nothing but water. */
+export function renderMinimap(ctx: CanvasRenderingContext2D, px: number, pz: number, heading: number) {
+  const W = 208, H = 148, CX = W / 2, CY = H / 2;
   const RANGE = 5;
   const SPACING = 60;
-  const scale = (SIZE / 2 - 6) / (RANGE * SPACING);
-  const W2S = (wx: number, wz: number): [number, number] => [C + (wx - px) * scale, C + (wz - pz) * scale];
-  ctx.clearRect(0, 0, SIZE, SIZE);
+  const PAD = 9;
+  const sc = Math.min(W / 2 - PAD, H / 2 - PAD) / (RANGE * SPACING);
+  ctx.clearRect(0, 0, W, H);
+
+  /* open water everywhere — matches the in-world ocean tint */
+  ctx.fillStyle = '#123a52';
+  ctx.fillRect(0, 0, W, H);
+
   ctx.save();
+  /* world-metres → car-space rotation (det > 0, never mirrored):
+     drive direction lands straight up */
+  const al = heading - Math.PI;
+  ctx.translate(CX, CY);
+  ctx.transform(sc * Math.cos(al), sc * Math.sin(al), -sc * Math.sin(al), sc * Math.cos(al), 0, 0);
+
+  /* land plate — the square island itself */
+  ctx.fillStyle = '#2b3440';
+  ctx.fillRect(-ISLAND_HALF, -ISLAND_HALF, ISLAND_HALF * 2, ISLAND_HALF * 2);
+
+  /* faint survey grid */
+  ctx.strokeStyle = 'rgba(255,255,255,.06)';
+  ctx.lineWidth = 1 / sc;
   ctx.beginPath();
-  ctx.arc(C, C, C - 2, 0, Math.PI * 2);
-  ctx.clip();
-  for (let gx = -RANGE; gx <= RANGE; gx++) {
-    for (let gz = -RANGE; gz <= RANGE; gz++) {
-      const wx = Math.max(-MAP_HALF, Math.min(MAP_HALF, px + gx * SPACING));
-      const wz = Math.max(-MAP_HALF, Math.min(MAP_HALF, pz + gz * SPACING));
-      ctx.fillStyle = MINI_COLORS[biomeAt(wx, wz)];
-      const [sx, sy] = W2S(wx, wz);
-      const half = SPACING * scale / 2 + .5;
-      ctx.fillRect(sx - half, sy - half, half * 2, half * 2);
+  for (let g = -ISLAND_HALF + SPACING; g < ISLAND_HALF; g += SPACING) {
+    ctx.moveTo(g, -ISLAND_HALF); ctx.lineTo(g, ISLAND_HALF);
+    ctx.moveTo(-ISLAND_HALF, g); ctx.lineTo(ISLAND_HALF, g);
+  }
+  ctx.stroke();
+
+  /* lakes/rivers — same hash recipe as the chunk builder ⇒ exact positions */
+  ctx.fillStyle = '#1b5e8f';
+  const cMinL = Math.floor((-ISLAND_HALF - CHUNK) / CHUNK);
+  const cMaxL = Math.floor((ISLAND_HALF + CHUNK) / CHUNK);
+  for (let lcx = cMinL; lcx <= cMaxL; lcx++) {
+    for (let lcz = cMinL; lcz <= cMaxL; lcz++) {
+      const lakeSeed = hash2(lcx * 17.31, lcz * 43.17);
+      if (lakeSeed >= .3) continue;
+      const lox = lcx * CHUNK, loz = lcz * CHUNK;
+      const lx = lox + ((lakeSeed * 977) % 1 - .5) * CHUNK * .5;
+      const lz = loz + (hash2(lcx, lcz * 91.7) - .5) * CHUNK * .5;
+      const lr = 10 + hash2(lcx * 3.3, lcz * 7.1) * 14;
+      if (roadDist(lx, lz) < lr + 10) continue;      // skipped in-world too
+      ctx.beginPath();
+      ctx.arc(lx - px, lz - pz, lr, 0, Math.PI * 2);
+      ctx.fill();
     }
   }
-  /* roads: N-S, E-W, ring r260, two sinusoid diagonals */
-  ctx.strokeStyle = 'rgba(40,44,52,.9)';
-  ctx.lineWidth = Math.max(1.5, ROAD_HALF_WIDTH * 2 * scale);
+
+  /* roads — basic flat strokes, two weights (clipped to the island) */
+  ctx.save();
   ctx.beginPath();
-  {
-    const [a] = W2S(0, -MAP_HALF - 10); const [, b2] = W2S(0, -MAP_HALF - 10);
-    const [c] = W2S(0, MAP_HALF + 10); const [, d] = W2S(0, MAP_HALF + 10);
-    ctx.moveTo(a, b2); ctx.lineTo(c, d);
-    const [e, f] = W2S(-MAP_HALF - 10, 0); const [g2, h] = W2S(MAP_HALF + 10, 0);
-    ctx.moveTo(e, f); ctx.lineTo(g2, h);
-  }
+  ctx.rect(-ISLAND_HALF - 2, -ISLAND_HALF - 2, (ISLAND_HALF + 2) * 2, (ISLAND_HALF + 2) * 2);
+  ctx.clip();
+  const strokePath = (draw: () => void, w: number, col: string) => {
+    ctx.lineWidth = w; ctx.strokeStyle = col;
+    ctx.beginPath(); draw(); ctx.stroke();
+  };
+  /* highways stop short of the shore, ending in U-turn bulbs */
+  const RE = ROAD_END, BW = ROAD_HALF_WIDTH;
+  const highways = () => {
+    ctx.moveTo(0 - px, -RE - pz); ctx.lineTo(0 - px, RE - pz);
+    ctx.moveTo(-RE - px, 0 - pz); ctx.lineTo(RE - px, 0 - pz);
+    for (const sx of [-1, 1]) {
+      for (const [bx, bz] of [[0, sx * RE], [sx * RE, 0]]) {
+        ctx.moveTo(bx + BW * 2.2 - px, bz - pz);
+        ctx.arc(bx - px, bz - pz, BW * 2.2, 0, Math.PI * 2);
+      }
+    }
+  };
+  const ring = () => {
+    for (let a = 0; a <= 64; a++) {
+      const th = a / 64 * Math.PI * 2;
+      const rr = 260 + Math.sin(th * 5) * 8;
+      const sx = Math.cos(th) * rr - px, sy = Math.sin(th) * rr - pz;
+      a === 0 ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
+    }
+  };
+  const diagA = () => {
+    for (let x = -MAP_HALF; x <= MAP_HALF; x += 20) {
+      const sx = x - px, sy = 140 * Math.sin(x * .008) + 60 - pz;
+      x === -MAP_HALF ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
+    }
+  };
+  const diagB = () => {
+    for (let z = -MAP_HALF; z <= MAP_HALF; z += 20) {
+      const sx = -120 * Math.sin(z * .007) - 70 - px, sy = z - pz;
+      z === -MAP_HALF ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
+    }
+  };
+  /* highways: dark casing + pale fill (crisp GTA look, still basic) */
+  strokePath(highways, 7, '#151a21');
+  strokePath(highways, 4, '#c3ccd6');
+  /* minor roads */
+  ctx.restore();                       // island clip only guards the highways
+  strokePath(ring, 3, '#97a1ac');
+  strokePath(diagA, 3, '#97a1ac');
+  strokePath(diagB, 3, '#97a1ac');
+
+  /* coastline where land meets water */
+  ctx.strokeStyle = 'rgba(168,199,224,.55)';
+  ctx.lineWidth = 2.5 / sc;
+  ctx.strokeRect(-ISLAND_HALF, -ISLAND_HALF, ISLAND_HALF * 2, ISLAND_HALF * 2);
+  /* drivable-area limit (soft wall sits here) */
+  const DL = ISLAND_HALF + 14;
+  ctx.setLineDash([7 / sc, 6 / sc]);
+  ctx.strokeStyle = 'rgba(255,255,255,.45)';
+  ctx.lineWidth = 1.5 / sc;
+  ctx.strokeRect(-DL, -DL, DL * 2, DL * 2);
+  ctx.setLineDash([]);
+  ctx.restore();
+
+  /* panel frame */
+  ctx.strokeStyle = 'rgba(255,255,255,.16)';
+  ctx.lineWidth = 1.5;
+  ctx.strokeRect(.75, .75, W - 1.5, H - 1.5);
+
+  /* compass chip — needle always points toward world north */
+  const ccx = W - 21, ccy = 21, cr = 11;
+  ctx.beginPath();
+  ctx.arc(ccx, ccy, cr, 0, Math.PI * 2);
+  ctx.fillStyle = 'rgba(10,14,20,.8)';
+  ctx.fill();
+  ctx.strokeStyle = 'rgba(255,255,255,.3)';
+  ctx.lineWidth = 1;
   ctx.stroke();
+  ctx.save();
+  ctx.translate(ccx, ccy);
+  ctx.rotate(heading + Math.PI);   // needle rotation: north at screen-bottom when heading 0
+  ctx.fillStyle = '#e8eef6';
+  ctx.beginPath();
+  ctx.moveTo(0, -cr + 3); ctx.lineTo(3.2, 2); ctx.lineTo(-3.2, 2);
+  ctx.closePath();
+  ctx.fill();
+  ctx.fillStyle = 'rgba(255,255,255,.38)';
+  ctx.beginPath();
+  ctx.moveTo(0, cr - 3); ctx.lineTo(2, 2); ctx.lineTo(-2, 2);
+  ctx.closePath();
+  ctx.fill();
+  ctx.restore();
+  ctx.fillStyle = 'rgba(255,255,255,.55)';
+  ctx.font = '700 8px system-ui, sans-serif';
+  ctx.textAlign = 'center';
+  ctx.fillText('N', ccx, ccy + cr + 9);
+
+  /* player arrow — pinned dead centre, ALWAYS pointing up */
+  ctx.save();
+  ctx.shadowColor = 'rgba(0,0,0,.6)';
+  ctx.shadowBlur = 4;
+  ctx.fillStyle = '#ffffff';
+  ctx.strokeStyle = 'rgba(15,19,28,.85)';
   ctx.lineWidth = 1.4;
   ctx.beginPath();
-  for (let a = 0; a <= 64; a++) {
-    const th = a / 64 * Math.PI * 2;
-    const rr = 260 + Math.sin(th * 5) * 8;
-    const [sx, sy] = W2S(Math.cos(th) * rr, Math.sin(th) * rr);
-    a === 0 ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
-  }
-  ctx.stroke();
-  ctx.beginPath();
-  for (let x = -MAP_HALF; x <= MAP_HALF; x += 20) {
-    const [sx, sy] = W2S(x, 140 * Math.sin(x * .008) + 60);
-    x === -MAP_HALF ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
-  }
-  for (let z = -MAP_HALF; z <= MAP_HALF; z += 20) {
-    const [sx, sy] = W2S(-120 * Math.sin(z * .007) - 70, z);
-    z === -MAP_HALF ? ctx.moveTo(sx, sy) : ctx.lineTo(sx, sy);
-  }
-  ctx.stroke();
-  /* bounded-map edge */
-  ctx.strokeStyle = 'rgba(255,255,255,.9)';
-  ctx.lineWidth = 1.6;
-  const [ex, ey] = W2S(-MAP_HALF, -MAP_HALF);
-  ctx.strokeRect(ex, ey, MAP_HALF * 2 * scale, MAP_HALF * 2 * scale);
-  /* player triangle */
-  ctx.translate(C, C);
-  ctx.rotate(-heading);
-  ctx.fillStyle = '#ffffff';
-  ctx.strokeStyle = 'rgba(20,25,35,.75)';
-  ctx.lineWidth = 1.2;
-  ctx.beginPath();
-  ctx.moveTo(0, -7); ctx.lineTo(5, 6); ctx.lineTo(-5, 6);
+  ctx.moveTo(CX, CY - 8.5);
+  ctx.lineTo(CX + 6, CY + 6.5);
+  ctx.lineTo(CX, CY + 3);
+  ctx.lineTo(CX - 6, CY + 6.5);
   ctx.closePath();
   ctx.fill();
   ctx.stroke();
@@ -136,8 +234,8 @@ const GameApp: React.FC = () => {
     try { return Number(localStorage.getItem('jeepdrift-best')) || 0; } catch { return 0; }
   });
   const [speedKmh, setSpeedKmh] = useState(0);
-  const [throttle01, setThrottle01] = useState(0);
-  const [gear, setGear] = useState(1);
+  const [rpm01, setRpm01] = useState(0);
+  const [gear, setGear] = useState<number | string>(1);
   const [camMode, setCamMode] = useState('chase');
   const [biomeName, setBiomeName] = useState(BIOME_NAMES[2]);
   const [fps, setFps] = useState(0);
@@ -150,6 +248,8 @@ const GameApp: React.FC = () => {
   useEffect(() => { mutedRef.current = muted; }, [muted]);
   const chaseRef = useRef<ChaseCam | null>(null);
   const engineCleanupRef = useRef<(() => void) | null>(null);
+  const [vehStatus, setVehStatus] = useState<'loading' | 'ready' | 'failed'>('loading');
+  const [vehErr, setVehErr] = useState('');
   const cycleCam = useCallback(() => {
     const c = chaseRef.current;
     if (c) setCamMode(c.cycleMode());
@@ -168,7 +268,6 @@ const GameApp: React.FC = () => {
       const cleanup = engineInit(mount);
       engineCleanupRef.current = cleanup;
     } catch (e) {
-      (window as unknown as Record<string, unknown>).__jeepDbg = { initErr: String(e) };
       console.error('engine init failed', e);
     }
     return () => { engineCleanupRef.current?.(); engineCleanupRef.current = null; };
@@ -202,8 +301,66 @@ const GameApp: React.FC = () => {
     const light: LightingRig = buildLighting(scene, IS_MOBILE ? 1024 : 4096);
     const envTex = buildEnvironment(renderer, scene);
     const postfx = buildPostFX(renderer, scene, camera);
+    /* Some Windows/ANGLE GPUs present the composer chain black; verify once
+       and fall back to direct rendering if this machine is one of them. */
+    let useComposer = postfx.selfTest();
+    /* ---- vehicle: procedural jeep instantly, Ferrari swaps in when loaded ----
+       Adapter hides the differences (steer axis, suspension support). */
+    interface Veh {
+      group: THREE.Group;
+      spin(delta: number): void;
+      steer(v: number): void;
+      brakeMat: THREE.MeshStandardMaterial;
+      beams(dark01: number): void;
+      susp(a: number[]): void;
+    }
     const jeep: Jeep = buildJeep(mats);
     scene.add(jeep.group);
+    let veh: Veh = {
+      group: jeep.group,
+      spin(d) { for (const w of jeep.wheels) w.rotation.x += d; },
+      steer(v) { jeep.wheelContainers[0].rotation.y = v; jeep.wheelContainers[1].rotation.y = v; },
+      brakeMat: jeep.brakeLights,
+      beams(dark) { jeep.headBeam.intensity = 8 + dark * 85; },
+      susp(a) { jeep.setSuspension(a[0], a[1], a[2], a[3]); },
+    };
+    let ferrari: Ferrari | null = null;
+    const runningRef = { current: true };   // declared before the async swap uses it
+    loadFerrari(mats)
+      .then(f => {
+        if (!runningRef.current) { return; }
+        scene.remove(jeep.group);
+        scene.add(f.group);
+        ferrari = f;
+        setVehStatus('ready');
+        veh = {
+          group: f.group,
+          spin(d) { for (const r of f.rollers) r.rotation.x -= d; },   // demo convention
+          /* ONLY front wheels pivot when steering — rears stay fixed.
+             The glTF wheel roots' steer axis is Z (demo convention). */
+          steer(v) {
+            if (f.steerRoots[0]) f.steerRoots[0].rotation.z = v;
+            if (f.steerRoots[1]) f.steerRoots[1].rotation.z = v;
+          },
+          brakeMat: f.brakeMat,
+          beams(dark) { for (const b of f.beams) b.intensity = 4 + dark * 42; },
+          susp() { /* glTF model has no separate spring nodes */ },
+        };
+      })
+      .catch(err => {
+        setVehStatus('failed');
+        let msg: string;
+        if (err instanceof Error) msg = err.message;
+        else if (typeof err === 'object' && err) {
+          const anyErr = err as Record<string, unknown>;
+          const tgt = anyErr.target as { responseText?: string; status?: number } | undefined;
+          msg = tgt && tgt.status !== undefined
+            ? `fetch ${tgt.status}`
+            : Object.entries(anyErr).slice(0, 4).map(([k, v]) => `${k}=${String(v).slice(0, 30)}`).join(',');
+        } else msg = String(err);
+        setVehErr(msg.slice(0, 80));
+        console.warn('Ferrari unavailable, keeping jeep', err);
+      });
 
     /* soft contact shadow under the jeep (always readable) */
     const blob = new THREE.Mesh(
@@ -212,6 +369,16 @@ const GameApp: React.FC = () => {
     );
     blob.rotation.x = -Math.PI / 2;
     scene.add(blob);
+
+    /* ---------- global ocean: square island floats in open sea ---------- */
+    const oceanY = -1.6;
+    const ocean = new THREE.Mesh(
+      new THREE.PlaneGeometry((MAP_HALF + 900) * 2, (MAP_HALF + 900) * 2),
+      mats.water,
+    );
+    ocean.rotation.x = -Math.PI / 2;
+    ocean.position.y = oceanY;
+    scene.add(ocean);
 
     /* ---------- chunk streaming ---------- */
     const chunks = new Map<string, BuiltChunk>();
@@ -234,6 +401,9 @@ const GameApp: React.FC = () => {
         for (let dz = -VIEW_CHUNKS; dz <= VIEW_CHUNKS; dz++) {
           const bx = Math.min(cMax, Math.max(cMin, pcx + dx));
           const bz = Math.min(cMax, Math.max(cMin, pcz + dz));
+          /* island gate: never build terrain chunks for open sea */
+          if (Math.abs(bx * CHUNK) > ISLAND_HALF + BEACH + CHUNK &&
+              Math.abs(bz * CHUNK) > ISLAND_HALF + BEACH + CHUNK) continue;
           const k = `${bx},${bz}`;
           if (!chunks.has(k)) {
             const built = buildChunk(bx, bz, ctx);
@@ -271,28 +441,36 @@ const GameApp: React.FC = () => {
     }
 
     /* ---------- hero grass: dense patch following the player ---------- */
-    const HERO_N = IS_MOBILE ? 300 : 600, HERO_R = 20;
-    const heroGeo = makeBladeGeo();
+    const HERO_N = IS_MOBILE ? 700 : 1600;   // clumps in the 30m ring around the car
+    const heroGeo = buildClumpGeo();
     const heroA = new THREE.InstancedMesh(heroGeo, mats.grassBladeA, Math.ceil(HERO_N / 2));
-    const heroB = new THREE.InstancedMesh(heroGeo, mats.grassBladeB, Math.floor(HERO_N / 2));
+    const heroB = new THREE.InstancedMesh(heroGeo, mats.grassBladeB, HERO_N - Math.ceil(HERO_N / 2));
+    heroA.frustumCulled = false;
+    heroB.frustumCulled = false;
     const heroGroup = new THREE.Group();
     heroGroup.add(heroA, heroB);
     scene.add(heroGroup);
     let heroSnapX = 1e9, heroSnapZ = 1e9;
     function scatterHero(hx: number, hz: number) {
       let placed = 0;
-      for (let i = 0; i < HERO_N * 2 && placed < HERO_N; i++) {
-        const wx = hx + (hash2(i * 1.7 + hx * .37, hz * 3.1) - .5) * HERO_R * 2;
-        const wz = hz + (hash2(hz * 5.3 + i, hx * 7.7) - .5) * HERO_R * 2;
-        if (inWater(wx, wz) || onRoad(wx, wz)) continue;
+      const R = 15;
+      for (let i = 0; i < HERO_N * 3 && placed < HERO_N; i++) {
+        const wx = hx + (hash2(i * 1.7 + hx * .37, hz * 3.1) - .5) * R * 2;
+        const wz = hz + (hash2(hz * 5.3 + i, hx * 7.7) - .5) * R * 2;
+        if (lakeAt(wx, wz) || onRoad(wx, wz)) continue;
+        const b = biomeAt(wx, wz);
+        if (!(b === 2 || b === 0)) continue;
+        terrainNormalInto(nrm, wx, wz, .8);
         dummy.position.set(wx - hx, terrainH(wx, wz), wz - hz);
-        dummy.rotation.set((hash2(i, 11) - .5) * .2, hash2(i, 22) * 6.28, (hash2(i, 33) - .5) * .2);
-        dummy.scale.set(1, .8 + hash2(i, 44) * .35, 1);
+        q.setFromUnitVectors(upV, nrm);
+        dummy.quaternion.copy(q);
+        dummy.rotateY(hash2(i, 71) * Math.PI * 2);
+        dummy.scale.setScalar(.8 + hash2(i, 44) * .5);
         dummy.updateMatrix();
         ((placed % 2 ? heroB : heroA) as THREE.InstancedMesh).setMatrixAt(Math.floor(placed / 2), dummy.matrix);
         placed++;
       }
-      dummy.rotation.set(0, 0, 0); dummy.scale.setScalar(.001); dummy.position.set(0, -50, 0);
+      dummy.quaternion.identity(); dummy.scale.setScalar(.001); dummy.position.set(0, -50, 0);
       for (let j = Math.ceil(placed / 2); j < heroA.count; j++) { dummy.updateMatrix(); heroA.setMatrixAt(j, dummy.matrix); }
       for (let j = Math.floor(placed / 2); j < heroB.count; j++) { dummy.updateMatrix(); heroB.setMatrixAt(j, dummy.matrix); }
       heroA.instanceMatrix.needsUpdate = true;
@@ -301,6 +479,20 @@ const GameApp: React.FC = () => {
 
     /* ---------- input ---------- */
     const keys: Record<string, boolean> = {};
+    /* on-screen pedals: pointerdown = press, pointerup/leave = release.
+       Works without keyboard focus (preview panes, touch). */
+    const pedalState = { gas: false, brake: false };
+    let autoDrive = /autodrive/.test(window.location.hash);
+    const wirePedal = (id: string, key: 'w' | 's') => {
+      const el = document.getElementById(id);
+      if (!el) return;
+      const dn = (e: Event) => { e.preventDefault(); pedalState[key === 'w' ? 'gas' : 'brake'] = true; keys[key] = true; el.classList.add('g-pedal-on'); };
+      const up = () => { pedalState[key === 'w' ? 'gas' : 'brake'] = false; keys[key] = false; el.classList.remove('g-pedal-on'); };
+      el.addEventListener('pointerdown', dn);
+      window.addEventListener('pointerup', up);
+      el.addEventListener('pointerleave', up);
+      el.addEventListener('pointercancel', up);
+    };
     let dragging = false;
     let lastPX = 0, lastPY = 0;
     const onDragStart = (e: MouseEvent) => {
@@ -377,9 +569,12 @@ const GameApp: React.FC = () => {
     const susp = [0, 0, 0, 0];
     let bodyRoll = 0, bodyPitch = 0, prevVFwd = 0;
     let brakeGlow = 0;
-    const throttleRef = { current: 0 };   // gradual throttle spool
-    let vFwdPrev = 0;                     // previous forward speed (drag sign)
+    /* CarControls port state */
+    const vFwdState = { current: 0 };     // signed forward speed (m/s)
+    let wheelOri = 0;                     // virtual steering wheel angle
+    const TURNING_RADIUS = 6;             // reference default
     let hudClock = 0;
+    const dayFactorRef = { current: 1 };  // beams ramp from this
 
     /* scratch — zero allocations in tick */
     const upV = new THREE.Vector3(0, 1, 0);
@@ -393,6 +588,9 @@ const GameApp: React.FC = () => {
     const colC = new THREE.Color();
 
     ensureChunksAround(Math.round(pos.x / CHUNK), Math.round(pos.z / CHUNK));
+    wirePedal('g-pedal-gas', 'w');
+    wirePedal('g-pedal-brake', 's');
+    if (autoDrive) keys['w'] = true;   // #autodrive: drive forward for self-test
 
     const tick = () => {
       if (!running) return;
@@ -406,121 +604,144 @@ const GameApp: React.FC = () => {
         frames = 0; fpsClock = now;
       }
 
-      /* ---- drive (folio-style vehicle model — unchanged physics) ---- */
+      /* ================================================================
+         DRIVE — ported from JS-3D-Car's CarControls (alteredq/looeee),
+         demo constants: maxSpeed 180 km/h, accel 10 m/s², reverse −45,
+         deceleration = accel·2, brakePower 10, demo runs delta/3 for
+         the gentle feel. Steering: wheelOrientation auto-centers,
+         car yaws by the arc formula speed·turningRadius.
+         ================================================================ */
+      const MAXSPEED = 78;            // m/s ≈ 280 km/h (Ferrari territory)
+      const REVERSE_CAP = -12;        // ≈ −43 km/h
+      const LAUNCH_ACCEL = 8.2;       // traction-limited launch (0–45 km/h)
+      const POWER_ACCEL = 10.0;       // power curve peak, falls with speed
+      const REV_ACCEL = 3.5;
+      const DECEL = 20;
+      const BRAKE_POWER = 10;
       const gasPressed = !!(keys['arrowup'] || keys['w']);
       const revPressed = !!(keys['arrowdown'] || keys['s']);
-      const accelInput = (gasPressed ? 1 : 0) - (revPressed ? 1 : 0);
-      const turn = (keys['arrowleft'] || keys['a'] ? 1 : 0) - (keys['arrowright'] || keys['d'] ? 1 : 0);
-      steer += ((turn * 1) - steer) * Math.min(1, dt * 7);
-
-      const dir = dirV.set(Math.sin(heading), 0, Math.cos(heading));
-      const speed = vel.length();
-      const forwardRatio = speed > .05 ? vel.clone().normalize().dot(dir) : 1;
-      const goingForward = forwardRatio > .5;
-
-      /* ---- drive: gradual throttle, real drag, top speed 160+ km/h ---- */
-      const topSpeed = 45;                       // m/s ≈ 162 km/h
-      const throttleTarget = Math.abs(accelInput);
-      const spoolK = accelInput !== 0 ? .55 : 1.4;   // spool up slow, lift-off fast
-      const thr = (throttleRef.current += (throttleTarget - throttleRef.current) * Math.min(1, dt * spoolK));
-      const gearIdx = Math.min(5, Math.floor((thr * speed) / topSpeed * 6));
-
-      /* aero + rolling drag grows with v²; uphill adds more */
-      const drag = .011 * speed * speed / topSpeed + .5;
-      let engineForce = accelInput * 26 * thr - Math.sign(vFwdPrev) * drag * (speed > .3 ? 1 : 0);
-      if (!gasPressed && !revPressed) engineForce -= Math.sign(vFwdPrev) * 1.1;  // engine braking
-
-      const forwardRatio2 = speed > .05 ? vel.clone().normalize().dot(dir) : 1;
-      let brake = 0;
-      if (speed > .5 && ((accelInput > 0 && goingForward === false && forwardRatio2 < -.5) || (accelInput < 0 && goingForward && forwardRatio2 > .5))) {
-        brake = 20;
-        engineForce = 0;
-      }
-      if (keys[' ']) brake = 60;
       const handbraking = !!keys[' '];
 
-      vel.multiplyScalar(Math.pow(.62, dt));
-      vel.addScaledVector(dir, engineForce * dt);
-      if (brake > 0) {
-        const bFactor = Math.max(0, 1 - (brake * dt) / Math.max(speed, .6));
-        vel.multiplyScalar(bFactor);
+      /* water resistance once the bed dips under the ocean surface */
+      const inWater = pos.y < oceanY - .12;
+
+      /* realistic power delivery: grip-limited launch, then torque curve
+         falloff — 0→100 km/h ≈ 4 s, 160 only after ~7 s of pulling */
+      if (gasPressed) {
+        const v = vFwdState.current;
+        const powerScale = inWater ? .35 : 1;
+        const accel = v < 12.5
+          ? LAUNCH_ACCEL * powerScale
+          : POWER_ACCEL * Math.max(.16, 1 - v / MAXSPEED) * powerScale;
+        vFwdState.current = Math.min(v + dt * accel, MAXSPEED);
+      } else if (revPressed) {
+        vFwdState.current = Math.max(vFwdState.current - dt * REV_ACCEL, REVERSE_CAP);
+      } else {
+        const k = 1 - Math.pow(2, -10 * Math.abs(vFwdState.current) / MAXSPEED);
+        const dec = k * dt * DECEL * (handbraking ? BRAKE_POWER : 1);
+        vFwdState.current -= Math.sign(vFwdState.current) * Math.min(Math.abs(vFwdState.current), dec);
       }
-      if (vel.length() > topSpeed + 6) vel.setLength(topSpeed + 6);
-
-      const wheelBase = 2.6;
-      const speedFwd = Math.max(2.5, speed * forwardRatio);
-      const turnRate = (speedFwd / wheelBase) * Math.tan(steer * .48);
-      heading += turnRate * dt;
-
-      const rightX = Math.cos(heading), rightZ = -Math.sin(heading);
-      let vFwd = vel.x * dir.x + vel.z * dir.z;
-      let vLat = vel.x * rightX + vel.z * rightZ;
-      const grip = handbraking ? 1.8 : 6.5;
-      vLat *= Math.pow(.002, dt / grip * 10);
-      vFwd *= Math.pow(.62, dt);
-      vFwd += engineForce * dt;
-      vel.set(dir.x * vFwd + rightX * vLat, 0, dir.z * vFwd + rightZ * vLat);
-      pos.addScaledVector(vel, dt);
-      vFwdPrev = vFwd;
-
-      /* bounded world soft walls */
-      if (Math.abs(pos.x) > MAP_HALF) {
-        pos.x = Math.sign(pos.x) * MAP_HALF;
-        if (Math.sign(vel.x) === Math.sign(pos.x)) vel.x *= -.3;
+      /* sloshing drag in water — you wade, not race */
+      if (inWater) {
+        const drag = vFwdState.current * Math.min(1, dt * 2.2);
+        vFwdState.current -= drag;
       }
-      if (Math.abs(pos.z) > MAP_HALF) {
-        pos.z = Math.sign(pos.z) * MAP_HALF;
-        if (Math.sign(vel.z) === Math.sign(pos.z)) vel.z *= -.3;
-      }
-
-      /* stick to terrain, tilt with slope */
+      /* slope adds real weight: uphill bleeds speed, downhill pushes */
+      const dir = dirV.set(Math.sin(heading), 0, Math.cos(heading));
       pos.y = terrainH(pos.x, pos.z);
       terrainNormalInto(nrm, pos.x, pos.z);
       const slopeDot = dir.dot(tmpV.set(nrm.x, 0, nrm.z).normalize());
-      vel.addScaledVector(dir, -slopeDot * 6 * dt);
+      vFwdState.current -= slopeDot * 9 * dt;
 
-      jeep.group.position.copy(pos).addScaledVector(nrm, .05);
+      /* steering: input ramps a virtual wheel that auto-centers */
+      const turnIn = (keys['arrowleft'] || keys['a'] ? 1 : 0) - (keys['arrowright'] || keys['d'] ? 1 : 0);
+      const STEER_RATE = 1.5, MAX_STEER = .6;
+      if (turnIn !== 0) {
+        wheelOri += THREE.MathUtils.clamp(turnIn * STEER_RATE * dt - wheelOri, -STEER_RATE * dt, STEER_RATE * dt);
+        wheelOri = THREE.MathUtils.clamp(wheelOri, -MAX_STEER, MAX_STEER);
+      } else {
+        wheelOri -= Math.sign(wheelOri) * Math.min(Math.abs(wheelOri), STEER_RATE * dt);
+      }
+      /* yaw via the reference arc formula, softened with speed so it
+         feels planted at pace and nimble in town */
+      const spd01 = Math.min(1, Math.abs(vFwdState.current) / MAXSPEED);
+      const radiusK = .02 * TURNING_RADIUS * (1 + spd01 * 2.2);   // 6 → ~19.2
+      heading -= vFwdState.current * dt * radiusK * wheelOri;
+
+      vel.set(dir.x * vFwdState.current, 0, dir.z * vFwdState.current);
+      pos.addScaledVector(vel, dt);
+
+      const speed = Math.abs(vFwdState.current);
+      const goingForward = vFwdState.current > 0;
+      const brakeOn = handbraking || (!gasPressed && !revPressed && Math.abs(vFwdState.current) > 4);
+      /* exact 7-speed gearbox: gear = band containing |v|, RPM = exact
+         position inside that band (idle floor .16 → redline 1.0).
+         The HUD therefore shows the TRUE drivetrain state, always. */
+      const GEAR_TOPS = [13, 24, 36, 49, 62, 74, 78];
+      let gearIdx = 0;
+      while (gearIdx < GEAR_TOPS.length - 1 && speed > GEAR_TOPS[gearIdx]) gearIdx++;
+      const gLo = gearIdx === 0 ? 0 : GEAR_TOPS[gearIdx - 1];
+      const rpm01 = Math.max(.14, Math.min(1,
+        .16 + .84 * (speed - gLo) / (GEAR_TOPS[gearIdx] - gLo)));
+
+      /* island shelf: you may wade into the shallows and climb back out —
+         hard stop only far out at the old map bound */
+      const LIM = MAP_HALF;
+      if (Math.abs(pos.x) > LIM) {
+        pos.x = Math.sign(pos.x) * LIM;
+        if (Math.sign(vel.x) === Math.sign(pos.x)) vel.x *= -.3;
+      }
+      if (Math.abs(pos.z) > LIM) {
+        pos.z = Math.sign(pos.z) * LIM;
+        if (Math.sign(vel.z) === Math.sign(pos.z)) vel.z *= -.3;
+      }
+
+      /* stick to terrain, tilt with slope (heights already sampled above) */
+      veh.group.position.copy(pos).addScaledVector(nrm, .05);
       q.setFromUnitVectors(upV, nrm);
-      jeep.group.quaternion.copy(q);
-      jeep.group.rotateY(heading);
+      veh.group.quaternion.copy(q);
+      veh.group.rotateY(heading);
 
       /* body roll into corners + pitch under accel/brake (visual only) */
-      const targetRoll = THREE.MathUtils.clamp(vLat * .028, -.09, .09);
-      const accel = (vFwd - prevVFwd) / Math.max(dt, .001); prevVFwd = vFwd;
+      const targetRoll = THREE.MathUtils.clamp(-wheelOri * Math.min(1, speed / 14) * .35, -.09, .09);
+      const accel = (vFwdState.current - prevVFwd) / Math.max(dt, .001); prevVFwd = vFwdState.current;
       const targetPitch = THREE.MathUtils.clamp(-accel * .0045, -.05, .06);
       bodyRoll += (targetRoll - bodyRoll) * Math.min(1, dt * 6);
       bodyPitch += (targetPitch - bodyPitch) * Math.min(1, dt * 6);
-      jeep.group.rotateZ(bodyRoll);
-      jeep.group.rotateX(bodyPitch);
+      veh.group.rotateZ(bodyRoll);
+      veh.group.rotateX(bodyPitch);
 
       /* suspension: sample ground under each wheel, offset containers */
       {
         const fx = Math.sin(heading), fz = Math.cos(heading);
+        const rx = Math.cos(heading), rz = -Math.sin(heading);
         const wx = [fx * 1.28, fx * 1.28, -fx * 1.28, -fx * 1.28];
         const wz = [fz * 1.28, fz * 1.28, -fz * 1.28, -fz * 1.28];
-        const sx = [rightX * -1.08, rightX * 1.08, rightX * -1.08, rightX * 1.08];
-        const sz = [rightZ * -1.08, rightZ * 1.08, rightZ * -1.08, rightZ * 1.08];
+        const sx = [rx * -1.08, rx * 1.08, rx * -1.08, rx * 1.08];
+        const sz = [rz * -1.08, rz * 1.08, rz * -1.08, rz * 1.08];
         for (let i = 0; i < 4; i++) {
           const gy = terrainH(pos.x + wx[i] + sx[i], pos.z + wz[i] + sz[i]);
-          const target = THREE.MathUtils.clamp((gy - pos.y) * .8, -.22, .22);
+          /* gentle visual squat only — the chassis never sinks */
+          const target = THREE.MathUtils.clamp((gy - pos.y) * .45, -.1, .1);
           susp[i] += (target - susp[i]) * Math.min(1, dt * 10);
         }
-        jeep.setSuspension(susp[0], susp[1], susp[2], susp[3]);
+        veh.susp(susp);
       }
 
-      /* wheels: container Y = steer (front), mesh X = roll */
-      const spin = (speed * dt * 2.2) * (goingForward ? 1 : -1);
-      for (const w of jeep.wheels) w.rotation.x += spin;
-      jeep.wheelContainers[0].rotation.y = steer * .5;
-      jeep.wheelContainers[1].rotation.y = steer * .5;
+      /* wheels: steer front (model axis), roll all */
+      const spin = speed * dt * 2.2 * (goingForward ? 1 : -1);
+      veh.spin(spin);
+      veh.steer(wheelOri);
 
-      /* brake lights + reverse-light glow */
-      const targetGlow = brake > 2 || handbraking ? 5 : 1.1;
+      /* brake lights + headlight beams */
+      const targetGlow = brakeOn ? 5 : 1.1;
       brakeGlow += (targetGlow - brakeGlow) * Math.min(1, dt * 12);
-      jeep.brakeLights.emissiveIntensity = brakeGlow;
+      veh.brakeMat.emissiveIntensity = brakeGlow;
+      /* beams read dayFactor through a ref (tick runs before it's computed) */
+      veh.beams(1 - dayFactorRef.current);
 
-      /* contact shadow follows jeep */
-      blob.position.set(pos.x, pos.y + .04, pos.z);
+      /* contact shadow pinned to true terrain (jeep sits above it) */
+      blob.position.set(pos.x, terrainH(pos.x, pos.z) + .04, pos.z);
       blob.rotation.set(-Math.PI / 2, 0, -heading);
 
       /* ---- collisions (nearby chunk obstacles) ---- */
@@ -623,7 +844,7 @@ const GameApp: React.FC = () => {
         if (butterflies.length < 8 && Math.random() < dt * 2) {
           const ba = Math.random() * Math.PI * 2, bd = 15 + Math.random() * 30;
           const bx = pos.x + Math.sin(ba) * bd, bz = pos.z + Math.cos(ba) * bd;
-          if (biomeAt(bx, bz) === 2 && !inWater(bx, bz) && !onRoad(bx, bz)) spawnButterfly(bx, bz);
+          if (biomeAt(bx, bz) === 2 && !lakeAt(bx, bz) && !onRoad(bx, bz)) spawnButterfly(bx, bz);
         }
         for (let i = butterflies.length - 1; i >= 0; i--) {
           const bf = butterflies[i];
@@ -654,9 +875,7 @@ const GameApp: React.FC = () => {
       const ang = cycle / 4 * Math.PI * 2;
       light.updateSun(pos, ang);
       const dayFactor = (PRESET_DAYF[A.name] ?? 1) * (1 - tK) + (PRESET_DAYF[Bp.name] ?? 1) * tK;
-
-      /* headlights ramp up at dusk/night */
-      jeep.headBeam.intensity = 8 + (1 - dayFactor) * 85;
+      dayFactorRef.current = dayFactor;
 
       /* sky dome: sun direction + day factor + biome horizon tint */
       sunDirV.subVectors(light.sun.position, light.sun.target.position).normalize();
@@ -674,12 +893,12 @@ const GameApp: React.FC = () => {
       (scene.fog as THREE.Fog).color.lerp(colA, dt * 1.5);
 
       /* ---- cinematic chase camera ---- */
-      chase.update(pos, heading, Math.min(1, speed / topSpeed), dt,
-        THREE.MathUtils.clamp(vLat * .06, -1.4, 1.4));
+      chase.update(pos, heading, spd01, dt,
+        THREE.MathUtils.clamp(-wheelOri * Math.min(1, speed / 14) * 2.2, -1.4, 1.4));
 
       /* audio */
       const a = ensureAudio();
-      a.osc.frequency.value = 42 + speed * 4.2;
+      a.osc.frequency.value = 42 + speed * 3.6;
       a.gain.gain.value = mutedRef.current ? 0 : Math.min(.05, speed * .0038);
 
       setSpeedKmh(Math.round(speed * 3.6));
@@ -688,12 +907,16 @@ const GameApp: React.FC = () => {
       hudRef.current.heading = heading;
       /* HUD throttle/gear sync at ~10 Hz */
       hudClock += dt;
-      if (hudClock > .1) {
+      if (hudClock > .05) {   // 20 Hz — cluster matches physics tightly
         hudClock = 0;
-        setThrottle01(Math.round(throttleRef.current * 20) / 20);
-        setGear(gearIdx + 1);
+        setRpm01(rpm01);
+        setGear(goingForward ? gearIdx + 1 : 'R');
       }
-      postfx.render(dt);
+      if (useComposer) {
+        postfx.render(dt);
+      } else {
+        renderer.render(scene, camera);   // GPU failed the composer self-test
+      }
     };
     const rollers: Roller[] = [];
     function rollersLen() { return rollers.length; }
@@ -758,7 +981,7 @@ const GameApp: React.FC = () => {
     return () => clearInterval(id);
   }, [started]);
 
-  /* live biome minimap — redraw ~2x/sec */
+  /* live minimap — GTA-style rotating rectangle, redraw 10x/sec */
   const miniRef = useRef<HTMLCanvasElement>(null);
   useEffect(() => {
     if (!started) return;
@@ -770,7 +993,7 @@ const GameApp: React.FC = () => {
       renderMinimap(c, hudRef.current.px, hudRef.current.pz, hudRef.current.heading);
     };
     draw();
-    const id = setInterval(draw, 500);
+    const id = setInterval(draw, 100);
     return () => clearInterval(id);
   }, [started]);
 
@@ -797,21 +1020,24 @@ const GameApp: React.FC = () => {
         </div>
 
         <div className="g-hud-right">
-          <div className="g-hud-speedo g-glass">
-            <svg viewBox="0 0 100 60" className="g-speedo-svg" aria-hidden="true">
-              <path d="M10 55 A45 45 0 0 1 90 55" fill="none" stroke="rgba(255,255,255,.15)" strokeWidth="7" strokeLinecap="round" />
-              <path d="M10 55 A45 45 0 0 1 90 55" fill="none" stroke="#4da3ff" strokeWidth="7" strokeLinecap="round"
-                strokeDasharray={`${Math.min(1, speedKmh / 180) * 126} 999`} />
-            </svg>
-            <div className="g-speedo-num">{speedKmh}<small>km/h</small></div>
-            <div className="g-speedo-meta">
-              <span className="g-gear">{gear}</span>
-              <span className="g-throttle" title="Throttle">
-                <i style={{ transform: `scaleY(${Math.max(.04, throttle01)})` }} />
-              </span>
+          <div className="g-dspeedo g-glass" aria-label="Speedometer">
+            {/* segmented power bar — Forza-style, top strip */}
+            <div className="g-dspeedo-bar" aria-hidden="true">
+              {Array.from({ length: 26 }, (_, i) => (
+                <i key={i} className={`${i < Math.round(rpm01 * 26) ? 'on' : ''}${i >= 22 ? ' red' : ''}`} />
+              ))}
+            </div>
+            <div className="g-dspeedo-main">
+              <span className="g-dspeedo-gear">{gear}</span>
+              <span className="g-dspeedo-num">{speedKmh}</span>
+              <span className="g-dspeedo-unit">KM/H</span>
             </div>
           </div>
           <div className="g-hud-actions">
+            <div className="g-pedals" aria-hidden="false">
+              <button id="g-pedal-gas" className="g-pedal g-glass" aria-label="Accelerate (hold)">▲</button>
+              <button id="g-pedal-brake" className="g-pedal g-glass" aria-label="Brake/Reverse (hold)">▼</button>
+            </div>
             <button className={`g-hud-btn g-glass${camMode !== 'chase' ? ' g-btn-active' : ''}`} onClick={cycleCam}
               aria-label="Cycle camera" title="Camera (C)">🎥</button>
             <button className="g-hud-btn g-glass" onClick={() => setMuted(m => !m)} aria-label={muted ? 'Unmute' : 'Mute'}>{muted ? '🔇' : '🔊'}</button>
@@ -823,25 +1049,28 @@ const GameApp: React.FC = () => {
       {toast && <div className="g-toast">{toast}</div>}
 
       {started && (
+        <div id="game-veh-status">
+          {vehStatus === 'ready' ? '🏎️ FERRARI' : vehStatus === 'loading' ? '⏳ CAR LOADING…' : `🚙 JEEP${vehErr ? ' · ' + vehErr : ''}`}
+          {' · C camera · hold ▲ to drive'}
+        </div>
+      )}
+
+      {started && (
         <div
           className="g-minimap"
           style={{
-            position: 'absolute', right: 16, bottom: 16, width: 160, height: 160,
-            borderRadius: '50%', padding: 4, boxSizing: 'border-box',
-            background: 'rgba(15,20,30,.35)', backdropFilter: 'blur(8px)',
+            position: 'absolute', right: 16, bottom: 16, width: 208, height: 148,
+            borderRadius: 10, padding: 4, boxSizing: 'border-box',
+            background: 'rgba(8,12,18,.55)', backdropFilter: 'blur(8px)',
             WebkitBackdropFilter: 'blur(8px)',
             border: '1px solid rgba(255,255,255,.22)',
-            boxShadow: '0 6px 24px rgba(0,0,0,.35)',
+            boxShadow: '0 6px 24px rgba(0,0,0,.4), inset 0 0 14px rgba(0,0,0,.35)',
+            overflow: 'hidden',
             zIndex: 5,
           }}
         >
-          <canvas ref={miniRef} width={160} height={160}
-            style={{ width: '100%', height: '100%', borderRadius: '50%', display: 'block' }} />
-          <span style={{
-            position: 'absolute', top: 2, left: '50%', transform: 'translateX(-50%)',
-            fontSize: 10, fontWeight: 700, color: 'rgba(255,255,255,.85)',
-            textShadow: '0 1px 3px rgba(0,0,0,.6)', pointerEvents: 'none',
-          }}>N</span>
+          <canvas ref={miniRef} width={208} height={148}
+            style={{ width: '100%', height: '100%', display: 'block', borderRadius: 7 }} />
         </div>
       )}
 

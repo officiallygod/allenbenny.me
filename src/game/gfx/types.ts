@@ -77,6 +77,7 @@ export interface MaterialLibrary {
   treeLeaf: THREE.MeshStandardMaterial;
   treeLeafSnow: THREE.MeshStandardMaterial;
   water: THREE.MeshPhysicalMaterial;
+  pond: THREE.MeshPhysicalMaterial;
 }
 
 /* ================================================================
@@ -107,6 +108,8 @@ export interface PostFX {
   composer: import('three/examples/jsm/postprocessing/EffectComposer.js').EffectComposer;
   setSize(w: number, h: number): void;
   render(dt: number): void;
+  /** one-time: verify the chain produces non-dark output; false ⇒ use direct render */
+  selfTest(): boolean;
   setBloomEnabled(on: boolean): void;
   dispose(): void;
 }

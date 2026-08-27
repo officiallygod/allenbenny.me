@@ -40,6 +40,17 @@ const DIAG_B_FREQ = 0.007;
 const DIAG_B_OFF = 70;
 
 /* ================================================================
+   ROAD ENDS — straights stop at ±ROAD_END and flare into a
+   U-turn bulb (extra half-width BULB_W) well before the beach.
+   ================================================================ */
+export const ROAD_END = 326;
+export const BULB_W = 11;
+const ss = (a: number, b: number, x: number): number => {
+  const t = Math.min(1, Math.max(0, (x - a) / (b - a)));
+  return t * t * (3 - 2 * t);
+};
+
+/* ================================================================
    ROAD NETWORK DISTANCE
    Five centrelines: N-S (x=0), E-W (z=0), wobbly ring r≈260,
    and two sine diagonals. Returns distance in metres to the
@@ -48,10 +59,15 @@ const DIAG_B_OFF = 70;
    perpendicular to the local tangent, not vertically.
    ================================================================ */
 export function roadDist(x: number, z: number): number {
-  // N-S straight: x = 0
-  const dNS = x < 0 ? -x : x;
-  // E-W straight: z = 0
-  const dEW = z < 0 ? -z : z;
+  /* Straights STOP short of the shore and flare into a U-turn bulb:
+     max(strip, endcap − widening) is continuous everywhere, so the
+     flattening blends seamlessly into the turnaround pad. */
+  const az = Math.abs(z);
+  const widenZ = BULB_W * ss(ROAD_END - 30, ROAD_END, az);
+  const dNS = Math.max(Math.abs(x), Math.hypot(x, Math.max(0, az - ROAD_END)) - widenZ);
+  const axAbs = Math.abs(x);
+  const widenX = BULB_W * ss(ROAD_END - 30, ROAD_END, axAbs);
+  const dEW = Math.max(Math.abs(z), Math.hypot(Math.max(0, axAbs - ROAD_END), z) - widenX);
   // ring: r(θ) = 260 + 8·sin(5θ); planar distance to the wobbling circle
   const theta = Math.atan2(z, x);
   const ringR = RING_RADIUS + RING_WOBBLE * Math.sin(theta * RING_LOBES);
@@ -145,6 +161,23 @@ function terrainRaw(x: number, z: number): number {
   return h;
 }
 
+/* ---------------- SQUARE ISLAND ----------------
+   Drivable land is a square; past its edge the ground slopes through a
+   shallow shelf you can WADE into and climb back out of, then dives to
+   the deep sea floor. Everything (render, physics, scatter, minimap)
+   derives from these numbers. */
+export const ISLAND_HALF = 380;   // last fully-drivable metre per axis
+export const BEACH = 46;          // shore blend width (metres)
+export const SHELF_END = 460;     // past here: deep sea floor, no going forward
+const SEABED = -17.5;             // sea floor depth once fully submerged
+const SHALLOW = -3.4;             // wading depth right off the beach
+/** metres travelled outside the island square (0 while on land) */
+export function islandMask(x: number, z: number): number {
+  const dx = Math.max(Math.abs(x) - ISLAND_HALF, 0);
+  const dz = Math.max(Math.abs(z) - ISLAND_HALF, 0);
+  return Math.sqrt(dx * dx + dz * dz);
+}
+
 /**
  * Ground height at (x, z) — THE single source of truth for
  * rendering AND physics (see header comment).
@@ -164,19 +197,46 @@ const FEATHER = 55;         // metres past the shoulder until terrain is fully w
                             // worst feather slope ≈ 1.5·gap/55 ≈ 0.35 m/m (≈ wild hills)
 
 export function terrainH(x: number, z: number): number {
+  let h: number;
   const d = roadDist(x, z);
   const outer = ROAD_HALF_WIDTH + ROAD_SHOULDER;
-  if (d >= outer + FEATHER) return terrainRaw(x, z);
-  const rh = roadHeightAt(x, z);
-  if (d <= ROAD_HALF_WIDTH) return rh;
-  const gap = terrainRaw(x, z) - rh;
-  if (d < outer) {
-    const u = (d - ROAD_HALF_WIDTH) / ROAD_SHOULDER; // 0..1 across shoulder
-    return rh + gap * (u * u * (3 - 2 * u)) * SHOULDER_CUT;
+  if (d >= outer + FEATHER) h = terrainRaw(x, z);
+  else {
+    const rh = roadHeightAt(x, z);
+    if (d <= ROAD_HALF_WIDTH) h = rh;
+    else {
+      const gap = terrainRaw(x, z) - rh;
+      if (d < outer) {
+        const u = (d - ROAD_HALF_WIDTH) / ROAD_SHOULDER; // 0..1 across shoulder
+        h = rh + gap * (u * u * (3 - 2 * u)) * SHOULDER_CUT;
+      } else {
+        const v = (d - outer) / FEATHER;                 // 0..1 across feather
+        const s = v * v * (3 - 2 * v);
+        h = rh + gap * (SHOULDER_CUT + (1 - SHOULDER_CUT) * s);
+      }
+    }
   }
-  const v = (d - outer) / FEATHER;                   // 0..1 across feather
-  const s = v * v * (3 - 2 * v);
-  return rh + gap * (SHOULDER_CUT + (1 - SHOULDER_CUT) * s);
+  /* island shore: beach slope into a wadable shelf, then the deep drop */
+  const od = islandMask(x, z);
+  if (od > 0) {
+    let s: number;
+    let target: number;
+    if (od <= BEACH) {
+      // gentle beach: land height eases down to wading depth
+      const t = od / BEACH;
+      s = t * t * (3 - 2 * t);
+      target = SHALLOW;
+    } else {
+      // shelf holds shallow for a while, then plunges to the sea bed
+      const u = Math.min(1, (od - BEACH) / (SHELF_END - ISLAND_HALF - BEACH));
+      const ease = u * u * (3 - 2 * u);
+      s = 1;
+      target = SHALLOW + (SEABED - SHALLOW) * ease;
+    }
+    const floor = target + (valueNoise(x * .045, z * .045) - .5) * 1.6;
+    h = h * (1 - s) + floor * s;
+  }
+  return h;
 }
 
 /** finite-difference surface normal, written into `out` (allocation-free) */
