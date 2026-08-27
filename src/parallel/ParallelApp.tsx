@@ -118,7 +118,7 @@ const ParallelApp: React.FC = () => {
 
       {/* floating controls */}
       <div className="pz-controls">
-        <a className="pz-pill" href="#/game" aria-label="Play Jeep Drift" style={{ textDecoration: 'none' }}>🎮</a>
+        <a className="pz-pill" href="#/game" aria-label="Play Wordle">🎮</a>
         <button className="pz-pill" onClick={() => setLang(l => (l === 'en' ? 'de' : 'en'))} aria-label="Language">
           {lang === 'en' ? '🇬🇧 EN' : '🇩🇪 DE'}
         </button>

@@ -72,7 +72,7 @@ const ClassicApp: React.FC = () => {
         <a
           href="#/game"
           className="game-float"
-          aria-label="Play Jeep Drift"
+          aria-label="Play Wordle"
         >
           🎮
         </a>
