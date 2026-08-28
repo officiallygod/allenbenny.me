@@ -227,7 +227,11 @@ export const WordleApp: React.FC = () => {
                   role="gridcell"
                   aria-label={row < guesses.length ? `${guesses[row][col]}, ${checkGuess(guesses[row], target)[col]}` : 'Empty'}
                 >
-                  {row < guesses.length ? guesses[row][col] : ''}
+                  {row < guesses.length
+                    ? guesses[row][col]
+                    : row === guesses.length
+                      ? (currentGuess[col] ?? '')
+                      : ''}
                 </div>
               ))}
             </div>

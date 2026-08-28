@@ -428,12 +428,13 @@ body[data-theme='dark'] .portfolio-button {
 }
 
 /* --- 🎮 game badge -> /game (OG main site) --- */
-/* Paint-splash "W" monogram, bottom-center, above the scroll indicator */
+/* Paint-splash "W" monogram, bottom-RIGHT, clear of center content */
 .game-float {
   position: fixed;
   bottom: 92px;            /* above .hero-scroll (bottom:32px) */
-  left: 50%;
-  translate: -50% 0;
+  right: 22px;
+  left: auto;
+  translate: 0 0;
   z-index: 999;
   width: 64px; height: 64px;
   display: grid; place-items: center;
@@ -443,7 +444,7 @@ body[data-theme='dark'] .portfolio-button {
   box-shadow: 5px 5px 0 #111;
   text-decoration: none;
   overflow: hidden;
-  transition: transform .15s ease, box-shadow .15s ease, filter .15s, border-radius .4s ease;
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s, border-radius .4s ease, opacity .25s ease, visibility .25s ease;
   animation: game-blob 7s ease-in-out infinite alternate;
 }
 @keyframes game-blob {
@@ -466,8 +467,11 @@ body[data-theme='dark'] .portfolio-button {
   rotate: 0deg;
 }
 .game-float:hover .game-float-w { transform: scale(1.08); }
+/* On small screens: only show while the landing hero is in view.
+   ClassicApp toggles .game-float--landing via IntersectionObserver. */
 @media (max-width: 640px) {
-  .game-float { width: 54px; height: 54px; bottom: 84px; }
+  .game-float { width: 54px; height: 54px; bottom: 84px; right: 16px; }
   .game-float-w { font-size: 1.6rem; }
+  .game-float:not(.game-float--landing) { opacity: 0; visibility: hidden; pointer-events: none; }
 }
 

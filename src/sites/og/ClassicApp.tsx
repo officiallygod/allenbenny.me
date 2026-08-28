@@ -38,6 +38,8 @@ const LoadingMessage = () => {
 const loadFeatures = () => import('framer-motion').then(res => res.domAnimation);
 
 const ClassicApp: React.FC = () => {
+  const gameFloatRef = React.useRef<HTMLAnchorElement>(null);
+
   useEffect(() => {
     // Preload lazy components during browser idle time for maximum performance and zero lag
     const preloadComponents = () => {
@@ -58,6 +60,26 @@ const ClassicApp: React.FC = () => {
     }
   }, []);
 
+  useEffect(() => {
+    const badge = gameFloatRef.current;
+    if (!badge) return;
+    // On small screens, only show the W badge while the landing hero is in view.
+    if (typeof window === 'undefined' || window.matchMedia('(min-width: 641px)').matches) {
+      badge.classList.add('game-float--landing');
+      return;
+    }
+    const hero = document.querySelector('.hero') || document.querySelector('section');
+    if (!hero) { badge.classList.add('game-float--landing'); return; }
+    const io = new IntersectionObserver(
+      ([entry]) => {
+        badge.classList.toggle('game-float--landing', entry.isIntersecting);
+      },
+      { threshold: 0.15 }
+    );
+    io.observe(hero);
+    return () => io.disconnect();
+  }, []);
+
   return (
     <LazyMotion features={loadFeatures} strict>
       <div className="app-container">
@@ -70,6 +92,7 @@ const ClassicApp: React.FC = () => {
         </a>
         <Hero />
         <a
+          ref={gameFloatRef}
           href="#/game"
           className="game-float"
           aria-label="Play Wordle"
