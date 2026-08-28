@@ -1,5 +1,5 @@
 import React from 'react';
-import { useProfile } from '../contexts/ProfileContext';
+import { useProfile } from '../../shared/contexts/ProfileContext';
 
 const ExperimentalProjects: React.FC = () => {
   const { projects } = useProfile();

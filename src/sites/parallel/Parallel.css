@@ -255,8 +255,11 @@ a.pz-where:hover { text-decoration: underline; }
   background: var(--ink); color: var(--paper); border-radius: 999px; padding: 4px 12px; white-space: nowrap;
 }
 .pz-edu { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 16px; text-decoration: none; margin-bottom: 10px; }
-.pz-edu-card { display: grid; gap: 6px; color: var(--ink); }
-.pz-edu-card b { font-size: 16.5px; }
+.pz-edu-card { display: grid; grid-template-columns: 1fr auto; align-items: baseline; gap: 4px 12px; color: var(--ink); }
+.pz-edu-card::before { display: none; }
+.pz-edu-card b { font-size: 16.5px; grid-column: 1; }
+.pz-edu-card .pz-where { grid-column: 1; margin-top: 2px; }
+.pz-edu-card .pz-when { grid-column: 2; grid-row: 1; justify-self: end; }
 
 /* projects */
 .pz-proj-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(min(300px, 100%), 1fr)); gap: 22px; }

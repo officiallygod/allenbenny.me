@@ -1,0 +1,1599 @@
+npm notice run allenbenny.me@1.0.0 npx
+npm notice run webpack serve --mode development --port 8123
+<i> [webpack-dev-server] Project is running at:
+<i> [webpack-dev-server] Loopback: [36mhttp://localhost:8123/[39m, [36mhttp://[::1]:8123/[39m
+<i> [webpack-dev-server] On Your Network (IPv4): [36mhttp://100.86.131.11:8123/[39m
+<i> [webpack-dev-server] Content not from webpack is served from '[36mE:\Projects\allenbenny.me\public[39m' directory
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+<i> [webpack-dev-middleware] wait until bundle finished: /
+assets by info 7.08 MiB [1m[32m[immutable][39m[22m
+  assets by chunk 1.51 MiB (id hint: vendors)
+    asset [1m[32mbundle.422b72990b09f9c11813.js[39m[22m 952 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (id hint: vendors)
+    asset [1m[32mbundle.09fdf6994099f11606fb.js[39m[22m 567 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (id hint: vendors)
+    asset [1m[32mbundle.691c29764b3d2f626aef.js[39m[22m 29 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (id hint: vendors)
+  + 16 assets
+assets by path [1m[32mdocuments/*.pdf[39m[22m 343 KiB
+  asset [1m[32mdocuments/resume.pdf[39m[22m 197 KiB [1m[32m[emitted][39m[22m [from: public/documents/resume.pdf] [1m[32m[copied][39m[22m
+  asset [1m[32mdocuments/resume-en.pdf[39m[22m 146 KiB [1m[32m[emitted][39m[22m [from: public/documents/resume-en.pdf] [1m[32m[copied][39m[22m
+asset [1m[32mpdf.worker.min.js[39m[22m 1020 KiB [1m[32m[emitted][39m[22m [from: node_modules/pdfjs-dist/build/pdf.worker.min.mjs] (auxiliary name: main)
+asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+asset [1m[32mfavicon.svg[39m[22m 521 bytes [1m[32m[emitted][39m[22m [from: public/favicon.svg] [1m[32m[copied][39m[22m
+orphan modules 3.12 MiB [1m[33m[orphan][39m[22m 2831 modules
+runtime modules 32.6 KiB 17 modules
+cacheable modules 5.4 MiB (javascript) 1020 KiB (asset)
+  modules by path [1m./node_modules/[39m[22m 4.99 MiB (javascript) 1020 KiB (asset) 720 modules
+  modules by path [1m./src/[39m[22m 420 KiB 64 modules
+  modules by mime type [1mimage/svg+xml[39m[22m 1.13 KiB
+    [1mdata:image/svg+xml,%3Csvg xmlns=%27..[39m[22m 532 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    [1mdata:image/svg+xml,%3Csvg xmlns=%27..[39m[22m 323 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    [1mdata:image/svg+xml;utf8,<svg xmlns="http..[39m[22m 301 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 16355 ms
+assets by status 3.33 MiB [1m[32m[cached][39m[22m 22 assets
+assets by status 5.1 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 5.1 MiB
+    asset [1m[32mbundle.00dedcf2233a1530e57f.js[39m[22m 5.09 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+    asset [1m[32mmain.93591ad370264cf81104.hot-update.js[39m[22m 12.3 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.93591ad370264cf81104.hot-update.json[39m[22m 28 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.1 MiB (1020 KiB) = [1m[32mbundle.00dedcf2233a1530e57f.js[39m[22m 5.09 MiB [1m[32mmain.93591ad370264cf81104.hot-update.js[39m[22m 12.3 KiB 1 auxiliary asset
+cached modules 8.51 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3616 modules
+runtime modules 32.6 KiB 17 modules
+javascript modules 4.87 KiB
+  [1m./src/App.tsx[39m[22m 1.12 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+  [1m./src/ClassicApp.tsx[39m[22m 3.75 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 3938 ms
+assets by status 3.33 MiB [1m[32m[cached][39m[22m 22 assets
+assets by status 5.1 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 5.1 MiB
+    asset [1m[32mbundle.588eb35a3729bbd22319.js[39m[22m 5.09 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+    asset [1m[32mmain.2f53bddd526ce57258f9.hot-update.js[39m[22m 15.3 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.2f53bddd526ce57258f9.hot-update.json[39m[22m 28 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.1 MiB (1020 KiB) = [1m[32mbundle.588eb35a3729bbd22319.js[39m[22m 5.09 MiB [1m[32mmain.2f53bddd526ce57258f9.hot-update.js[39m[22m 15.3 KiB 1 auxiliary asset
+cached modules 8.51 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3617 modules
+runtime modules 32.6 KiB 17 modules
+./node_modules/css-loader/dist/cjs.js![1m./src/styles/global.css[39m[22m 12 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 436 ms
+assets by status 3.33 MiB [1m[32m[cached][39m[22m 22 assets
+assets by status 5.1 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 5.1 MiB
+    asset [1m[32mbundle.fa6d825a73bdfd8ded18.js[39m[22m 5.09 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+    asset [1m[32mmain.ac3ba9fbdbfed7804ed0.hot-update.js[39m[22m 15.5 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.ac3ba9fbdbfed7804ed0.hot-update.json[39m[22m 28 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.1 MiB (1020 KiB) = [1m[32mbundle.fa6d825a73bdfd8ded18.js[39m[22m 5.09 MiB [1m[32mmain.ac3ba9fbdbfed7804ed0.hot-update.js[39m[22m 15.5 KiB 1 auxiliary asset
+cached modules 8.51 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3617 modules
+runtime modules 32.6 KiB 17 modules
+./node_modules/css-loader/dist/cjs.js![1m./src/styles/global.css[39m[22m 12.2 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 374 ms
+assets by status 3.06 MiB [1m[32m[cached][39m[22m 8 assets
+assets by path [1m[32m*.js[39m[22m 5.51 MiB
+  assets by info 172 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32mmain.bc728ebb290989519460.hot-update.js[39m[22m 42.2 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+    asset [1m[32msrc_parallel_ParallelApp_tsx.bc728ebb290989519460.hot-update.js[39m[22m 31.9 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_components_Contributions_tsx.bc728ebb290989519460.hot-update.js[39m[22m 17 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32msrc_components_Experience_tsx.bc728ebb290989519460.hot-update.js[39m[22m 12.1 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    + 11 assets
+  + 15 assets
+asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+asset [1m[32mmain.bc728ebb290989519460.hot-update.json[39m[22m 685 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.09 MiB (1020 KiB) = [1m[32mbundle.da56a504c559c460ae3f.js[39m[22m 5.05 MiB [1m[32mmain.bc728ebb290989519460.hot-update.js[39m[22m 42.2 KiB 1 auxiliary asset
+cached modules 8.45 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3596 modules
+runtime modules 32.6 KiB 17 modules
+javascript modules 70.8 KiB
+  modules by path [1m./src/components/*.tsx[39m[22m 54.8 KiB
+    [1m./src/components/Hero.tsx[39m[22m 5.73 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    [1m./src/components/About.tsx[39m[22m 1.21 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    + 8 modules
+  modules by path [1m./src/experimental/*.tsx[39m[22m 11.5 KiB
+    [1m./src/experimental/ExperimentalApp.tsx[39m[22m 1.7 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    [1m./src/experimental/ExperimentalHero.tsx[39m[22m 1.38 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    [1m./src/experimental/ExperimentalExperience.tsx[39m[22m 2.31 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    + 3 modules
+  modules by path [1m./src/*.tsx[39m[22m 4.54 KiB
+    [1m./src/index.tsx[39m[22m 815 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    [1m./src/ClassicApp.tsx[39m[22m 3.75 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/ClassicApp.tsx[39m[22m [1m[32m7:0-57[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/About.tsx[39m[22m [1m[32m4:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 5:0-39 52:545-550
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/About.tsx[39m[22m [1m[32m5:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 5:0-39 52:545-550
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Certifications.tsx[39m[22m [1m[32m3:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 41:12-49 16:34-71
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Certifications.tsx[39m[22m [1m[32m4:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 41:12-49 16:34-71
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Contact.tsx[39m[22m [1m[32m4:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Contact.tsx[39m[22m [1m[32m6:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Contributions.tsx[39m[22m [1m[32m7:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 40:12-48 15:33-69
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Experience.tsx[39m[22m [1m[32m3:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Experience.tsx[39m[22m [1m[32m4:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Gallery.tsx[39m[22m [1m[32m4:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 39:12-42 14:27-57
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Hero.tsx[39m[22m [1m[32m4:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Hero.tsx[39m[22m [1m[32m5:0-54[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ResumeContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Hero.tsx[39m[22m [1m[32m6:0-52[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ThemeContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Hero.tsx[39m[22m [1m[32m7:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Projects.tsx[39m[22m [1m[32m4:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 38:12-43 13:28-59
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Projects.tsx[39m[22m [1m[32m5:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 38:12-43 13:28-59
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Resume.tsx[39m[22m [1m[32m7:0-54[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ResumeContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 6:0-41 52:1476-1482
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Resume.tsx[39m[22m [1m[32m8:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 6:0-41 52:1476-1482
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Technologies.tsx[39m[22m [1m[32m4:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 36:12-47 11:32-67
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/components/Technologies.tsx[39m[22m [1m[32m5:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\components'[39m[22m
+ @ ./src/ClassicApp.tsx 36:12-47 11:32-67
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalApp.tsx[39m[22m [1m[32m4:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalExperience.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 6:48-82
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalGallery.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 9:45-76
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalHero.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 5:42-70
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalProjects.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 7:46-78
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalTechnologies.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 8:50-86
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m5:0-62[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m6:0-60[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m7:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ResumeContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m8:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ThemeContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[33m31 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.[39m[22m
+
+webpack 5.104.1 compiled with [1m[31m31 errors[39m[22m in 2574 ms
+assets by status 343 KiB [1m[32m[cached][39m[22m 3 assets
+assets by path [1m[32m*.js[39m[22m 5.43 MiB
+  assets by info 178 KiB [1m[32m[hmr][39m[22m
+    asset [1m[32mvendors-node_modules_framer-motion_dist_es_index_mjs.350330253c503bf9c90e.hot-update.js[39m[22m 138 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (id hint: vendors)
+    asset [1m[32msrc_parallel_ParallelApp_tsx.350330253c503bf9c90e.hot-update.js[39m[22m 27 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+    asset [1m[32mmain.350330253c503bf9c90e.hot-update.js[39m[22m 13.3 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+  + 10 assets
+asset [1m[32mmain.350330253c503bf9c90e.hot-update.json[39m[22m 5.68 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mmain[39m[22m 3.89 MiB = [1m[32mbundle.9e8590ed4a1132cec529.js[39m[22m 3.87 MiB [1m[32mmain.350330253c503bf9c90e.hot-update.js[39m[22m 13.3 KiB
+cached modules 5.33 MiB [1m[32m[cached][39m[22m 1765 modules
+runtime modules 32 KiB 17 modules
+javascript modules 186 KiB
+  modules by path [1m./src/experimental/*.tsx[39m[22m 11.5 KiB
+    [1m./src/experimental/ExperimentalApp.tsx[39m[22m 1.7 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    [1m./src/experimental/ExperimentalHero.tsx[39m[22m 1.38 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    + 4 modules
+  modules by path [1m./src/*.tsx[39m[22m 5.66 KiB
+    [1m./src/index.tsx[39m[22m 815 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    [1m./src/App.tsx[39m[22m 1.12 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    [1m./src/ClassicApp.tsx[39m[22m 3.75 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+  modules by path [1m./src/game/[39m[22m 152 KiB
+    [1m./src/game/WordleApp.tsx[39m[22m 11.3 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    [1m./src/game/words.ts[39m[22m 141 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+  [1m./src/parallel/ParallelApp.tsx[39m[22m 16.5 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/ClassicApp.tsx[39m[22m [1m[32m4:0-37[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './components/Hero' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/ClassicApp.tsx[39m[22m [1m[32m5:0-39[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './components/About' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/ClassicApp.tsx[39m[22m [1m[32m6:0-41[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './components/Resume' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/ClassicApp.tsx[39m[22m [1m[32m7:0-57[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/ClassicApp.tsx[39m[22m [1m[32m9:0-59[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './components/ViewportSection' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/ClassicApp.tsx[39m[22m [1m[32m36:12-47[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './components/Technologies' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/ClassicApp.tsx[39m[22m [1m[32m37:12-45[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './components/Experience' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/ClassicApp.tsx[39m[22m [1m[32m38:12-43[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './components/Projects' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/ClassicApp.tsx[39m[22m [1m[32m39:12-42[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './components/Gallery' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/ClassicApp.tsx[39m[22m [1m[32m40:12-48[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './components/Contributions' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/ClassicApp.tsx[39m[22m [1m[32m41:12-49[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './components/Certifications' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/ClassicApp.tsx[39m[22m [1m[32m42:12-42[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './components/Contact' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/App.tsx 4:0-38 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalApp.tsx[39m[22m [1m[32m4:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalExperience.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 6:48-82
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalGallery.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 9:45-76
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalHero.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 5:42-70
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalProjects.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 7:46-78
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalTechnologies.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 8:50-86
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m5:0-62[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m6:0-60[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m7:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ResumeContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m8:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ThemeContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/parallel/ParallelApp.tsx[39m[22m [1m[32m3:0-55[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../constants/profileData' in 'E:\Projects\allenbenny.me\src\parallel'[39m[22m
+ @ ./src/App.tsx 8:37-69
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/parallel/ParallelApp.tsx[39m[22m [1m[32m4:0-57[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../constants/translations' in 'E:\Projects\allenbenny.me\src\parallel'[39m[22m
+ @ ./src/App.tsx 8:37-69
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[33m24 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.[39m[22m
+
+webpack 5.104.1 compiled with [1m[31m24 errors[39m[22m in 1868 ms
+assets by status 364 KiB [1m[32m[cached][39m[22m 8 assets
+assets by status 4.08 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 4.05 MiB
+    assets by info 46.4 KiB [1m[32m[hmr][39m[22m
+      asset [1m[32msrc_experimental_ExperimentalApp_tsx.0271dcfa0d72b1a5467c.hot-update.js[39m[22m 12.5 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+      asset [1m[32msrc_parallel_ParallelApp_tsx.0271dcfa0d72b1a5467c.hot-update.js[39m[22m 12.4 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+      asset [1m[32msrc_game_WordleApp_tsx.0271dcfa0d72b1a5467c.hot-update.js[39m[22m 12.4 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+      asset [1m[32mmain.0271dcfa0d72b1a5467c.hot-update.js[39m[22m 9.08 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+    asset [1m[32mbundle.817568e0caa2a06abac0.js[39m[22m 3.67 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+    asset [1m[32mbundle.3dedb2bc9ae04ad6e705.js[39m[22m 230 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mbundle.f184ff1841c60aacf9ae.js[39m[22m 72.8 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32mbundle.e62f2d77ac4219f30fec.js[39m[22m 38 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+  asset [1m[32mmain.0271dcfa0d72b1a5467c.hot-update.json[39m[22m 26.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+Entrypoint [1mmain[39m[22m 3.68 MiB = [1m[32mbundle.817568e0caa2a06abac0.js[39m[22m 3.67 MiB [1m[32mmain.0271dcfa0d72b1a5467c.hot-update.js[39m[22m 9.08 KiB
+cached modules 4.91 MiB [1m[32m[cached][39m[22m 1379 modules
+runtime modules 32 KiB 17 modules
+javascript modules 1.92 KiB
+  [1m./src/index.tsx[39m[22m 815 bytes [1m[33m[code generated][39m[22m
+  [1m./src/App.tsx[39m[22m 1.12 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/App.tsx[39m[22m [1m[32m4:0-38[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './ClassicApp' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalApp.tsx[39m[22m [1m[32m4:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalExperience.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 6:48-82
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalGallery.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 9:45-76
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalHero.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 5:42-70
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalProjects.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 7:46-78
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalTechnologies.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 8:50-86
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m5:0-62[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m6:0-60[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m7:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ResumeContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m8:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ThemeContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m10:0-29[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './styles/global.css' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/parallel/ParallelApp.tsx[39m[22m [1m[32m3:0-55[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../constants/profileData' in 'E:\Projects\allenbenny.me\src\parallel'[39m[22m
+ @ ./src/App.tsx 8:37-69
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/parallel/ParallelApp.tsx[39m[22m [1m[32m4:0-57[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../constants/translations' in 'E:\Projects\allenbenny.me\src\parallel'[39m[22m
+ @ ./src/App.tsx 8:37-69
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[33m14 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.[39m[22m
+
+webpack 5.104.1 compiled with [1m[31m14 errors[39m[22m in 351 ms
+assets by status 4.36 MiB [1m[32m[cached][39m[22m 13 assets
+cached modules 4.91 MiB (javascript) 32 KiB (runtime) [1m[32m[cached][39m[22m 1398 modules
+
+[1m[31mERROR[39m[22m in [1m./src/App.tsx[39m[22m [1m[32m4:0-38[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './ClassicApp' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalApp.tsx[39m[22m [1m[32m4:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalExperience.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 6:48-82
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalGallery.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 9:45-76
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalHero.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 5:42-70
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalProjects.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 7:46-78
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/experimental/ExperimentalTechnologies.tsx[39m[22m [1m[32m2:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\experimental'[39m[22m
+ @ ./src/experimental/ExperimentalApp.tsx 8:50-86
+ @ ./src/App.tsx 6:41-81
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m5:0-62[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m6:0-60[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m7:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ResumeContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m8:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ThemeContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m10:0-29[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './styles/global.css' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/parallel/ParallelApp.tsx[39m[22m [1m[32m3:0-55[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../constants/profileData' in 'E:\Projects\allenbenny.me\src\parallel'[39m[22m
+ @ ./src/App.tsx 8:37-69
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/parallel/ParallelApp.tsx[39m[22m [1m[32m4:0-57[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../constants/translations' in 'E:\Projects\allenbenny.me\src\parallel'[39m[22m
+ @ ./src/App.tsx 8:37-69
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[33m14 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.[39m[22m
+
+webpack 5.104.1 compiled with [1m[31m14 errors[39m[22m in 164 ms
+assets by status 646 KiB [1m[32m[cached][39m[22m 5 assets
+assets by status 3.68 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 3.68 MiB
+    asset [1m[32mbundle.a610369f5854e3f38158.js[39m[22m 3.67 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+    asset [1m[32mmain.cc70c498e59e6a20259a.hot-update.js[39m[22m 5.09 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.cc70c498e59e6a20259a.hot-update.json[39m[22m 1.11 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 3.68 MiB = [1m[32mbundle.a610369f5854e3f38158.js[39m[22m 3.67 MiB [1m[32mmain.cc70c498e59e6a20259a.hot-update.js[39m[22m 5.09 KiB
+cached modules 4.89 MiB [1m[32m[cached][39m[22m 1371 modules
+runtime modules 31.6 KiB 17 modules
+[1m./src/App.tsx[39m[22m 1.12 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/App.tsx[39m[22m [1m[32m4:0-38[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './ClassicApp' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/App.tsx[39m[22m [1m[32m6:41-81[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './experimental/ExperimentalApp' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m5:0-62[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m6:0-60[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m7:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ResumeContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m8:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ThemeContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m10:0-29[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './styles/global.css' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/parallel/ParallelApp.tsx[39m[22m [1m[32m3:0-55[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../constants/profileData' in 'E:\Projects\allenbenny.me\src\parallel'[39m[22m
+ @ ./src/App.tsx 8:37-69
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/parallel/ParallelApp.tsx[39m[22m [1m[32m4:0-57[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../constants/translations' in 'E:\Projects\allenbenny.me\src\parallel'[39m[22m
+ @ ./src/App.tsx 8:37-69
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[33m9 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.[39m[22m
+
+webpack 5.104.1 compiled with [1m[31m9 errors[39m[22m in 193 ms
+assets by status 416 KiB [1m[32m[cached][39m[22m 4 assets
+assets by status 3.68 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 3.68 MiB
+    asset [1m[32mbundle.47be953dc6f2a49fe0af.js[39m[22m 3.67 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+    asset [1m[32mmain.f0fadb46efc113f54734.hot-update.js[39m[22m 5.03 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.f0fadb46efc113f54734.hot-update.json[39m[22m 186 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 3.68 MiB = [1m[32mbundle.47be953dc6f2a49fe0af.js[39m[22m 3.67 MiB [1m[32mmain.f0fadb46efc113f54734.hot-update.js[39m[22m 5.03 KiB
+cached modules 4.72 MiB [1m[32m[cached][39m[22m 1367 modules
+runtime modules 31.5 KiB 17 modules
+[1m./src/App.tsx[39m[22m 1.12 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/App.tsx[39m[22m [1m[32m4:0-38[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './ClassicApp' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/App.tsx[39m[22m [1m[32m6:41-81[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './experimental/ExperimentalApp' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/App.tsx[39m[22m [1m[32m10:35-61[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './game/WordleApp' in 'E:\Projects\allenbenny.me\src'[39m[22m
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m5:0-62[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m6:0-60[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m7:0-58[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ResumeContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m8:0-56[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/ThemeContext' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/index.tsx[39m[22m [1m[32m10:0-29[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './styles/global.css' in 'E:\Projects\allenbenny.me\src'[39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/parallel/ParallelApp.tsx[39m[22m [1m[32m3:0-55[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../constants/profileData' in 'E:\Projects\allenbenny.me\src\parallel'[39m[22m
+ @ ./src/App.tsx 8:37-69
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/parallel/ParallelApp.tsx[39m[22m [1m[32m4:0-57[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../constants/translations' in 'E:\Projects\allenbenny.me\src\parallel'[39m[22m
+ @ ./src/App.tsx 8:37-69
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[33m10 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.[39m[22m
+
+webpack 5.104.1 compiled with [1m[31m10 errors[39m[22m in 383 ms
+assets by status 343 KiB [1m[32m[cached][39m[22m 3 assets
+assets by path [1m[32m*.js[39m[22m 9.5 MiB
+  assets by chunk 7.51 MiB (name: main)
+    asset [1m[32mbundle.7dadda0185177797be53.js[39m[22m 5.09 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+    asset [1m[32mmain.bce8e11a4636ca6beec4.hot-update.js[39m[22m 1.42 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+    asset [1m[32mpdf.worker.min.js[39m[22m 1020 KiB [1m[32m[emitted][39m[22m [from: node_modules/pdfjs-dist/build/pdf.worker.min.mjs] [1m[32m[hmr][39m[22m (name: main) (auxiliary name: main)
+  assets by chunk 1.51 MiB (id hint: vendors)
+    asset [1m[32mbundle.422b72990b09f9c11813.js[39m[22m 952 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (id hint: vendors)
+    asset [1m[32mbundle.09fdf6994099f11606fb.js[39m[22m 567 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (id hint: vendors)
+    asset [1m[32mbundle.691c29764b3d2f626aef.js[39m[22m 29 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (id hint: vendors)
+  + 15 assets
+asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+asset [1m[32mmain.bce8e11a4636ca6beec4.hot-update.json[39m[22m 188 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 7.51 MiB (1020 KiB) = [1m[32mbundle.7dadda0185177797be53.js[39m[22m 5.09 MiB [1m[32mmain.bce8e11a4636ca6beec4.hot-update.js[39m[22m 1.42 MiB [1m[32mpdf.worker.min.js[39m[22m 1020 KiB 1 auxiliary asset
+cached modules 8.11 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3554 modules
+runtime modules 32.7 KiB 17 modules
+javascript modules 421 KiB
+  modules by path [1m./src/sites/og/[39m[22m 154 KiB 40 modules
+  modules by path [1m./src/sites/experimental/[39m[22m 20 KiB 8 modules
+  modules by path [1m./src/shared/[39m[22m 35.1 KiB 6 modules
+  modules by path [1m./src/sites/game/[39m[22m 170 KiB
+    modules by path [1m./src/sites/game/*.css[39m[22m 18.3 KiB 2 modules
+    + 2 modules
+  modules by path [1m./src/sites/parallel/[39m[22m 39.4 KiB
+    [1m./src/sites/parallel/ParallelApp.tsx[39m[22m 16.5 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    + 2 modules
+  modules by path [1m./src/*.tsx[39m[22m 1.98 KiB
+    [1m./src/index.tsx[39m[22m 852 bytes [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+    [1m./src/App.tsx[39m[22m 1.15 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/ClassicApp.tsx[39m[22m [1m[32m7:0-57[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve './contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og'[39m[22m
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/About.tsx[39m[22m [1m[32m4:0-66[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 5:0-39 52:545-550
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/About.tsx[39m[22m [1m[32m5:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 5:0-39 52:545-550
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Certifications.tsx[39m[22m [1m[32m3:0-66[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 41:12-49 16:34-71
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Certifications.tsx[39m[22m [1m[32m4:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 41:12-49 16:34-71
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Contact.tsx[39m[22m [1m[32m4:0-66[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Contact.tsx[39m[22m [1m[32m6:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Contributions.tsx[39m[22m [1m[32m7:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 40:12-48 15:33-69
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m3:0-66[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m4:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Gallery.tsx[39m[22m [1m[32m4:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 39:12-42 14:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m4:0-66[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m5:0-64[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ResumeContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m6:0-62[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ThemeContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m7:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Projects.tsx[39m[22m [1m[32m4:0-66[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 38:12-43 13:28-59
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Projects.tsx[39m[22m [1m[32m5:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 38:12-43 13:28-59
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Resume.tsx[39m[22m [1m[32m7:0-64[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ResumeContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 6:0-41 52:1476-1482
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Resume.tsx[39m[22m [1m[32m8:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 6:0-41 52:1476-1482
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/SocialIcon.tsx[39m[22m [1m[32m2:0-75[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/constants/socialIcons' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/components/Contact.tsx 5:0-38 11:2058-2068 11:3589-3599
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Technologies.tsx[39m[22m [1m[32m4:0-66[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 36:12-47 11:32-67
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Technologies.tsx[39m[22m [1m[32m5:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 36:12-47 11:32-67
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\ClassicApp.tsx[39m[22m
+[1m./src/sites/og/ClassicApp.tsx[39m[22m [1m[32m6:28-56[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\ClassicApp.tsx(6,29)
+      TS2307: Cannot find module './contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx[39m[22m
+[1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m3:27-65[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx(3,28)
+      TS2307: Cannot find module '../../shared/contexts/ProfileContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx[39m[22m
+[1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m4:26-63[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx(4,27)
+      TS2307: Cannot find module '../../shared/contexts/ResumeContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx[39m[22m
+[1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m5:25-61[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx(5,26)
+      TS2307: Cannot find module '../../shared/contexts/ThemeContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx[39m[22m
+[1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m6:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx(6,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx[39m[22m
+[1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m162:30-34[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx(162,31)
+      TS7006: Parameter 'link' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx[39m[22m
+[1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m162:36-41[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx(162,37)
+      TS7006: Parameter 'index' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\About.tsx[39m[22m
+[1m./src/sites/og/components/About.tsx[39m[22m [1m[32m3:27-65[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\About.tsx(3,28)
+      TS2307: Cannot find module '../../shared/contexts/ProfileContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 5:0-39 52:545-550
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\About.tsx[39m[22m
+[1m./src/sites/og/components/About.tsx[39m[22m [1m[32m4:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\About.tsx(4,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 5:0-39 52:545-550
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\About.tsx[39m[22m
+[1m./src/sites/og/components/About.tsx[39m[22m [1m[32m29:18-27[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\About.tsx(29,19)
+      TS7006: Parameter 'paragraph' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 5:0-39 52:545-550
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\About.tsx[39m[22m
+[1m./src/sites/og/components/About.tsx[39m[22m [1m[32m29:29-34[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\About.tsx(29,30)
+      TS7006: Parameter 'index' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 5:0-39 52:545-550
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Resume.tsx[39m[22m
+[1m./src/sites/og/components/Resume.tsx[39m[22m [1m[32m6:26-63[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Resume.tsx(6,27)
+      TS2307: Cannot find module '../../shared/contexts/ResumeContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 6:0-41 52:1476-1482
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Resume.tsx[39m[22m
+[1m./src/sites/og/components/Resume.tsx[39m[22m [1m[32m7:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Resume.tsx(7,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 6:0-41 52:1476-1482
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx[39m[22m
+[1m./src/sites/og/components/Contact.tsx[39m[22m [1m[32m3:27-65[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx(3,28)
+      TS2307: Cannot find module '../../shared/contexts/ProfileContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx[39m[22m
+[1m./src/sites/og/components/Contact.tsx[39m[22m [1m[32m5:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx(5,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx[39m[22m
+[1m./src/sites/og/components/Contact.tsx[39m[22m [1m[32m71:28-32[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx(71,29)
+      TS7006: Parameter 'link' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx[39m[22m
+[1m./src/sites/og/components/Contact.tsx[39m[22m [1m[32m71:34-39[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx(71,35)
+      TS7006: Parameter 'index' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Certifications.tsx[39m[22m
+[1m./src/sites/og/components/Certifications.tsx[39m[22m [1m[32m3:27-65[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Certifications.tsx(3,28)
+      TS2307: Cannot find module '../../shared/contexts/ProfileContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 41:12-49 16:34-71
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Certifications.tsx[39m[22m
+[1m./src/sites/og/components/Certifications.tsx[39m[22m [1m[32m4:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Certifications.tsx(4,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 41:12-49 16:34-71
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Certifications.tsx[39m[22m
+[1m./src/sites/og/components/Certifications.tsx[39m[22m [1m[32m53:31-35[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Certifications.tsx(53,32)
+      TS7006: Parameter 'cert' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 41:12-49 16:34-71
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Contributions.tsx[39m[22m
+[1m./src/sites/og/components/Contributions.tsx[39m[22m [1m[32m17:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Contributions.tsx(17,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 40:12-48 15:33-69
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Gallery.tsx[39m[22m
+[1m./src/sites/og/components/Gallery.tsx[39m[22m [1m[32m3:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Gallery.tsx(3,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 39:12-42 14:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx[39m[22m
+[1m./src/sites/og/components/Technologies.tsx[39m[22m [1m[32m3:27-65[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx(3,28)
+      TS2307: Cannot find module '../../shared/contexts/ProfileContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 36:12-47 11:32-67
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx[39m[22m
+[1m./src/sites/og/components/Technologies.tsx[39m[22m [1m[32m4:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx(4,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 36:12-47 11:32-67
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx[39m[22m
+[1m./src/sites/og/components/Technologies.tsx[39m[22m [1m[32m25:25-29[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx(25,26)
+      TS7006: Parameter 'tech' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 36:12-47 11:32-67
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx[39m[22m
+[1m./src/sites/og/components/Technologies.tsx[39m[22m [1m[32m157:56-60[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx(157,57)
+      TS7006: Parameter 'tech' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 36:12-47 11:32-67
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx[39m[22m
+[1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m3:27-65[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx(3,28)
+      TS2307: Cannot find module '../../shared/contexts/ProfileContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx[39m[22m
+[1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m4:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx(4,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx[39m[22m
+[1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m60:30-33[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx(60,31)
+      TS7006: Parameter 'edu' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx[39m[22m
+[1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m60:35-40[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx(60,36)
+      TS7006: Parameter 'index' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx[39m[22m
+[1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m175:42-45[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx(175,43)
+      TS7006: Parameter 'exp' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx[39m[22m
+[1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m175:47-52[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx(175,48)
+      TS7006: Parameter 'index' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx[39m[22m
+[1m./src/sites/og/components/Projects.tsx[39m[22m [1m[32m3:27-65[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx(3,28)
+      TS2307: Cannot find module '../../shared/contexts/ProfileContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 38:12-43 13:28-59
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx[39m[22m
+[1m./src/sites/og/components/Projects.tsx[39m[22m [1m[32m4:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx(4,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 38:12-43 13:28-59
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx[39m[22m
+[1m./src/sites/og/components/Projects.tsx[39m[22m [1m[32m53:25-32[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx(53,26)
+      TS7006: Parameter 'project' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 38:12-43 13:28-59
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx[39m[22m
+[1m./src/sites/og/components/Projects.tsx[39m[22m [1m[32m53:34-39[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx(53,35)
+      TS7006: Parameter 'index' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 38:12-43 13:28-59
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\SocialIcon.tsx[39m[22m
+[1m./src/sites/og/components/SocialIcon.tsx[39m[22m [1m[32m2:38-74[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\SocialIcon.tsx(2,39)
+      TS2307: Cannot find module '../../shared/constants/socialIcons' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/components/Contact.tsx 5:0-38 11:2058-2068 11:3589-3599
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\SocialIcon.tsx[39m[22m
+[1m./src/sites/og/components/SocialIcon.tsx[39m[22m [1m[32m3:31-58[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\SocialIcon.tsx(3,32)
+      TS2307: Cannot find module '../../shared/types/social' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/components/Contact.tsx 5:0-38 11:2058-2068 11:3589-3599
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[33m60 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.[39m[22m
+
+webpack 5.104.1 compiled with [1m[31m60 errors[39m[22m in 7253 ms
+assets by status 3.33 MiB [1m[32m[cached][39m[22m 22 assets
+assets by status 5.1 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 5.1 MiB
+    asset [1m[32mbundle.a0b279c65ccfe5ce1668.js[39m[22m 5.09 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+    asset [1m[32mmain.451210bd32fd6c173a6e.hot-update.js[39m[22m 12.7 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.451210bd32fd6c173a6e.hot-update.json[39m[22m 28 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.1 MiB (1020 KiB) = [1m[32mbundle.a0b279c65ccfe5ce1668.js[39m[22m 5.09 MiB [1m[32mmain.451210bd32fd6c173a6e.hot-update.js[39m[22m 12.7 KiB 1 auxiliary asset
+cached modules 8.52 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3615 modules
+runtime modules 32.7 KiB 17 modules
+javascript modules 4.9 KiB
+  [1m./src/App.tsx[39m[22m 1.15 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+  [1m./src/sites/og/ClassicApp.tsx[39m[22m 3.76 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/About.tsx[39m[22m [1m[32m4:0-66[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 5:0-39 52:545-550
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/About.tsx[39m[22m [1m[32m5:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 5:0-39 52:545-550
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Certifications.tsx[39m[22m [1m[32m3:0-66[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 41:12-49 16:34-71
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Certifications.tsx[39m[22m [1m[32m4:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 41:12-49 16:34-71
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Contact.tsx[39m[22m [1m[32m4:0-66[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Contact.tsx[39m[22m [1m[32m6:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Contributions.tsx[39m[22m [1m[32m7:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 40:12-48 15:33-69
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m3:0-66[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m4:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Gallery.tsx[39m[22m [1m[32m4:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 39:12-42 14:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m4:0-66[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m5:0-64[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ResumeContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m6:0-62[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ThemeContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m7:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Projects.tsx[39m[22m [1m[32m4:0-66[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 38:12-43 13:28-59
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Projects.tsx[39m[22m [1m[32m5:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 38:12-43 13:28-59
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Resume.tsx[39m[22m [1m[32m7:0-64[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ResumeContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 6:0-41 52:1476-1482
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Resume.tsx[39m[22m [1m[32m8:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 6:0-41 52:1476-1482
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/SocialIcon.tsx[39m[22m [1m[32m2:0-75[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/constants/socialIcons' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/components/Hero.tsx 8:0-38 60:2590-2600
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Technologies.tsx[39m[22m [1m[32m4:0-66[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/ProfileContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 36:12-47 11:32-67
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1m./src/sites/og/components/Technologies.tsx[39m[22m [1m[32m5:0-68[39m[22m
+[1mModule [1m[31mnot found[39m[22m[1m: [1m[31mError[39m[22m[1m: Can't resolve '../../shared/contexts/LanguageContext' in 'E:\Projects\allenbenny.me\src\sites\og\components'[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 36:12-47 11:32-67
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx[39m[22m
+[1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m3:27-65[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx(3,28)
+      TS2307: Cannot find module '../../shared/contexts/ProfileContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx[39m[22m
+[1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m4:26-63[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx(4,27)
+      TS2307: Cannot find module '../../shared/contexts/ResumeContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx[39m[22m
+[1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m5:25-61[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx(5,26)
+      TS2307: Cannot find module '../../shared/contexts/ThemeContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx[39m[22m
+[1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m6:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx(6,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx[39m[22m
+[1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m162:30-34[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx(162,31)
+      TS7006: Parameter 'link' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx[39m[22m
+[1m./src/sites/og/components/Hero.tsx[39m[22m [1m[32m162:36-41[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Hero.tsx(162,37)
+      TS7006: Parameter 'index' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\About.tsx[39m[22m
+[1m./src/sites/og/components/About.tsx[39m[22m [1m[32m3:27-65[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\About.tsx(3,28)
+      TS2307: Cannot find module '../../shared/contexts/ProfileContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 5:0-39 52:545-550
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\About.tsx[39m[22m
+[1m./src/sites/og/components/About.tsx[39m[22m [1m[32m4:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\About.tsx(4,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 5:0-39 52:545-550
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\About.tsx[39m[22m
+[1m./src/sites/og/components/About.tsx[39m[22m [1m[32m29:18-27[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\About.tsx(29,19)
+      TS7006: Parameter 'paragraph' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 5:0-39 52:545-550
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\About.tsx[39m[22m
+[1m./src/sites/og/components/About.tsx[39m[22m [1m[32m29:29-34[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\About.tsx(29,30)
+      TS7006: Parameter 'index' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 5:0-39 52:545-550
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Resume.tsx[39m[22m
+[1m./src/sites/og/components/Resume.tsx[39m[22m [1m[32m6:26-63[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Resume.tsx(6,27)
+      TS2307: Cannot find module '../../shared/contexts/ResumeContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 6:0-41 52:1476-1482
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Resume.tsx[39m[22m
+[1m./src/sites/og/components/Resume.tsx[39m[22m [1m[32m7:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Resume.tsx(7,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 6:0-41 52:1476-1482
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx[39m[22m
+[1m./src/sites/og/components/Contact.tsx[39m[22m [1m[32m3:27-65[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx(3,28)
+      TS2307: Cannot find module '../../shared/contexts/ProfileContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx[39m[22m
+[1m./src/sites/og/components/Contact.tsx[39m[22m [1m[32m5:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx(5,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx[39m[22m
+[1m./src/sites/og/components/Contact.tsx[39m[22m [1m[32m71:28-32[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx(71,29)
+      TS7006: Parameter 'link' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx[39m[22m
+[1m./src/sites/og/components/Contact.tsx[39m[22m [1m[32m71:34-39[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Contact.tsx(71,35)
+      TS7006: Parameter 'index' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 42:12-42 17:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Certifications.tsx[39m[22m
+[1m./src/sites/og/components/Certifications.tsx[39m[22m [1m[32m3:27-65[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Certifications.tsx(3,28)
+      TS2307: Cannot find module '../../shared/contexts/ProfileContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 41:12-49 16:34-71
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Certifications.tsx[39m[22m
+[1m./src/sites/og/components/Certifications.tsx[39m[22m [1m[32m4:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Certifications.tsx(4,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 41:12-49 16:34-71
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Certifications.tsx[39m[22m
+[1m./src/sites/og/components/Certifications.tsx[39m[22m [1m[32m53:31-35[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Certifications.tsx(53,32)
+      TS7006: Parameter 'cert' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 41:12-49 16:34-71
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Contributions.tsx[39m[22m
+[1m./src/sites/og/components/Contributions.tsx[39m[22m [1m[32m17:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Contributions.tsx(17,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 40:12-48 15:33-69
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Gallery.tsx[39m[22m
+[1m./src/sites/og/components/Gallery.tsx[39m[22m [1m[32m3:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Gallery.tsx(3,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 39:12-42 14:27-57
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx[39m[22m
+[1m./src/sites/og/components/Technologies.tsx[39m[22m [1m[32m3:27-65[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx(3,28)
+      TS2307: Cannot find module '../../shared/contexts/ProfileContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 36:12-47 11:32-67
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx[39m[22m
+[1m./src/sites/og/components/Technologies.tsx[39m[22m [1m[32m4:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx(4,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 36:12-47 11:32-67
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx[39m[22m
+[1m./src/sites/og/components/Technologies.tsx[39m[22m [1m[32m25:25-29[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx(25,26)
+      TS7006: Parameter 'tech' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 36:12-47 11:32-67
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx[39m[22m
+[1m./src/sites/og/components/Technologies.tsx[39m[22m [1m[32m157:56-60[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Technologies.tsx(157,57)
+      TS7006: Parameter 'tech' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 36:12-47 11:32-67
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx[39m[22m
+[1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m3:27-65[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx(3,28)
+      TS2307: Cannot find module '../../shared/contexts/ProfileContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx[39m[22m
+[1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m4:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx(4,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx[39m[22m
+[1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m60:30-33[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx(60,31)
+      TS7006: Parameter 'edu' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx[39m[22m
+[1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m60:35-40[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx(60,36)
+      TS7006: Parameter 'index' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx[39m[22m
+[1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m175:42-45[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx(175,43)
+      TS7006: Parameter 'exp' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx[39m[22m
+[1m./src/sites/og/components/Experience.tsx[39m[22m [1m[32m175:47-52[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Experience.tsx(175,48)
+      TS7006: Parameter 'index' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 37:12-45 12:30-63
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx[39m[22m
+[1m./src/sites/og/components/Projects.tsx[39m[22m [1m[32m3:27-65[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx(3,28)
+      TS2307: Cannot find module '../../shared/contexts/ProfileContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 38:12-43 13:28-59
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx[39m[22m
+[1m./src/sites/og/components/Projects.tsx[39m[22m [1m[32m4:28-67[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx(4,29)
+      TS2307: Cannot find module '../../shared/contexts/LanguageContext' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 38:12-43 13:28-59
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx[39m[22m
+[1m./src/sites/og/components/Projects.tsx[39m[22m [1m[32m53:25-32[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx(53,26)
+      TS7006: Parameter 'project' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 38:12-43 13:28-59
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx[39m[22m
+[1m./src/sites/og/components/Projects.tsx[39m[22m [1m[32m53:34-39[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\Projects.tsx(53,35)
+      TS7006: Parameter 'index' implicitly has an 'any' type.[39m[22m
+ @ ./src/sites/og/ClassicApp.tsx 38:12-43 13:28-59
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\SocialIcon.tsx[39m[22m
+[1m./src/sites/og/components/SocialIcon.tsx[39m[22m [1m[32m2:38-74[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\SocialIcon.tsx(2,39)
+      TS2307: Cannot find module '../../shared/constants/socialIcons' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/components/Hero.tsx 8:0-38 60:2590-2600
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[31mERROR[39m[22m in [1mE:\Projects\allenbenny.me\src\sites\og\components\SocialIcon.tsx[39m[22m
+[1m./src/sites/og/components/SocialIcon.tsx[39m[22m [1m[32m3:31-58[39m[22m
+[1m[tsl] [1m[31mERROR[39m[22m[1m in E:\Projects\allenbenny.me\src\sites\og\components\SocialIcon.tsx(3,32)
+      TS2307: Cannot find module '../../shared/types/social' or its corresponding type declarations.[39m[22m
+ @ ./src/sites/og/components/Hero.tsx 8:0-38 60:2590-2600
+ @ ./src/sites/og/ClassicApp.tsx 4:0-37 52:374-378
+ @ ./src/App.tsx 4:0-47 13:167-177
+ @ ./src/index.tsx 9:0-24 12:241-244
+
+[1m[33m58 errors have detailed information that is not shown.
+Use 'stats.errorDetails: true' resp. '--stats-error-details' to show it.[39m[22m
+
+webpack 5.104.1 compiled with [1m[31m58 errors[39m[22m in 2196 ms

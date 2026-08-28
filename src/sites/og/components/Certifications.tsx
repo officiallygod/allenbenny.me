@@ -1,7 +1,7 @@
 import React from 'react';
 import { m } from 'framer-motion';
-import { useProfile } from '../contexts/ProfileContext';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useProfile } from '../../../shared/contexts/ProfileContext';
+import { useLanguage } from '../../../shared/contexts/LanguageContext';
 import '../styles/Certifications.css';
 
 const Certifications: React.FC = () => {

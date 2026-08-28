@@ -3,8 +3,8 @@ import { m, AnimatePresence } from 'framer-motion';
 import { Document, Page, pdfjs } from 'react-pdf';
 import 'react-pdf/dist/Page/AnnotationLayer.css';
 import 'react-pdf/dist/Page/TextLayer.css';
-import { useResume } from '../contexts/ResumeContext';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useResume } from '../../../shared/contexts/ResumeContext';
+import { useLanguage } from '../../../shared/contexts/LanguageContext';
 import '../styles/Resume.css';
 
 pdfjs.GlobalWorkerOptions.workerSrc = new URL(

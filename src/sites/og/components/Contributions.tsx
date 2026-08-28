@@ -14,7 +14,7 @@ import {
 } from 'chart.js';
 import { Line } from 'react-chartjs-2';
 import '../styles/Contributions.css';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../../shared/contexts/LanguageContext';
 
 // Register Chart.js components
 ChartJS.register(

@@ -3,7 +3,7 @@ import { LazyMotion } from 'framer-motion';
 import Hero from './components/Hero';
 import About from './components/About';
 import Resume from './components/Resume';
-import { useLanguage } from './contexts/LanguageContext';
+import { useLanguage } from '../../shared/contexts/LanguageContext';
 import './styles/App.css';
 import ViewportSection from './components/ViewportSection';
 

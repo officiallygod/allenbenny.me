@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { m, AnimatePresence } from 'framer-motion';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../../shared/contexts/LanguageContext';
 import { ExternalLink, Map, BookOpen, Languages, PlayCircle, MousePointer2, Sprout, Smartphone } from 'lucide-react';
 import '../styles/Gallery.css';
 

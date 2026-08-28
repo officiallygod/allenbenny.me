@@ -1,6 +1,6 @@
 import React from 'react';
-import { iconLabels, iconPaths } from '../constants/socialIcons';
-import { SocialIconType } from '../types/social';
+import { iconLabels, iconPaths } from '../../../shared/constants/socialIcons';
+import { SocialIconType } from '../../../shared/types/social';
 
 interface SocialIconProps {
   type: SocialIconType;

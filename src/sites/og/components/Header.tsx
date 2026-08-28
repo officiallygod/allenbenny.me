@@ -1,6 +1,6 @@
 import React from 'react';
 import { m } from 'framer-motion';
-import { useProfile } from '../contexts/ProfileContext';
+import { useProfile } from '../../../shared/contexts/ProfileContext';
 import '../styles/Header.css';
 
 const Header: React.FC = () => {

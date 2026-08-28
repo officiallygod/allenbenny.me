@@ -1,8 +1,8 @@
 import React from 'react';
 import { m } from 'framer-motion';
-import { useProfile } from '../contexts/ProfileContext';
+import { useProfile } from '../../../shared/contexts/ProfileContext';
 import SocialIcon from './SocialIcon';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../../shared/contexts/LanguageContext';
 import '../styles/Contact.css';
 
 const Contact: React.FC = () => {

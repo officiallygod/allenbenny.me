@@ -1,7 +1,7 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { profileData } from '../constants/profileData';
-import { translations } from '../constants/translations';
-import { Language } from '../types/language';
+import { profileData } from '../../shared/constants/profileData';
+import { translations } from '../../shared/constants/translations';
+import { Language } from '../../shared/types/language';
 import './Parallel.css';
 
 /* ------------------------------------------------------------------ */

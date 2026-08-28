@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react';
 import './styles/ExperimentalTheme.css';
-import { useLanguage } from '../contexts/LanguageContext';
+import { useLanguage } from '../../shared/contexts/LanguageContext';
 
 const ExperimentalHero = React.lazy(() => import('./ExperimentalHero'));
 const ExperimentalExperience = React.lazy(() => import('./ExperimentalExperience'));
