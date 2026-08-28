@@ -74,7 +74,7 @@ const ClassicApp: React.FC = () => {
           className="game-float"
           aria-label="Play Wordle"
         >
-          🎮
+          <span className="game-float-w">W</span>
         </a>
         <About />
       <ViewportSection>

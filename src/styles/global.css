@@ -1,3 +1,6 @@
+/* Archivo Black for the game monogram badge (matches parallel / Wordle) */
+@import url('https://fonts.googleapis.com/css2?family=Archivo+Black&display=swap');
+
 /* ============================================================
    Design System - CSS Custom Properties
    Palette: warm cream · indigo accent · soft shadows
@@ -424,35 +427,47 @@ body[data-theme='dark'] .portfolio-button {
   .funky-float { bottom: 96px; padding: 10px 14px; font-size: .85rem; }
 }
 
-/* --- 🎮 game badge -> /game (both sites) --- */
+/* --- 🎮 game badge -> /game (OG main site) --- */
+/* Paint-splash "W" monogram, bottom-center, above the scroll indicator */
 .game-float {
   position: fixed;
-  bottom: 18px;
-  left: 18px;
+  bottom: 92px;            /* above .hero-scroll (bottom:32px) */
+  left: 50%;
+  translate: -50% 0;
   z-index: 999;
-  width: 58px; height: 58px;
+  width: 64px; height: 64px;
   display: grid; place-items: center;
-  font-size: 28px;
-  border-radius: 50%;
-  border: 2.5px solid #111;
-  background: linear-gradient(135deg, #00e5ff, #7c3aed);
-  box-shadow: 4px 4px 0 #111;
+  border-radius: 62% 38% 55% 45% / 45% 60% 40% 55%;
+  border: 3px solid #111;
+  background: radial-gradient(circle at 35% 35%, #ff2e88 0%, #ff4d00 55%, #ffd400 100%);
+  box-shadow: 5px 5px 0 #111;
   text-decoration: none;
-  transition: transform .15s ease, box-shadow .15s ease, filter .15s;
-  animation: game-spin-hint 6s ease-in-out infinite;
+  overflow: hidden;
+  transition: transform .15s ease, box-shadow .15s ease, filter .15s, border-radius .4s ease;
+  animation: game-blob 7s ease-in-out infinite alternate;
 }
-@keyframes game-spin-hint {
-  0%, 88%, 100% { rotate: 0deg; translate: 0 0; }
-  92% { rotate: -12deg; translate: 0 -6px; }
-  96% { rotate: 10deg; }
+@keyframes game-blob {
+  0%   { border-radius: 62% 38% 55% 45% / 45% 60% 40% 55%; rotate: -3deg; }
+  100% { border-radius: 38% 62% 40% 60% / 60% 42% 58% 40%; rotate: 3deg; }
+}
+.game-float-w {
+  font-family: 'Archivo Black', system-ui, sans-serif;
+  font-size: 1.9rem;
+  line-height: 1;
+  color: #111;
+  text-shadow: 1px 1px 0 rgba(255,255,255,.55);
+  transition: transform .15s ease;
 }
 .game-float:hover {
-  transform: scale(1.15);
+  transform: scale(1.12);
   filter: saturate(1.4);
-  box-shadow: 6px 8px 0 #111;
+  box-shadow: 7px 9px 0 #111;
   animation-play-state: paused;
+  rotate: 0deg;
 }
+.game-float:hover .game-float-w { transform: scale(1.08); }
 @media (max-width: 640px) {
-  .game-float { width: 48px; height: 48px; font-size: 23px; bottom: 14px; left: 14px; }
+  .game-float { width: 54px; height: 54px; bottom: 84px; }
+  .game-float-w { font-size: 1.6rem; }
 }
 

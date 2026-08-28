@@ -8,8 +8,8 @@ const ExperimentalApp = React.lazy(() => import('./experimental/ExperimentalApp'
 // Lazy load parallel (Gen-Z remix) app
 const ParallelApp = React.lazy(() => import('./parallel/ParallelApp'));
 
-// Lazy load game app
-const GameApp = React.lazy(() => import('./game/GameApp'));
+// Lazy load Wordle game app
+const WordleApp = React.lazy(() => import('./game/WordleApp'));
 
 const LoadingFallback = () => (
   <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
@@ -25,7 +25,7 @@ const App: React.FC = () => {
           <Route path="/" element={<ClassicApp />} />
           <Route path="/experimental" element={<ExperimentalApp />} />
           <Route path="/parallel" element={<ParallelApp />} />
-          <Route path="/game" element={<GameApp />} />
+          <Route path="/game" element={<WordleApp />} />
         </Routes>
       </Suspense>
     </Router>
