@@ -27,7 +27,7 @@
      for 320px phones. The math: board width ≈ 5*T + 4*gap.
      On a 320px screen with gap 3px: 5T = 320-16-12 = 292 => T <= 58.
      We use min() of several vh/vw based caps. */
-  --tile: min(56px, 12.5vw, calc((100vw - 24px) / 5.4), calc((100vh - 205px) / 7.2));
+  --tile: min(54px, 12vw, calc((100vw - 24px) / 5.4), calc((100vh - 250px) / 7.2));
   --gap: clamp(3px, 1vw, 7px);
   --key-h: min(48px, 8.2vh, 13vw);
 }
@@ -320,7 +320,7 @@ body { margin: 0; }
 /* ---------- responsive: small phones ---------- */
 @media (max-width: 420px) {
   .wz-root {
-    --tile: min(50px, 13vw, calc((100vw - 18px) / 5.4), calc((100vh - 190px) / 7.2));
+    --tile: min(48px, 13vw, calc((100vw - 18px) / 5.4), calc((100vh - 235px) / 7.2));
     --key-h: min(42px, 7vh, 12vw);
   }
   .wz-main { padding: 5px 6px; gap: 5px; }
@@ -358,6 +358,14 @@ body { margin: 0; }
   .wz-root { --tile: min(34px, 9.5vh, calc((100vh - 80px) / 7.2)); --key-h: min(28px, 7.5vh, 10vw); }
   .wz-subtitle { display: none; }
   .wz-main { gap: 6px; }
+}
+
+/* short portrait screens: shrink title so board + keyboard always fit (no clipping) */
+@media (max-height: 680px) and (orientation: portrait) {
+  .wz-title { font-size: clamp(1.8rem, 7.5vw, 2.6rem); }
+  .wz-subtitle { font-size: 11px; margin-top: 3px; }
+  .wz-main { gap: 5px; }
+  .wz-chip-float { padding: 5px 12px; font-size: clamp(10px, 2vw, 13px); }
 }
 
 @media (prefers-reduced-motion: reduce) {
