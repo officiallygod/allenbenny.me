@@ -196,6 +196,12 @@ export const WordleApp: React.FC = () => {
       <div className="wz-splash wz-sp3" aria-hidden="true" />
       <div className="wz-grain" aria-hidden="true" />
 
+      {/* floating stat chips — Gen-Z, near the title */}
+      <div className="wz-float-chips" aria-hidden="false">
+        <span className="wz-chip wz-chip-float wz-chip-1">📅 Daily word</span>
+        <span className="wz-chip wz-chip-float wz-chip-2">🎯 6 tries</span>
+      </div>
+
       {/* floating controls: home, theme, instructions */}
       <div className="wz-controls">
         <a className="wz-pill" href="#/" aria-label="Back to main site" title="Back to main site">🏠</a>
@@ -213,11 +219,6 @@ export const WordleApp: React.FC = () => {
             <span className="wz-title-word wz-outline">LE</span>
           </h1>
           <p className="wz-subtitle">A fresh word every day. Zero cookies. Just vibes.</p>
-          <div className="wz-chips">
-            <span className="wz-chip">📅 Daily word</span>
-            <span className="wz-chip">🎯 6 tries</span>
-            <span className="wz-chip">📊 Tracking</span>
-          </div>
         </header>
 
         {/* board */}

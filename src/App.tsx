@@ -10,11 +10,12 @@ const ParallelApp = React.lazy(() => import('./sites/parallel/ParallelApp'));
 
 // Lazy load Wordle game app
 const WordleApp = React.lazy(() => import('./sites/game/WordleApp'));
+const GameLoading = React.lazy(() => import('./sites/game/GameLoading'));
 
 const LoadingFallback = () => (
-  <div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
-    Loading...
-  </div>
+  <React.Suspense fallback={<div style={{ height: '100vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>Loading…</div>}>
+    <GameLoading />
+  </React.Suspense>
 );
 
 const App: React.FC = () => {
