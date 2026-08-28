@@ -5565,3 +5565,154 @@ cached modules 8.5 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m
 runtime modules 32.7 KiB 17 modules
 ./node_modules/css-loader/dist/cjs.js![1m./src/sites/parallel/Parallel.css[39m[22m 20.9 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
 webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 507 ms
+assets by status 3.12 MiB [1m[32m[cached][39m[22m 21 assets
+assets by status 5.33 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 5.33 MiB
+    assets by chunk 5.1 MiB (name: main)
+      asset [1m[32mbundle.979163787fb319eda360.js[39m[22m 5.1 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+      asset [1m[32mmain.1cf7da612b66d0ac6b09.hot-update.js[39m[22m 2.43 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+    asset [1m[32mbundle.6cfbffb02a790ac6837e.js[39m[22m 219 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32msrc_sites_game_WordleApp_tsx.1cf7da612b66d0ac6b09.hot-update.js[39m[22m 16.7 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.1cf7da612b66d0ac6b09.hot-update.json[39m[22m 59 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.1 MiB (1020 KiB) = [1m[32mbundle.979163787fb319eda360.js[39m[22m 5.1 MiB [1m[32mmain.1cf7da612b66d0ac6b09.hot-update.js[39m[22m 2.43 KiB 1 auxiliary asset
+cached modules 8.51 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3623 modules
+runtime modules 32.7 KiB 17 modules
+javascript modules 12.6 KiB
+  [1m./src/App.tsx[39m[22m 1.15 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+  [1m./src/sites/game/WordleApp.tsx[39m[22m 11.5 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 3250 ms
+assets by status 3.33 MiB [1m[32m[cached][39m[22m 22 assets
+assets by status 5.11 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 5.11 MiB
+    asset [1m[32mbundle.52cbed1073612a843c58.js[39m[22m 5.1 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+    asset [1m[32mmain.3cb751b8e86ba4b98cb7.hot-update.js[39m[22m 15.9 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.3cb751b8e86ba4b98cb7.hot-update.json[39m[22m 28 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.11 MiB (1020 KiB) = [1m[32mbundle.52cbed1073612a843c58.js[39m[22m 5.1 MiB [1m[32mmain.3cb751b8e86ba4b98cb7.hot-update.js[39m[22m 15.9 KiB 1 auxiliary asset
+cached modules 8.51 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3624 modules
+runtime modules 32.7 KiB 17 modules
+./node_modules/css-loader/dist/cjs.js![1m./src/sites/og/styles/global.css[39m[22m 12.5 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 338 ms
+assets by status 3.33 MiB [1m[32m[cached][39m[22m 22 assets
+assets by status 5.11 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 5.11 MiB
+    asset [1m[32mbundle.3881fdc50277cbf52c2c.js[39m[22m 5.1 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+    asset [1m[32mmain.8b28610ad66ab9c8d017.hot-update.js[39m[22m 13.6 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.8b28610ad66ab9c8d017.hot-update.json[39m[22m 28 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.11 MiB (1020 KiB) = [1m[32mbundle.3881fdc50277cbf52c2c.js[39m[22m 5.1 MiB [1m[32mmain.8b28610ad66ab9c8d017.hot-update.js[39m[22m 13.6 KiB 1 auxiliary asset
+cached modules 8.52 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3623 modules
+runtime modules 32.7 KiB 17 modules
+javascript modules 5.76 KiB
+  [1m./src/App.tsx[39m[22m 1.15 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+  [1m./src/sites/og/ClassicApp.tsx[39m[22m 4.61 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 1355 ms
+assets by status 3.33 MiB [1m[32m[cached][39m[22m 22 assets
+assets by status 5.11 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 5.11 MiB
+    asset [1m[32mbundle.65902d8cf28c465bac45.js[39m[22m 5.1 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+    asset [1m[32mmain.c9dfaef5f13ccc8b1d93.hot-update.js[39m[22m 13.7 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.c9dfaef5f13ccc8b1d93.hot-update.json[39m[22m 28 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.11 MiB (1020 KiB) = [1m[32mbundle.65902d8cf28c465bac45.js[39m[22m 5.1 MiB [1m[32mmain.c9dfaef5f13ccc8b1d93.hot-update.js[39m[22m 13.7 KiB 1 auxiliary asset
+cached modules 8.52 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3623 modules
+runtime modules 32.7 KiB 17 modules
+javascript modules 5.78 KiB
+  [1m./src/App.tsx[39m[22m 1.15 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+  [1m./src/sites/og/ClassicApp.tsx[39m[22m 4.63 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 951 ms
+assets by status 3.12 MiB [1m[32m[cached][39m[22m 21 assets
+assets by status 5.33 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 5.33 MiB
+    assets by chunk 5.1 MiB (name: main)
+      asset [1m[32mbundle.702f0bd0eb75e3a8994b.js[39m[22m 5.1 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+      asset [1m[32mmain.08eed2ca610bb4a99908.hot-update.js[39m[22m 2.43 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+    asset [1m[32mbundle.25406d58a4457f88029e.js[39m[22m 219 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32msrc_sites_game_WordleApp_tsx.08eed2ca610bb4a99908.hot-update.js[39m[22m 17.5 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.08eed2ca610bb4a99908.hot-update.json[39m[22m 59 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.1 MiB (1020 KiB) = [1m[32mbundle.702f0bd0eb75e3a8994b.js[39m[22m 5.1 MiB [1m[32mmain.08eed2ca610bb4a99908.hot-update.js[39m[22m 2.43 KiB 1 auxiliary asset
+cached modules 8.51 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3623 modules
+runtime modules 32.7 KiB 17 modules
+javascript modules 13.1 KiB
+  [1m./src/App.tsx[39m[22m 1.15 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+  [1m./src/sites/game/WordleApp.tsx[39m[22m 12 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 1526 ms
+assets by status 3.12 MiB [1m[32m[cached][39m[22m 21 assets
+assets by status 5.33 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 5.33 MiB
+    assets by chunk 5.1 MiB (name: main)
+      asset [1m[32mbundle.fe1aca4f12ef7075a7a5.js[39m[22m 5.1 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+      asset [1m[32mmain.d9cf43235cacf9b01614.hot-update.js[39m[22m 2.43 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+    asset [1m[32mbundle.38fc0186cb0159ebc658.js[39m[22m 219 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32msrc_sites_game_WordleApp_tsx.d9cf43235cacf9b01614.hot-update.js[39m[22m 19.4 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.d9cf43235cacf9b01614.hot-update.json[39m[22m 59 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.1 MiB (1020 KiB) = [1m[32mbundle.fe1aca4f12ef7075a7a5.js[39m[22m 5.1 MiB [1m[32mmain.d9cf43235cacf9b01614.hot-update.js[39m[22m 2.43 KiB 1 auxiliary asset
+cached modules 8.51 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3624 modules
+runtime modules 32.7 KiB 17 modules
+./node_modules/css-loader/dist/cjs.js![1m./src/sites/game/Wordle.css[39m[22m 16.1 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 424 ms
+assets by status 3.12 MiB [1m[32m[cached][39m[22m 21 assets
+assets by status 5.34 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 5.33 MiB
+    assets by chunk 5.1 MiB (name: main)
+      asset [1m[32mbundle.1a00b9ae1c4bdd3df603.js[39m[22m 5.1 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+      asset [1m[32mmain.03ef12199eb778905eba.hot-update.js[39m[22m 2.43 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+    asset [1m[32mbundle.7c788f39b1e784305ee7.js[39m[22m 220 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32msrc_sites_game_WordleApp_tsx.03ef12199eb778905eba.hot-update.js[39m[22m 20.1 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.03ef12199eb778905eba.hot-update.json[39m[22m 59 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.1 MiB (1020 KiB) = [1m[32mbundle.1a00b9ae1c4bdd3df603.js[39m[22m 5.1 MiB [1m[32mmain.03ef12199eb778905eba.hot-update.js[39m[22m 2.43 KiB 1 auxiliary asset
+cached modules 8.51 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3624 modules
+runtime modules 32.7 KiB 17 modules
+./node_modules/css-loader/dist/cjs.js![1m./src/sites/game/Wordle.css[39m[22m 16.7 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 461 ms
+assets by status 3.12 MiB [1m[32m[cached][39m[22m 21 assets
+assets by status 5.33 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 5.33 MiB
+    assets by chunk 5.1 MiB (name: main)
+      asset [1m[32mbundle.8bb1882795bd6081e929.js[39m[22m 5.1 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+      asset [1m[32mmain.30cae5432ac4e779ed1b.hot-update.js[39m[22m 2.43 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+    asset [1m[32mbundle.c09660e86b16e143a4b5.js[39m[22m 220 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32msrc_sites_game_WordleApp_tsx.30cae5432ac4e779ed1b.hot-update.js[39m[22m 17.8 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.30cae5432ac4e779ed1b.hot-update.json[39m[22m 59 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.1 MiB (1020 KiB) = [1m[32mbundle.8bb1882795bd6081e929.js[39m[22m 5.1 MiB [1m[32mmain.30cae5432ac4e779ed1b.hot-update.js[39m[22m 2.43 KiB 1 auxiliary asset
+cached modules 8.51 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3623 modules
+runtime modules 32.7 KiB 17 modules
+javascript modules 13.3 KiB
+  [1m./src/App.tsx[39m[22m 1.15 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+  [1m./src/sites/game/WordleApp.tsx[39m[22m 12.2 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 1831 ms
+assets by status 3.12 MiB [1m[32m[cached][39m[22m 21 assets
+assets by status 5.34 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 5.34 MiB
+    assets by chunk 5.1 MiB (name: main)
+      asset [1m[32mbundle.72462eb61039762d1ec3.js[39m[22m 5.1 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+      asset [1m[32mmain.078f59b1d58d58cbe891.hot-update.js[39m[22m 2.43 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+    asset [1m[32mbundle.d2d4cfd9d1a76d4dd224.js[39m[22m 221 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32msrc_sites_game_WordleApp_tsx.078f59b1d58d58cbe891.hot-update.js[39m[22m 20.5 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.078f59b1d58d58cbe891.hot-update.json[39m[22m 59 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.1 MiB (1020 KiB) = [1m[32mbundle.72462eb61039762d1ec3.js[39m[22m 5.1 MiB [1m[32mmain.078f59b1d58d58cbe891.hot-update.js[39m[22m 2.43 KiB 1 auxiliary asset
+cached modules 8.51 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3624 modules
+runtime modules 32.7 KiB 17 modules
+./node_modules/css-loader/dist/cjs.js![1m./src/sites/game/Wordle.css[39m[22m 17.1 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 601 ms
+assets by status 3.12 MiB [1m[32m[cached][39m[22m 21 assets
+assets by status 5.34 MiB [1m[32m[emitted][39m[22m
+  assets by path [1m[32m*.js[39m[22m 5.34 MiB
+    assets by chunk 5.1 MiB (name: main)
+      asset [1m[32mbundle.47bcb366b184340ad204.js[39m[22m 5.1 MiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m (name: main)
+      asset [1m[32mmain.80a43a126d49461f6a39.hot-update.js[39m[22m 2.43 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m (name: main)
+    asset [1m[32mbundle.78d4c02609b1794efa7a.js[39m[22m 221 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m
+    asset [1m[32msrc_sites_game_WordleApp_tsx.80a43a126d49461f6a39.hot-update.js[39m[22m 20.5 KiB [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+  asset [1m[32mindex.html[39m[22m 1.69 KiB [1m[32m[emitted][39m[22m
+  asset [1m[32mmain.80a43a126d49461f6a39.hot-update.json[39m[22m 59 bytes [1m[32m[emitted][39m[22m [1m[32m[immutable][39m[22m [1m[32m[hmr][39m[22m
+Entrypoint [1mmain[39m[22m 5.1 MiB (1020 KiB) = [1m[32mbundle.47bcb366b184340ad204.js[39m[22m 5.1 MiB [1m[32mmain.80a43a126d49461f6a39.hot-update.js[39m[22m 2.43 KiB 1 auxiliary asset
+cached modules 8.51 MiB (javascript) 1020 KiB (asset) [1m[32m[cached][39m[22m 3624 modules
+runtime modules 32.7 KiB 17 modules
+./node_modules/css-loader/dist/cjs.js![1m./src/sites/game/Wordle.css[39m[22m 17.1 KiB [1m[33m[built][39m[22m [1m[33m[code generated][39m[22m
+webpack 5.104.1 compiled [1m[32msuccessfully[39m[22m in 452 ms

@@ -213,6 +213,11 @@ export const WordleApp: React.FC = () => {
             <span className="wz-title-word wz-outline">LE</span>
           </h1>
           <p className="wz-subtitle">A fresh word every day. Zero cookies. Just vibes.</p>
+          <div className="wz-chips">
+            <span className="wz-chip">📅 Daily word</span>
+            <span className="wz-chip">🎯 6 tries</span>
+            <span className="wz-chip">📊 Tracking</span>
+          </div>
         </header>
 
         {/* board */}
@@ -266,6 +271,17 @@ export const WordleApp: React.FC = () => {
                 {gameState === 'won' ? '🎉 GOT IT!' : '💀 NOPE'}
               </h2>
               <p className="wz-answer">The word was <strong>{target}</strong></p>
+
+              {/* meaning chips — what each tile color means */}
+              <div className="wz-legend wz-legend-overlay">
+                {TILE_MEANINGS.map((m, i) => (
+                  <div key={i} className="wz-legend-item">
+                    <span className={`wz-legend-tile wz-${m.label.toLowerCase()}`} />
+                    <span>{m.desc}</span>
+                  </div>
+                ))}
+              </div>
+
               <p className="wz-stats">Solved in {guesses.length}/6</p>
               <div className="wz-overlay-actions">
                 <button className="wz-btn wz-btn-main" onClick={shareResult}>📋 Share</button>
